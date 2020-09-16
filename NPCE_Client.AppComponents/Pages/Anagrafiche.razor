@@ -1,0 +1,31 @@
+﻿@page "/anagrafiche"
+
+<h1 class="page-title">Anagrafiche</h1>
+
+@if (AnagraficheList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var anagrafica in AnagraficheList)
+            {
+                <tr>
+                    <td>@anagrafica.Id</td>
+                    <td>@anagrafica.Nome</td>
+                    <td>@anagrafica.Cognome</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}

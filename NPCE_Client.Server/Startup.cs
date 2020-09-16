@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NPCE_Client.AppComponents.Services;
+using System;
 
 namespace NPCE_Client.Server
 {
@@ -21,6 +23,11 @@ namespace NPCE_Client.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddHttpClient<IAnagraficheDataService, AnagraficheDataService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:60909/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +43,8 @@ namespace NPCE_Client.Server
             }
 
             app.UseStaticFiles();
+
+          
 
             app.UseRouting();
 
