@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.Client", "NPCE_Client.Client\NPCE_Client.Client.csproj", "{75EE1454-A0C8-41F8-BEA7-D49572B0A990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Client", "NPCE_Client.Client\NPCE_Client.Client.csproj", "{75EE1454-A0C8-41F8-BEA7-D49572B0A990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.Server", "NPCE_Client.Server\NPCE_Client.Server.csproj", "{D1E1EBC4-C372-4113-A5F0-5055654954F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Server", "NPCE_Client.Server\NPCE_Client.Server.csproj", "{D1E1EBC4-C372-4113-A5F0-5055654954F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.Model", "NPCE_Client.Model\NPCE_Client.Model.csproj", "{3F0F9920-B913-4588-9223-B0AFD81330E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Model", "NPCE_Client.Model\NPCE_Client.Model.csproj", "{3F0F9920-B913-4588-9223-B0AFD81330E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.Api", "NPCE_Client.Api\NPCE_Client.Api.csproj", "{43ECA145-EAB7-44A8-85C2-CC4A6773349E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Api", "NPCE_Client.Api\NPCE_Client.Api.csproj", "{43ECA145-EAB7-44A8-85C2-CC4A6773349E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.AppComponents", "NPCE_Client.AppComponents\NPCE_Client.AppComponents.csproj", "{47E136F8-AC81-400E-B97C-9AB12B5327D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{43ECA145-EAB7-44A8-85C2-CC4A6773349E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43ECA145-EAB7-44A8-85C2-CC4A6773349E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43ECA145-EAB7-44A8-85C2-CC4A6773349E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
