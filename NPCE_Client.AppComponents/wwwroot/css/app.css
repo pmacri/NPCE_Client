@@ -25,7 +25,7 @@ nav {
 }
 
 #navbarSupportedContent {
-    height: 80px;
+    height: 49.6759px;
 }
 
 .navbar {
@@ -33,7 +33,7 @@ nav {
 }
 
 .sidebar-logo {
-    height: 80px;
+    height: 0px;
     background-color: #a593c2;
     border-color: #a593c2;
     width: 240px;
@@ -49,7 +49,7 @@ nav {
 
 .profile-bg, .profile-picture {
     width: 240px;
-    height: 240px;
+    height: 0px;
     position: absolute;
 }
 
@@ -59,7 +59,7 @@ nav {
 
     .profile-bg img {
         width: 250px;
-        height: 250px;
+        height: 0px;
         filter: blur(16px);
         -webkit-filter: blur(16px);
         margin: -5px;
@@ -68,7 +68,7 @@ nav {
 
 .profile-picture img.account-photo {
     width: 160px;
-    height: 160px;
+    height: 0px;
     margin-left: 40px;
     margin-top: 40px;
 }
@@ -79,7 +79,7 @@ nav {
 
 .menu {
     position: absolute;
-    margin-top: 240px;
+    margin-top: 0px;
 }
 
 #sidebar-wrapper {
