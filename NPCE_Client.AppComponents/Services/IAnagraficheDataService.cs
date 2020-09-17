@@ -9,5 +9,7 @@ namespace NPCE_Client.AppComponents.Services
     public interface IAnagraficheDataService
     {
         Task<IEnumerable<Anagrafica>> GetAllAnagrafiche();
+
+        Task<Anagrafica> GetAnagraficaDetail(int anagraficaId);
     }
 }

@@ -14,17 +14,29 @@ else
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>CAP</th>
+                <th>Città</th>
+                <th>Provincia</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var anagrafica in AnagraficheList)
             {
-                <tr>
-                    <td>@anagrafica.Id</td>
-                    <td>@anagrafica.Nome</td>
-                    <td>@anagrafica.Cognome</td>
-                    
-                </tr>
+            <tr>
+                <td>@anagrafica.Id</td>
+                <td>@anagrafica.Nome</td>
+                <td>@anagrafica.Cognome</td>
+                <td>@anagrafica.Indirizzo</td>
+                <td>@anagrafica.Cap</td>
+                <td>@anagrafica.Citta</td>
+                <td>@anagrafica.Provincia</td>
+                <a href="@($"anagraficadetail/{anagrafica.Id}")" class="btn btn-primary table-btn">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+
+            </tr>
             }
         </tbody>
     </table>

@@ -1,0 +1,61 @@
+﻿
+@page "/anagraficadetail/{AnagraficaId}"
+
+
+@if(@Anagrafica !=null)
+{
+    <section class="anagrafica-detail">
+        <h1 class="page-title">Dettaglio per @Anagrafica.Nome @Anagrafica.Cognome</h1>
+        <div class="col-10 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ID</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@Anagrafica.Id</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Nome</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Nome</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Cognome</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Cognome</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Indirizzo</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Indirizzo</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Località</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Citta</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Provincia</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Provincia</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Stato</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Anagrafica.Stato</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

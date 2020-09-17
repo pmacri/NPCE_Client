@@ -18,5 +18,10 @@ namespace NPCE_Client.Api.Data
         {
             return appDbContext.Anagrafiche;
         }
+
+        public Anagrafica GetAnagraficaById(int id)
+        {
+            return appDbContext.Anagrafiche.Where(a => a.Id == id).FirstOrDefault();
+        }
     }
 }

@@ -30,5 +30,15 @@ namespace NPCE_Client.Model
 
         [NotMapped]
         public bool IsMittente { get; set; }
+
+
+        [NotMapped]
+        public string Indirizzo
+        {
+            get
+            {
+                return $"{DUG} {Toponimo} {Esponente??string.Empty} {NumeroCivico??string.Empty}";
+            }
+        }
     }
 }

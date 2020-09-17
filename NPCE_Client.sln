@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Api", "NPCE_Cli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.AppComponents", "NPCE_Client.AppComponents\NPCE_Client.AppComponents.csproj", "{47E136F8-AC81-400E-B97C-9AB12B5327D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.ComponentsLibrary", "NPCE_Client.ComponentsLibrary\NPCE_Client.ComponentsLibrary.csproj", "{A61B4686-9220-4E1E-9561-6988BCA4D63F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47E136F8-AC81-400E-B97C-9AB12B5327D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61B4686-9220-4E1E-9561-6988BCA4D63F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61B4686-9220-4E1E-9561-6988BCA4D63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61B4686-9220-4E1E-9561-6988BCA4D63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61B4686-9220-4E1E-9561-6988BCA4D63F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

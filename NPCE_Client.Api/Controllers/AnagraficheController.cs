@@ -25,5 +25,11 @@ namespace NPCE_Client.Api.Controllers
         {
             return Ok(anagraficheRepository.GetAllAnagrafiche());
         }
+
+        [HttpGet("{anagraficaId}")]
+        public IActionResult GetAnagraficaById(int anagraficaId)
+        {
+            return Ok(anagraficheRepository.GetAnagraficaById(anagraficaId));
+        }
     }
 }

@@ -6,5 +6,7 @@ namespace NPCE_Client.Api.Data
     public interface IAnagraficheRepository
     {
         IEnumerable<Anagrafica> GetAllAnagrafiche();
+
+        Anagrafica GetAnagraficaById(int id);
     }
 }

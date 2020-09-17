@@ -21,5 +21,11 @@ namespace NPCE_Client.AppComponents.Services
             return await JsonSerializer.DeserializeAsync<IEnumerable<Anagrafica>>
                 (await httpClient.GetStreamAsync($"api/anagrafiche"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
+
+        public async Task<Anagrafica> GetAnagraficaDetail(int anagraficaId)
+        {
+            return await JsonSerializer.DeserializeAsync<Anagrafica>
+                (await httpClient.GetStreamAsync($"api/anagrafiche/{anagraficaId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
     }
 }
