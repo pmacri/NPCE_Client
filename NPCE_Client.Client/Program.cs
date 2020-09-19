@@ -15,6 +15,8 @@ namespace NPCE_Client.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            // Use of IHttpClientFactory
+
             builder.Services.AddHttpClient<IAnagraficheDataService, AnagraficheDataService>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:60909/");

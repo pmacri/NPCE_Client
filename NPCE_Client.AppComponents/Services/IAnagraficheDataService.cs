@@ -11,5 +11,11 @@ namespace NPCE_Client.AppComponents.Services
         Task<IEnumerable<Anagrafica>> GetAllAnagrafiche();
 
         Task<Anagrafica> GetAnagraficaDetail(int anagraficaId);
+
+        Task<Anagrafica> AddAnagrafica(Anagrafica anagrafica);
+
+        Task EditAnagrafica(Anagrafica anagrafica);
+
+        Task DeleteAnagrafica(int anagraficaId);
     }
 }

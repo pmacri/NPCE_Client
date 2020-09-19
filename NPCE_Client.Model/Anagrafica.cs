@@ -37,7 +37,7 @@ namespace NPCE_Client.Model
         {
             get
             {
-                return $"{DUG} {Toponimo} {Esponente??string.Empty} {NumeroCivico??string.Empty}";
+                return $"{DUG} {Toponimo} {NumeroCivico ?? string.Empty} {Esponente ?? string.Empty}";
             }
         }
     }

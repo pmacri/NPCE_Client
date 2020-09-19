@@ -1,0 +1,80 @@
+﻿@page "/anagraficaedit"
+@page "/anagraficaedit/{AnagraficaId}"
+
+
+
+@if (!Saved && @Anagrafica != null)
+{
+    <h1 class="page-title">Dettaglio per  @Anagrafica.Cognome @Anagrafica.Nome</h1>
+    <section class="employee-edit">
+
+        <EditForm Model="@Anagrafica" OnValidSubmit="@HandleValidSubmit">
+
+            <div class="form-group row">
+                <label for="nome" class="col-sm-3">Nome : </label>
+                <InputText id="nome" class="form-control col-sm-8" placeholder="Digita Nome" @bind-Value="@Anagrafica.Nome"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="cognome" class="col-sm-3">Cognome : </label>
+                <InputText id="cognome" class="form-control col-sm-8" placeholder="Digita Cognome" @bind-Value="@Anagrafica.Cognome"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="complementoNominativo" class="col-sm-3">Complemento Nominativo : </label>
+                <InputText id="complementoNominativo" class="form-control col-sm-8" placeholder="Digita Complemento Nominativo" @bind-Value="@Anagrafica.ComplementoNominativo"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="dug" class="col-sm-3">DUG : </label>
+                <InputText id="dug" class="form-control col-sm-8" placeholder="Digita DUG" @bind-Value="@Anagrafica.DUG"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="toponimo" class="col-sm-3">Toponimo : </label>
+                <InputText id="toponimo" class="form-control col-sm-8" placeholder="Digita Toponimo" @bind-Value="@Anagrafica.Toponimo"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="esponente" class="col-sm-3">Esponente : </label>
+                <InputText id="esponente" class="form-control col-sm-8" placeholder="Digita esponente" @bind-Value="@Anagrafica.Esponente"></InputText>
+            </div>
+
+            <div class="form-group row">
+                <label for="numeroCivico" class="col-sm-3">Numero Civico: </label>
+                <InputText id="numeroCivico" class="form-control col-sm-8" @bind-Value="@Anagrafica.NumeroCivico" placeholder="Digita numero civico"></InputText>
+                @*<ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.FirstName)" />*@
+            </div>
+            <div class="form-group row">
+                <label for="citta" class="col-sm-3">Città : </label>
+                <InputText id="citta" class="form-control col-sm-8" placeholder="Digita città" @bind-Value="@Anagrafica.Citta"></InputText>
+            </div>
+            <div class="form-group row">
+                <label for="cap" class="col-sm-3">CAP : </label>
+                <InputText id="citta" class="form-control col-sm-8" placeholder="Digita cap" @bind-Value="@Anagrafica.Cap"></InputText>
+            </div>
+            <div class="form-group row">
+                <label for="provincia" class="col-sm-3">Provincia : </label>
+                <InputText id="provincia" class="form-control col-sm-8" placeholder="Digita provincia" @bind-Value="@Anagrafica.Provincia"></InputText>
+            </div>
+            <div class="form-group row">
+                <label for="nazione" class="col-sm-3">Nazione : </label>
+                <InputText id="nazione" class="form-control col-sm-8" placeholder="Digita nazione" @bind-Value="@Anagrafica.Stato"></InputText>
+            </div>
+            <button type="submit" class="btn btn-primary edit-btn">Salva</button>
+            @if (Anagrafica.Id > 0)
+            {
+                <a class="btn btn-danger" @onclick="@DeleteAnagrafica">
+                    Elimina
+                </a>
+            }
+
+            <a class="btn btn-outline-primary" @onclick="@NavigateToList">Torna alla lista</a>
+        </EditForm>
+
+    </section>
+}
+else
+{
+    <div class="alert @StatusClass">@Message</div>
+}

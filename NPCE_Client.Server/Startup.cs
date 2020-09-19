@@ -24,6 +24,7 @@ namespace NPCE_Client.Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            // Use of IHttpClientFactory
             services.AddHttpClient<IAnagraficheDataService, AnagraficheDataService>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:60909/");

@@ -25,16 +25,21 @@ else
             @foreach (var anagrafica in AnagraficheList)
             {
             <tr>
-                <td>@anagrafica.Id</td>
-                <td>@anagrafica.Nome</td>
-                <td>@anagrafica.Cognome</td>
-                <td>@anagrafica.Indirizzo</td>
-                <td>@anagrafica.Cap</td>
-                <td>@anagrafica.Citta</td>
-                <td>@anagrafica.Provincia</td>
-                <a href="@($"anagraficadetail/{anagrafica.Id}")" class="btn btn-primary table-btn">
-                    <i class="fas fa-info-circle"></i>
-                </a>
+                <td>@anagrafica?.Id</td>
+                <td>@anagrafica?.Nome</td>
+                <td>@anagrafica?.Cognome</td>
+                <td>@anagrafica?.Indirizzo</td>
+                <td>@anagrafica?.Cap.ToUpper()</td>
+                <td>@anagrafica?.Citta.ToUpper()</td>
+                <td>@anagrafica?.Provincia</td>
+                <td>
+                    <a href="@($"anagraficadetail/{anagrafica.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a href="@($"anagraficaedit/{anagrafica.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
 
             </tr>
             }
