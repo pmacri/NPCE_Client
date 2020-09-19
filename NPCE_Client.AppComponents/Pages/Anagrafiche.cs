@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using NPCE_Client.AppComponents.Components;
 using NPCE_Client.AppComponents.Services;
 using NPCE_Client.Model;
 using System;
@@ -16,9 +17,22 @@ namespace NPCE_Client.AppComponents.Pages
         [Inject]
         public IAnagraficheDataService AnagraficheDataService { get; set; }
 
+        protected AddAnagraficaDialog AddAnagraficaDialog { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             AnagraficheList = (await AnagraficheDataService.GetAllAnagrafiche()).ToList();
+        }
+
+        protected void QuickAddAnagrafica()
+        {
+            AddAnagraficaDialog.Show();
+        }
+
+        public async Task AddAnagraficaDialog_OnDialogClose()
+        {
+            AnagraficheList = (await AnagraficheDataService.GetAllAnagrafiche()).ToList();
+            StateHasChanged();
         }
     }
 }
