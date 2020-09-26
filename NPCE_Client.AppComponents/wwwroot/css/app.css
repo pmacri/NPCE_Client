@@ -33,10 +33,10 @@ nav {
 }
 
 .sidebar-logo {
-    height: 0px;
+    height: 49.6759px;
     background-color: #a593c2;
     border-color: #a593c2;
-    width: 240px;
+    width: 250px;
 }
 
 
@@ -222,10 +222,12 @@ nav {
     width: 100%;
     z-index: 1000;
 }
-
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+input[type='file'] {
+    color:transparent;
+}

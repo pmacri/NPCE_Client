@@ -33,7 +33,9 @@ namespace NPCE_Client.Api
 
             services.AddControllers();
 
-            services.AddScoped<IAnagraficheRepository, AnagraficheRepository>();
+            services.AddScoped<IAnagraficaRepository, AnagraficheRepository>();
+
+            services.AddScoped<IDocumentiRepository, DocumentoRepository>();
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

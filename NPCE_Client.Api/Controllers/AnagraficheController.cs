@@ -14,9 +14,9 @@ namespace NPCE_Client.Api.Controllers
     public class AnagraficheController : ControllerBase
     {
 
-        private readonly IAnagraficheRepository anagraficheRepository;
+        private readonly IAnagraficaRepository anagraficheRepository;
 
-        public AnagraficheController(IAnagraficheRepository anagraficheRepository)
+        public AnagraficheController(IAnagraficaRepository anagraficheRepository)
         {
             this.anagraficheRepository = anagraficheRepository;
         }

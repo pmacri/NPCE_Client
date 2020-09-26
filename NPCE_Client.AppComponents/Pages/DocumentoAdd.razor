@@ -1,0 +1,26 @@
+﻿@using BlazorInputFile
+@page "/documentoadd"
+
+<h3>Aggiungi documento</h3>
+
+@if (!Saved)
+{
+    <EditForm Model="@Documento" OnValidSubmit="@HandleValidSubmit">
+
+        <InputFile OnChange="@HandleSelection" />
+
+        @if (file != null)
+        {
+            <p><span><label>@Documento.FileName</label> <label>@Documento.Size</label></span></p>
+
+            <InputText @bind-Value="@Documento.Tag"></InputText>
+        }
+
+        <button type="submit" class="btn btn-primary edit-btn">Salva</button>
+    </EditForm>
+}
+else
+{
+    <div class="alert @StatusClass">@Message</div>
+}
+

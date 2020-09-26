@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NPCE_Client.Api.Data
 {
-    public interface IAnagraficheRepository
+    public interface IAnagraficaRepository
     {
         IEnumerable<Anagrafica> GetAllAnagrafiche();
 

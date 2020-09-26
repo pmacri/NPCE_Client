@@ -21,6 +21,10 @@ namespace NPCE_Client.Client
             {
                 client.BaseAddress = new Uri("http://localhost:60909/");
             });
+            builder.Services.AddHttpClient<IDocumentiDataService, DocumentiDataService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:60909/");
+            });
 
             await builder.Build().RunAsync();
         }

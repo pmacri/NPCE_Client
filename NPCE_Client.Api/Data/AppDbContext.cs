@@ -11,5 +11,7 @@ namespace NPCE_Client.Api.Data
         }
 
         public DbSet<Anagrafica> Anagrafiche { get; set; }
+
+        public DbSet<Documento> Documenti { get; set; }
     }
 }

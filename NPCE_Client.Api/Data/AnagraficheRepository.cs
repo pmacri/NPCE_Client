@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NPCE_Client.Api.Data
 {
-    public class AnagraficheRepository : IAnagraficheRepository
+    public class AnagraficheRepository : IAnagraficaRepository
     {
         private readonly AppDbContext appDbContext;
 
