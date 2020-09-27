@@ -30,9 +30,9 @@ namespace NPCE_Client.AppComponents.Services
             return null;
         }
 
-        public Task DeleteDocumento(int documentoId)
+        public async Task DeleteDocumento(int documentoId)
         {
-            throw new NotImplementedException();
+            await httpClient.DeleteAsync($"api/documenti/{documentoId}");
         }
 
         public Task EditAnagrafica(Documento documento)

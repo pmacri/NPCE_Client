@@ -16,6 +16,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\NPCE_Client.ComponentsLibrary\NPCE_Client.ComponentsLibrary.csproj" />
     <ProjectReference Include="..\NPCE_Client.Model\NPCE_Client.Model.csproj" />
   </ItemGroup>
 

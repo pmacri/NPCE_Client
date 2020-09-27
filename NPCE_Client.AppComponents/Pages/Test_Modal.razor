@@ -1,0 +1,12 @@
+﻿@using NPCE_Client.ComponentsLibrary
+
+@page "/testmodal"
+
+<Modal @ref="Modal" ShowBackdrop="false" Message="Do you confirm ?"></Modal>
+
+<button @onclick="() => Modal.Open()">Open Modal</button>
+
+@code {
+    
+    private Modal Modal { get; set; }
+}

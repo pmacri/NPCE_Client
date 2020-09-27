@@ -33,7 +33,10 @@ namespace NPCE_Client.Api.Data
 
         public IEnumerable<Documento> GetAllDocumenti()
         {
-            return appDbContext.Documenti;
+            List<Documento> result = new List<Documento>();
+
+            return appDbContext.Documenti.Select(d => new Documento { Id = d.Id, Extension = d.Extension, Tag = d.Tag, Size= d.Size }).ToList();
+
         }
 
         public Documento GetDocumentoById(int id)

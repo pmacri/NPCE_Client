@@ -5,19 +5,25 @@
 
 @if (!Saved)
 {
-    <EditForm Model="@Documento" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@Documento" OnValidSubmit="@HandleValidSubmit">
 
-        <InputFile OnChange="@HandleSelection" />
+    <InputFile OnChange="@HandleSelection" />
 
-        @if (file != null)
-        {
-            <p><span><label>@Documento.FileName</label> <label>@Documento.Size</label></span></p>
+    <InputText @bind-Value="@Documento.Tag"></InputText>
 
-            <InputText @bind-Value="@Documento.Tag"></InputText>
-        }
 
+    @if (file != null)
+    {
+        <p><span><label>@Documento.FileName</label> <label>@Documento.Size</label></span></p>
+
+    }
+
+    <div>
         <button type="submit" class="btn btn-primary edit-btn">Salva</button>
-    </EditForm>
+    </div>
+
+
+</EditForm>
 }
 else
 {

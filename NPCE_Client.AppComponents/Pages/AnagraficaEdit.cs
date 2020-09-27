@@ -7,7 +7,7 @@ namespace NPCE_Client.AppComponents.Pages
 {
 
     //This page can be in two modes : Edit, Add
-    public partial class AnagraficaEdit
+    public partial class AnagraficaEdit :ComponentBase
     {
 
         [Inject]

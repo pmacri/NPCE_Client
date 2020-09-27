@@ -1,0 +1,46 @@
+﻿@page "/documenti"
+
+<h1 class="page-title">Documenti</h1>
+
+@if (DocumentiList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tag</th>
+                <th>Estensione</th>
+                <th>Dimensione (in Bytes)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var documento in DocumentiList)
+            {
+                int idDocumento;
+                idDocumento = documento.Id;
+                <tr>
+                    <td>@documento?.Id</td>
+                    <td>@documento?.Tag</td>
+                    <td>@documento?.Extension</td>
+                    <td>@documento?.Size</td>                    
+                    <td>
+                        <a @onclick="@(async () => await DeleteDocument(documento.Id))" class="btn btn-primary table-btn">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@*<button @onclick="QuickAddAnagrafica" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+
+<AddAnagraficaDialog @ref="AddAnagraficaDialog" CloseEventCallback="@AddAnagraficaDialog_OnDialogClose"></AddAnagraficaDialog>*@
