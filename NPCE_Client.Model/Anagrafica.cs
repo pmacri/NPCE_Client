@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -8,6 +9,10 @@ namespace NPCE_Client.Model
 {
     public class Anagrafica
     {
+        public Anagrafica()
+        {
+            ServizioAnagrafiche = new Collection<ServizioAnagrafica>();
+        }
         public int Id { get; set; }
 
         [Required]
@@ -40,5 +45,8 @@ namespace NPCE_Client.Model
                 return $"{DUG} {Toponimo} {NumeroCivico ?? string.Empty} {Esponente ?? string.Empty}";
             }
         }
+
+        //public Collection<Servizio> Servizi { get;  set; }
+        public Collection<ServizioAnagrafica> ServizioAnagrafiche { get; }
     }
 }

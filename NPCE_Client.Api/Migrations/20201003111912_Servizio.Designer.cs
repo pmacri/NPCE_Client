@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NPCE_Client.Api.Data;
 
 namespace NPCE_Client.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201003111912_Servizio")]
+    partial class Servizio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,137 +196,6 @@ namespace NPCE_Client.Api.Migrations
                     b.ToTable("Documenti");
                 });
 
-            modelBuilder.Entity("NPCE_Client.Model.Servizio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AmbienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AnniArchiviazione")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("ArchiviazioneDigitale")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AttestazioneConsegna")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Autoconferma")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AvvisoRicevimento")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Colore")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("DocumentoId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("FronteRetro")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("GuidUtente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdOrdine")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdRichiesta")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("SecondoTentativoRecapito")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("StatoServizioId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TipoArchiviazione")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TipoServizioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AmbienteId");
-
-                    b.HasIndex("DocumentoId");
-
-                    b.HasIndex("StatoServizioId");
-
-                    b.HasIndex("TipoServizioId");
-
-                    b.ToTable("Servizi");
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.ServizioAnagrafica", b =>
-                {
-                    b.Property<int>("ServizioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AnagraficaId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsMittente")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ServizioId", "AnagraficaId");
-
-                    b.HasIndex("AnagraficaId");
-
-                    b.ToTable("ServizioAnagrafica");
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.ServizioDocumento", b =>
-                {
-                    b.Property<int>("ServizioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DocumentoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ServizioId", "DocumentoId");
-
-                    b.HasIndex("DocumentoId");
-
-                    b.ToTable("ServizioDocumento");
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.StatoServizio", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StatoServizio");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 0,
-                            Description = "Da Inviare"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Description = "Inviato"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Confermato"
-                        });
-                });
-
             modelBuilder.Entity("NPCE_Client.Model.TipoServizio", b =>
                 {
                     b.Property<int>("Id")
@@ -373,59 +244,6 @@ namespace NPCE_Client.Api.Migrations
                             Id = 6,
                             Description = "RaccomandataMarket 4"
                         });
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.Servizio", b =>
-                {
-                    b.HasOne("NPCE_Client.Model.Ambiente", "Ambiente")
-                        .WithMany()
-                        .HasForeignKey("AmbienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NPCE_Client.Model.Documento", null)
-                        .WithMany("Servizi")
-                        .HasForeignKey("DocumentoId");
-
-                    b.HasOne("NPCE_Client.Model.StatoServizio", "StatoServizio")
-                        .WithMany()
-                        .HasForeignKey("StatoServizioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NPCE_Client.Model.TipoServizio", "TipoServizio")
-                        .WithMany()
-                        .HasForeignKey("TipoServizioId");
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.ServizioAnagrafica", b =>
-                {
-                    b.HasOne("NPCE_Client.Model.Anagrafica", "Anagrafica")
-                        .WithMany("ServizioAnagrafiche")
-                        .HasForeignKey("AnagraficaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NPCE_Client.Model.Servizio", "Servizio")
-                        .WithMany("ServizioDestinatari")
-                        .HasForeignKey("ServizioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.ServizioDocumento", b =>
-                {
-                    b.HasOne("NPCE_Client.Model.Documento", "Documento")
-                        .WithMany()
-                        .HasForeignKey("DocumentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NPCE_Client.Model.Servizio", "Servizio")
-                        .WithMany("ServizioDocumenti")
-                        .HasForeignKey("ServizioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

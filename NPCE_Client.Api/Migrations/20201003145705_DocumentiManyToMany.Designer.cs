@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NPCE_Client.Api.Data;
 
 namespace NPCE_Client.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201003145705_DocumentiManyToMany")]
+    partial class DocumentiManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,9 +242,6 @@ namespace NPCE_Client.Api.Migrations
                     b.Property<bool>("SecondoTentativoRecapito")
                         .HasColumnType("bit");
 
-                    b.Property<int>("StatoServizioId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TipoArchiviazione")
                         .HasColumnType("nvarchar(max)");
 
@@ -254,8 +253,6 @@ namespace NPCE_Client.Api.Migrations
                     b.HasIndex("AmbienteId");
 
                     b.HasIndex("DocumentoId");
-
-                    b.HasIndex("StatoServizioId");
 
                     b.HasIndex("TipoServizioId");
 
@@ -293,36 +290,6 @@ namespace NPCE_Client.Api.Migrations
                     b.HasIndex("DocumentoId");
 
                     b.ToTable("ServizioDocumento");
-                });
-
-            modelBuilder.Entity("NPCE_Client.Model.StatoServizio", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StatoServizio");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 0,
-                            Description = "Da Inviare"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Description = "Inviato"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Confermato"
-                        });
                 });
 
             modelBuilder.Entity("NPCE_Client.Model.TipoServizio", b =>
@@ -386,12 +353,6 @@ namespace NPCE_Client.Api.Migrations
                     b.HasOne("NPCE_Client.Model.Documento", null)
                         .WithMany("Servizi")
                         .HasForeignKey("DocumentoId");
-
-                    b.HasOne("NPCE_Client.Model.StatoServizio", "StatoServizio")
-                        .WithMany()
-                        .HasForeignKey("StatoServizioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.HasOne("NPCE_Client.Model.TipoServizio", "TipoServizio")
                         .WithMany()
