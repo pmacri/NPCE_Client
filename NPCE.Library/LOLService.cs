@@ -1,4 +1,4 @@
-﻿using NPCE.ServiceReference;
+﻿using NPCE.ServiceReference.LOL;
 using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
@@ -129,8 +129,8 @@ namespace NPCE.Library
         private void SetDocumenti(LOLSubmit lolSubmit)
         {
 
-            ServiceReference.Documento newDocumento;
-            var listDocumenti = new List<ServiceReference.Documento>();
+            ServiceReference.LOL.Documento newDocumento;
+            var listDocumenti = new List<ServiceReference.LOL.Documento>();
 
             foreach (var documento in Servizio.ServizioDocumenti.Select(sd => sd.Documento).ToList())
             {
@@ -141,9 +141,9 @@ namespace NPCE.Library
             lolSubmit.Documento = listDocumenti.ToArray();
         }
 
-        private ServiceReference.Documento NewDocumento(NPCE_Client.Model.Documento documento)
+        private ServiceReference.LOL.Documento NewDocumento(NPCE_Client.Model.Documento documento)
         {
-            return new ServiceReference.Documento { MD5 = GetMD5(documento), Immagine = documento.Content, TipoDocumento = documento.Extension };
+            return new ServiceReference.LOL.Documento { MD5 = GetMD5(documento), Immagine = documento.Content, TipoDocumento = documento.Extension };
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using NPCE.ServiceReference;
+﻿using NPCE.ServiceReference.LOL;
 using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
