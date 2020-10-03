@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace NPCE.Library
 {
-    public abstract class ServiceBase : INPCEService
+    public abstract class ServiceBase<T> : INPCEService
     {
 
-        protected  LOLServiceSoap _proxy;
+        protected  T _proxy;
 
         protected  HttpRequestMessageProperty _httpHeaders;
 
@@ -30,7 +30,7 @@ namespace NPCE.Library
 
         protected void Init()
         {
-            _proxy = GetProxy<LOLServiceSoap>(Ambiente.LolUri, Ambiente.Username, Ambiente.Password);
+            _proxy = GetProxy<T>(Ambiente.LolUri, Ambiente.Username, Ambiente.Password);
             _httpHeaders = GetHttpHeaders(Ambiente);
         }
 
@@ -41,6 +41,8 @@ namespace NPCE.Library
 
         public abstract Task ConfermaAsync();
         public abstract Task InviaAsync();
+
+        
 
         protected T GetProxy<T>(string endpointAddress, string username, string password)
         {

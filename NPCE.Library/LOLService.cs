@@ -3,13 +3,14 @@ using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NPCE.Library
 {
-    public class LOLService : ServiceBase
+    public class LOLService : ServiceBase<LOLServiceSoap>
     {
         
         public LOLService(Servizio servizio, Ambiente ambiente) : base(servizio, ambiente)
@@ -28,6 +29,35 @@ namespace NPCE.Library
             SetDestinatari(lolSubmit);
             SetDocumenti(lolSubmit);
             SetOpzioni(lolSubmit);
+
+            if (Servizio.TipoServizio.Description == "Posta1")
+            {
+                SetPosta1(lolSubmit);
+            }
+
+            string idRichiesta = await RecuperaIdRichiestaAsync();
+
+            var invioResult = await _proxy.InvioAsync(idRichiesta, string.Empty, lolSubmit);
+
+        }
+
+        private void SetPosta1(LOLSubmit lolSubmit)
+        {
+            lolSubmit.DescrizioneLettera = new DescrizioneLettera { TipoLettera = "Posta1" };
+
+        }
+
+        public async Task<string> RecuperaIdRichiestaAsync()
+        {
+
+            var fake = new OperationContextScope((IContextChannel)_proxy);
+
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = _httpHeaders;
+
+            var result = await _proxy.RecuperaIdRichiestaAsync();
+
+            return result.IDRichiesta;
+
         }
 
         private void SetOpzioni(LOLSubmit lolSubmit)
