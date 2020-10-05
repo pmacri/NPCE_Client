@@ -42,7 +42,7 @@ namespace NPCE.Library
         public abstract Task ConfermaAsync();
         //public abstract Task InviaAsync();
 
-        public abstract void Invia();
+        public abstract NPCEResult Invia();
 
 
 
@@ -51,6 +51,7 @@ namespace NPCE.Library
             BasicHttpBinding myBinding = new BasicHttpBinding();
             myBinding.SendTimeout = TimeSpan.FromMinutes(3);
             myBinding.MaxReceivedMessageSize = 2147483647;
+            myBinding.UseDefaultWebProxy = true;
             EndpointAddress myEndpoint = new EndpointAddress(endpointAddress);
 
             ChannelFactory<T> myChannelFactory = new ChannelFactory<T>(myBinding, myEndpoint);
@@ -94,7 +95,7 @@ namespace NPCE.Library
             }
         }
 
-        public Task InviaAsync()
+        Task<NPCEResult> INPCEService.InviaAsync()
         {
             throw new NotImplementedException();
         }

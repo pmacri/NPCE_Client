@@ -11,8 +11,8 @@ namespace NPCE.Library
 {
     public abstract class PilBase : INPCEService
     {
-        public Ambiente Ambiente { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Servizio Servizio { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Ambiente Ambiente { get; set; }
+        public Servizio Servizio { get ; set ; }
 
         protected HttpRequestMessageProperty _httpHeaders;
 
@@ -26,18 +26,19 @@ namespace NPCE.Library
         {
             Ambiente = ambiente;
             Servizio = servizio;
+            IdRichiesta = Guid.NewGuid().ToString();
             Init();
         }
         public PilBase(Servizio servizio, Ambiente ambiente, string idRichiesta) : this(servizio, ambiente)
         {
-            IdRichiesta = IdRichiesta;
+            IdRichiesta = idRichiesta;
             Init();
         }
 
         public abstract Task ConfermaAsync();
 
 
-        public abstract Task InviaAsync();
+        public abstract Task<NPCEResult> InviaAsync();
        
             
         protected void Init()
@@ -82,10 +83,7 @@ namespace NPCE.Library
 
             return property;
         }
-
-        public void Invia()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract NPCEResult Invia();
+       
     }
 }

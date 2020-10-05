@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="ComunicazioniElettroniche.Bollettini">
+      <HintPath>ComunicazioniElettroniche.Bollettini.dll</HintPath>
+    </Reference>
     <Reference Include="ComunicazioniElettroniche.Common">
       <HintPath>..\..\NPCE_WinClient\ComunicazioniElettroniche.Common.dll</HintPath>
     </Reference>

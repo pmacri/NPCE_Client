@@ -10,8 +10,8 @@ namespace NPCE.Library
     {
          Ambiente Ambiente { get; set; }
          Servizio Servizio { get; set; }
-        Task InviaAsync();
-        void Invia();
+        Task<NPCEResult> InviaAsync();
+        NPCEResult Invia();
         Task ConfermaAsync();
     }
 }

@@ -21,7 +21,29 @@ namespace NPCE.Library
             throw new NotImplementedException();
         }
 
-        public override void Invia()
+        public override NPCEResult Invia()
+        {
+            LOLSubmit lolSubmit = new LOLSubmit();
+            SetMittente(lolSubmit);
+            SetDestinatari(lolSubmit);
+            SetDocumenti(lolSubmit);
+            SetOpzioni(lolSubmit);
+
+            if (Servizio?.TipoServizio?.Description == "Posta1")
+            {
+                SetPosta1(lolSubmit);
+            }
+
+            string idRichiesta = RecuperaIdRichiesta();
+            
+
+            var invioResult = _proxy.Invio(idRichiesta, string.Empty, lolSubmit);
+
+            return invioResult.CreateResult();
+
+        }
+
+        public async Task<NPCEResult> InviaAsync()
         {
             LOLSubmit lolSubmit = new LOLSubmit();
             SetMittente(lolSubmit);
@@ -36,7 +58,10 @@ namespace NPCE.Library
 
             string idRichiesta = RecuperaIdRichiesta();
 
-            var invioResult = _proxy.Invio(idRichiesta, string.Empty, lolSubmit);
+
+            var invioResult = await _proxy.InvioAsync(idRichiesta, string.Empty, lolSubmit);
+
+            return invioResult.CreateResult();
 
         }
 

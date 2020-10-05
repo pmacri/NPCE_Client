@@ -1,4 +1,5 @@
-﻿using ComunicazioniElettroniche.Common.Proxy;
+﻿using ComunicazioniElettroniche.Common.DataContracts;
+using ComunicazioniElettroniche.Common.Proxy;
 using ComunicazioniElettroniche.Common.Serialization;
 using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL;
 using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitResponse;
@@ -7,6 +8,7 @@ using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Threading.Tasks;
 
 namespace NPCE.Library
@@ -15,22 +17,27 @@ namespace NPCE.Library
     {
         public LOLPil(NPCE_Client.Model.Servizio servizio, Ambiente ambiente) : base(servizio, ambiente)
         {
+            IdRichiesta = Guid.NewGuid().ToString();
         }
 
-        public LOLPil(NPCE_Client.Model.Servizio servizio, Ambiente ambiente, string idRichiesta) : base(servizio, ambiente, idRichiesta)
-        {
-        }
+        //public LOLPil(NPCE_Client.Model.Servizio servizio, Ambiente ambiente, string idRichiesta) : base(servizio, ambiente, idRichiesta)
+        //{
+        //}
 
         public override Task ConfermaAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async override Task InviaAsync()
+        public async override Task<NPCEResult> InviaAsync()
         {
             LetteraSubmit letteraBE = SetLetteraSubmit();
             letteraBE.IdRichiesta = IdRichiesta;
             LetteraResponse letteraResult = null;
+
+
+            CE.Header.GUIDMessage = IdRichiesta;
+
 
             CE.Body = SerializationUtility.SerializeToXmlElement(letteraBE);
 
@@ -38,10 +45,12 @@ namespace NPCE.Library
             try
             {
                 client.Endpoint.Address = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
-                await client.SubmitRequestAsync( new SubmitRequestRequest(CE));
+                await client.SubmitRequestAsync(new SubmitRequestRequest(CE));
                 try
                 {
                     letteraResult = SerializationUtility.Deserialize<LetteraResponse>(CE.Body);
+
+                    return letteraResult.CreateResult(CE);
                 }
                 catch (Exception ex)
                 {
@@ -52,6 +61,11 @@ namespace NPCE.Library
             {
                 client.InnerChannel.Close();
             }
+        }
+
+        private CE GetCE()
+        {
+            throw new NotImplementedException();
         }
 
         private LetteraSubmit SetLetteraSubmit()
@@ -72,7 +86,7 @@ namespace NPCE.Library
 
         private void SetPosta1(LetteraSubmit lolSubmit)
         {
-            if (Servizio.TipoServizio.Id == (int)TipoServizioId.POSTA1)
+            if (Servizio?.TipoServizio?.Id == (int)TipoServizioId.POSTA1)
             {
                 lolSubmit.Tipo = "LOL_PRO";
             }
@@ -211,6 +225,41 @@ namespace NPCE.Library
             destinatario.Destinatario.Nominativo = nominativo;
 
             return destinatario;
+        }
+
+        public override NPCEResult Invia()
+        {
+            LetteraSubmit letteraBE = SetLetteraSubmit();
+            letteraBE.IdRichiesta = IdRichiesta;
+            LetteraResponse letteraResult = null;
+
+            CE.Body = SerializationUtility.SerializeToXmlElement(letteraBE);
+
+            var enpointAddress = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
+
+            BasicHttpBinding myBinding = new BasicHttpBinding();
+            myBinding.SendTimeout = TimeSpan.FromMinutes(3);
+            myBinding.MaxReceivedMessageSize = 2147483647;
+            WsCEClient client = new WsCEClient(myBinding, enpointAddress);
+            try
+            {
+                var ce = CE; ;
+                client.SubmitRequest(ref ce);
+                try
+                {
+                    letteraResult = SerializationUtility.Deserialize<LetteraResponse>(ce.Body);
+
+                    return letteraResult.CreateResult(ce);
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+            }
+            finally
+            {
+                client.InnerChannel.Close();
+            }
         }
     }
 }
