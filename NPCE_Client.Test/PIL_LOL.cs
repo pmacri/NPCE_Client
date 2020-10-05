@@ -77,6 +77,8 @@ namespace NPCE_Client.Test
 
             servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
 
+            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
+
             LOLPil service = new LOLPil(servizio, ambiente);
             try
             {
@@ -134,6 +136,8 @@ namespace NPCE_Client.Test
                 new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
 
             servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
+
+            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
 
             LOLPil service = new LOLPil(servizio, ambiente);
             try

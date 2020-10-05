@@ -3,6 +3,7 @@ using ComunicazioniElettroniche.Common.Proxy;
 using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace NPCE.Library
     public abstract class PilBase : INPCEService
     {
         public Ambiente Ambiente { get; set; }
-        public Servizio Servizio { get ; set ; }
+        public Servizio Servizio { get; set; }
 
         protected HttpRequestMessageProperty _httpHeaders;
 
@@ -21,6 +22,8 @@ namespace NPCE.Library
         protected CE CE { get; set; }
 
         public string IdRichiesta { get; set; }
+
+        protected WsCEClient WsCEClient;
 
         public PilBase(Servizio servizio, Ambiente ambiente)
         {
@@ -39,11 +42,11 @@ namespace NPCE.Library
 
 
         public abstract Task<NPCEResult> InviaAsync();
-       
-            
+
+
         protected void Init()
         {
-           CEHeader= new CEHeader
+            CEHeader = new CEHeader
             {
                 BillingCenter = Ambiente.billingcenter,
                 CodiceFiscale = Ambiente.codicefiscale,
@@ -65,6 +68,31 @@ namespace NPCE.Library
             CE.Header.GUIDMessage = IdRichiesta;
 
             _httpHeaders = GetHttpHeaders(Ambiente);
+
+            string uri = null;
+
+            switch (Servizio.TipoServizioId)
+            {
+                case (int)TipoServizioId.POSTA1:
+                case (int)TipoServizioId.POSTA4:
+                    uri = Ambiente.LolUri;
+                    break;
+
+                case (int)TipoServizioId.ROL:
+                    uri = Ambiente.RolUri;
+                    break;
+
+                default:
+                    break;
+            }
+
+            var enpointAddress = new System.ServiceModel.EndpointAddress(uri);
+
+            BasicHttpBinding myBinding = new BasicHttpBinding();
+            myBinding.SendTimeout = TimeSpan.FromMinutes(3);
+            myBinding.MaxReceivedMessageSize = 2147483647;
+
+            WsCEClient = new WsCEClient(myBinding, enpointAddress);
         }
 
         protected virtual HttpRequestMessageProperty GetHttpHeaders(Ambiente ambiente)
@@ -84,6 +112,6 @@ namespace NPCE.Library
             return property;
         }
         public abstract NPCEResult Invia();
-       
+
     }
 }

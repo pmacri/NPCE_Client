@@ -41,16 +41,17 @@ namespace NPCE.Library
 
             CE.Body = SerializationUtility.SerializeToXmlElement(letteraBE);
 
-            WsCEClient client = new WsCEClient();
             try
             {
-                client.Endpoint.Address = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
-                await client.SubmitRequestAsync(new SubmitRequestRequest(CE));
+                //WsCEClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
+
+                SubmitRequestRequest request = new SubmitRequestRequest(CE);
+                var response = await WsCEClient.SubmitRequestAsync(request);
                 try
                 {
-                    letteraResult = SerializationUtility.Deserialize<LetteraResponse>(CE.Body);
+                    letteraResult = SerializationUtility.Deserialize<LetteraResponse>(response.CE.Body);
 
-                    return letteraResult.CreateResult(CE);
+                    return letteraResult.CreateResult(response.CE);
                 }
                 catch (Exception ex)
                 {
@@ -59,14 +60,10 @@ namespace NPCE.Library
             }
             finally
             {
-                client.InnerChannel.Close();
+                WsCEClient.InnerChannel.Close();
             }
         }
 
-        private CE GetCE()
-        {
-            throw new NotImplementedException();
-        }
 
         private LetteraSubmit SetLetteraSubmit()
         {
@@ -235,16 +232,11 @@ namespace NPCE.Library
 
             CE.Body = SerializationUtility.SerializeToXmlElement(letteraBE);
 
-            var enpointAddress = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
-
-            BasicHttpBinding myBinding = new BasicHttpBinding();
-            myBinding.SendTimeout = TimeSpan.FromMinutes(3);
-            myBinding.MaxReceivedMessageSize = 2147483647;
-            WsCEClient client = new WsCEClient(myBinding, enpointAddress);
+            
             try
             {
                 var ce = CE; ;
-                client.SubmitRequest(ref ce);
+                WsCEClient.SubmitRequest(ref ce);
                 try
                 {
                     letteraResult = SerializationUtility.Deserialize<LetteraResponse>(ce.Body);
@@ -258,7 +250,7 @@ namespace NPCE.Library
             }
             finally
             {
-                client.InnerChannel.Close();
+                WsCEClient.InnerChannel.Close();
             }
         }
     }
