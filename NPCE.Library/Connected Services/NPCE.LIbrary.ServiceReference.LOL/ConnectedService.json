@@ -13,12 +13,9 @@
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, NPCE.ServiceReference"
+      "*, NPCE.LIbrary.ServiceReference.LOL"
     ],
-    "references": [
-      "C:\\Users\\pasquale.macri\\source\\repos\\NPCE_Client\\NPCE.Library\\bin\\Debug\\netstandard2.0\\NPCE_Client.Model.dll",
-      "System.ComponentModel.Annotations, {System.ComponentModel.Annotations, 4.7.0}"
-    ],
+    "sync": true,
     "targetFramework": "netstandard2.0",
     "typeReuseMode": "All"
   }

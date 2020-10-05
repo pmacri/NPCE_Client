@@ -1,4 +1,4 @@
-﻿using NPCE.ServiceReference.LOL;
+﻿using NPCE.Library.ServiceReference.LOL;
 using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
@@ -40,9 +40,11 @@ namespace NPCE.Library
         public string IdRichiesta { get; set; }
 
         public abstract Task ConfermaAsync();
-        public abstract Task InviaAsync();
+        //public abstract Task InviaAsync();
 
-        
+        public abstract void Invia();
+
+
 
         protected T GetProxy<T>(string endpointAddress, string username, string password)
         {
@@ -90,6 +92,11 @@ namespace NPCE.Library
                 byte[] Ret = cryptoService.ComputeHash(documento.Content);
                 return BitConverter.ToString(Ret).Replace("-", "");
             }
+        }
+
+        public Task InviaAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

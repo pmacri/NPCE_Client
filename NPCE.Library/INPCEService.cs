@@ -11,6 +11,7 @@ namespace NPCE.Library
          Ambiente Ambiente { get; set; }
          Servizio Servizio { get; set; }
         Task InviaAsync();
+        void Invia();
         Task ConfermaAsync();
     }
 }

@@ -1,28 +1,27 @@
-﻿using NPCE.ServiceReference.LOL;
+﻿using NPCE.Library.ServiceReference.LOL;
 using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NPCE.Library
 {
     public class LOLService : ServiceBase<LOLServiceSoap>
     {
-        
+
         public LOLService(Servizio servizio, Ambiente ambiente) : base(servizio, ambiente)
         {
-            
+
         }
         public override Task ConfermaAsync()
         {
             throw new NotImplementedException();
         }
 
-        public override async Task InviaAsync()
+        public override void Invia()
         {
             LOLSubmit lolSubmit = new LOLSubmit();
             SetMittente(lolSubmit);
@@ -30,21 +29,20 @@ namespace NPCE.Library
             SetDocumenti(lolSubmit);
             SetOpzioni(lolSubmit);
 
-            if (Servizio.TipoServizio.Description == "Posta1")
+            if (Servizio?.TipoServizio?.Description == "Posta1")
             {
                 SetPosta1(lolSubmit);
             }
 
-            string idRichiesta = await RecuperaIdRichiestaAsync();
+            string idRichiesta = RecuperaIdRichiesta();
 
-            var invioResult = await _proxy.InvioAsync(idRichiesta, string.Empty, lolSubmit);
+            var invioResult = _proxy.Invio(idRichiesta, string.Empty, lolSubmit);
 
         }
 
         private void SetPosta1(LOLSubmit lolSubmit)
         {
             lolSubmit.DescrizioneLettera = new DescrizioneLettera { TipoLettera = "Posta1" };
-
         }
 
         public async Task<string> RecuperaIdRichiestaAsync()
@@ -59,6 +57,20 @@ namespace NPCE.Library
             return result.IDRichiesta;
 
         }
+
+        public string RecuperaIdRichiesta()
+        {
+
+            var fake = new OperationContextScope((IContextChannel)_proxy);
+
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = _httpHeaders;
+
+            var result = _proxy.RecuperaIdRichiesta();
+
+            return result.IDRichiesta;
+
+        }
+
 
         private void SetOpzioni(LOLSubmit lolSubmit)
         {
@@ -173,7 +185,14 @@ namespace NPCE.Library
 
         private ServiceReference.LOL.Documento NewDocumento(NPCE_Client.Model.Documento documento)
         {
-            return new ServiceReference.LOL.Documento { MD5 = GetMD5(documento), Immagine = documento.Content, TipoDocumento = documento.Extension };
+            return new ServiceReference.LOL.Documento
+            {
+                MD5 = GetMD5(documento),
+                Immagine = documento.Content,
+                TipoDocumento = documento.Extension.Contains(".")
+                                ? documento.Extension.Substring(1)
+                                : documento.Extension
+            };
         }
     }
 }

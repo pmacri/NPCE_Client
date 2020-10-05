@@ -7,115 +7,197 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NPCE.ServiceReference.LOL
+namespace NPCE.Library.ServiceReference.LOL
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", ConfigurationName="NPCE.ServiceReference.LOL.LOLServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", ConfigurationName="NPCE.Library.ServiceReference.LOL.LOLServiceSoap")]
     public interface LOLServiceSoap
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaIdRichiesta", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaIdRichiestaRespons" +
             "e")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaIdRichiestaResult> RecuperaIdRichiestaAsync();
+        NPCE.Library.ServiceReference.LOL.RecuperaIdRichiestaResult RecuperaIdRichiesta();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaIdRichiesta", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaIdRichiestaRespons" +
+            "e")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaIdRichiestaResult> RecuperaIdRichiestaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDCS", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDCSResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaDCSResult> RecuperaDCSAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta);
+        NPCE.Library.ServiceReference.LOL.RecuperaDCSResult RecuperaDCS(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDCS", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDCSResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaDCSResult> RecuperaDCSAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaInfoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaInfoResult> RecuperaInfoAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta);
+        NPCE.Library.ServiceReference.LOL.RecuperaInfoResult RecuperaInfo(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaInfoResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaInfoResult> RecuperaInfoAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDestinatari", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDestinatariRespons" +
             "e")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaDestinatariResult> RecuperaDestinatariAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta);
+        NPCE.Library.ServiceReference.LOL.RecuperaDestinatariResult RecuperaDestinatari(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDestinatari", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDestinatariRespons" +
+            "e")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaDestinatariResult> RecuperaDestinatariAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValidaDestinatari", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValidaDestinatariResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="ValidaDestinatariResults")]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValidaDestinatariResults> ValidaDestinatariAsync(string IDRichiesta, NPCE.ServiceReference.LOL.Destinatario[] Destinatari);
+        NPCE.Library.ServiceReference.LOL.ValidaDestinatariResults ValidaDestinatari(string IDRichiesta, NPCE.Library.ServiceReference.LOL.Destinatario[] Destinatari);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValidaDestinatari", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValidaDestinatariResponse")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="ValidaDestinatariResults")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValidaDestinatariResults> ValidaDestinatariAsync(string IDRichiesta, NPCE.Library.ServiceReference.LOL.Destinatario[] Destinatari);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValidaBollettini", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValidaBollettiniResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValidaBollettiniResult> ValidaBollettiniAsync(string IDRichiesta, NPCE.ServiceReference.LOL.BollettinoBase[] Bollettini);
+        NPCE.Library.ServiceReference.LOL.ValidaBollettiniResult ValidaBollettini(string IDRichiesta, NPCE.Library.ServiceReference.LOL.BollettinoBase[] Bollettini);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValidaBollettini", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValidaBollettiniResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValidaBollettiniResult> ValidaBollettiniAsync(string IDRichiesta, NPCE.Library.ServiceReference.LOL.BollettinoBase[] Bollettini);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaBollettiniInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaBollettiniInfoResp" +
             "onse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="PagineBollettiniInfo")]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaBollettiniInfoResult> RecuperaBollettiniInfoAsync(string IDRichiesta);
+        NPCE.Library.ServiceReference.LOL.RecuperaBollettiniInfoResult RecuperaBollettiniInfo(string IDRichiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaBollettiniInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaBollettiniInfoResp" +
+            "onse")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="PagineBollettiniInfo")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaBollettiniInfoResult> RecuperaBollettiniInfoAsync(string IDRichiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaBollettiniPAInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaBollettiniPAInfoRe" +
             "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[]> RecuperaBollettiniPAInfoAsync(string[] idRichiesta);
+        NPCE.Library.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[] RecuperaBollettiniPAInfo(string[] idRichiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaBollettiniPAInfo", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaBollettiniPAInfoRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[]> RecuperaBollettiniPAInfoAsync(string[] idRichiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/InvioDoc", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/InvioDocResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.InvioDocResult> InvioDocAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta, NPCE.ServiceReference.LOL.Documento Documento);
+        NPCE.Library.ServiceReference.LOL.InvioDocResult InvioDoc(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta, NPCE.Library.ServiceReference.LOL.Documento Documento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/InvioDoc", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/InvioDocResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.InvioDocResult> InvioDocAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta, NPCE.Library.ServiceReference.LOL.Documento Documento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Invio", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/InvioResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.InvioResult> InvioAsync(string IDRichiesta, string Cliente, NPCE.ServiceReference.LOL.LOLSubmit LOLSubmit);
+        NPCE.Library.ServiceReference.LOL.InvioResult Invio(string IDRichiesta, string Cliente, NPCE.Library.ServiceReference.LOL.LOLSubmit LOLSubmit);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Invio", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/InvioResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.InvioResult> InvioAsync(string IDRichiesta, string Cliente, NPCE.Library.ServiceReference.LOL.LOLSubmit LOLSubmit);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaEnquiry", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaEnquiryResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaEnquiryResult> RecuperaEnquiryAsync(string TipoVisualizzazione);
+        NPCE.Library.ServiceReference.LOL.RecuperaEnquiryResult RecuperaEnquiry(string TipoVisualizzazione);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaEnquiry", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaEnquiryResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaEnquiryResult> RecuperaEnquiryAsync(string TipoVisualizzazione);
+        
+        // CODEGEN: Parameter 'Richieste' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Valorizza", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValorizzaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValorizzaResponse> ValorizzaAsync(NPCE.ServiceReference.LOL.ValorizzaRequest request);
+        NPCE.Library.ServiceReference.LOL.ValorizzaResponse Valorizza(NPCE.Library.ServiceReference.LOL.ValorizzaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Valorizza", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValorizzaResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValorizzaResponse> ValorizzaAsync(NPCE.Library.ServiceReference.LOL.ValorizzaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValorizzaSingle", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValorizzaSingleResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValorizzaSingleResult> ValorizzaSingleAsync(NPCE.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry);
+        NPCE.Library.ServiceReference.LOL.ValorizzaSingleResult ValorizzaSingle(NPCE.Library.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ValorizzaSingle", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ValorizzaSingleResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValorizzaSingleResult> ValorizzaSingleAsync(NPCE.Library.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry);
+        
+        // CODEGEN: Parameter 'Richieste' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/PreConferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/PreConfermaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.PreConfermaResponse> PreConfermaAsync(NPCE.ServiceReference.LOL.PreConfermaRequest request);
+        NPCE.Library.ServiceReference.LOL.PreConfermaResponse PreConferma(NPCE.Library.ServiceReference.LOL.PreConfermaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/PreConferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/PreConfermaResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.PreConfermaResponse> PreConfermaAsync(NPCE.Library.ServiceReference.LOL.PreConfermaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/PostConferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/PostConfermaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.PostConfermaResult> PostConfermaAsync(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura);
+        NPCE.Library.ServiceReference.LOL.PostConfermaResult PostConferma(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/PostConferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/PostConfermaResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.PostConfermaResult> PostConfermaAsync(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Conferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ConfermaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ConfermaResult> ConfermaAsync(string IdOrdine, NPCE.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.ServiceReference.LOL.DatiTransazione DatiTransazione);
+        NPCE.Library.ServiceReference.LOL.ConfermaResult Conferma(string IdOrdine, NPCE.Library.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.Library.ServiceReference.LOL.DatiTransazione DatiTransazione);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Conferma", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ConfermaResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ConfermaResult> ConfermaAsync(string IdOrdine, NPCE.Library.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.Library.ServiceReference.LOL.DatiTransazione DatiTransazione);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Nascondi", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/NascondiResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.NascondiResult> NascondiAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta);
+        NPCE.Library.ServiceReference.LOL.NascondiResult Nascondi(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Nascondi", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/NascondiResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.NascondiResult> NascondiAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/AnnullaOrdine", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaOrdineResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.AnnullaOrdineResult> AnnullaOrdineAsync(string IdOrdine, bool AbortRequest);
+        NPCE.Library.ServiceReference.LOL.AnnullaOrdineResult AnnullaOrdine(string IdOrdine, bool AbortRequest);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/AnnullaOrdine", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaOrdineResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.AnnullaOrdineResult> AnnullaOrdineAsync(string IdOrdine, bool AbortRequest);
+        
+        // CODEGEN: Parameter 'Richieste' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Annulla", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.AnnullaResponse> AnnullaAsync(NPCE.ServiceReference.LOL.AnnullaRequest request);
+        NPCE.Library.ServiceReference.LOL.AnnullaResponse Annulla(NPCE.Library.ServiceReference.LOL.AnnullaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/Annulla", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.AnnullaResponse> AnnullaAsync(NPCE.Library.ServiceReference.LOL.AnnullaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatoIdRichiesta", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatoIdRichiestaRe" +
             "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.GetStatoIdRichiestaResult> RecuperaStatoIdRichiestaAsync(string IdRichiesta);
+        NPCE.Library.ServiceReference.LOL.GetStatoIdRichiestaResult RecuperaStatoIdRichiesta(string IdRichiesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatoIdRichiesta", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatoIdRichiestaRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.GetStatoIdRichiestaResult> RecuperaStatoIdRichiestaAsync(string IdRichiesta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatoOrdine", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatoOrdineRespons" +
             "e")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.GetStatoOrdineResult> RecuperaStatoOrdineAsync(string IdOrdine);
+        NPCE.Library.ServiceReference.LOL.GetStatoOrdineResult RecuperaStatoOrdine(string IdOrdine);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatoOrdine", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatoOrdineRespons" +
+            "e")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.GetStatoOrdineResult> RecuperaStatoOrdineAsync(string IdOrdine);
+        
+        // CODEGEN: Parameter 'IdRichiesta' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStati", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatiResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaStatiResponse> RecuperaStatiAsync(NPCE.ServiceReference.LOL.RecuperaStatiRequest request);
+        NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse RecuperaStati(NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStati", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatiResponse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse> RecuperaStatiAsync(NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaNomiNazioniUPU", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaNomiNazioniUPUResp" +
             "onse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE.ServiceReference.LOL.CountryLanguage lingua);
+        NPCE.Library.ServiceReference.LOL.NomiUPUCountries RecuperaNomiNazioniUPU(NPCE.Library.ServiceReference.LOL.CountryLanguage lingua);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaNomiNazioniUPU", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaNomiNazioniUPUResp" +
+            "onse")]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE.Library.ServiceReference.LOL.CountryLanguage lingua);
     }
     
     /// <remarks/>
@@ -5809,13 +5891,13 @@ namespace NPCE.ServiceReference.LOL
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("Richieste")]
-        public NPCE.ServiceReference.LOL.Richiesta[] Richieste;
+        public NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste;
         
         public ValorizzaRequest()
         {
         }
         
-        public ValorizzaRequest(NPCE.ServiceReference.LOL.Richiesta[] Richieste)
+        public ValorizzaRequest(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
         {
             this.Richieste = Richieste;
         }
@@ -5829,13 +5911,13 @@ namespace NPCE.ServiceReference.LOL
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
-        public NPCE.ServiceReference.LOL.ValorizzaResult ValorizzaResult;
+        public NPCE.Library.ServiceReference.LOL.ValorizzaResult ValorizzaResult;
         
         public ValorizzaResponse()
         {
         }
         
-        public ValorizzaResponse(NPCE.ServiceReference.LOL.ValorizzaResult ValorizzaResult)
+        public ValorizzaResponse(NPCE.Library.ServiceReference.LOL.ValorizzaResult ValorizzaResult)
         {
             this.ValorizzaResult = ValorizzaResult;
         }
@@ -5850,7 +5932,7 @@ namespace NPCE.ServiceReference.LOL
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("Richieste")]
-        public NPCE.ServiceReference.LOL.Richiesta[] Richieste;
+        public NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=1)]
         public bool autoConferma;
@@ -5859,7 +5941,7 @@ namespace NPCE.ServiceReference.LOL
         {
         }
         
-        public PreConfermaRequest(NPCE.ServiceReference.LOL.Richiesta[] Richieste, bool autoConferma)
+        public PreConfermaRequest(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste, bool autoConferma)
         {
             this.Richieste = Richieste;
             this.autoConferma = autoConferma;
@@ -5874,13 +5956,13 @@ namespace NPCE.ServiceReference.LOL
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
-        public NPCE.ServiceReference.LOL.PreConfermaResult PreConfermaResult;
+        public NPCE.Library.ServiceReference.LOL.PreConfermaResult PreConfermaResult;
         
         public PreConfermaResponse()
         {
         }
         
-        public PreConfermaResponse(NPCE.ServiceReference.LOL.PreConfermaResult PreConfermaResult)
+        public PreConfermaResponse(NPCE.Library.ServiceReference.LOL.PreConfermaResult PreConfermaResult)
         {
             this.PreConfermaResult = PreConfermaResult;
         }
@@ -5895,13 +5977,13 @@ namespace NPCE.ServiceReference.LOL
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("Richieste")]
-        public NPCE.ServiceReference.LOL.Richiesta[] Richieste;
+        public NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste;
         
         public AnnullaRequest()
         {
         }
         
-        public AnnullaRequest(NPCE.ServiceReference.LOL.Richiesta[] Richieste)
+        public AnnullaRequest(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
         {
             this.Richieste = Richieste;
         }
@@ -5915,13 +5997,13 @@ namespace NPCE.ServiceReference.LOL
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
-        public NPCE.ServiceReference.LOL.AnnullaResult AnnullaResult;
+        public NPCE.Library.ServiceReference.LOL.AnnullaResult AnnullaResult;
         
         public AnnullaResponse()
         {
         }
         
-        public AnnullaResponse(NPCE.ServiceReference.LOL.AnnullaResult AnnullaResult)
+        public AnnullaResponse(NPCE.Library.ServiceReference.LOL.AnnullaResult AnnullaResult)
         {
             this.AnnullaResult = AnnullaResult;
         }
@@ -5956,26 +6038,26 @@ namespace NPCE.ServiceReference.LOL
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
-        public NPCE.ServiceReference.LOL.RecuperaStatiResult RecuperaStatiResult;
+        public NPCE.Library.ServiceReference.LOL.RecuperaStatiResult RecuperaStatiResult;
         
         public RecuperaStatiResponse()
         {
         }
         
-        public RecuperaStatiResponse(NPCE.ServiceReference.LOL.RecuperaStatiResult RecuperaStatiResult)
+        public RecuperaStatiResponse(NPCE.Library.ServiceReference.LOL.RecuperaStatiResult RecuperaStatiResult)
         {
             this.RecuperaStatiResult = RecuperaStatiResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface LOLServiceSoapChannel : NPCE.ServiceReference.LOL.LOLServiceSoap, System.ServiceModel.IClientChannel
+    public interface LOLServiceSoapChannel : NPCE.Library.ServiceReference.LOL.LOLServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class LOLServiceSoapClient : System.ServiceModel.ClientBase<NPCE.ServiceReference.LOL.LOLServiceSoap>, NPCE.ServiceReference.LOL.LOLServiceSoap
+    public partial class LOLServiceSoapClient : System.ServiceModel.ClientBase<NPCE.Library.ServiceReference.LOL.LOLServiceSoap>, NPCE.Library.ServiceReference.LOL.LOLServiceSoap
     {
         
         /// <summary>
@@ -5984,13 +6066,6 @@ namespace NPCE.ServiceReference.LOL
         /// <param name="serviceEndpoint">The endpoint to configure</param>
         /// <param name="clientCredentials">The client credentials</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
-        
-        public LOLServiceSoapClient() : 
-                base(LOLServiceSoapClient.GetDefaultBinding(), LOLServiceSoapClient.GetDefaultEndpointAddress())
-        {
-            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_LOLServiceSoap.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
         
         public LOLServiceSoapClient(EndpointConfiguration endpointConfiguration) : 
                 base(LOLServiceSoapClient.GetBindingForEndpoint(endpointConfiguration), LOLServiceSoapClient.GetEndpointAddress(endpointConfiguration))
@@ -6018,150 +6093,302 @@ namespace NPCE.ServiceReference.LOL
         {
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaIdRichiestaResult> RecuperaIdRichiestaAsync()
+        public NPCE.Library.ServiceReference.LOL.RecuperaIdRichiestaResult RecuperaIdRichiesta()
+        {
+            return base.Channel.RecuperaIdRichiesta();
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaIdRichiestaResult> RecuperaIdRichiestaAsync()
         {
             return base.Channel.RecuperaIdRichiestaAsync();
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaDCSResult> RecuperaDCSAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta)
+        public NPCE.Library.ServiceReference.LOL.RecuperaDCSResult RecuperaDCS(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
+        {
+            return base.Channel.RecuperaDCS(Richiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaDCSResult> RecuperaDCSAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
         {
             return base.Channel.RecuperaDCSAsync(Richiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaInfoResult> RecuperaInfoAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta)
+        public NPCE.Library.ServiceReference.LOL.RecuperaInfoResult RecuperaInfo(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
+        {
+            return base.Channel.RecuperaInfo(Richiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaInfoResult> RecuperaInfoAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
         {
             return base.Channel.RecuperaInfoAsync(Richiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaDestinatariResult> RecuperaDestinatariAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta)
+        public NPCE.Library.ServiceReference.LOL.RecuperaDestinatariResult RecuperaDestinatari(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
+        {
+            return base.Channel.RecuperaDestinatari(Richiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaDestinatariResult> RecuperaDestinatariAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
         {
             return base.Channel.RecuperaDestinatariAsync(Richiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValidaDestinatariResults> ValidaDestinatariAsync(string IDRichiesta, NPCE.ServiceReference.LOL.Destinatario[] Destinatari)
+        public NPCE.Library.ServiceReference.LOL.ValidaDestinatariResults ValidaDestinatari(string IDRichiesta, NPCE.Library.ServiceReference.LOL.Destinatario[] Destinatari)
+        {
+            return base.Channel.ValidaDestinatari(IDRichiesta, Destinatari);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValidaDestinatariResults> ValidaDestinatariAsync(string IDRichiesta, NPCE.Library.ServiceReference.LOL.Destinatario[] Destinatari)
         {
             return base.Channel.ValidaDestinatariAsync(IDRichiesta, Destinatari);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValidaBollettiniResult> ValidaBollettiniAsync(string IDRichiesta, NPCE.ServiceReference.LOL.BollettinoBase[] Bollettini)
+        public NPCE.Library.ServiceReference.LOL.ValidaBollettiniResult ValidaBollettini(string IDRichiesta, NPCE.Library.ServiceReference.LOL.BollettinoBase[] Bollettini)
+        {
+            return base.Channel.ValidaBollettini(IDRichiesta, Bollettini);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValidaBollettiniResult> ValidaBollettiniAsync(string IDRichiesta, NPCE.Library.ServiceReference.LOL.BollettinoBase[] Bollettini)
         {
             return base.Channel.ValidaBollettiniAsync(IDRichiesta, Bollettini);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaBollettiniInfoResult> RecuperaBollettiniInfoAsync(string IDRichiesta)
+        public NPCE.Library.ServiceReference.LOL.RecuperaBollettiniInfoResult RecuperaBollettiniInfo(string IDRichiesta)
+        {
+            return base.Channel.RecuperaBollettiniInfo(IDRichiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaBollettiniInfoResult> RecuperaBollettiniInfoAsync(string IDRichiesta)
         {
             return base.Channel.RecuperaBollettiniInfoAsync(IDRichiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[]> RecuperaBollettiniPAInfoAsync(string[] idRichiesta)
+        public NPCE.Library.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[] RecuperaBollettiniPAInfo(string[] idRichiesta)
+        {
+            return base.Channel.RecuperaBollettiniPAInfo(idRichiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaBollettiniPAInfoResult[]> RecuperaBollettiniPAInfoAsync(string[] idRichiesta)
         {
             return base.Channel.RecuperaBollettiniPAInfoAsync(idRichiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.InvioDocResult> InvioDocAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta, NPCE.ServiceReference.LOL.Documento Documento)
+        public NPCE.Library.ServiceReference.LOL.InvioDocResult InvioDoc(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta, NPCE.Library.ServiceReference.LOL.Documento Documento)
+        {
+            return base.Channel.InvioDoc(Richiesta, Documento);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.InvioDocResult> InvioDocAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta, NPCE.Library.ServiceReference.LOL.Documento Documento)
         {
             return base.Channel.InvioDocAsync(Richiesta, Documento);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.InvioResult> InvioAsync(string IDRichiesta, string Cliente, NPCE.ServiceReference.LOL.LOLSubmit LOLSubmit)
+        public NPCE.Library.ServiceReference.LOL.InvioResult Invio(string IDRichiesta, string Cliente, NPCE.Library.ServiceReference.LOL.LOLSubmit LOLSubmit)
+        {
+            return base.Channel.Invio(IDRichiesta, Cliente, LOLSubmit);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.InvioResult> InvioAsync(string IDRichiesta, string Cliente, NPCE.Library.ServiceReference.LOL.LOLSubmit LOLSubmit)
         {
             return base.Channel.InvioAsync(IDRichiesta, Cliente, LOLSubmit);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaEnquiryResult> RecuperaEnquiryAsync(string TipoVisualizzazione)
+        public NPCE.Library.ServiceReference.LOL.RecuperaEnquiryResult RecuperaEnquiry(string TipoVisualizzazione)
+        {
+            return base.Channel.RecuperaEnquiry(TipoVisualizzazione);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaEnquiryResult> RecuperaEnquiryAsync(string TipoVisualizzazione)
         {
             return base.Channel.RecuperaEnquiryAsync(TipoVisualizzazione);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValorizzaResponse> NPCE.ServiceReference.LOL.LOLServiceSoap.ValorizzaAsync(NPCE.ServiceReference.LOL.ValorizzaRequest request)
+        NPCE.Library.ServiceReference.LOL.ValorizzaResponse NPCE.Library.ServiceReference.LOL.LOLServiceSoap.Valorizza(NPCE.Library.ServiceReference.LOL.ValorizzaRequest request)
+        {
+            return base.Channel.Valorizza(request);
+        }
+        
+        public NPCE.Library.ServiceReference.LOL.ValorizzaResult Valorizza(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
+        {
+            NPCE.Library.ServiceReference.LOL.ValorizzaRequest inValue = new NPCE.Library.ServiceReference.LOL.ValorizzaRequest();
+            inValue.Richieste = Richieste;
+            NPCE.Library.ServiceReference.LOL.ValorizzaResponse retVal = ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).Valorizza(inValue);
+            return retVal.ValorizzaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValorizzaResponse> NPCE.Library.ServiceReference.LOL.LOLServiceSoap.ValorizzaAsync(NPCE.Library.ServiceReference.LOL.ValorizzaRequest request)
         {
             return base.Channel.ValorizzaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValorizzaResponse> ValorizzaAsync(NPCE.ServiceReference.LOL.Richiesta[] Richieste)
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValorizzaResponse> ValorizzaAsync(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
         {
-            NPCE.ServiceReference.LOL.ValorizzaRequest inValue = new NPCE.ServiceReference.LOL.ValorizzaRequest();
+            NPCE.Library.ServiceReference.LOL.ValorizzaRequest inValue = new NPCE.Library.ServiceReference.LOL.ValorizzaRequest();
             inValue.Richieste = Richieste;
-            return ((NPCE.ServiceReference.LOL.LOLServiceSoap)(this)).ValorizzaAsync(inValue);
+            return ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).ValorizzaAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ValorizzaSingleResult> ValorizzaSingleAsync(NPCE.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry)
+        public NPCE.Library.ServiceReference.LOL.ValorizzaSingleResult ValorizzaSingle(NPCE.Library.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry)
+        {
+            return base.Channel.ValorizzaSingle(ServizioEnquiry);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ValorizzaSingleResult> ValorizzaSingleAsync(NPCE.Library.ServiceReference.LOL.ServizioSingleEnquirySubmit ServizioEnquiry)
         {
             return base.Channel.ValorizzaSingleAsync(ServizioEnquiry);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.PreConfermaResponse> NPCE.ServiceReference.LOL.LOLServiceSoap.PreConfermaAsync(NPCE.ServiceReference.LOL.PreConfermaRequest request)
+        NPCE.Library.ServiceReference.LOL.PreConfermaResponse NPCE.Library.ServiceReference.LOL.LOLServiceSoap.PreConferma(NPCE.Library.ServiceReference.LOL.PreConfermaRequest request)
+        {
+            return base.Channel.PreConferma(request);
+        }
+        
+        public NPCE.Library.ServiceReference.LOL.PreConfermaResult PreConferma(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste, bool autoConferma)
+        {
+            NPCE.Library.ServiceReference.LOL.PreConfermaRequest inValue = new NPCE.Library.ServiceReference.LOL.PreConfermaRequest();
+            inValue.Richieste = Richieste;
+            inValue.autoConferma = autoConferma;
+            NPCE.Library.ServiceReference.LOL.PreConfermaResponse retVal = ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).PreConferma(inValue);
+            return retVal.PreConfermaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.PreConfermaResponse> NPCE.Library.ServiceReference.LOL.LOLServiceSoap.PreConfermaAsync(NPCE.Library.ServiceReference.LOL.PreConfermaRequest request)
         {
             return base.Channel.PreConfermaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.PreConfermaResponse> PreConfermaAsync(NPCE.ServiceReference.LOL.Richiesta[] Richieste, bool autoConferma)
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.PreConfermaResponse> PreConfermaAsync(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste, bool autoConferma)
         {
-            NPCE.ServiceReference.LOL.PreConfermaRequest inValue = new NPCE.ServiceReference.LOL.PreConfermaRequest();
+            NPCE.Library.ServiceReference.LOL.PreConfermaRequest inValue = new NPCE.Library.ServiceReference.LOL.PreConfermaRequest();
             inValue.Richieste = Richieste;
             inValue.autoConferma = autoConferma;
-            return ((NPCE.ServiceReference.LOL.LOLServiceSoap)(this)).PreConfermaAsync(inValue);
+            return ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).PreConfermaAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.PostConfermaResult> PostConfermaAsync(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura)
+        public NPCE.Library.ServiceReference.LOL.PostConfermaResult PostConferma(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura)
+        {
+            return base.Channel.PostConferma(IdOrdine, ImportoCatturato, DataCattura);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.PostConfermaResult> PostConfermaAsync(string IdOrdine, double ImportoCatturato, System.DateTime DataCattura)
         {
             return base.Channel.PostConfermaAsync(IdOrdine, ImportoCatturato, DataCattura);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.ConfermaResult> ConfermaAsync(string IdOrdine, NPCE.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.ServiceReference.LOL.DatiTransazione DatiTransazione)
+        public NPCE.Library.ServiceReference.LOL.ConfermaResult Conferma(string IdOrdine, NPCE.Library.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.Library.ServiceReference.LOL.DatiTransazione DatiTransazione)
+        {
+            return base.Channel.Conferma(IdOrdine, OpzionePagamento, DatiTransazione);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.ConfermaResult> ConfermaAsync(string IdOrdine, NPCE.Library.ServiceReference.LOL.OpzionePagamento OpzionePagamento, NPCE.Library.ServiceReference.LOL.DatiTransazione DatiTransazione)
         {
             return base.Channel.ConfermaAsync(IdOrdine, OpzionePagamento, DatiTransazione);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.NascondiResult> NascondiAsync(NPCE.ServiceReference.LOL.Richiesta Richiesta)
+        public NPCE.Library.ServiceReference.LOL.NascondiResult Nascondi(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
+        {
+            return base.Channel.Nascondi(Richiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.NascondiResult> NascondiAsync(NPCE.Library.ServiceReference.LOL.Richiesta Richiesta)
         {
             return base.Channel.NascondiAsync(Richiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.AnnullaOrdineResult> AnnullaOrdineAsync(string IdOrdine, bool AbortRequest)
+        public NPCE.Library.ServiceReference.LOL.AnnullaOrdineResult AnnullaOrdine(string IdOrdine, bool AbortRequest)
+        {
+            return base.Channel.AnnullaOrdine(IdOrdine, AbortRequest);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.AnnullaOrdineResult> AnnullaOrdineAsync(string IdOrdine, bool AbortRequest)
         {
             return base.Channel.AnnullaOrdineAsync(IdOrdine, AbortRequest);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.AnnullaResponse> NPCE.ServiceReference.LOL.LOLServiceSoap.AnnullaAsync(NPCE.ServiceReference.LOL.AnnullaRequest request)
+        NPCE.Library.ServiceReference.LOL.AnnullaResponse NPCE.Library.ServiceReference.LOL.LOLServiceSoap.Annulla(NPCE.Library.ServiceReference.LOL.AnnullaRequest request)
+        {
+            return base.Channel.Annulla(request);
+        }
+        
+        public NPCE.Library.ServiceReference.LOL.AnnullaResult Annulla(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
+        {
+            NPCE.Library.ServiceReference.LOL.AnnullaRequest inValue = new NPCE.Library.ServiceReference.LOL.AnnullaRequest();
+            inValue.Richieste = Richieste;
+            NPCE.Library.ServiceReference.LOL.AnnullaResponse retVal = ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).Annulla(inValue);
+            return retVal.AnnullaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.AnnullaResponse> NPCE.Library.ServiceReference.LOL.LOLServiceSoap.AnnullaAsync(NPCE.Library.ServiceReference.LOL.AnnullaRequest request)
         {
             return base.Channel.AnnullaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.AnnullaResponse> AnnullaAsync(NPCE.ServiceReference.LOL.Richiesta[] Richieste)
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.AnnullaResponse> AnnullaAsync(NPCE.Library.ServiceReference.LOL.Richiesta[] Richieste)
         {
-            NPCE.ServiceReference.LOL.AnnullaRequest inValue = new NPCE.ServiceReference.LOL.AnnullaRequest();
+            NPCE.Library.ServiceReference.LOL.AnnullaRequest inValue = new NPCE.Library.ServiceReference.LOL.AnnullaRequest();
             inValue.Richieste = Richieste;
-            return ((NPCE.ServiceReference.LOL.LOLServiceSoap)(this)).AnnullaAsync(inValue);
+            return ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).AnnullaAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.GetStatoIdRichiestaResult> RecuperaStatoIdRichiestaAsync(string IdRichiesta)
+        public NPCE.Library.ServiceReference.LOL.GetStatoIdRichiestaResult RecuperaStatoIdRichiesta(string IdRichiesta)
+        {
+            return base.Channel.RecuperaStatoIdRichiesta(IdRichiesta);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.GetStatoIdRichiestaResult> RecuperaStatoIdRichiestaAsync(string IdRichiesta)
         {
             return base.Channel.RecuperaStatoIdRichiestaAsync(IdRichiesta);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.GetStatoOrdineResult> RecuperaStatoOrdineAsync(string IdOrdine)
+        public NPCE.Library.ServiceReference.LOL.GetStatoOrdineResult RecuperaStatoOrdine(string IdOrdine)
+        {
+            return base.Channel.RecuperaStatoOrdine(IdOrdine);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.GetStatoOrdineResult> RecuperaStatoOrdineAsync(string IdOrdine)
         {
             return base.Channel.RecuperaStatoOrdineAsync(IdOrdine);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaStatiResponse> NPCE.ServiceReference.LOL.LOLServiceSoap.RecuperaStatiAsync(NPCE.ServiceReference.LOL.RecuperaStatiRequest request)
+        NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse NPCE.Library.ServiceReference.LOL.LOLServiceSoap.RecuperaStati(NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest request)
+        {
+            return base.Channel.RecuperaStati(request);
+        }
+        
+        public NPCE.Library.ServiceReference.LOL.RecuperaStatiResult RecuperaStati(string[] IdRichiesta)
+        {
+            NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest inValue = new NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest();
+            inValue.IdRichiesta = IdRichiesta;
+            NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse retVal = ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaStati(inValue);
+            return retVal.RecuperaStatiResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse> NPCE.Library.ServiceReference.LOL.LOLServiceSoap.RecuperaStatiAsync(NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest request)
         {
             return base.Channel.RecuperaStatiAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.RecuperaStatiResponse> RecuperaStatiAsync(string[] IdRichiesta)
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.RecuperaStatiResponse> RecuperaStatiAsync(string[] IdRichiesta)
         {
-            NPCE.ServiceReference.LOL.RecuperaStatiRequest inValue = new NPCE.ServiceReference.LOL.RecuperaStatiRequest();
+            NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest inValue = new NPCE.Library.ServiceReference.LOL.RecuperaStatiRequest();
             inValue.IdRichiesta = IdRichiesta;
-            return ((NPCE.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaStatiAsync(inValue);
+            return ((NPCE.Library.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaStatiAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<NPCE.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE.ServiceReference.LOL.CountryLanguage lingua)
+        public NPCE.Library.ServiceReference.LOL.NomiUPUCountries RecuperaNomiNazioniUPU(NPCE.Library.ServiceReference.LOL.CountryLanguage lingua)
+        {
+            return base.Channel.RecuperaNomiNazioniUPU(lingua);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE.Library.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE.Library.ServiceReference.LOL.CountryLanguage lingua)
         {
             return base.Channel.RecuperaNomiNazioniUPUAsync(lingua);
         }
@@ -6187,6 +6414,16 @@ namespace NPCE.ServiceReference.LOL
                 result.AllowCookies = true;
                 return result;
             }
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_LOLServiceSoap1))
+            {
+                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
+                result.MaxBufferSize = int.MaxValue;
+                result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
+                result.MaxReceivedMessageSize = int.MaxValue;
+                result.AllowCookies = true;
+                result.Security.Mode = System.ServiceModel.BasicHttpSecurityMode.Transport;
+                return result;
+            }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
@@ -6194,25 +6431,21 @@ namespace NPCE.ServiceReference.LOL
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_LOLServiceSoap))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost/LOLGC/LolService.svc");
+                return new System.ServiceModel.EndpointAddress("http://10.60.19.13/LOLGC/LolService.svc");
+            }
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_LOLServiceSoap1))
+            {
+                return new System.ServiceModel.EndpointAddress("https://tnpcews04a.extranet.testposte:444/LOLGC/LolService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
-        }
-        
-        private static System.ServiceModel.Channels.Binding GetDefaultBinding()
-        {
-            return LOLServiceSoapClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_LOLServiceSoap);
-        }
-        
-        private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
-        {
-            return LOLServiceSoapClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_LOLServiceSoap);
         }
         
         public enum EndpointConfiguration
         {
             
             BasicHttpBinding_LOLServiceSoap,
+            
+            BasicHttpBinding_LOLServiceSoap1,
         }
     }
 }

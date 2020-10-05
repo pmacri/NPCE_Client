@@ -83,5 +83,9 @@ namespace NPCE.Library
             return property;
         }
 
+        public void Invia()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

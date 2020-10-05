@@ -34,7 +34,7 @@ namespace NPCE_Client.Model
         public int? TipoServizioId { get; set; }
 
         public Ambiente Ambiente { get; set; }
-        public int AmbienteId { get; set; }
+        public int? AmbienteId { get; set; }
 
         public int StatoServizioId { get; set; }
         public StatoServizio StatoServizio { get; set; }
