@@ -35,6 +35,8 @@ namespace NPCE_Client.Api
 
             services.AddScoped<IAnagraficaRepository, AnagraficheRepository>();
 
+            services.AddScoped<IAmbientiRepository, AmbientiRepository>();
+
             services.AddScoped<IDocumentiRepository, DocumentoRepository>();
 
             services.AddDbContext<AppDbContext>(options =>

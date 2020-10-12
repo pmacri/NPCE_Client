@@ -1,0 +1,29 @@
+﻿@page "/ambienti"
+
+<h1 class="page-title">Anagrafiche</h1>
+
+@if (AmbientiList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tag</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var anagrafica in AmbientiList)
+        {
+            <tr>
+                <td>@anagrafica?.Id</td>
+                <td>@anagrafica?.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+        }

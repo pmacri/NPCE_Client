@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.AppComponents",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.ComponentsLibrary", "NPCE_Client.ComponentsLibrary\NPCE_Client.ComponentsLibrary.csproj", "{A61B4686-9220-4E1E-9561-6988BCA4D63F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE.Library", "NPCE.Library\NPCE.Library.csproj", "{61AA9A56-1EE9-4F1C-8A3D-A0C15ADBC6EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE.Library", "NPCE.Library\NPCE.Library.csproj", "{61AA9A56-1EE9-4F1C-8A3D-A0C15ADBC6EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.Test", "NPCE_Client.Test\NPCE_Client.Test.csproj", "{D76A98F4-3515-406D-A933-073A3873442C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Test", "NPCE_Client.Test\NPCE_Client.Test.csproj", "{D76A98F4-3515-406D-A933-073A3873442C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

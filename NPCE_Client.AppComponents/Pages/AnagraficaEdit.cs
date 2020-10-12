@@ -33,7 +33,7 @@ namespace NPCE_Client.AppComponents.Pages
         {
             Saved = false;
 
-            int anagraficaId = 0;
+            int anagraficaId;
 
             int.TryParse(AnagraficaId, out anagraficaId);
 
