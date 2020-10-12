@@ -24,10 +24,10 @@ namespace NPCE_Client.Api.Data
 
         public void DeleteAmbiente(int idAmbiente)
         {
-            var foundAmbiente = appDbContext.Anagrafiche.FirstOrDefault(e => e.Id == idAmbiente);
+            var foundAmbiente = appDbContext.Ambienti.FirstOrDefault(e => e.Id == idAmbiente);
             if (foundAmbiente == null) return;
 
-            appDbContext.Anagrafiche.Remove(foundAmbiente);
+            appDbContext.Ambienti.Remove(foundAmbiente);
             appDbContext.SaveChanges();
         }
 

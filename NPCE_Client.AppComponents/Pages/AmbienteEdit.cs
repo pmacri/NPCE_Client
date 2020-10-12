@@ -87,6 +87,7 @@ namespace NPCE_Client.AppComponents.Pages
                 // Edit logic
                 {
                     await AmbientiDataService.EditAmbiente(Ambiente);
+                    NavigateToList();
                 }
             }
             catch (Exception)

@@ -1,6 +1,6 @@
 ﻿@page "/ambienti"
 
-<h1 class="page-title">Anagrafiche</h1>
+<h1 class="page-title">Ambienti</h1>
 
 @if (AmbientiList == null)
 {
@@ -8,22 +8,37 @@
 }
 else
 {
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tag</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var anagrafica in AmbientiList)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@anagrafica?.Id</td>
-                <td>@anagrafica?.Description</td>
+                <th>ID</th>
+                <th>Tag</th>
+                <th>Pil ?</th>
+                <th>Canale</th>
+                <th>User</th>
+
             </tr>
-        }
-    </tbody>
-</table>
-        }
+        </thead>
+        <tbody>
+            @foreach (var ambiente in AmbientiList)
+            {
+                string isPil = @ambiente.IsPil ? "Yes" : "No";
+            <tr>
+                <td>@ambiente?.Id</td>
+                <td>@ambiente?.Description</td>
+                <td>@isPil</td>
+                <td>@ambiente?.smuser</td>
+                <td>@ambiente?.sendersystem</td>
+                <td>
+                    <a href="@($"ambientedetail/{ambiente.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a href="@($"ambienteedit/{ambiente.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,68 @@
+﻿
+@page "/ambientedetail/{AmbienteId}"
+
+
+@if (Ambiente != null)
+{
+    <section class="anagrafica-detail">
+        <h1 class="page-title">Dettaglio per @Ambiente.Description</h1>
+        <div class="col-10 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ID</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@Ambiente.Id</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tag</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.Description</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">User</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.smuser</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Customer Id</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.customerid</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">LOL Uri</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.LolUri</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ROL Uri</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.RolUri</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">COL Uri</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.ColUri</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">MOL Uri</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Ambiente.MolUri</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

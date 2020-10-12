@@ -73,6 +73,7 @@ namespace NPCE_Client.AppComponents.Pages
             // Edit logic
             {
                 await AnagraficheDataService.EditAnagrafica(Anagrafica);
+                NavigateToList();
             }
         }
 
