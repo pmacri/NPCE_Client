@@ -35,7 +35,7 @@ namespace NPCE_Client.AppComponents.Pages
 
             int.TryParse(AmbienteId, out ambienteId);
 
-            if (ambienteId == 0) //new employee is being created
+            if (ambienteId == 0) //new ambiente is being created
             {
                 //add some defaults
                 Ambiente = new Ambiente();

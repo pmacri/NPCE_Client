@@ -39,6 +39,11 @@ namespace NPCE_Client.Server
                 client.BaseAddress = new Uri("http://localhost:60909/");
             });
 
+            services.AddHttpClient<IServiziDataService, ServiziDataService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:60909/");
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

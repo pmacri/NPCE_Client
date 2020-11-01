@@ -37,5 +37,7 @@ namespace NPCE_Client.Model
         public bool IsPil { get; set; }
         public string ContrattoMOL { get; set; }
         public string ContrattoCOL { get; set; }
+
+        public List<Servizio> Servizi { get; set; }
     }
 }

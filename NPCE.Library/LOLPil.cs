@@ -83,7 +83,7 @@ namespace NPCE.Library
 
         private void SetPosta1(LetteraSubmit lolSubmit)
         {
-            if (Servizio?.TipoServizio?.Id == (int)TipoServizioId.POSTA1)
+            if (Servizio?.TipoServizioId == (int)TipoServizioId.POSTA1)
             {
                 lolSubmit.Tipo = "LOL_PRO";
             }

@@ -16,6 +16,8 @@ namespace NPCE_Client.Model
         }
 
         public int Id { get; set; }
+
+        public DateTime DataCreazione { get; set; }
         public bool AvvisoRicevimento { get; set; }
         public bool ArchiviazioneDigitale { get; set; }
         public bool Autoconferma { get; set; }
@@ -30,6 +32,18 @@ namespace NPCE_Client.Model
         public int AnniArchiviazione { get; set; }
 
         // Navigation
+
+        private TipoServizioId tipoServizioEnum;
+        [NotMapped]
+        public TipoServizioId TipoServizioEnum
+        {
+            get { return tipoServizioEnum; }
+            set { 
+                tipoServizioEnum = value;
+                TipoServizioId = (int)value;
+            }
+        }
+
         public TipoServizio TipoServizio { get; set; }
         public int? TipoServizioId { get; set; }
 

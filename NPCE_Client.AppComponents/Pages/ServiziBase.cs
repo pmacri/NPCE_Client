@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Components;
+using NPCE_Client.Model;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace NPCE_Client.AppComponents.Pages
+{
+    public class ServiziBase : ComponentBase
+    {
+        public ServiziBase()
+        {
+            Servizi = new List<Servizio>
+            {
+                new Servizio{ 
+                    Id= 1, TipoServizioId=(int) TipoServizioId.COL1, DataCreazione = DateTime.Now, StatoServizio= new StatoServizio{ Id = 1, Description="Da_Inviare"},
+                    Ambiente = new Ambiente{ Id=1, Description="Collaudo"}
+                },
+                 new Servizio{
+                    Id= 2, TipoServizioId= (int)TipoServizioId.ROL, DataCreazione = DateTime.Now, StatoServizio= new StatoServizio{ Id = 1, Description="Da_Inviare"},
+                     Ambiente = new Ambiente{ Id=1, Description="Staging"}
+                }
+        };
+        }
+        public IEnumerable<Servizio> Servizi { get; set; }
+
+    }
+}

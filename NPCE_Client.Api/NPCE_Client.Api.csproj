@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200925175656_Documento2.cs" />
     <Compile Remove="Migrations\20200925175656_Documento2.Designer.cs" />
+    <Compile Remove="Migrations\20201031231122_TipoServizio2.cs" />
+    <Compile Remove="Migrations\20201031231122_TipoServizio2.Designer.cs" />
+    <Compile Remove="Migrations\20201031232816_TipoServizio2.cs" />
+    <Compile Remove="Migrations\20201031232816_TipoServizio2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

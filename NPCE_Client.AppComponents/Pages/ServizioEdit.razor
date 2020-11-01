@@ -1,60 +1,43 @@
-﻿@page "/ambienteedit"
-@page "/ambienteedit/{AmbienteId}"
+﻿@inherits ServizioEditBase
+@page "/servizioedit"
+@page "/servizioedit/{ServizioId}"
 
-@if (!Saved && @Ambiente != null)
+@if (!Saved && @Servizio != null)
 {
-    @if (!string.IsNullOrEmpty(@Ambiente.Description))
+    @if (Servizio.TipoServizioId.HasValue)
     {
-        <h1 class="page-title">Dettaglio per  @Ambiente.Description</h1>
+    <h1 class="page-title">Dettaglio per servizio @Servizio.Id</h1>
 
     }
     else
     {
-        <h1 class="page-title">Nuovo Ambiente</h1>
+        <h1 class="page-title">Nuovo Servizio</h1>
     }
     <section class="employee-edit">
 
-        <EditForm class="form-horizontal" Model="@Ambiente" OnValidSubmit="@HandleValidSubmit">
+        <EditForm class="form-horizontal" Model="@Servizio" OnValidSubmit="@HandleValidSubmit">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="tag" class="col-sm-2">Tag</label>
-                        <InputText id="tag" class="form-control col-sm-10" placeholder="Digita Tag" @bind-Value="@Ambiente.Description"></InputText>
+                        <label for="tipo" class="col-sm-6">Tipo servizio</label>
+                        <InputSelectEnum id="tipo" class="form-control col-sm-6" @bind-Value="Servizio.TipoServizioEnum" />
                     </div>
                 </div>
-
-
-
-                <div class="col-sm-4">
+                @*<div class="col-sm-4">
                     <div class="form-group">
                         <label for="isPil" class="col-sm-2">PIL </label>
                         <InputCheckbox id="isPil" class="form-control col-sm-2" placeholder="Digita Tag" @bind-Value="@Ambiente.IsPil"></InputCheckbox>
                     </div>
-                </div>
+                </div>*@
             </div>
-            <div class="row">
+            @*<div class="row">
                 <div>
                     <div class="form-group col-md-4">
                         <label for="canale" class="col-sm-2">Canale</label>
                         <InputText id="canale" class="form-control col-sm-10" @bind-Value="@Ambiente.sendersystem"></InputText>
                     </div>
                 </div>
-                    
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="customerId" class="col-sm-4">CustomerId</label>
-                            <InputText id="customerId" class="form-control col-sm-8" @bind-Value="@Ambiente.customerid"></InputText>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="userId" class="col-sm-4">User Id</label>
-                            <InputText id="userId" class="form-control col-sm-8" @bind-Value="@Ambiente.smuser"></InputText>
-                        </div>
-                    </div>
-                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -160,11 +143,11 @@
                     </div>
                 </div>
 
-            </div>
+            </div>*@
             <button type="submit" class="btn btn-primary edit-btn">Salva</button>
-            @if (Ambiente.Id > 0)
+            @if (Servizio.Id > 0)
             {
-                <a class="btn btn-danger" @onclick="@DeleteAmbiente">
+                <a class="btn btn-danger" @onclick="@DeleteServizio">
                     Elimina
                 </a>
             }

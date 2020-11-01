@@ -1,0 +1,29 @@
+﻿@using NPCE_Client.AppComponents.Components
+@inherits ServiziBase
+@page "/servizi"
+<h1 class="page-title">Servizi</h1>
+
+@if (Servizi == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Data Creazione</th>
+                <th>Stato</th>
+                <th>Ambiente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servizio in Servizi)
+            {
+                <ServizioRow Servizio="@servizio"></ServizioRow>
+            }
+        </tbody>
+    </table>
+}

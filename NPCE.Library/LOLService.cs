@@ -29,7 +29,7 @@ namespace NPCE.Library
             SetDocumenti(lolSubmit);
             SetOpzioni(lolSubmit);
 
-            if (Servizio?.TipoServizio?.Description == "Posta1")
+            if (Servizio?.TipoServizioId == (int)TipoServizioId.POSTA4)
             {
                 SetPosta1(lolSubmit);
             }
@@ -51,7 +51,7 @@ namespace NPCE.Library
             SetDocumenti(lolSubmit);
             SetOpzioni(lolSubmit);
 
-            if (Servizio?.TipoServizio?.Description == "Posta1")
+            if (Servizio?.TipoServizioId == (int)TipoServizioId.POSTA1)
             {
                 SetPosta1(lolSubmit);
             }
