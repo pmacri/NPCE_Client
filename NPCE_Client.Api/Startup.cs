@@ -33,11 +33,19 @@ namespace NPCE_Client.Api
 
             services.AddControllers();
 
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
+
+
             services.AddScoped<IAnagraficaRepository, AnagraficheRepository>();
 
             services.AddScoped<IAmbientiRepository, AmbientiRepository>();
 
             services.AddScoped<IDocumentiRepository, DocumentoRepository>();
+            
+            services.AddScoped<IServiziRepository, ServiziRepository>();
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

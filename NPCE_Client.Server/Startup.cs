@@ -23,6 +23,7 @@ namespace NPCE_Client.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            
 
             // Use of IHttpClientFactory
             services.AddHttpClient<IAnagraficheDataService, AnagraficheDataService>(client =>
@@ -60,7 +61,7 @@ namespace NPCE_Client.Server
 
             app.UseStaticFiles();
 
-          
+
 
             app.UseRouting();
 

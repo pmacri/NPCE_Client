@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace NPCE_Client.AppComponents.Services
@@ -16,29 +17,67 @@ namespace NPCE_Client.AppComponents.Services
         {
             this.httpClient = httpClient;
         }
-        public Task<Servizio> AddServizio(Servizio servizio)
+        public async Task<Servizio> AddServizioAsync(Servizio servizio)
+        {
+            try
+            {
+                var servizioJson = new StringContent(JsonSerializer.Serialize(servizio), Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync("api/servizi", servizioJson);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await JsonSerializer.DeserializeAsync<Servizio>(await response.Content.ReadAsStreamAsync());
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+
+            return null;
+        }
+
+        public Task DeleteServizioAsync(int servizioId)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteServizio(int servizioId)
+        public Task EditServizioAsync(Servizio servizio)
         {
             throw new NotImplementedException();
         }
 
-        public Task EditServizio(Servizio servizio)
+        public async Task<IEnumerable<Servizio>> GetAllServiziAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var stream = await httpClient.GetStreamAsync($"api/servizi");
+                return await JsonSerializer.DeserializeAsync<IEnumerable<Servizio>> (stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            }
+            catch (Exception ex)
+            {
+
+                throw (ex);
+            }
         }
 
-        public Task<IEnumerable<Servizio>> GetAllServizi()
+        public async Task<Servizio> GetServizioDetailAsync(int ServizioId)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var stream = await httpClient.GetStreamAsync($"api/servizi/{ServizioId}");
+                return await JsonSerializer.DeserializeAsync<Servizio>(stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-        public Task<Servizio> GetServizioDetail(int servizioId)
-        {
-            throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+
+                throw (ex);
+            }
         }
     }
 }

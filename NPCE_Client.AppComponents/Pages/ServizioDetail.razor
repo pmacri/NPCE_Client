@@ -1,0 +1,47 @@
+﻿@inherits ServizioDetailBase
+@page "/serviziodetail/{ServizioId}"
+
+@if (Servizio != null)
+{
+    <section class="anagrafica-detail">
+        <h1 class="page-title">Dettaglio per @Servizio.Id</h1>
+        <div class="col-10 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Data creazione</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Servizio.DataCreazione</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tipo</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@Servizio.TipoServizio.Description</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Ambiente</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Servizio.Ambiente.Description</label>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Stato</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Servizio.StatoServizio.Description</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <AnagraficheSelector Servizio="@Servizio"></AnagraficheSelector>
+    </section>
+}
+else
+{
+    <p><em>Loading...</em></p>
+}

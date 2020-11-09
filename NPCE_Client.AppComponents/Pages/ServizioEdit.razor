@@ -6,156 +6,69 @@
 {
     @if (Servizio.TipoServizioId.HasValue)
     {
-    <h1 class="page-title">Dettaglio per servizio @Servizio.Id</h1>
+        <h1 class="page-title">Dettaglio per servizio @Servizio.Id</h1>
 
     }
     else
     {
         <h1 class="page-title">Nuovo Servizio</h1>
     }
-    <section class="employee-edit">
 
-        <EditForm class="form-horizontal" Model="@Servizio" OnValidSubmit="@HandleValidSubmit">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="tipo" class="col-sm-6">Tipo servizio</label>
-                        <InputSelectEnum id="tipo" class="form-control col-sm-6" @bind-Value="Servizio.TipoServizioEnum" />
-                    </div>
-                </div>
-                @*<div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="isPil" class="col-sm-2">PIL </label>
-                        <InputCheckbox id="isPil" class="form-control col-sm-2" placeholder="Digita Tag" @bind-Value="@Ambiente.IsPil"></InputCheckbox>
-                    </div>
-                </div>*@
-            </div>
-            @*<div class="row">
-                <div>
-                    <div class="form-group col-md-4">
-                        <label for="canale" class="col-sm-2">Canale</label>
-                        <InputText id="canale" class="form-control col-sm-10" @bind-Value="@Ambiente.sendersystem"></InputText>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="ContractId" class="col-sm-5">ContractId</label>
-                        <InputText id="ContractId" class="form-control col-sm-7" @bind-Value="@Ambiente.contractid"></InputText>
-                    </div>
-                </div>
+    @if (!Loaded)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <section class="employee-edit">
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="codiceFiscale" class="col-sm-6">CF</label>
-                        <InputText id="codiceFiscale" class="form-control col-sm-6" @bind-Value="@Ambiente.codicefiscale"></InputText>
+            <EditForm class="form-horizontal" Model="@Servizio" OnValidSubmit="@HandleValidSubmit">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tipo" class="col-sm-6">Tipo servizio</label>
+                            <InputSelectEnum id="tipo" class="form-control col-sm-6" @bind-Value="Servizio.TipoServizioEnum" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="partitaIva" class="col-sm-4">PIVA</label>
-                        <InputText id="partitaIva" class="form-control col-sm-8" @bind-Value="@Ambiente.partitaiva"></InputText>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="ambiente" class="col-sm-6">Ambiente</label>
+                            <InputSelect id="ambiente" class="form-control col-sm-6" @bind-Value="Servizio.AmbienteIdString">
+                                @foreach (var ambiente in Ambienti)
+                                        {
+                                    <option value="@ambiente.Id">@ambiente.Description</option>
+                                        }
+                            </InputSelect>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="uriRol" class="col-sm-4">Uri ROL</label>
-                        <InputText id="uriRol" class="form-control col-sm-8" @bind-Value="@Ambiente.RolUri"></InputText>
-                    </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="uriLOL" class="col-sm-4">Uri LOL</label>
-                        <InputText id="uriLOL" class="form-control col-sm-8" @bind-Value="@Ambiente.LolUri"></InputText>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="uriMol" class="col-sm-4">Uri MOL</label>
-                        <InputText id="uriMol" class="form-control col-sm-8" @bind-Value="@Ambiente.MolUri"></InputText>
-                    </div>
-                </div>
+                    <a href="" class="btn btn-primary table-btn" @onclick:preventDefault @onclick="e => ShowAnagraficheSelector = !ShowAnagraficheSelector">
+                        <i class="fas fa-thumbs-up"></i>
+                    </a>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="uriCOL" class="col-sm-4">Uri COL</label>
-                        <InputText id="uriCOL" class="form-control col-sm-8" @bind-Value="@Ambiente.ColUri"></InputText>
-                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="userName" class="col-sm-5">Username</label>
-                        <InputText id="userName" class="form-control col-sm-7" @bind-Value="@Ambiente.Username"></InputText>
-                    </div>
-                </div>
+                @if (ShowAnagraficheSelector)
+                {
+                    <AnagraficheSelector Servizio="@Servizio" @ref="anagraficheSelectorDialog" />
+                }
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="password" class="col-sm-5">Password</label>
-                        <InputText id="password" class="form-control col-sm-7" @bind-Value="@Ambiente.Password"></InputText>
-                    </div>
-                </div>
 
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="contractType" class="col-sm-7">Contract Type</label>
-                        <InputText id="contractType" class="form-control col-sm-5" @bind-Value="@Ambiente.contracttype"></InputText>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary edit-btn">Salva</button>
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="contratto" class="col-sm-7">Contratto</label>
-                        <InputText id="contratto" class="form-control col-sm-5" @bind-Value="@Ambiente.Contratto"></InputText>
-                    </div>
-                </div>
+                @if (Servizio.Id > 0)
+                {
+                    <a class="btn btn-danger" @onclick="@DeleteServizio">
+                        Elimina
+                    </a>
+                }
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="userType" class="col-sm-4">User Type</label>
-                        <InputText id="userType" class="form-control col-sm-8" @bind-Value="@Ambiente.usertype"></InputText>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="contrattoMOL" class="col-sm-7">Contratto MOL</label>
-                        <InputText id="contrattoMOL" class="form-control col-sm-5" @bind-Value="@Ambiente.ContrattoMOL"></InputText>
-                    </div>
-                </div>
+                <a class="btn btn-outline-primary" @onclick="@NavigateToList">Torna alla lista</a>
+            </EditForm>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="contrattoCol" class="col-sm-7">Contratto COL</label>
-                        <InputText id="contrattoCol" class="form-control col-sm-5" @bind-Value="@Ambiente.ContrattoCOL"></InputText>
-                    </div>
-                </div>
+        </section>
 
-            </div>*@
-            <button type="submit" class="btn btn-primary edit-btn">Salva</button>
-            @if (Servizio.Id > 0)
-            {
-                <a class="btn btn-danger" @onclick="@DeleteServizio">
-                    Elimina
-                </a>
-            }
-
-            <a class="btn btn-outline-primary" @onclick="@NavigateToList">Torna alla lista</a>
-        </EditForm>
-
-    </section>
+    }
 }
 else
 {

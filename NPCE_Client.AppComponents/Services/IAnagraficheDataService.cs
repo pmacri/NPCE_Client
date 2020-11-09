@@ -1,4 +1,5 @@
-﻿using NPCE_Client.Model;
+﻿using NPCE_Client.AppComponents.Shared;
+using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,5 +18,11 @@ namespace NPCE_Client.AppComponents.Services
         Task EditAnagrafica(Anagrafica anagrafica);
 
         Task DeleteAnagrafica(int anagraficaId);
+
+        Task<IEnumerable<AnagraficheSelectorViewModel>> AnagraficheSelectorGetByServizio(int servizioId);
+
+        Task<IEnumerable<AnagraficheSelectorViewModel>> AnagraficheSelectorViewModelGetAll();
+
+        Task UpdateAnagraficheServizioAsync(int servizioId, IEnumerable<AnagraficheSelectorViewModel> anagrafiche);
     }
 }

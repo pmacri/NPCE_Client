@@ -1,6 +1,8 @@
-﻿using NPCE_Client.Model;
+﻿using NPCE_Client.AppComponents.Shared;
+using NPCE_Client.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -31,6 +33,13 @@ namespace NPCE_Client.AppComponents.Services
             return null;
         }
 
+        public async Task<IEnumerable<AnagraficheSelectorViewModel>> AnagraficheSelectorGetByServizio(int servizioId)
+        {
+            Stream stream = await httpClient.GetStreamAsync($"api/anagraficheselector/{servizioId}");
+
+            return await JsonSerializer.DeserializeAsync<IEnumerable<AnagraficheSelectorViewModel>>
+               (stream, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
 
         public async Task DeleteAnagrafica(int anagraficaId)
         {
@@ -51,10 +60,24 @@ namespace NPCE_Client.AppComponents.Services
                 (await httpClient.GetStreamAsync($"api/anagrafiche"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
+        public async Task<IEnumerable<AnagraficheSelectorViewModel>> AnagraficheSelectorViewModelGetAll()
+        {
+
+            return await JsonSerializer.DeserializeAsync<IEnumerable<AnagraficheSelectorViewModel>>
+                (await httpClient.GetStreamAsync($"api/AnagraficheSelector"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
         public async Task<Anagrafica> GetAnagraficaDetail(int anagraficaId)
         {
             return await JsonSerializer.DeserializeAsync<Anagrafica>
                 (await httpClient.GetStreamAsync($"api/anagrafiche/{anagraficaId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task UpdateAnagraficheServizioAsync(int servizioId, IEnumerable<AnagraficheSelectorViewModel> anagrafiche)
+        {
+            var AnagraficheJson =
+               new StringContent(JsonSerializer.Serialize(anagrafiche), Encoding.UTF8, "application/json");
+            await httpClient.PutAsync($"api/anagraficheSelector/{servizioId}", AnagraficheJson);
         }
     }
 }

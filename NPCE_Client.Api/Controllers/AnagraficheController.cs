@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPCE_Client.Api.Data;
+using NPCE_Client.AppComponents.Shared;
 using NPCE_Client.Model;
 
 namespace NPCE_Client.Api.Controllers
@@ -26,6 +27,8 @@ namespace NPCE_Client.Api.Controllers
         {
             return Ok(anagraficheRepository.GetAllAnagrafiche());
         }
+        
+       
 
         [HttpGet("{anagraficaId}")]
         public IActionResult GetAnagraficaById(int anagraficaId)
@@ -48,7 +51,7 @@ namespace NPCE_Client.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateEmployee([FromBody] Anagrafica anagrafica)
+        public IActionResult UpdateAnagrafica([FromBody] Anagrafica anagrafica)
         {
             if (anagrafica == null)
                 return BadRequest();

@@ -130,14 +130,14 @@ nav {
         margin-left: 0;
     }
 
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+}
 
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: -15rem;
-    }
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+}
 }
 
 .page-title {
@@ -155,11 +155,11 @@ nav {
     border-radius: 50%;
 }
 
-    .table-btn:hover, .table-btn:active {
-        color: #fff;
-        background-color: #a593c2 !important;
-        border-color: #a593c2 !important;
-    }
+.table-btn:hover, .table-btn:active {
+    color: #fff;
+    background-color: #a593c2 !important;
+    border-color: #a593c2 !important;
+}
 
 .quick-add-btn {
     font-size: 36px;
@@ -194,21 +194,21 @@ nav {
     color: #fff;
 }
 
-    .edit-btn:hover, .edit-btn:active {
-        color: #fff;
-        background-color: #a593c2;
-        border-color: #a593c2;
-    }
+.edit-btn:hover, .edit-btn:active {
+    color: #fff;
+    background-color: #a593c2;
+    border-color: #a593c2;
+}
 
 .edit-outline-btn {
     border-color: #23cfa7;
 }
 
-    .edit-outline-btn:hover, .edit-outline-btn:active {
-        color: #fff;
-        background-color: #a593c2 !important;
-        border-color: #a593c2 !important;
-    }
+.edit-outline-btn:hover, .edit-outline-btn:active {
+    color: #fff;
+    background-color: #a593c2 !important;
+    border-color: #a593c2 !important;
+}
 
 
 #blazor-error-ui {
@@ -222,12 +222,27 @@ nav {
     width: 100%;
     z-index: 1000;
 }
+
 #blazor-error-ui .dismiss {
     cursor: pointer;
     position: absolute;
     right: 0.75rem;
     top: 0.5rem;
 }
+
 input[type='file'] {
-    color:transparent;
+    color: transparent;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background: white;
+    border-radius: 5px;
+    border: 2px solid #555;
+}
+
+input[type='checkbox']:checked {
+    background: #abd;
 }

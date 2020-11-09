@@ -1,5 +1,6 @@
-﻿using NPCE_Client.Model;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using NPCE_Client.AppComponents.Shared;
+using NPCE_Client.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,6 +42,19 @@ namespace NPCE_Client.Api.Data
             return appDbContext.Anagrafiche.Where(a => a.Id == id).FirstOrDefault();
         }
 
+        public IEnumerable<AnagraficheSelectorViewModel> GetByServizio(int idServizio)
+        {
+            var query = from a in appDbContext.Anagrafiche
+                        from sa in a.ServizioAnagrafiche
+                        where sa.Servizio.Id == idServizio
+                        select new AnagraficheSelectorViewModel
+                        {
+                            Anagrafica = a,
+                            IsMittente = sa.IsMittente
+                        };
+            return query.ToList();
+        }
+
         public Anagrafica UpdateAnagrafica(Anagrafica anagrafica)
         {
             var foundAnagrafica = appDbContext.Anagrafiche.FirstOrDefault(e => e.Id == anagrafica.Id);
@@ -69,6 +83,37 @@ namespace NPCE_Client.Api.Data
                 return foundAnagrafica;
             }
             return null;
+        }
+
+        public async Task UpdateAngraficheServizioAsync(int idServizio, IEnumerable<AnagraficheSelectorViewModel> anagrafiche)
+        {
+            var servizio = await appDbContext.Servizi
+                        .Include(s => s.ServizioAnagrafiche)
+                        .Where(s => s.Id == idServizio)
+                        .FirstOrDefaultAsync();
+            if (servizio != null)
+            {
+                foreach (var anagraficaServizio in servizio.ServizioAnagrafiche)
+                {
+                    servizio.ServizioAnagrafiche.Remove(anagraficaServizio);
+                };
+
+                // then add selected
+                foreach (var anagraficaInput in anagrafiche)
+                {
+
+                    servizio.ServizioAnagrafiche.Add(
+                        new ServizioAnagrafica
+                        {
+                            Anagrafica = anagraficaInput.Anagrafica,
+                            IsMittente = anagraficaInput.Anagrafica.IsMittente,
+                            AnagraficaId = anagraficaInput.Anagrafica.Id,
+                            ServizioId = idServizio
+                        });
+
+                }
+                await appDbContext.SaveChangesAsync();
+            }
         }
     }
 }

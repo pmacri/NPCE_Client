@@ -50,6 +50,28 @@ namespace NPCE_Client.Model
         public Ambiente Ambiente { get; set; }
         public int? AmbienteId { get; set; }
 
+
+        private string _ambienteIdString;
+
+        [NotMapped]
+        public string AmbienteIdString {
+            get
+            {
+                return _ambienteIdString;
+            }
+            set
+            {
+                if (value != null)
+                {
+                _ambienteIdString = value;
+                AmbienteId = int.Parse(value);
+                }
+            } 
+        }
+
+        [NotMapped]
+        public bool ShowAnagraficheSelector { get; set; }
+
         public int StatoServizioId { get; set; }
         public StatoServizio StatoServizio { get; set; }
 
@@ -61,7 +83,7 @@ namespace NPCE_Client.Model
         }
 
 
-        public Collection<ServizioAnagrafica> ServizioAnagrafiche { get; }
-        public Collection<ServizioDocumento> ServizioDocumenti { get; }
+        public Collection<ServizioAnagrafica> ServizioAnagrafiche { get; set; }
+        public Collection<ServizioDocumento> ServizioDocumenti { get; set; }
     }
 }

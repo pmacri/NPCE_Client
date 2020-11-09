@@ -1,0 +1,50 @@
+﻿@inherits AnagraficheSelectorBase
+@if (Anagrafiche == null)
+{
+    <p><em>Loading ....</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Nome</td>
+                        <td>Cognome</td>
+                        <td>Indirizzo</td>
+                        <td>Citta</td>
+                        <td>Provincia</td>
+                        <td>Mittente</td>
+                        <td>Seleziona</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var anagrafica in Anagrafiche)
+                    {
+                    <tr>
+                        <td scope="row">@anagrafica.Anagrafica.Id</td>
+                        <td>@anagrafica.Anagrafica.Nome</td>
+                        <td>@anagrafica.Anagrafica.Cognome</td>
+                        <td>@anagrafica.Anagrafica.Indirizzo</td>
+                        <td>@anagrafica.Anagrafica.Citta</td>
+                        <td>@anagrafica.Anagrafica.Provincia</td>
+                        <td>
+                            <input type="checkbox" @bind="@anagrafica.IsMittente" />
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-md-4 mt-1">
+            <button class="btn btn-primary" disabled="@SaveButtonDisabled"
+                    @onclick="SaveClick" @onclick:preventDefault>
+                Save
+            </button>
+        </div>
+    </div>
+}

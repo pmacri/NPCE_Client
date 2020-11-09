@@ -8,14 +8,14 @@ namespace NPCE_Client.AppComponents.Services
 {
     public interface IServiziDataService
     {
-        Task<IEnumerable<Servizio>> GetAllServizi();
+        Task<IEnumerable<Servizio>> GetAllServiziAsync();
 
-        Task<Servizio> GetServizioDetail(int servizioId);
+        Task<Servizio> GetServizioDetailAsync(int servizioId);
 
-        Task<Servizio> AddServizio(Servizio servizio);
+        Task<Servizio> AddServizioAsync(Servizio servizio);
 
-        Task EditServizio(Servizio servizio);
+        Task EditServizioAsync(Servizio servizio);
 
-        Task DeleteServizio(int servizioId);
+        Task DeleteServizioAsync(int servizioId);
     }
 }
