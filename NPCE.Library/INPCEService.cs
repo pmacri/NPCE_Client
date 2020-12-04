@@ -12,6 +12,6 @@ namespace NPCE.Library
          Servizio Servizio { get; set; }
         Task<NPCEResult> InviaAsync();
         NPCEResult Invia();
-        Task ConfermaAsync();
+        Task<NPCEResult> ConfermaAsync(string idRichiesta);
     }
 }

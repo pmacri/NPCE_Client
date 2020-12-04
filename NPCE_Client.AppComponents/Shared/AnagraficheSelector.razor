@@ -34,17 +34,24 @@ else
                         <td>
                             <input type="checkbox" @bind="@anagrafica.IsMittente" />
                         </td>
+                        <td>
+                            <input type="checkbox" @bind="@anagrafica.IsSelected" />
+                        </td>
                     </tr>
                     }
                 </tbody>
 
             </table>
         </div>
-        <div class="col-md-4 mt-1">
-            <button class="btn btn-primary" disabled="@SaveButtonDisabled"
-                    @onclick="SaveClick" @onclick:preventDefault>
-                Save
-            </button>
-        </div>
+        @if (Servizio.Id >0)
+        {
+            <div class="col-md-4 mt-1">
+                <button class="btn btn-primary" disabled="@SaveButtonDisabled"
+                        @onclick="SaveClick" @onclick:preventDefault>
+                    Save
+                </button>
+            </div>
+        }
+        
     </div>
 }

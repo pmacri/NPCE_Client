@@ -17,6 +17,6 @@ namespace NPCE_Client.Api.Data
         Anagrafica UpdateAnagrafica(Anagrafica anagrafica);
         void DeleteAnagrafica(int idAnagrafica);
 
-        Task UpdateAngraficheServizioAsync(int idServizio, IEnumerable<AnagraficheSelectorViewModel> anagrafiche);
+        Task UpdateAngraficheServizioAsync(int servizioId, IEnumerable<AnagraficheSelectorViewModel> anagrafiche);
     }
 }

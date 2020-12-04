@@ -99,5 +99,10 @@ namespace NPCE.Library
         {
             throw new NotImplementedException();
         }
+
+        public Task<NPCEResult> ConfermaAsync(string idRichiesta)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

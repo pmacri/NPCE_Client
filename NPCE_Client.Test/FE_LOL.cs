@@ -137,5 +137,62 @@ namespace NPCE_Client.Test
             }
 
         }
+
+        [TestMethod]
+        public void Invio_Conferma_1_Destinatario_OK()
+        {
+            var ctx = new AppDbContext(_options);
+
+            var ambiente = new Ambiente
+            {
+                Description = "COLLAUDO",
+                customerid = "nello.citta.npce",
+                costcenter = "UNF",
+                billingcenter = "IdCdF",
+                idsender = "999988",
+                sendersystem = "H2H",
+                smuser = "nello.citta.npce",
+                contracttype = "PosteWeb",
+                usertype = "B",
+                LolUri = "http://10.60.19.13/LOLGC/LolService.svc",
+                Username = "rete\\mic32nv",
+                Password = "Passw0rd"
+            };
+
+            Anagrafica destinatario;
+            Anagrafica mittente;
+
+
+            destinatario = ctx.Anagrafiche.First();
+            mittente = ctx.Anagrafiche.Skip(1).First();
+
+            var documento = ctx.Documenti.First();
+
+            var servizio = new Servizio();
+
+            servizio.ServizioAnagrafiche.Add(
+                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
+
+            servizio.ServizioAnagrafiche.Add(
+                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
+
+            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
+
+            LOLService service = new LOLService(servizio, ambiente);
+            try
+            {
+                var result = service.Invia();
+
+                Assert.IsTrue((int.Parse(result.Code) == 0));
+
+                string idRichiesta = result.IdRichiesta;
+                service.ConfermaAsync();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

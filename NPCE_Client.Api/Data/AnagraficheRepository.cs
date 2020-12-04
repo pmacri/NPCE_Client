@@ -85,11 +85,11 @@ namespace NPCE_Client.Api.Data
             return null;
         }
 
-        public async Task UpdateAngraficheServizioAsync(int idServizio, IEnumerable<AnagraficheSelectorViewModel> anagrafiche)
+        public async Task UpdateAngraficheServizioAsync(int servizioId, IEnumerable<AnagraficheSelectorViewModel> anagrafiche)
         {
             var servizio = await appDbContext.Servizi
                         .Include(s => s.ServizioAnagrafiche)
-                        .Where(s => s.Id == idServizio)
+                        .Where(s => s.Id == servizioId)
                         .FirstOrDefaultAsync();
             if (servizio != null)
             {
@@ -97,23 +97,27 @@ namespace NPCE_Client.Api.Data
                 {
                     servizio.ServizioAnagrafiche.Remove(anagraficaServizio);
                 };
-
-                // then add selected
-                foreach (var anagraficaInput in anagrafiche)
-                {
-
-                    servizio.ServizioAnagrafiche.Add(
-                        new ServizioAnagrafica
-                        {
-                            Anagrafica = anagraficaInput.Anagrafica,
-                            IsMittente = anagraficaInput.Anagrafica.IsMittente,
-                            AnagraficaId = anagraficaInput.Anagrafica.Id,
-                            ServizioId = idServizio
-                        });
-
-                }
-                await appDbContext.SaveChangesAsync();
             }
+            else
+            {
+                appDbContext.Servizi.Add(servizio);
+            }
+
+            // then add selected
+            foreach (var anagraficaInput in anagrafiche)
+            {
+
+                servizio.ServizioAnagrafiche.Add(
+                    new ServizioAnagrafica
+                    {
+                        Anagrafica = anagraficaInput.Anagrafica,
+                        IsMittente = anagraficaInput.Anagrafica.IsMittente,
+                        AnagraficaId = anagraficaInput.Anagrafica.Id,
+                        ServizioId = servizio.Id 
+                    });
+
+            }
+            await appDbContext.SaveChangesAsync();
         }
     }
 }

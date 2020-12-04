@@ -1,6 +1,7 @@
 ﻿using ComunicazioniElettroniche.Common.DataContracts;
 using ComunicazioniElettroniche.Common.Proxy;
 using NPCE_Client.Model;
+using PosteItaliane.OrderManagement.Schema.SchemaDefinition;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -38,7 +39,7 @@ namespace NPCE.Library
             Init();
         }
 
-        public abstract Task ConfermaAsync();
+        public abstract Task<NPCEResult> ConfermaAsync(string idRichiesta);
 
 
         public abstract Task<NPCEResult> InviaAsync();
@@ -112,6 +113,34 @@ namespace NPCE.Library
             return property;
         }
         public abstract NPCEResult Invia();
+
+        protected virtual OrderRequest GetPreConfirmRequest(string idRichiesta)
+        {
+            OrderRequest orderRequest = new OrderRequest();
+            orderRequest.ServiceInstance = new OrderRequestServiceInstance[1];
+            orderRequest.ForceOrderCreation = true;
+
+            orderRequest.ServiceInstance[0] = new OrderRequestServiceInstance();
+            orderRequest.ServiceInstance[0].GUIDMessage = idRichiesta;
+
+            return orderRequest;
+
+        }
+
+        protected virtual ConfirmOrder GetConfirmRequest(string idOrdine, string typeDescription)
+        {
+            ConfirmOrder confirmOrder = new ConfirmOrder();
+            confirmOrder.IdOrder = idOrdine;
+            confirmOrder.PaymentType = new PaymentType
+            {
+                PostPayment = true,
+                PostPaymentSpecified = true,
+                TypeDescription = typeDescription,
+                TypeId = "6"                 
+            };
+
+            return confirmOrder;
+        }
 
     }
 }

@@ -5,6 +5,7 @@ using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL;
 using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitResponse;
 using ComunicazioniElettroniche.LOL.Web.DataContracts;
 using NPCE_Client.Model;
+using PosteItaliane.OrderManagement.Schema.SchemaDefinition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,41 @@ namespace NPCE.Library
         //{
         //}
 
-        public override Task ConfermaAsync()
+        public override async Task<NPCEResult> ConfermaAsync(string idRichiesta)
         {
-            throw new NotImplementedException();
+
+            OrderResponse preConfirmResult;
+
+            string idOrdine;
+
+            
+
+            try
+            {
+
+                OrderRequest preconfirmRequest = GetPreConfirmRequest(idRichiesta);
+                CE.Header.GUIDMessage = IdRichiesta;
+                CE.Body = SerializationUtility.SerializeToXmlElement(preconfirmRequest);
+
+                SubmitRequestRequest request = new SubmitRequestRequest(CE);
+                var response = await WsCEClient.SubmitRequestAsync(request);
+                preConfirmResult = SerializationUtility.Deserialize<OrderResponse>(response.CE.Body);
+                idOrdine = preConfirmResult.IdOrder;
+
+                ConfirmOrder confirmRequest = GetConfirmRequest(idOrdine, preConfirmResult.PaymentTypes[0].TypeDescription);
+                CE.Header.GUIDMessage = IdRichiesta;
+                CE.Body = SerializationUtility.SerializeToXmlElement(confirmRequest);
+                request = new SubmitRequestRequest(CE);
+                response = await WsCEClient.SubmitRequestAsync(request);
+                
+
+                return new NPCEResult { Code = "I", Description = "Conferma avvenuta correttamente", IdOrdine = idOrdine, IdRichiesta = idRichiesta };
+
+            }
+            finally
+            {
+                WsCEClient.InnerChannel.Close();
+            }
         }
 
         public async override Task<NPCEResult> InviaAsync()
@@ -43,7 +76,6 @@ namespace NPCE.Library
 
             try
             {
-                //WsCEClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Ambiente.LolUri);
 
                 SubmitRequestRequest request = new SubmitRequestRequest(CE);
                 var response = await WsCEClient.SubmitRequestAsync(request);
@@ -73,12 +105,26 @@ namespace NPCE.Library
 
             letteraBE.NumeroDestinatari = Servizio.ServizioAnagrafiche.Where(d => d.IsMittente == false).Count();
             SetOpzioni(letteraBE);
+            SetOpzioniStampa(letteraBE);
             SetMittente(letteraBE);
             SetDestinatari(letteraBE);
             SetDocumenti(letteraBE);
             SetPosta1(letteraBE);
 
             return letteraBE;
+        }
+
+        private static void SetOpzioniStampa(LetteraSubmit letteraBE)
+        {
+
+            var tipoStampa = (letteraBE.Opzioni == null || letteraBE.Opzioni.OpzionidiStampa == null) ? OpzionidiStampaTipoStampa.BW : OpzionidiStampaTipoStampa.Color;
+            var fronteRetro = (letteraBE.Opzioni == null || letteraBE.Opzioni.OpzionidiStampa == null) ? false : letteraBE.Opzioni.OpzionidiStampa.FronteRetro;
+            letteraBE.Opzioni = letteraBE.Opzioni??new Opzioni();
+            letteraBE.Opzioni.OpzionidiStampa = new OpzionidiStampa
+            {
+                FronteRetro = fronteRetro,
+                TipoStampa = tipoStampa
+            };
         }
 
         private void SetPosta1(LetteraSubmit lolSubmit)
@@ -95,26 +141,35 @@ namespace NPCE.Library
 
         private void SetDocumenti(LetteraSubmit lolSubmit)
         {
-            LetteraSubmitDocumento newDocumento;
-            var listDocumenti = new List<LetteraSubmitDocumento>();
 
-            //foreach (var documento in _servizio.Documenti)
-            //{
-            newDocumento = NewDocumento();
-            listDocumenti.Add(newDocumento);
-            //}
-
-            lolSubmit.Documenti = listDocumenti;
+            lolSubmit.Documenti = GetDocumenti();
         }
 
-        private LetteraSubmitDocumento NewDocumento()
+        private List<LetteraSubmitDocumento> GetDocumenti()
         {
-            return new LetteraSubmitDocumento
+            LetteraSubmitDocumento documento = null;
+
+            LetteraSubmitDocumento cover = null;
+
+            if (Ambiente.Description.Contains("COLLAUDO"))
             {
-                FileHash = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
-                Uri = @"\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\ROL_db56a17c-12b2-402a-ad51-9e309f895e79.doc",
+                documento = new LetteraSubmitDocumento
+                {
+                    FileHash = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
+                    Uri = @"\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\ROL_db56a17c-12b2-402a-ad51-9e309f895e79.doc",
+                    IdPosizione = 2
+                };
+
+                cover = new LetteraSubmitDocumento
+                {
+                    FileHash = "5FBA263B3420664720BB6A15F92ED247",
+                    Uri = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68.cov",
                 IdPosizione = 1
-            };
+                };
+
+            }
+
+            return new List<LetteraSubmitDocumento> { documento, cover };
         }
 
         private void SetDestinatari(LetteraSubmit lolSubmit)
@@ -170,7 +225,7 @@ namespace NPCE.Library
 
         private void SetOpzioni(LetteraSubmit letteraBE)
         {
-            var opzioni = new ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL.Opzioni();
+            var opzioni = new Opzioni();
 
             opzioni.DataStampa = DateTime.Now;
 
@@ -232,7 +287,7 @@ namespace NPCE.Library
 
             CE.Body = SerializationUtility.SerializeToXmlElement(letteraBE);
 
-            
+
             try
             {
                 var ce = CE; ;
@@ -253,5 +308,6 @@ namespace NPCE.Library
                 WsCEClient.InnerChannel.Close();
             }
         }
+
     }
 }

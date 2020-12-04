@@ -1,11 +1,11 @@
 ﻿@inherits ServizioRowBase
 
 <tr>
-    <td>@Servizio.Id</td>
-    <td>@Servizio.TipoServizio.Description</td>
-    <td>@Servizio.DataCreazione</td>
-    <td>@Servizio.StatoServizio.Description</td>
-    <td>@Servizio.Ambiente.Description</td>
+    <td>@Servizio?.Id</td>
+    <td>@Servizio?.TipoServizio?.Description</td>
+    <td>@Servizio?.DataCreazione</td>
+    <td>@Servizio?.StatoServizio?.Description</td>
+    <td>@Servizio?.Ambiente?.Description</td>
     <td>
         <a href="@($"serviziodetail/{Servizio.Id}")" class="btn btn-primary table-btn">
             <i class="fas fa-info-circle"></i>

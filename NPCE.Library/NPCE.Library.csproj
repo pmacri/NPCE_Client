@@ -28,6 +28,9 @@
     <Reference Include="ComunicazioniElettroniche.LOL.Web">
       <HintPath>..\..\NPCE_WinClient\ComunicazioniElettroniche.LOL.Web.dll</HintPath>
     </Reference>
+    <Reference Include="PosteItaliane.OrderManagement.Schema.Code">
+      <HintPath>..\..\NPCE_WinClient\PosteItaliane.OrderManagement.Schema.Code.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
