@@ -25,4 +25,13 @@
     <ProjectReference Include="..\NPCE_Client.Api\NPCE_Client.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ComunicazioniElettroniche.Common">
+      <HintPath>..\..\NPCE_WinClient\ComunicazioniElettroniche.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ComunicazioniElettroniche.PostaEvo.Assembly.External">
+      <HintPath>..\..\..\..\..\..\Pasquale\Repos\npce\Shared\ComunicazioniElettroniche.PostaEvo.Assembly.External.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

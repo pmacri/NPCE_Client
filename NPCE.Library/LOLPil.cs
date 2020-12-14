@@ -169,6 +169,24 @@ namespace NPCE.Library
 
             }
 
+            if (Ambiente.Description.Contains("CERTIFICA"))
+            {
+                documento = new LetteraSubmitDocumento
+                {
+                    FileHash = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
+                    Uri = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\ROL_fcbaad81-509c-4359-9d95-78e6124cb744.doc",
+                    IdPosizione = 2
+                };
+
+                cover = new LetteraSubmitDocumento
+                {
+                    FileHash = "741CB3236EDCA2B9241C93E6AC7F2EA9",
+                    Uri = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\\0d38eec1-69c4-4bc1-954e-e8d5abdd50cd.cov",
+                    IdPosizione = 1
+                };
+
+            }
+
             return new List<LetteraSubmitDocumento> { documento, cover };
         }
 
