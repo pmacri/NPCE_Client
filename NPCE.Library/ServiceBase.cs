@@ -43,9 +43,6 @@ namespace NPCE.Library
         //public abstract Task InviaAsync();
 
         public abstract NPCEResult Invia();
-
-
-
         protected T GetProxy<T>(string endpointAddress, string username, string password)
         {
             BasicHttpBinding myBinding = new BasicHttpBinding();

@@ -122,5 +122,66 @@ namespace NPCE_Client.Test
             var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
         }
+
+        [TestMethod]
+        public void MOL1_Base_Autoconfirm()
+        {
+            var guid = System.Guid.NewGuid();
+
+            xmlBase = xmlBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+
+            var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
+
+            postaEvoRequest.AutoConferma = true;
+
+            postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
+            postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
+
+            Helper helper = new Helper(new Configs(env));
+
+            PostaEvoResponse postaEvoResponse;
+
+            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+
+            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+
+            var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+        }
+
+        [TestMethod]
+        public void MOL1_Base_Autoconfirm_Archiviazione_Storica_3_Anni()
+        {
+            var guid = System.Guid.NewGuid();
+
+            xmlBase = xmlBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+
+            var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
+
+            postaEvoRequest.AutoConferma = true;
+
+            postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
+            postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
+
+            postaEvoRequest.Opzioni.OpzioniServizio.ArchiviazioneDocumenti = "STORICA";
+            postaEvoRequest.Opzioni.OpzioniServizio.AnniArchiviazione =3;
+            postaEvoRequest.Opzioni.OpzioniServizio.AnniArchiviazioneSpecified = true;
+
+
+            Helper helper = new Helper(new Configs(env));
+
+            PostaEvoResponse postaEvoResponse;
+
+            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+
+            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+
+            var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+        }
     }
 }

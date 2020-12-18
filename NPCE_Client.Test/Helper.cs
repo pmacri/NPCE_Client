@@ -86,6 +86,7 @@ namespace NPCE_Client.Test
             return ce.Result;
         }
 
+        
         //public bool VerifyDb(string PostaEvoConnectionString, TimeSpan retryInterval, int retryNum, Guid IdRichiesta, TipoProdotto tipoProdotto)
         //{
         //    int currentAttempt = 1;
