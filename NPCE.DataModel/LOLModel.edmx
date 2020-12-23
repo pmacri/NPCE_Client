@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NPCELOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LOL">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GuidUtente" Type="varchar" MaxLength="50" />
+          <Property Name="IdStatoLavorazione" Type="char" MaxLength="1" />
+          <Property Name="IdDCS" Type="varchar" MaxLength="50" />
+          <Property Name="MessageDCS" Type="varchar" MaxLength="200" />
+          <Property Name="NumeroDestinatari" Type="int" />
+          <Property Name="DataLettera" Type="datetime" />
+          <Property Name="UriDCS" Type="varchar" MaxLength="500" />
+          <Property Name="InStampa" Type="bit" />
+          <Property Name="ForzaDestinazioniValide" Type="bit" />
+          <Property Name="Scadenza" Type="bit" />
+          <Property Name="UriLogo" Type="varchar" MaxLength="500" />
+          <Property Name="ClosingLettera" Type="xml" />
+          <Property Name="ClosingCover" Type="varchar" MaxLength="200" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="DocPrezzabile" Type="bit" />
+          <Property Name="Estero" Type="bit" />
+          <Property Name="DocStampabile" Type="bit" />
+          <Property Name="Hash_MD5" Type="varchar" MaxLength="40" />
+          <Property Name="CodiceNazione" Type="varchar" MaxLength="40" />
+          <Property Name="IdSublotto" Type="bigint" />
+          <Property Name="IdRendicontazione" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tipo" Type="varchar" MaxLength="7" />
+          <Property Name="RichiestaTracciatura" Type="bit" />
+          <Property Name="PrezzaturaSincrona" Type="bit" Nullable="false" />
+          <Property Name="PrezzaturaSincronaSuccess" Type="bit" Nullable="false" />
+          <Property Name="IdCover" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="LOLDestinatario">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdLettera" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdLettera" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdDestinatario" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroDestinatarioCorrente" Type="int" />
+          <Property Name="Cognome" Type="varchar" MaxLength="50" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" />
+          <Property Name="ComplementoNominativo" Type="varchar" MaxLength="50" />
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+          <Property Name="DUG" Type="varchar" MaxLength="50" />
+          <Property Name="Toponimo" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroCivico" Type="varchar" MaxLength="5" />
+          <Property Name="Esponente" Type="varchar" MaxLength="50" />
+          <Property Name="ComplementoIndirizzo" Type="varchar" MaxLength="50" />
+          <Property Name="CAP" Type="varchar" MaxLength="10" />
+          <Property Name="Frazione" Type="varchar" MaxLength="50" />
+          <Property Name="Citta" Type="varchar" MaxLength="50" />
+          <Property Name="Provincia" Type="char" MaxLength="2" />
+          <Property Name="Stato" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="18" />
+          <Property Name="Zona" Type="varchar" MaxLength="50" />
+          <Property Name="TipoIndirizzo" Type="varchar" MaxLength="20" />
+          <Property Name="CasellaPostale" Type="varchar" MaxLength="50" />
+          <Property Name="UfficioPostale" Type="varchar" MaxLength="50" />
+          <Property Name="ProtocolloMittente" Type="varchar" MaxLength="50" />
+          <Property Name="TestoLibero" Type="xml" />
+          <Property Name="CodiceTracciatura" Type="varchar" MaxLength="30" />
+          <Property Name="DataAccettazione" Type="datetime" />
+          <Property Name="Codice2DCOMM" Type="varchar" MaxLength="72" />
+          <Property Name="StatoArchiviazione" Type="tinyint" />
+          <Property Name="DataStatoArchiviazione" Type="datetime" />
+          <Property Name="RichiesteDocumenti" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LOLDocumenti">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdPosizione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdPosizione" Type="int" Nullable="false" />
+          <Property Name="Uri" Type="varchar" MaxLength="250" />
+          <Property Name="Hash_MD5" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK_LOL_LOL">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOL1" Type="Self.LOL" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOL1">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOLDocumenti_LOL">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOLDocumenti" Type="Self.LOLDocumenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOLDocumenti">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LOL_LOLDestinatario_FK">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOLDestinatario" Type="Self.LOLDestinatario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOLDestinatario">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NPCELOLModelStoreContainer">
+          <EntitySet Name="LOL" EntityType="Self.LOL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOLDestinatario" EntityType="Self.LOLDestinatario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOLDocumenti" EntityType="Self.LOLDocumenti" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LOL_LOL" Association="Self.FK_LOL_LOL">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOL1" EntitySet="LOL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOLDocumenti_LOL" Association="Self.FK_LOLDocumenti_LOL">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOLDocumenti" EntitySet="LOLDocumenti" />
+          </AssociationSet>
+          <AssociationSet Name="LOL_LOLDestinatario_FK" Association="Self.LOL_LOLDestinatario_FK">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOLDestinatario" EntitySet="LOLDestinatario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NPCELOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOL">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="GuidUtente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdStatoLavorazione" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IdDCS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessageDCS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroDestinatari" Type="Int32" />
+          <Property Name="DataLettera" Type="DateTime" Precision="3" />
+          <Property Name="UriDCS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="InStampa" Type="Boolean" />
+          <Property Name="ForzaDestinazioniValide" Type="Boolean" />
+          <Property Name="Scadenza" Type="Boolean" />
+          <Property Name="UriLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ClosingLettera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClosingCover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="DocPrezzabile" Type="Boolean" />
+          <Property Name="Estero" Type="Boolean" />
+          <Property Name="DocStampabile" Type="Boolean" />
+          <Property Name="Hash_MD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceNazione" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="IdSublotto" Type="Int64" />
+          <Property Name="IdRendicontazione" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="RichiestaTracciatura" Type="Boolean" />
+          <Property Name="PrezzaturaSincrona" Type="Boolean" Nullable="false" />
+          <Property Name="PrezzaturaSincronaSuccess" Type="Boolean" Nullable="false" />
+          <Property Name="IdCover" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOL1" Relationship="Self.FK_LOL_LOL" FromRole="LOL" ToRole="LOL1" />
+          <NavigationProperty Name="LOL2" Relationship="Self.FK_LOL_LOL" FromRole="LOL1" ToRole="LOL" />
+          <NavigationProperty Name="LOLDocumenti" Relationship="Self.FK_LOLDocumenti_LOL" FromRole="LOL" ToRole="LOLDocumenti" />
+          <NavigationProperty Name="LOLDestinatario" Relationship="Self.LOL_LOLDestinatario_FK" FromRole="LOL" ToRole="LOLDestinatario" />
+        </EntityType>
+        <EntityType Name="LOLDestinatario">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdLettera" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="IdLettera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdDestinatario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroDestinatarioCorrente" Type="Int32" />
+          <Property Name="Cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComplementoNominativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DUG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Toponimo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCivico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Esponente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComplementoIndirizzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Frazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Citta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIndirizzo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CasellaPostale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UfficioPostale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProtocolloMittente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TestoLibero" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CodiceTracciatura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DataAccettazione" Type="DateTime" Precision="3" />
+          <Property Name="Codice2DCOMM" Type="String" MaxLength="72" FixedLength="false" Unicode="false" />
+          <Property Name="StatoArchiviazione" Type="Byte" />
+          <Property Name="DataStatoArchiviazione" Type="DateTime" Precision="3" />
+          <Property Name="RichiesteDocumenti" Type="Int64" />
+          <NavigationProperty Name="LOL" Relationship="Self.LOL_LOLDestinatario_FK" FromRole="LOLDestinatario" ToRole="LOL" />
+        </EntityType>
+        <EntityType Name="LOLDocumenti">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdPosizione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="IdPosizione" Type="Int32" Nullable="false" />
+          <Property Name="Uri" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Hash_MD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOL" Relationship="Self.FK_LOLDocumenti_LOL" FromRole="LOLDocumenti" ToRole="LOL" />
+        </EntityType>
+        <Association Name="FK_LOL_LOL">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOL1" Type="Self.LOL" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOL1">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOLDocumenti_LOL">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOLDocumenti" Type="Self.LOLDocumenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOLDocumenti">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LOL_LOLDestinatario_FK">
+          <End Role="LOL" Type="Self.LOL" Multiplicity="1" />
+          <End Role="LOLDestinatario" Type="Self.LOLDestinatario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="LOLDestinatario">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NPCELOLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOL" EntityType="Self.LOL" />
+          <EntitySet Name="LOLDestinatario" EntityType="Self.LOLDestinatario" />
+          <EntitySet Name="LOLDocumenti" EntityType="Self.LOLDocumenti" />
+          <AssociationSet Name="FK_LOL_LOL" Association="Self.FK_LOL_LOL">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOL1" EntitySet="LOL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOLDocumenti_LOL" Association="Self.FK_LOLDocumenti_LOL">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOLDocumenti" EntitySet="LOLDocumenti" />
+          </AssociationSet>
+          <AssociationSet Name="LOL_LOLDestinatario_FK" Association="Self.LOL_LOLDestinatario_FK">
+            <End Role="LOL" EntitySet="LOL" />
+            <End Role="LOLDestinatario" EntitySet="LOLDestinatario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NPCELOLModelStoreContainer" CdmEntityContainer="NPCELOLEntities">
+          <EntitySetMapping Name="LOL">
+            <EntityTypeMapping TypeName="NPCELOLModel.LOL">
+              <MappingFragment StoreEntitySet="LOL">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="GuidUtente" ColumnName="GuidUtente" />
+                <ScalarProperty Name="IdStatoLavorazione" ColumnName="IdStatoLavorazione" />
+                <ScalarProperty Name="IdDCS" ColumnName="IdDCS" />
+                <ScalarProperty Name="MessageDCS" ColumnName="MessageDCS" />
+                <ScalarProperty Name="NumeroDestinatari" ColumnName="NumeroDestinatari" />
+                <ScalarProperty Name="DataLettera" ColumnName="DataLettera" />
+                <ScalarProperty Name="UriDCS" ColumnName="UriDCS" />
+                <ScalarProperty Name="InStampa" ColumnName="InStampa" />
+                <ScalarProperty Name="ForzaDestinazioniValide" ColumnName="ForzaDestinazioniValide" />
+                <ScalarProperty Name="Scadenza" ColumnName="Scadenza" />
+                <ScalarProperty Name="UriLogo" ColumnName="UriLogo" />
+                <ScalarProperty Name="ClosingLettera" ColumnName="ClosingLettera" />
+                <ScalarProperty Name="ClosingCover" ColumnName="ClosingCover" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="DocPrezzabile" ColumnName="DocPrezzabile" />
+                <ScalarProperty Name="Estero" ColumnName="Estero" />
+                <ScalarProperty Name="DocStampabile" ColumnName="DocStampabile" />
+                <ScalarProperty Name="Hash_MD5" ColumnName="Hash_MD5" />
+                <ScalarProperty Name="CodiceNazione" ColumnName="CodiceNazione" />
+                <ScalarProperty Name="IdSublotto" ColumnName="IdSublotto" />
+                <ScalarProperty Name="IdRendicontazione" ColumnName="IdRendicontazione" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="RichiestaTracciatura" ColumnName="RichiestaTracciatura" />
+                <ScalarProperty Name="PrezzaturaSincrona" ColumnName="PrezzaturaSincrona" />
+                <ScalarProperty Name="PrezzaturaSincronaSuccess" ColumnName="PrezzaturaSincronaSuccess" />
+                <ScalarProperty Name="IdCover" ColumnName="IdCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOLDestinatario">
+            <EntityTypeMapping TypeName="NPCELOLModel.LOLDestinatario">
+              <MappingFragment StoreEntitySet="LOLDestinatario">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="IdLettera" ColumnName="IdLettera" />
+                <ScalarProperty Name="IdDestinatario" ColumnName="IdDestinatario" />
+                <ScalarProperty Name="NumeroDestinatarioCorrente" ColumnName="NumeroDestinatarioCorrente" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ComplementoNominativo" ColumnName="ComplementoNominativo" />
+                <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+                <ScalarProperty Name="DUG" ColumnName="DUG" />
+                <ScalarProperty Name="Toponimo" ColumnName="Toponimo" />
+                <ScalarProperty Name="NumeroCivico" ColumnName="NumeroCivico" />
+                <ScalarProperty Name="Esponente" ColumnName="Esponente" />
+                <ScalarProperty Name="ComplementoIndirizzo" ColumnName="ComplementoIndirizzo" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="Frazione" ColumnName="Frazione" />
+                <ScalarProperty Name="Citta" ColumnName="Citta" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="TipoIndirizzo" ColumnName="TipoIndirizzo" />
+                <ScalarProperty Name="CasellaPostale" ColumnName="CasellaPostale" />
+                <ScalarProperty Name="UfficioPostale" ColumnName="UfficioPostale" />
+                <ScalarProperty Name="ProtocolloMittente" ColumnName="ProtocolloMittente" />
+                <ScalarProperty Name="TestoLibero" ColumnName="TestoLibero" />
+                <ScalarProperty Name="CodiceTracciatura" ColumnName="CodiceTracciatura" />
+                <ScalarProperty Name="DataAccettazione" ColumnName="DataAccettazione" />
+                <ScalarProperty Name="Codice2DCOMM" ColumnName="Codice2DCOMM" />
+                <ScalarProperty Name="StatoArchiviazione" ColumnName="StatoArchiviazione" />
+                <ScalarProperty Name="DataStatoArchiviazione" ColumnName="DataStatoArchiviazione" />
+                <ScalarProperty Name="RichiesteDocumenti" ColumnName="RichiesteDocumenti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOLDocumenti">
+            <EntityTypeMapping TypeName="NPCELOLModel.LOLDocumenti">
+              <MappingFragment StoreEntitySet="LOLDocumenti">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="IdPosizione" ColumnName="IdPosizione" />
+                <ScalarProperty Name="Uri" ColumnName="Uri" />
+                <ScalarProperty Name="Hash_MD5" ColumnName="Hash_MD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

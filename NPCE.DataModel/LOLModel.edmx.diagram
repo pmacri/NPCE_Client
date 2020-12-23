@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9b8ac4563fc64a0db35f5b87adb1c758" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="NPCELOLModel.LOL" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NPCELOLModel.LOLDestinatario" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NPCELOLModel.LOLDocumenti" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="NPCELOLModel.FK_LOL_LOL" ManuallyRouted="false" />
+        <AssociationConnector Association="NPCELOLModel.FK_LOLDocumenti_LOL" ManuallyRouted="false" />
+        <AssociationConnector Association="NPCELOLModel.LOL_LOLDestinatario_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -45,8 +45,9 @@ namespace NPCE_Client.Test
                 sendersystem = "H2H",
                 smuser = "nello.citta.npce",
                 contracttype = "PosteWeb",
-                usertype = "B",
-                LolUri = "http://10.60.19.13/LOLGC/LolService.svc",
+                usertype = "B",                
+                //LolUri = "http://10.60.19.13/LOLGC/LolService.svc",
+                LolUri = "http://10.60.20.52/LOLGC/LolService.svc",
                 Username = "rete\\mic32nv",
                 Password = "Passw0rd"
             };

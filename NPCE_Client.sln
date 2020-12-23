@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE.Library", "NPCE.Librar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPCE_Client.Test", "NPCE_Client.Test\NPCE_Client.Test.csproj", "{D76A98F4-3515-406D-A933-073A3873442C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE.DataModel", "NPCE.DataModel\NPCE.DataModel.csproj", "{ADF5CEEF-D907-4C33-9F04-195C31CE6027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPCE_Client.UnitTest", "NPCE_Client.UnitTest\NPCE_Client.UnitTest.csproj", "{D6E54F91-6A6B-47B8-82CE-1007BB5989B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{D76A98F4-3515-406D-A933-073A3873442C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D76A98F4-3515-406D-A933-073A3873442C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D76A98F4-3515-406D-A933-073A3873442C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF5CEEF-D907-4C33-9F04-195C31CE6027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF5CEEF-D907-4C33-9F04-195C31CE6027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF5CEEF-D907-4C33-9F04-195C31CE6027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF5CEEF-D907-4C33-9F04-195C31CE6027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E54F91-6A6B-47B8-82CE-1007BB5989B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E54F91-6A6B-47B8-82CE-1007BB5989B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E54F91-6A6B-47B8-82CE-1007BB5989B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E54F91-6A6B-47B8-82CE-1007BB5989B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

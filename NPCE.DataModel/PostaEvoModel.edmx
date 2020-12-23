@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PostaEvoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Richieste">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="InErogazione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AutoConferma" Type="bit" Nullable="false" />
+          <Property Name="Prodotto" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="DataInvio" Type="datetime" Nullable="false" />
+          <Property Name="DataAccettazione" Type="datetime" />
+          <Property Name="NumeroDestinatari" Type="int" />
+          <Property Name="RicevutaRitorno" Type="bit" />
+          <Property Name="StatoCorrente" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DataStatoCorrente" Type="datetime" Nullable="false" />
+          <Property Name="IdOmologazione" Type="tinyint" />
+          <Property Name="InErogazione" Type="bit" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ConversionMessage" Type="varchar" MaxLength="200" />
+          <Property Name="CodiceContratto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ConversionURI" Type="varchar" MaxLength="500" />
+          <Property Name="NumFogli" Type="int" />
+          <Property Name="ChargingMessage" Type="varchar" MaxLength="200" />
+          <Property Name="CIG" Type="varchar" MaxLength="100" />
+          <Property Name="DataConferma" Type="datetime" />
+          <Property Name="StatoConsumo" Type="varchar" MaxLength="50" />
+          <Property Name="DataTracciatura" Type="datetime" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="HashMD5" Type="varchar" MaxLength="40" />
+          <Property Name="BollettiniConversion" Type="xml" />
+          <Property Name="CIG_Service" Type="varchar" MaxLength="100" />
+          <Property Name="CodiceFiscaleCliente" Type="varchar" MaxLength="16" />
+          <Property Name="PartitaIvaCliente" Type="varchar" MaxLength="16" />
+          <Property Name="RagioneSocialeCliente" Type="varchar" MaxLength="200" />
+          <Property Name="IdLotto" Type="uniqueidentifier" />
+          <Property Name="IdentificativoInvioNelLotto" Type="int" />
+          <Property Name="IdCover" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Richieste_Richieste">
+          <End Role="Richieste" Type="Self.Richieste" Multiplicity="1" />
+          <End Role="Richieste1" Type="Self.Richieste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Richieste">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Principal>
+            <Dependent Role="Richieste1">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PostaEvoModelStoreContainer">
+          <EntitySet Name="Richieste" EntityType="Self.Richieste" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Richieste_Richieste" Association="Self.FK_Richieste_Richieste">
+            <End Role="Richieste" EntitySet="Richieste" />
+            <End Role="Richieste1" EntitySet="Richieste" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PostaEvoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Richieste">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="InErogazione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="AutoConferma" Type="Boolean" Nullable="false" />
+          <Property Name="Prodotto" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DataInvio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataAccettazione" Type="DateTime" Precision="3" />
+          <Property Name="NumeroDestinatari" Type="Int32" />
+          <Property Name="RicevutaRitorno" Type="Boolean" />
+          <Property Name="StatoCorrente" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DataStatoCorrente" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdOmologazione" Type="Byte" />
+          <Property Name="InErogazione" Type="Boolean" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ConversionMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceContratto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConversionURI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NumFogli" Type="Int32" />
+          <Property Name="ChargingMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CIG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DataConferma" Type="DateTime" Precision="3" />
+          <Property Name="StatoConsumo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataTracciatura" Type="DateTime" Precision="3" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="HashMD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="BollettiniConversion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CIG_Service" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceFiscaleCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PartitaIvaCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="RagioneSocialeCliente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdLotto" Type="Guid" />
+          <Property Name="IdentificativoInvioNelLotto" Type="Int32" />
+          <Property Name="IdCover" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Richieste1" Relationship="Self.FK_Richieste_Richieste" FromRole="Richieste" ToRole="Richieste1" />
+          <NavigationProperty Name="Richieste2" Relationship="Self.FK_Richieste_Richieste" FromRole="Richieste1" ToRole="Richieste" />
+        </EntityType>
+        <Association Name="FK_Richieste_Richieste">
+          <End Role="Richieste" Type="Self.Richieste" Multiplicity="1" />
+          <End Role="Richieste1" Type="Self.Richieste" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Richieste">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Principal>
+            <Dependent Role="Richieste1">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PostaEvoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Richieste" EntityType="Self.Richieste" />
+          <AssociationSet Name="FK_Richieste_Richieste" Association="Self.FK_Richieste_Richieste">
+            <End Role="Richieste" EntitySet="Richieste" />
+            <End Role="Richieste1" EntitySet="Richieste" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PostaEvoModelStoreContainer" CdmEntityContainer="PostaEvoEntities">
+          <EntitySetMapping Name="Richieste">
+            <EntityTypeMapping TypeName="PostaEvoModel.Richieste">
+              <MappingFragment StoreEntitySet="Richieste">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="AutoConferma" ColumnName="AutoConferma" />
+                <ScalarProperty Name="Prodotto" ColumnName="Prodotto" />
+                <ScalarProperty Name="DataInvio" ColumnName="DataInvio" />
+                <ScalarProperty Name="DataAccettazione" ColumnName="DataAccettazione" />
+                <ScalarProperty Name="NumeroDestinatari" ColumnName="NumeroDestinatari" />
+                <ScalarProperty Name="RicevutaRitorno" ColumnName="RicevutaRitorno" />
+                <ScalarProperty Name="StatoCorrente" ColumnName="StatoCorrente" />
+                <ScalarProperty Name="DataStatoCorrente" ColumnName="DataStatoCorrente" />
+                <ScalarProperty Name="IdOmologazione" ColumnName="IdOmologazione" />
+                <ScalarProperty Name="InErogazione" ColumnName="InErogazione" />
+                <ScalarProperty Name="ConversionMessage" ColumnName="ConversionMessage" />
+                <ScalarProperty Name="CodiceContratto" ColumnName="CodiceContratto" />
+                <ScalarProperty Name="ConversionURI" ColumnName="ConversionURI" />
+                <ScalarProperty Name="NumFogli" ColumnName="NumFogli" />
+                <ScalarProperty Name="ChargingMessage" ColumnName="ChargingMessage" />
+                <ScalarProperty Name="CIG" ColumnName="CIG" />
+                <ScalarProperty Name="DataConferma" ColumnName="DataConferma" />
+                <ScalarProperty Name="StatoConsumo" ColumnName="StatoConsumo" />
+                <ScalarProperty Name="DataTracciatura" ColumnName="DataTracciatura" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="HashMD5" ColumnName="HashMD5" />
+                <ScalarProperty Name="BollettiniConversion" ColumnName="BollettiniConversion" />
+                <ScalarProperty Name="CIG_Service" ColumnName="CIG_Service" />
+                <ScalarProperty Name="CodiceFiscaleCliente" ColumnName="CodiceFiscaleCliente" />
+                <ScalarProperty Name="PartitaIvaCliente" ColumnName="PartitaIvaCliente" />
+                <ScalarProperty Name="RagioneSocialeCliente" ColumnName="RagioneSocialeCliente" />
+                <ScalarProperty Name="IdLotto" ColumnName="IdLotto" />
+                <ScalarProperty Name="IdentificativoInvioNelLotto" ColumnName="IdentificativoInvioNelLotto" />
+                <ScalarProperty Name="IdCover" ColumnName="IdCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

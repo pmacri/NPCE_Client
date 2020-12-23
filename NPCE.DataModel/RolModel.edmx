@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NPCEROLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvvisiPagamentoPA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DenominazioneEnte" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CFEnte" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Settore" Type="nvarchar" MaxLength="50" />
+          <Property Name="Destinatario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Importo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Scadenza" Type="date" Nullable="false" />
+          <Property Name="Cbill" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodiceAvviso" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCPostale" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumeroRate" Type="smallint" />
+          <Property Name="Data" Type="xml" />
+        </EntityType>
+        <EntityType Name="Bollettino">
+          <Key>
+            <PropertyRef Name="IdBollettino" />
+          </Key>
+          <Property Name="IdBollettino" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Pagina" Type="int" Nullable="false" />
+          <Property Name="Codice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logo" Type="bit" Nullable="false" />
+          <Property Name="NumeroContoCorrente" Type="varchar" MaxLength="12" />
+          <Property Name="IntestatoA" Type="varchar(max)" />
+          <Property Name="FormatoStampa" Type="varchar" MaxLength="3" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="AdditionalInfo" Type="varchar(max)" />
+          <Property Name="NumeroAutorizzazioneStampaInProprio" Type="varchar(max)" />
+          <Property Name="IBAN" Type="varchar" MaxLength="27" />
+          <Property Name="Eseguitoda" Type="xml" />
+          <Property Name="Importo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Causale" Type="varchar" MaxLength="100" />
+          <Property Name="CodiceCliente" Type="varchar" MaxLength="16" />
+          <Property Name="Xml" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cover">
+          <Key>
+            <PropertyRef Name="IdCover" />
+          </Key>
+          <Property Name="IdCover" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdStatoCover" Type="int" />
+          <Property Name="Denominazione" Type="varchar" MaxLength="100" />
+          <Property Name="CodiceContratto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="160" Nullable="false" />
+          <Property Name="ServizioNpce" Type="varchar" MaxLength="20" />
+          <Property Name="HeaderImage" Type="varbinary(max)" />
+          <Property Name="HeaderText" Type="varchar(max)" />
+          <Property Name="HeaderXHTML" Type="varchar(max)" />
+          <Property Name="LogoMittente" Type="varbinary(max)" />
+          <Property Name="CampoLiberoHeaderImage" Type="varbinary(max)" />
+          <Property Name="CampoLiberoHeaderText" Type="varchar(max)" />
+          <Property Name="CampoLiberoHeaderXHTML" Type="varchar(max)" />
+          <Property Name="BodyImage" Type="varbinary(max)" />
+          <Property Name="BodyText" Type="varchar(max)" />
+          <Property Name="BodyXHTML" Type="varchar(max)" />
+          <Property Name="FooterImage" Type="varbinary(max)" />
+          <Property Name="FooterText" Type="varchar(max)" />
+          <Property Name="FooterXHTML" Type="varchar(max)" />
+          <Property Name="CampoLiberoLetteraImage" Type="varbinary(max)" />
+          <Property Name="CampoLiberoLetteraText" Type="varchar(max)" />
+          <Property Name="CampoLiberoLetteraXHTML" Type="varchar(max)" />
+          <Property Name="FooterStandard" Type="bit" />
+          <Property Name="ConversionURI" Type="varchar" MaxLength="500" />
+          <Property Name="ConversionMessage" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GuidUtente" Type="varchar" MaxLength="50" />
+          <Property Name="IdDCS" Type="varchar" MaxLength="50" />
+          <Property Name="MessageDCS" Type="varchar" MaxLength="200" />
+          <Property Name="IdStatoLavorazione" Type="char" MaxLength="1" />
+          <Property Name="NumeroDestinatari" Type="int" />
+          <Property Name="DataRaccomandata" Type="datetime" />
+          <Property Name="UriDCS" Type="varchar" MaxLength="500" />
+          <Property Name="InStampa" Type="bit" />
+          <Property Name="ForzaDestinazioniValide" Type="bit" />
+          <Property Name="RicevutaRitorno" Type="bit" />
+          <Property Name="Scadenza" Type="bit" />
+          <Property Name="DocStampabile" Type="bit" />
+          <Property Name="UriLogo" Type="varchar" MaxLength="500" />
+          <Property Name="ClosingLettera" Type="xml" />
+          <Property Name="ClosingCover" Type="varchar" MaxLength="200" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="DocPrezzabile" Type="bit" />
+          <Property Name="Estero" Type="bit" />
+          <Property Name="Hash_MD5" Type="varchar" MaxLength="40" />
+          <Property Name="CodiceNazione" Type="varchar" MaxLength="40" />
+          <Property Name="IdSublotto" Type="bigint" />
+          <Property Name="IdRendicontazione" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrezzaturaSincrona" Type="bit" Nullable="false" />
+          <Property Name="PrezzaturaSincronaSuccess" Type="bit" Nullable="false" />
+          <Property Name="IdCover" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ROLDCSResponse">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DCSResponse" Type="xml" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLDestinatarioConversione">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdRaccomandata" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdRaccomandata" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Uri" Type="varchar" MaxLength="500" />
+          <Property Name="HashMD5" Type="varchar" MaxLength="40" />
+          <Property Name="Size" Type="int" />
+          <Property Name="Message" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ROLDocumenti">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdPosizione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IdPosizione" Type="int" Nullable="false" />
+          <Property Name="Uri" Type="varchar" MaxLength="250" />
+          <Property Name="Hash_MD5" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="ROLOpzioni">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inserto" Type="varchar" MaxLength="50" />
+          <Property Name="InserisciMittenteInserto" Type="bit" />
+          <Property Name="Archiviazione" Type="bit" />
+          <Property Name="FirmaElettronica" Type="bit" />
+          <Property Name="DPM" Type="bit" />
+          <Property Name="SecurPaper" Type="bit" />
+          <Property Name="InserisciMittente" Type="bit" />
+          <Property Name="DataStampa" Type="datetime" />
+          <Property Name="TipoArchiviazione" Type="smallint" Nullable="false" />
+          <Property Name="AnniArchiviazione" Type="smallint" />
+        </EntityType>
+        <EntityType Name="ROLOpzioniAggiuntiveStampa">
+          <Key>
+            <PropertyRef Name="IdOAS" />
+          </Key>
+          <Property Name="IdOAS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLRicevuta">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cognome" Type="varchar" MaxLength="50" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" />
+          <Property Name="ComplementoNominativo" Type="varchar" MaxLength="50" />
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+          <Property Name="DUG" Type="varchar" MaxLength="50" />
+          <Property Name="Toponimo" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroCivico" Type="varchar" MaxLength="5" />
+          <Property Name="Esponente" Type="varchar" MaxLength="10" />
+          <Property Name="ComplementoIndirizzo" Type="varchar" MaxLength="50" />
+          <Property Name="CAP" Type="varchar" MaxLength="10" />
+          <Property Name="Frazione" Type="varchar" MaxLength="50" />
+          <Property Name="Citta" Type="varchar" MaxLength="50" />
+          <Property Name="Provincia" Type="char" MaxLength="2" />
+          <Property Name="Stato" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="18" />
+          <Property Name="Zona" Type="varchar" MaxLength="50" />
+          <Property Name="TipoIndirizzo" Type="varchar" MaxLength="20" />
+          <Property Name="CasellaPostale" Type="varchar" MaxLength="20" />
+          <Property Name="UfficioPostale" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AvvisiPagamentoPA_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="AvvisiPagamentoPA" Type="Self.AvvisiPagamentoPA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="AvvisiPagamentoPA">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLDocumenti_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLDocumenti" Type="Self.ROLDocumenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLDocumenti">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLOpzioni_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLOpzioni" Type="Self.ROLOpzioni" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLOpzioni">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLRicevuta_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLRicevuta" Type="Self.ROLRicevuta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLRicevuta">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROL_Cover_FK">
+          <End Role="Cover" Type="Self.Cover" Multiplicity="0..1" />
+          <End Role="ROL" Type="Self.ROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cover">
+              <PropertyRef Name="IdCover" />
+            </Principal>
+            <Dependent Role="ROL">
+              <PropertyRef Name="IdCover" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NPCEROLModelStoreContainer">
+          <EntitySet Name="AvvisiPagamentoPA" EntityType="Self.AvvisiPagamentoPA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bollettino" EntityType="Self.Bollettino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cover" EntityType="Self.Cover" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLDCSResponse" EntityType="Self.ROLDCSResponse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLDestinatarioConversione" EntityType="Self.ROLDestinatarioConversione" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLDocumenti" EntityType="Self.ROLDocumenti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLOpzioni" EntityType="Self.ROLOpzioni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLOpzioniAggiuntiveStampa" EntityType="Self.ROLOpzioniAggiuntiveStampa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLRicevuta" EntityType="Self.ROLRicevuta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AvvisiPagamentoPA_ROL" Association="Self.FK_AvvisiPagamentoPA_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="AvvisiPagamentoPA" EntitySet="AvvisiPagamentoPA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLDocumenti_ROL" Association="Self.FK_ROLDocumenti_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLDocumenti" EntitySet="ROLDocumenti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLOpzioni_ROL" Association="Self.FK_ROLOpzioni_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLOpzioni" EntitySet="ROLOpzioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLRicevuta_ROL" Association="Self.FK_ROLRicevuta_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLRicevuta" EntitySet="ROLRicevuta" />
+          </AssociationSet>
+          <AssociationSet Name="ROL_Cover_FK" Association="Self.ROL_Cover_FK">
+            <End Role="Cover" EntitySet="Cover" />
+            <End Role="ROL" EntitySet="ROL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NPCEROLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AvvisiPagamentoPA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="DenominazioneEnte" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CFEnte" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Settore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Destinatario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Importo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Scadenza" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cbill" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodiceAvviso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCPostale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroRate" Type="Int16" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_AvvisiPagamentoPA_ROL" FromRole="AvvisiPagamentoPA" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="Bollettino">
+          <Key>
+            <PropertyRef Name="IdBollettino" />
+          </Key>
+          <Property Name="IdBollettino" Type="Guid" Nullable="false" />
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="Pagina" Type="Int32" Nullable="false" />
+          <Property Name="Codice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logo" Type="Boolean" Nullable="false" />
+          <Property Name="NumeroContoCorrente" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="IntestatoA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FormatoStampa" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroAutorizzazioneStampaInProprio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IBAN" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="Eseguitoda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Causale" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Xml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cover">
+          <Key>
+            <PropertyRef Name="IdCover" />
+          </Key>
+          <Property Name="IdCover" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdStatoCover" Type="Int32" />
+          <Property Name="Denominazione" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceContratto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="160" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServizioNpce" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HeaderText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderXHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogoMittente" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CampoLiberoHeaderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CampoLiberoHeaderText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CampoLiberoHeaderXHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BodyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BodyXHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FooterImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FooterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FooterXHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CampoLiberoLetteraImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CampoLiberoLetteraText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CampoLiberoLetteraXHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FooterStandard" Type="Boolean" />
+          <Property Name="ConversionURI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ConversionMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ROL" Relationship="Self.ROL_Cover_FK" FromRole="Cover" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="GuidUtente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdDCS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessageDCS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdStatoLavorazione" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NumeroDestinatari" Type="Int32" />
+          <Property Name="DataRaccomandata" Type="DateTime" Precision="3" />
+          <Property Name="UriDCS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="InStampa" Type="Boolean" />
+          <Property Name="ForzaDestinazioniValide" Type="Boolean" />
+          <Property Name="RicevutaRitorno" Type="Boolean" />
+          <Property Name="Scadenza" Type="Boolean" />
+          <Property Name="DocStampabile" Type="Boolean" />
+          <Property Name="UriLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ClosingLettera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClosingCover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="DocPrezzabile" Type="Boolean" />
+          <Property Name="Estero" Type="Boolean" />
+          <Property Name="Hash_MD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceNazione" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="IdSublotto" Type="Int64" />
+          <Property Name="IdRendicontazione" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrezzaturaSincrona" Type="Boolean" Nullable="false" />
+          <Property Name="PrezzaturaSincronaSuccess" Type="Boolean" Nullable="false" />
+          <Property Name="IdCover" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AvvisiPagamentoPA" Relationship="Self.FK_AvvisiPagamentoPA_ROL" FromRole="ROL" ToRole="AvvisiPagamentoPA" />
+          <NavigationProperty Name="Cover" Relationship="Self.ROL_Cover_FK" FromRole="ROL" ToRole="Cover" />
+          <NavigationProperty Name="ROLDocumenti" Relationship="Self.FK_ROLDocumenti_ROL" FromRole="ROL" ToRole="ROLDocumenti" />
+          <NavigationProperty Name="ROLOpzioni" Relationship="Self.FK_ROLOpzioni_ROL" FromRole="ROL" ToRole="ROLOpzioni" />
+          <NavigationProperty Name="ROLRicevuta" Relationship="Self.FK_ROLRicevuta_ROL" FromRole="ROL" ToRole="ROLRicevuta" />
+        </EntityType>
+        <EntityType Name="ROLDCSResponse">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="DCSResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ROLDestinatarioConversione">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdRaccomandata" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="IdRaccomandata" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Uri" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HashMD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ROLDocumenti">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="IdPosizione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="IdPosizione" Type="Int32" Nullable="false" />
+          <Property Name="Uri" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Hash_MD5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_ROLDocumenti_ROL" FromRole="ROLDocumenti" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="ROLOpzioni">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="Inserto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InserisciMittenteInserto" Type="Boolean" />
+          <Property Name="Archiviazione" Type="Boolean" />
+          <Property Name="FirmaElettronica" Type="Boolean" />
+          <Property Name="DPM" Type="Boolean" />
+          <Property Name="SecurPaper" Type="Boolean" />
+          <Property Name="InserisciMittente" Type="Boolean" />
+          <Property Name="DataStampa" Type="DateTime" Precision="3" />
+          <Property Name="TipoArchiviazione" Type="Int16" Nullable="false" />
+          <Property Name="AnniArchiviazione" Type="Int16" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_ROLOpzioni_ROL" FromRole="ROLOpzioni" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="ROLOpzioniAggiuntiveStampa">
+          <Key>
+            <PropertyRef Name="IdOAS" />
+          </Key>
+          <Property Name="IdOAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLRicevuta">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="Cognome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComplementoNominativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DUG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Toponimo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCivico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Esponente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ComplementoIndirizzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Frazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Citta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Stato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIndirizzo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CasellaPostale" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UfficioPostale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_ROLRicevuta_ROL" FromRole="ROLRicevuta" ToRole="ROL" />
+        </EntityType>
+        <Association Name="FK_AvvisiPagamentoPA_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="AvvisiPagamentoPA" Type="Self.AvvisiPagamentoPA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="AvvisiPagamentoPA">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROL_Cover_FK">
+          <End Role="Cover" Type="Self.Cover" Multiplicity="0..1" />
+          <End Role="ROL" Type="Self.ROL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cover">
+              <PropertyRef Name="IdCover" />
+            </Principal>
+            <Dependent Role="ROL">
+              <PropertyRef Name="IdCover" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLDocumenti_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLDocumenti" Type="Self.ROLDocumenti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLDocumenti">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLOpzioni_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLOpzioni" Type="Self.ROLOpzioni" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLOpzioni">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLRicevuta_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="ROLRicevuta" Type="Self.ROLRicevuta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="IdRichiesta" />
+            </Principal>
+            <Dependent Role="ROLRicevuta">
+              <PropertyRef Name="IdRichiesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NPCEROLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AvvisiPagamentoPA" EntityType="Self.AvvisiPagamentoPA" />
+          <EntitySet Name="Bollettino" EntityType="Self.Bollettino" />
+          <EntitySet Name="Cover" EntityType="Self.Cover" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="ROLDCSResponse" EntityType="Self.ROLDCSResponse" />
+          <EntitySet Name="ROLDestinatarioConversione" EntityType="Self.ROLDestinatarioConversione" />
+          <EntitySet Name="ROLDocumenti" EntityType="Self.ROLDocumenti" />
+          <EntitySet Name="ROLOpzioni" EntityType="Self.ROLOpzioni" />
+          <EntitySet Name="ROLOpzioniAggiuntiveStampa" EntityType="Self.ROLOpzioniAggiuntiveStampa" />
+          <EntitySet Name="ROLRicevuta" EntityType="Self.ROLRicevuta" />
+          <AssociationSet Name="FK_AvvisiPagamentoPA_ROL" Association="Self.FK_AvvisiPagamentoPA_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="AvvisiPagamentoPA" EntitySet="AvvisiPagamentoPA" />
+          </AssociationSet>
+          <AssociationSet Name="ROL_Cover_FK" Association="Self.ROL_Cover_FK">
+            <End Role="Cover" EntitySet="Cover" />
+            <End Role="ROL" EntitySet="ROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLDocumenti_ROL" Association="Self.FK_ROLDocumenti_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLDocumenti" EntitySet="ROLDocumenti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLOpzioni_ROL" Association="Self.FK_ROLOpzioni_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLOpzioni" EntitySet="ROLOpzioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLRicevuta_ROL" Association="Self.FK_ROLRicevuta_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="ROLRicevuta" EntitySet="ROLRicevuta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NPCEROLModelStoreContainer" CdmEntityContainer="NPCEROLEntities">
+          <EntitySetMapping Name="AvvisiPagamentoPA">
+            <EntityTypeMapping TypeName="NPCEROLModel.AvvisiPagamentoPA">
+              <MappingFragment StoreEntitySet="AvvisiPagamentoPA">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="DenominazioneEnte" ColumnName="DenominazioneEnte" />
+                <ScalarProperty Name="CFEnte" ColumnName="CFEnte" />
+                <ScalarProperty Name="Settore" ColumnName="Settore" />
+                <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+                <ScalarProperty Name="Importo" ColumnName="Importo" />
+                <ScalarProperty Name="Scadenza" ColumnName="Scadenza" />
+                <ScalarProperty Name="Cbill" ColumnName="Cbill" />
+                <ScalarProperty Name="CodiceAvviso" ColumnName="CodiceAvviso" />
+                <ScalarProperty Name="CCPostale" ColumnName="CCPostale" />
+                <ScalarProperty Name="NumeroRate" ColumnName="NumeroRate" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bollettino">
+            <EntityTypeMapping TypeName="NPCEROLModel.Bollettino">
+              <MappingFragment StoreEntitySet="Bollettino">
+                <ScalarProperty Name="IdBollettino" ColumnName="IdBollettino" />
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="Pagina" ColumnName="Pagina" />
+                <ScalarProperty Name="Codice" ColumnName="Codice" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="NumeroContoCorrente" ColumnName="NumeroContoCorrente" />
+                <ScalarProperty Name="IntestatoA" ColumnName="IntestatoA" />
+                <ScalarProperty Name="FormatoStampa" ColumnName="FormatoStampa" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="NumeroAutorizzazioneStampaInProprio" ColumnName="NumeroAutorizzazioneStampaInProprio" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="Eseguitoda" ColumnName="Eseguitoda" />
+                <ScalarProperty Name="Importo" ColumnName="Importo" />
+                <ScalarProperty Name="Causale" ColumnName="Causale" />
+                <ScalarProperty Name="CodiceCliente" ColumnName="CodiceCliente" />
+                <ScalarProperty Name="Xml" ColumnName="Xml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cover">
+            <EntityTypeMapping TypeName="NPCEROLModel.Cover">
+              <MappingFragment StoreEntitySet="Cover">
+                <ScalarProperty Name="IdCover" ColumnName="IdCover" />
+                <ScalarProperty Name="IdStatoCover" ColumnName="IdStatoCover" />
+                <ScalarProperty Name="Denominazione" ColumnName="Denominazione" />
+                <ScalarProperty Name="CodiceContratto" ColumnName="CodiceContratto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ServizioNpce" ColumnName="ServizioNpce" />
+                <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="HeaderXHTML" ColumnName="HeaderXHTML" />
+                <ScalarProperty Name="LogoMittente" ColumnName="LogoMittente" />
+                <ScalarProperty Name="CampoLiberoHeaderImage" ColumnName="CampoLiberoHeaderImage" />
+                <ScalarProperty Name="CampoLiberoHeaderText" ColumnName="CampoLiberoHeaderText" />
+                <ScalarProperty Name="CampoLiberoHeaderXHTML" ColumnName="CampoLiberoHeaderXHTML" />
+                <ScalarProperty Name="BodyImage" ColumnName="BodyImage" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="BodyXHTML" ColumnName="BodyXHTML" />
+                <ScalarProperty Name="FooterImage" ColumnName="FooterImage" />
+                <ScalarProperty Name="FooterText" ColumnName="FooterText" />
+                <ScalarProperty Name="FooterXHTML" ColumnName="FooterXHTML" />
+                <ScalarProperty Name="CampoLiberoLetteraImage" ColumnName="CampoLiberoLetteraImage" />
+                <ScalarProperty Name="CampoLiberoLetteraText" ColumnName="CampoLiberoLetteraText" />
+                <ScalarProperty Name="CampoLiberoLetteraXHTML" ColumnName="CampoLiberoLetteraXHTML" />
+                <ScalarProperty Name="FooterStandard" ColumnName="FooterStandard" />
+                <ScalarProperty Name="ConversionURI" ColumnName="ConversionURI" />
+                <ScalarProperty Name="ConversionMessage" ColumnName="ConversionMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="GuidUtente" ColumnName="GuidUtente" />
+                <ScalarProperty Name="IdDCS" ColumnName="IdDCS" />
+                <ScalarProperty Name="MessageDCS" ColumnName="MessageDCS" />
+                <ScalarProperty Name="IdStatoLavorazione" ColumnName="IdStatoLavorazione" />
+                <ScalarProperty Name="NumeroDestinatari" ColumnName="NumeroDestinatari" />
+                <ScalarProperty Name="DataRaccomandata" ColumnName="DataRaccomandata" />
+                <ScalarProperty Name="UriDCS" ColumnName="UriDCS" />
+                <ScalarProperty Name="InStampa" ColumnName="InStampa" />
+                <ScalarProperty Name="ForzaDestinazioniValide" ColumnName="ForzaDestinazioniValide" />
+                <ScalarProperty Name="RicevutaRitorno" ColumnName="RicevutaRitorno" />
+                <ScalarProperty Name="Scadenza" ColumnName="Scadenza" />
+                <ScalarProperty Name="DocStampabile" ColumnName="DocStampabile" />
+                <ScalarProperty Name="UriLogo" ColumnName="UriLogo" />
+                <ScalarProperty Name="ClosingLettera" ColumnName="ClosingLettera" />
+                <ScalarProperty Name="ClosingCover" ColumnName="ClosingCover" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="DocPrezzabile" ColumnName="DocPrezzabile" />
+                <ScalarProperty Name="Estero" ColumnName="Estero" />
+                <ScalarProperty Name="Hash_MD5" ColumnName="Hash_MD5" />
+                <ScalarProperty Name="CodiceNazione" ColumnName="CodiceNazione" />
+                <ScalarProperty Name="IdSublotto" ColumnName="IdSublotto" />
+                <ScalarProperty Name="IdRendicontazione" ColumnName="IdRendicontazione" />
+                <ScalarProperty Name="PrezzaturaSincrona" ColumnName="PrezzaturaSincrona" />
+                <ScalarProperty Name="PrezzaturaSincronaSuccess" ColumnName="PrezzaturaSincronaSuccess" />
+                <ScalarProperty Name="IdCover" ColumnName="IdCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLDCSResponse">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLDCSResponse">
+              <MappingFragment StoreEntitySet="ROLDCSResponse">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="DCSResponse" ColumnName="DCSResponse" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLDestinatarioConversione">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLDestinatarioConversione">
+              <MappingFragment StoreEntitySet="ROLDestinatarioConversione">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="IdRaccomandata" ColumnName="IdRaccomandata" />
+                <ScalarProperty Name="Uri" ColumnName="Uri" />
+                <ScalarProperty Name="HashMD5" ColumnName="HashMD5" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLDocumenti">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLDocumenti">
+              <MappingFragment StoreEntitySet="ROLDocumenti">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="IdPosizione" ColumnName="IdPosizione" />
+                <ScalarProperty Name="Uri" ColumnName="Uri" />
+                <ScalarProperty Name="Hash_MD5" ColumnName="Hash_MD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLOpzioni">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLOpzioni">
+              <MappingFragment StoreEntitySet="ROLOpzioni">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="Inserto" ColumnName="Inserto" />
+                <ScalarProperty Name="InserisciMittenteInserto" ColumnName="InserisciMittenteInserto" />
+                <ScalarProperty Name="Archiviazione" ColumnName="Archiviazione" />
+                <ScalarProperty Name="FirmaElettronica" ColumnName="FirmaElettronica" />
+                <ScalarProperty Name="DPM" ColumnName="DPM" />
+                <ScalarProperty Name="SecurPaper" ColumnName="SecurPaper" />
+                <ScalarProperty Name="InserisciMittente" ColumnName="InserisciMittente" />
+                <ScalarProperty Name="DataStampa" ColumnName="DataStampa" />
+                <ScalarProperty Name="TipoArchiviazione" ColumnName="TipoArchiviazione" />
+                <ScalarProperty Name="AnniArchiviazione" ColumnName="AnniArchiviazione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLOpzioniAggiuntiveStampa">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLOpzioniAggiuntiveStampa">
+              <MappingFragment StoreEntitySet="ROLOpzioniAggiuntiveStampa">
+                <ScalarProperty Name="IdOAS" ColumnName="IdOAS" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLRicevuta">
+            <EntityTypeMapping TypeName="NPCEROLModel.ROLRicevuta">
+              <MappingFragment StoreEntitySet="ROLRicevuta">
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
+                <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ComplementoNominativo" ColumnName="ComplementoNominativo" />
+                <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+                <ScalarProperty Name="DUG" ColumnName="DUG" />
+                <ScalarProperty Name="Toponimo" ColumnName="Toponimo" />
+                <ScalarProperty Name="NumeroCivico" ColumnName="NumeroCivico" />
+                <ScalarProperty Name="Esponente" ColumnName="Esponente" />
+                <ScalarProperty Name="ComplementoIndirizzo" ColumnName="ComplementoIndirizzo" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="Frazione" ColumnName="Frazione" />
+                <ScalarProperty Name="Citta" ColumnName="Citta" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="TipoIndirizzo" ColumnName="TipoIndirizzo" />
+                <ScalarProperty Name="CasellaPostale" ColumnName="CasellaPostale" />
+                <ScalarProperty Name="UfficioPostale" ColumnName="UfficioPostale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

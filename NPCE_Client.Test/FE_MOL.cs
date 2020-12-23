@@ -14,12 +14,12 @@ using System.Xml.Serialization;
 namespace NPCE_Client.Test
 {
     [TestClass]
-    public class FE_MOL
+    public class FE_MOL : FEBase
     {
 
-        public FE_MOL()
+        public FE_MOL(): base(Environment.Collaudo)
         {
-            _ambiente = SetAmbiente(Environment.Collaudo);
+            
         }
 
         private static Ambiente _ambiente = null;
@@ -47,6 +47,13 @@ namespace NPCE_Client.Test
                 case Environment.Bts2016:
                     break;
                 case Environment.Produzione:
+                    result = new Ambiente
+                    {
+                        MolUri = "http://10.60.19.13/RaccomandataMarket/MOLService.svc",
+                        customerid = "3908983576",
+                        smuser = "HH800117",
+                        ContrattoMOL = "40000015982"
+                    };
                     break;
                 default:
                     break;
@@ -55,32 +62,33 @@ namespace NPCE_Client.Test
             return result;
         }
 
-        
         [TestMethod]
         public void Invio_MOL1_Autoconferma_False()
         {
-            var invio = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<InvioRequest>(Envelopes.InvioCompleto);
 
-            InvioRequest molSubmit = FEHelper.GetMolInvio(_ambiente);
+            InvioRequest molSubmit = GetMolInvio();
            
-            IRaccomandataMarketService _proxy = FEHelper.GetProxy<IRaccomandataMarketService>(_ambiente.MolUri, _ambiente.Username, _ambiente.Password);
+            IRaccomandataMarketService _proxy = GetProxy<IRaccomandataMarketService>(ambiente.MolUri, ambiente.Username, ambiente.Password);
 
             var fake = new OperationContextScope((IContextChannel)_proxy);
 
-            HttpRequestMessageProperty headers = FEHelper.GetHttpHeaders(_ambiente);
+            HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
 
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
 
             var invioResult = _proxy.Invio(molSubmit);
 
             Assert.IsTrue(invioResult.Esito == EsitoPostaEvo.OK);
+
+            string idRichiesta = invioResult.IdRichiesta;
+
+            Assert.IsTrue(CheckStatusPostaEvo(idRichiesta, "K", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(20)));
         }
 
         [TestMethod]
-        [Ignore]
         public void SerializeMolInvio()
         {
-            InvioRequest invio = FEHelper.GetMolInvio(_ambiente);
+            InvioRequest invio = GetMolInvio();
             var types = new Type[] { typeof(Bollettino896) };
             XmlSerializer serializer = new XmlSerializer(typeof(InvioRequest), types);
 

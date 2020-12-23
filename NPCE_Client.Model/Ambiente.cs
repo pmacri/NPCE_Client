@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace NPCE_Client.Model
@@ -37,6 +38,14 @@ namespace NPCE_Client.Model
         public bool IsPil { get; set; }
         public string ContrattoMOL { get; set; }
         public string ContrattoCOL { get; set; }
+
+        [NotMapped]
+        public string PostaEvoConnectionString { get; set; }
+
+        [NotMapped]
+        public string NomeProprioMol { get; set; }
+
+        public bool FromIAM { get; set; }
 
         public List<Servizio> Servizi { get; set; }
     }
