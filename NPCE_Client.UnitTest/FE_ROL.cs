@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPCE_Client.Test;
 using NPCE_Client.UnitTest.ServiceReference.LOL;
+using NPCE_Client.UnitTest.ServiceReference.ROL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,15 +13,15 @@ using Environment = NPCE_Client.Test.Environment;
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class FE_LOL : FEBase
+    public class FE_ROL : FEBase
     {
-        public FE_LOL() : base(Environment.Produzione)
+        public FE_ROL() : base(Environment.Produzione)
         {
 
         }
 
         [TestMethod]
-        public void Lol_RecuperaIdRichiesta_Massive()
+        public void Rol_RecuperaIdRichiesta_Massive()
         {
             Stopwatch sw = new Stopwatch();
 
@@ -68,13 +69,13 @@ namespace NPCE_Client.UnitTest
             Debug.WriteLine(sw.Elapsed.ToString());
             Debug.WriteLine(errorCount.ToString());
             Debug.WriteLine(lastError);
-             Debug.WriteLine(lastErrorTimeout);
+            Debug.WriteLine(lastErrorTimeout);
 
             // var invioLol = GetLolInvio(idRichiesta);
         }
 
         [TestMethod]
-        public void Lol_RecuperaIdRichiesta()
+        public void Rol_RecuperaIdRichiesta()
         {
             try
             {
@@ -90,18 +91,18 @@ namespace NPCE_Client.UnitTest
 
         [TestMethod]
 
-        public void Lol_Invio()
+        public void Rol_Invio()
         {
             string idRichiesta = RecuperaIdRichiesta();
             Assert.IsNotNull(idRichiesta);
 
-            var invioLol = GetLolInvio(idRichiesta);
-            var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
+            var invioRol = GetRolInvio(idRichiesta);
+            var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
             var fake = new OperationContextScope((IContextChannel)proxy);
             HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
 
-            var result = proxy.Invio(idRichiesta, "CLIENTE", invioLol);
+            var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
 
             Assert.AreEqual(result.CEResult.Type, "I");
         }
@@ -110,7 +111,7 @@ namespace NPCE_Client.UnitTest
         {
             try
             {
-                var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
+                var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
                 var fake = new OperationContextScope((IContextChannel)proxy);
                 HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
                 OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;

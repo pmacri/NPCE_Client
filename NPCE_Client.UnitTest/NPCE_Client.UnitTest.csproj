@@ -154,11 +154,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceReference.ROL\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Envelopes.cs" />
     <Compile Include="EnvironmentEnum.cs" />
     <Compile Include="FEBase.cs" />
     <Compile Include="FE_LOL.cs" />
     <Compile Include="FE_MOL.cs" />
+    <Compile Include="FE_ROL.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MOL_Pil.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -166,7 +172,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\ServiceReference.LOL\LolService.wsdl" />
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaOrdineResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -176,7 +187,25 @@
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.CancellaArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.DownloadMassivoArchiviazioneResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.GetStatoIdRichiestaResult.datasource">
@@ -206,6 +235,15 @@
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.PreConfermaResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaArResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaBollettiniInfoResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -218,6 +256,12 @@
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDestinatariResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaEnquiryResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -227,10 +271,64 @@
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaInfoResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaNumeriRaccomandataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaNumeriRaccomandataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaRicevutaAccettazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoSingolaArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ScambiaRichiestaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiPerDataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiPerIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiPerIDResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiPerNumeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiPerNumeroResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.StatoInviiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.UPUCountry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ValidaBollettiniResult.datasource">
@@ -248,6 +346,7 @@
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.ValorizzaSingleResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference.LOL\RolService.wsdl" />
     <None Include="Connected Services\ServiceReference.Mol\NPCE_Client.UnitTest.ServiceReference.Mol.AnnullaCoverResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -339,11 +438,187 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference.Mol\RaccomandataMarketService.wsdl" />
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.AnnullaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.AnnullaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.AnnullaOrdineResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.AnnullaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.AnnullaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.CancellaArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ConfermaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ConfermaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ConfermaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.CreaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.CreaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.DownloadMassivoArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.GetStatoIdRichiestaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.GetStatoOrdineResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.InvioDocResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.InvioResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.NascondiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.NomiUPUCountries.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.PostConfermaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.PreConfermaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.PreConfermaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaAnteprimaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaAnteprimaCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaArResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaBollettiniInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaBollettiniPAInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaDCSResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaDestinatariResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaDocumentoFinaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaDocumentoFinaleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaEnquiryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaIdRichiestaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaNumeriRaccomandataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaNumeriRaccomandataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaRicevutaAccettazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaServizioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaServizioResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaStatiCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaStatiCoverResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaStatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperaStatiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperoMassivoArchiviazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperoMassivoArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.RecuperoSingolaArchiviazioneResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ScambiaRichiestaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiPerDataResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiPerIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiPerIDResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiPerNumeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiPerNumeroResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.StatoInviiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.UPUCountry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ValidaBollettiniResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ValidaDestinatariResults.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ValorizzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ValorizzaResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\NPCE_Client.UnitTest.ServiceReference.ROL.ValorizzaSingleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.ROL\RolService.wsdl" />
     <None Include="Documenti\Docx_1_Pagina.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="WSDL\LolService.wsdl" />
+    <None Include="WSDL\RolService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCE.DataModel\NPCE.DataModel.csproj">
@@ -361,6 +636,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference.LOL\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference.Mol\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference.ROL\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference.LOL\configuration91.svcinfo" />
@@ -382,6 +658,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference.Mol\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.ROL\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.ROL\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.ROL\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
