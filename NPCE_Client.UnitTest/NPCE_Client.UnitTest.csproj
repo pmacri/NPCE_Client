@@ -47,6 +47,9 @@
     <Reference Include="ComunicazioniElettroniche.PostaEvo.Assembly.External">
       <HintPath>..\..\NPCE_WinClient\ComunicazioniElettroniche.PostaEvo.Assembly.External.dll</HintPath>
     </Reference>
+    <Reference Include="ComunicazioniElettroniche.ROL.Web">
+      <HintPath>..\..\..\..\..\..\Pasquale\Repos\npce\Shared\ComunicazioniElettroniche.ROL.Web.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -167,8 +170,8 @@
     <Compile Include="FE_ROL.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MOL_Pil.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PIL_ROL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

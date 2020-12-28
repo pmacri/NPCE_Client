@@ -1,9 +1,6 @@
 ﻿using ComunicazioniElettroniche.Common.DataContracts;
 using ComunicazioniElettroniche.PostaEvo.Assembly.External.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NPCE_Client.Test
 {
@@ -11,7 +8,7 @@ namespace NPCE_Client.Test
     public class MOL_Pil
     {
 
-        Environment env = Environment.Collaudo;
+        Environment env = Environment.Staging;
 
         private string xmlBase = @"
 <PostaEvoSubmit TipoProdotto='MOL1' IdRichiesta='%GUID%' AutoConferma='false' CodiceContratto='00000000040000015982' xmlns='http://ComunicazioniElettroniche.PostaEvo.Schema'>
@@ -86,11 +83,11 @@ namespace NPCE_Client.Test
             postaEvoRequest.Destinatari[0].RitiroDigitaleSpecified = true;
             postaEvoRequest.Destinatari[0].Nominativo.CodiceFiscale = "xxxxxxxxxxxxxxxx";
 
-            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+            postaEvoRequest.Documenti[0].URI = Helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = Helper.Config.HashMD5Document;
 
-            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+            postaEvoRequest.Documenti[1].URI = Helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = Helper.Config.HashMD5Cov;
 
             var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
@@ -113,11 +110,11 @@ namespace NPCE_Client.Test
 
             PostaEvoResponse postaEvoResponse;
 
-            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+            postaEvoRequest.Documenti[0].URI = Helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = Helper.Config.HashMD5Document;
 
-            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+            postaEvoRequest.Documenti[1].URI = Helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = Helper.Config.HashMD5Cov;
 
             var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
@@ -141,11 +138,11 @@ namespace NPCE_Client.Test
 
             PostaEvoResponse postaEvoResponse;
 
-            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+            postaEvoRequest.Documenti[0].URI = Helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = Helper.Config.HashMD5Document;
 
-            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+            postaEvoRequest.Documenti[1].URI = Helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = Helper.Config.HashMD5Cov;
 
             var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
@@ -174,11 +171,11 @@ namespace NPCE_Client.Test
 
             PostaEvoResponse postaEvoResponse;
 
-            postaEvoRequest.Documenti[0].URI = helper.Config.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = helper.Config.HashMD5Document;
+            postaEvoRequest.Documenti[0].URI = Helper.Config.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = Helper.Config.HashMD5Document;
 
-            postaEvoRequest.Documenti[1].URI = helper.Config.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = helper.Config.HashMD5Cov;
+            postaEvoRequest.Documenti[1].URI = Helper.Config.PathCov;
+            postaEvoRequest.Documenti[1].HashMD5 = Helper.Config.HashMD5Cov;
 
             var result = helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);

@@ -59,6 +59,17 @@ namespace NPCE_Client.Test
                     };
                     break;
                 case Environment.Staging:
+                    result = new Ambiente
+                    {
+                        MolUri = "http://10.60.17.155/RaccomandataMarket/MOLService.svc",
+                        LolUri = "http://10.60.17.155/LOLGC/LolService.svc",
+                        RolUri = "http://10.60.17.155/ROLGC/RolService.svc",
+                        customerid = "3909990431",
+                        smuser = "H2HSTG06",
+                        ContrattoMOL = "00000000040000017267",
+                        PostaEvoConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        NomeProprioMol = "DITTA MARKET"
+                    };
                     break;
                 case Environment.Bts2016:
                     break;
@@ -110,11 +121,11 @@ namespace NPCE_Client.Test
 
             invio.MarketOnline.Mittente = new UnitTest.ServiceReference.Mol.Mittente
             {
-                Cap = "05100",
+                Cap = "00144",
                 ComplementoIndirizzo = "Complemento Indirizzo",
                 ComplementoNominativo = "ComplementoNominativo",
                 Comune = "ROMA",
-                Indirizzo = "Viale Europa 187",
+                Indirizzo = "Viale Europa",
                 Nazione = "ITALIA",
                 Nominativo = "DITTA MARKET",
                 Provincia = "RM"
@@ -125,11 +136,11 @@ namespace NPCE_Client.Test
 
             var destinatario = new UnitTest.ServiceReference.Mol.Destinatario
             {
-                Cap = "05100",
+                Cap = "00144",
                 ComplementoIndirizzo = "Complemento Indirizzo",
                 ComplementoNominativo = "ComplementoNominativo",
                 Comune = "ROMA",
-                Indirizzo = "Viale Europa 187",
+                Indirizzo = "Viale Europa",
                 Nazione = "ITALIA",
                 Nominativo = "Nominativo",
                 Provincia = "RM"
@@ -299,8 +310,6 @@ namespace NPCE_Client.Test
             }
             return result;
         }
-
-
 
     }
 }

@@ -13,9 +13,35 @@ namespace NPCE_Client.Test
     public class FE_MOL : FEBase
     {
 
-        public FE_MOL(): base(Environment.Collaudo)
+        public FE_MOL(): base(Environment.Staging)
         {
             
+        }
+
+        [TestMethod]
+        public void Invio_MOL1_Autoconferma_True()
+        {
+
+            InvioRequest molSubmit = GetMolInvio();
+
+            molSubmit.MarketOnline.AutoConferma = true;
+
+            IRaccomandataMarketService _proxy = GetProxy<IRaccomandataMarketService>(ambiente.MolUri);
+
+            var fake = new OperationContextScope((IContextChannel)_proxy);
+
+            HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
+
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+
+            molSubmit.MarketOnline.Bollettini = null;
+
+            var invioResult = _proxy.Invio(molSubmit);
+
+            Assert.IsTrue(invioResult.Esito == EsitoPostaEvo.OK);
+
+            string idRichiesta = invioResult.IdRichiesta;
+
         }
 
         [TestMethod]
@@ -33,6 +59,8 @@ namespace NPCE_Client.Test
             HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
 
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+
+            molSubmit.MarketOnline.Bollettini = null;
 
             var invioResult = _proxy.Invio(molSubmit);
 

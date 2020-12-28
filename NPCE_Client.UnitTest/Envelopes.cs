@@ -81,7 +81,7 @@ namespace NPCE_Client.Test
 ";
             }
         }
-        public static string InvioCompleto { get
+        public static string InvioMolCompleto { get
             {
                 return @"
       <InvioRequest xmlns:b='http://comunicazionielettroniche.posteitaliane.it/postaevo/data' xmlns:a='http://comunicazionielettroniche.posteitaliane.it/raccomandatamarket/data' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:i='http://www.w3.org/2001/XMLSchema-instance'>
@@ -242,6 +242,34 @@ namespace NPCE_Client.Test
   </Opzioni>
 </LOLSubmit>
 ";
+            }
+        }
+
+        public static string RolPil { get
+            {
+                return @"<RaccomandataSubmit PrezzaturaSincrona='false' IdRichiesta='%GUID%' NumeroDestinatari='1' ForzaInvioDestinazioniValide='false' RicevutaRitorno='false' Estero='false' DocStampabile='false' DocPrezzabile='false' HaBollettini='false' IdClienteRendicontazione='' xmlns='http://ComunicazioniElettroniche.ROL.Schema.InvioSubmitROL'>
+  <Documenti xmlns=''>
+    <Documento IdPosizione='1' Uri='\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\20201222\cbf9e831-4c22-4cbd-baed-75698d1b5de1.cov' FileHash='5DFECBF0C7AC5A766342CBDA60268645' />
+    <Documento IdPosizione='2' Uri='\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\20201222\ROL_cbf9e831-4c22-4cbd-baed-75698d1b5de1.tiff' FileHash='DF87217E2C181AE6674898DFF27E5A56' />
+  </Documenti>
+  <Mittente InviaStampa='false' xmlns=''>
+    <Nominativo InesitateDigitali='false' CodiceFiscaleResult='0' Cognome='COGNOME_MITTENTE' Nome='NOME_MITTENTE' ComplementoNominativo='ComplementoNominativo_mitt' ComplementoIndirizzo='ComplementoIndirizzo_mitt' CAP='00144' Citta='ROMA' Provincia='RM' Stato='ITALIA' TipoIndirizzo='NORMALE' ForzaDestinazione='false'>
+      <Indirizzo DUG='Viale' Toponimo='Europa' NumeroCivico='175' />
+    </Nominativo>
+  </Mittente>
+  <RaccomandataDestinatario IdRaccomandata='' NumeroDestinatarioCorrente='1' IdDestinatario='1' xmlns=''>
+    <Destinatario>
+      <Nominativo InesitateDigitali='false' CodiceFiscale='1234567891234567' CodiceFiscaleResult='0' Cognome='COGNOME_DESTINATARIO' Nome='NOME_DESTINATARIO' ComplementoNominativo='ComplementoNominativo_dest' ComplementoIndirizzo='ComplementoIndirizzo_dest' CAP='00144' Citta='ROMA' Provincia='RM' Stato='ITALIA' TipoIndirizzo='NORMALE' ForzaDestinazione='false'>
+        <Indirizzo DUG='Viale' Toponimo='Europa' NumeroCivico='190' Esponente='' />
+      </Nominativo>
+    </Destinatario>
+  </RaccomandataDestinatario>
+  <Opzioni Archiviazione='false' FirmaElettronica='false' DPM='false' SecurPaper='false' InserisciMittente='false' DataStampa='1900-01-01' NumeroPagine='0' FileSize='0' ArchiviazioneDocumenti='NESSUNA' xmlns=''>
+    <Inserti InserisciMittente='false' />
+    <OpzionidiStampa TipoStampa='BW' FronteRetro='false' PageSize='A0' />
+  </Opzioni>
+  <PagineBollettiniInfo NumeroBollettini='0' NumeroPubblicita='0' NumeroPagine='0' xmlns='' />
+</RaccomandataSubmit>";
             }
         }
 
