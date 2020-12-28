@@ -26,5 +26,6 @@ namespace NPCE.DataModel
         }
     
         public virtual DbSet<Richieste> Richieste { get; set; }
+        public virtual DbSet<Opzioni> Opzioni { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace NPCE_Client.Test
 
         }
 
-        public TResult PublishToBizTalk<T, V>(T request, CEHeader ceHeader, out V response) where V : class
+        public static TResult PublishToBizTalk<T, V>(T request, CEHeader ceHeader, string entryPointuri, out V response) where V : class
         {
             CE ce = new CE();
             ce.Header = ceHeader;
@@ -74,7 +74,7 @@ namespace NPCE_Client.Test
             BasicHttpBinding httpBinding = new BasicHttpBinding();
             httpBinding.MaxReceivedMessageSize = 64000000;
             httpBinding.SendTimeout = TimeSpan.FromMinutes(20);
-            EndpointAddress endpointAddress = new EndpointAddress(_config.UrlEntryPoint);
+            EndpointAddress endpointAddress = new EndpointAddress(entryPointuri);
 
 
             var client = new WsCEClient(httpBinding, endpointAddress);
@@ -107,16 +107,16 @@ namespace NPCE_Client.Test
             return ce.Result;
         }
 
-        public TResult PublishToBizTalk<T, V>(T request, out V response) where V : class
+        public static TResult PublishToBizTalk<T, V>(T request, string entryPointuri, out V response) where V : class
         {
             CE ce = new CE();
-            ce.Header = Helper.GetCeHeader();
-            ce.Body = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.SerializeToXmlElement(request);
+            ce.Header = GetCeHeader();
+            ce.Body = SerializationUtility.SerializeToXmlElement(request);
 
             BasicHttpBinding httpBinding = new BasicHttpBinding();
             httpBinding.MaxReceivedMessageSize = 64000000;
             httpBinding.SendTimeout = TimeSpan.FromMinutes(20);
-            EndpointAddress endpointAddress = new EndpointAddress(_config.UrlEntryPoint);
+            EndpointAddress endpointAddress = new EndpointAddress(entryPointuri);
 
 
             var client = new WsCEClient(httpBinding, endpointAddress);

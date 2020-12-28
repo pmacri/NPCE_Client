@@ -9,18 +9,13 @@ using System;
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class PIL_ROL
+    public class PIL_ROL: TestBase
     {
-        Test.Environment env = Test.Environment.Collaudo;
 
-        Helper helper ;
-
-        [TestInitialize]
-        public void testInit()
+        public PIL_ROL():  base(Test.Environment.Collaudo)
         {
-            helper = new Helper(new Configs(env));
-        }
 
+        }
 
 
         [TestMethod]
@@ -29,7 +24,6 @@ namespace NPCE_Client.UnitTest
             var guid = Guid.NewGuid();
             string xml = Envelopes.RolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
             var raccomandataSubmitRequest = Helper.GetRaccomandataSubmitFromXml(xml);
-            Helper helper = new Helper(new Configs(env));
             RaccomandataResponse invioresult;
             var ceHeader = Helper.GetCeHeader();
             ceHeader.SenderSystem = "H2H";
@@ -38,13 +32,13 @@ namespace NPCE_Client.UnitTest
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
 
-            raccomandataSubmitRequest.Documenti[0].Uri = Helper.Config.PathDocument;
-            raccomandataSubmitRequest.Documenti[0].FileHash = Helper.Config.HashMD5Document;
+            raccomandataSubmitRequest.Documenti[0].Uri = ambiente.PathDocument;
+            raccomandataSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Document;
 
-            raccomandataSubmitRequest.Documenti[1].Uri = Helper.Config.PathCov;
-            raccomandataSubmitRequest.Documenti[1].FileHash = Helper.Config.HashMD5Cov;
+            raccomandataSubmitRequest.Documenti[1].Uri = ambiente.PathCov;
+            raccomandataSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Cov;
 
-            var result = helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, out invioresult);
+            var result = Helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
             Assert.AreEqual(TResultResType.I, result.ResType);
         }
     }

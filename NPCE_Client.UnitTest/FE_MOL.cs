@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPCE_Client.Model;
+using NPCE_Client.Test;
 using NPCE_Client.UnitTest.ServiceReference.Mol;
 using System;
 using System.IO;
@@ -7,13 +8,13 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Xml.Serialization;
 
-namespace NPCE_Client.Test
+namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class FE_MOL : FEBase
+    public class FE_MOL : TestBase
     {
 
-        public FE_MOL(): base(Environment.Staging)
+        public FE_MOL(): base(Test.Environment.Collaudo)
         {
             
         }

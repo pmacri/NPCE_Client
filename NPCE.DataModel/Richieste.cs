@@ -47,5 +47,6 @@ namespace NPCE.DataModel
     
         public virtual Richieste Richieste1 { get; set; }
         public virtual Richieste Richieste2 { get; set; }
+        public virtual Opzioni Opzioni { get; set; }
     }
 }

@@ -83,6 +83,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LOLModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Opzioni.cs">
+      <DependentUpon>PostaEvoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PostaEvoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

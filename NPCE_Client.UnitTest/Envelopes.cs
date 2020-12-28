@@ -244,7 +244,6 @@ namespace NPCE_Client.Test
 ";
             }
         }
-
         public static string RolPil { get
             {
                 return @"<RaccomandataSubmit PrezzaturaSincrona='false' IdRichiesta='%GUID%' NumeroDestinatari='1' ForzaInvioDestinazioniValide='false' RicevutaRitorno='false' Estero='false' DocStampabile='false' DocPrezzabile='false' HaBollettini='false' IdClienteRendicontazione='' xmlns='http://ComunicazioniElettroniche.ROL.Schema.InvioSubmitROL'>
@@ -270,6 +269,66 @@ namespace NPCE_Client.Test
   </Opzioni>
   <PagineBollettiniInfo NumeroBollettini='0' NumeroPubblicita='0' NumeroPagine='0' xmlns='' />
 </RaccomandataSubmit>";
+            }
+        }
+
+        public static string PostaEvoBase { get
+            {
+
+                return @"
+<PostaEvoSubmit TipoProdotto='MOL1' IdRichiesta='%GUID%' AutoConferma='false' CodiceContratto='00000000040000015982' xmlns='http://ComunicazioniElettroniche.PostaEvo.Schema'>
+          <Destinatari xmlns=''>
+            <Destinatario>
+              <Nominativo>
+                <Nominativo>Rossi Paolo</Nominativo>
+              </Nominativo>
+              <Indirizzo>
+                <Indirizzo>Via dei ciclamini 180 </Indirizzo>
+              </Indirizzo>
+              <Destinazione>
+                <CAP>00144</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+              </Destinazione>
+            </Destinatario>
+          </Destinatari>
+          <Mittente xmlns=''>
+            <Nominativo>
+              <Nominativo>Rossi Paolo</Nominativo>
+            </Nominativo>
+            <Indirizzo>
+              <Indirizzo>Viadei ciclamini 180</Indirizzo>
+            </Indirizzo>
+            <Destinazione>
+              <CAP>00144</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+            </Destinazione>
+          </Mittente>
+          <Documenti xmlns=''>
+            <Documento>
+              <URI>\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\ROL_db56a17c-12b2-402a-ad51-9e309f895e79.doc</URI>
+              <HashMD5>AB8EF323B64C85C8DFCCCD4356E4FB9B</HashMD5>
+              <Estensione>doc</Estensione>
+            </Documento>
+           <Documento>
+              <URI>\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\ROL_276f67ac-9157-4feb-b8f2-0b89a742aad5_01.cov</URI>
+              <HashMD5>55EF669FDE954F6B74B218ECC5C91B5D</HashMD5>
+              <Estensione>cov</Estensione>
+            </Documento>
+          </Documenti>
+          <Opzioni xmlns=''>
+            <OpzioniStampa TipoColore='BW' FronteRetro='false'/>
+            <OpzioniServizio>
+              <ModalitaConsegna>S</ModalitaConsegna>
+              <AttestazioneConsegna>false</AttestazioneConsegna>
+              <SecondoTentativoRecapito>false</SecondoTentativoRecapito>
+              <TipoNomeProprio>false</TipoNomeProprio>
+              <ModalitaPricing>NAZ</ModalitaPricing>
+            </OpzioniServizio>
+          </Opzioni>
+        </PostaEvoSubmit>
+";
             }
         }
 

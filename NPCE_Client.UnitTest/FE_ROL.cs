@@ -13,7 +13,7 @@ using Environment = NPCE_Client.Test.Environment;
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class FE_ROL : FEBase
+    public class FE_ROL : TestBase
     {
         public FE_ROL() : base(Environment.ProduzioneIAM)
         {
@@ -35,7 +35,7 @@ namespace NPCE_Client.UnitTest
             string lastErrorTimeout = string.Empty;
 
             sw.Start();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
 
                 try

@@ -7,6 +7,8 @@
       <Diagram DiagramId="3f4f2cda1317473eab4da070aec008ec" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="PostaEvoModel.Richieste" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="PostaEvoModel.FK_Richieste_Richieste" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PostaEvoModel.Opzioni" Width="1.5" PointX="3" PointY="2.625" />
+        <AssociationConnector Association="PostaEvoModel.FK_Opzioni_Richieste" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

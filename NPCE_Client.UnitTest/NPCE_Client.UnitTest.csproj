@@ -146,6 +146,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ambiente.cs" />
     <Compile Include="Configs.cs" />
     <Compile Include="Connected Services\ServiceReference.LOL\Reference.cs">
       <AutoGen>True</AutoGen>

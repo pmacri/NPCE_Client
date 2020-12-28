@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PostaEvoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Opzioni">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="InErogazione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TipoColore" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FronteRetro" Type="bit" Nullable="false" />
+          <Property Name="ModalitaConsegna" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="AttestazioneConsegna" Type="bit" Nullable="false" />
+          <Property Name="SecondoTentativoRecapito" Type="bit" Nullable="false" />
+          <Property Name="AnniArchiviazione" Type="int" />
+          <Property Name="TipoNomeProprio" Type="bit" Nullable="false" />
+          <Property Name="InErogazione" Type="bit" Nullable="false" />
+          <Property Name="Nazionale" Type="bit" Nullable="false" />
+          <Property Name="ModalitaPricing" Type="varchar" MaxLength="4" />
+          <Property Name="TipoArchiviazione" Type="smallint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Richieste">
           <Key>
             <PropertyRef Name="IdRichiesta" />
@@ -41,6 +59,22 @@
           <Property Name="IdentificativoInvioNelLotto" Type="int" />
           <Property Name="IdCover" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_Opzioni_Richieste">
+          <End Role="Richieste" Type="Self.Richieste" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Opzioni" Type="Self.Opzioni" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Richieste">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Principal>
+            <Dependent Role="Opzioni">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Richieste_Richieste">
           <End Role="Richieste" Type="Self.Richieste" Multiplicity="1" />
           <End Role="Richieste1" Type="Self.Richieste" Multiplicity="0..1" />
@@ -56,7 +90,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PostaEvoModelStoreContainer">
+          <EntitySet Name="Opzioni" EntityType="Self.Opzioni" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Richieste" EntityType="Self.Richieste" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Opzioni_Richieste" Association="Self.FK_Opzioni_Richieste">
+            <End Role="Richieste" EntitySet="Richieste" />
+            <End Role="Opzioni" EntitySet="Opzioni" />
+          </AssociationSet>
           <AssociationSet Name="FK_Richieste_Richieste" Association="Self.FK_Richieste_Richieste">
             <End Role="Richieste" EntitySet="Richieste" />
             <End Role="Richieste1" EntitySet="Richieste" />
@@ -103,6 +142,7 @@
           <Property Name="IdCover" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Richieste1" Relationship="Self.FK_Richieste_Richieste" FromRole="Richieste" ToRole="Richieste1" />
           <NavigationProperty Name="Richieste2" Relationship="Self.FK_Richieste_Richieste" FromRole="Richieste1" ToRole="Richieste" />
+          <NavigationProperty Name="Opzioni" Relationship="PostaEvoModel.FK_Opzioni_Richieste" FromRole="Richieste" ToRole="Opzioni" />
         </EntityType>
         <Association Name="FK_Richieste_Richieste">
           <End Role="Richieste" Type="Self.Richieste" Multiplicity="1" />
@@ -124,7 +164,47 @@
             <End Role="Richieste" EntitySet="Richieste" />
             <End Role="Richieste1" EntitySet="Richieste" />
           </AssociationSet>
+          <EntitySet Name="Opzioni" EntityType="PostaEvoModel.Opzioni" />
+          <AssociationSet Name="FK_Opzioni_Richieste" Association="PostaEvoModel.FK_Opzioni_Richieste">
+            <End Role="Richieste" EntitySet="Richieste" />
+            <End Role="Opzioni" EntitySet="Opzioni" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Opzioni">
+          <Key>
+            <PropertyRef Name="IdRichiesta" />
+            <PropertyRef Name="InErogazione" />
+          </Key>
+          <Property Name="IdRichiesta" Type="Guid" Nullable="false" />
+          <Property Name="TipoColore" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="FronteRetro" Type="Boolean" Nullable="false" />
+          <Property Name="ModalitaConsegna" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="AttestazioneConsegna" Type="Boolean" Nullable="false" />
+          <Property Name="SecondoTentativoRecapito" Type="Boolean" Nullable="false" />
+          <Property Name="AnniArchiviazione" Type="Int32" />
+          <Property Name="TipoNomeProprio" Type="Boolean" Nullable="false" />
+          <Property Name="InErogazione" Type="Boolean" Nullable="false" />
+          <Property Name="Nazionale" Type="Boolean" Nullable="false" />
+          <Property Name="ModalitaPricing" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="TipoArchiviazione" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Richieste" Relationship="PostaEvoModel.FK_Opzioni_Richieste" FromRole="Opzioni" ToRole="Richieste" />
+        </EntityType>
+        <Association Name="FK_Opzioni_Richieste">
+          <End Type="PostaEvoModel.Richieste" Role="Richieste" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PostaEvoModel.Opzioni" Role="Opzioni" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Richieste">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Principal>
+            <Dependent Role="Opzioni">
+              <PropertyRef Name="IdRichiesta" />
+              <PropertyRef Name="InErogazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -164,6 +244,24 @@
                 <ScalarProperty Name="IdLotto" ColumnName="IdLotto" />
                 <ScalarProperty Name="IdentificativoInvioNelLotto" ColumnName="IdentificativoInvioNelLotto" />
                 <ScalarProperty Name="IdCover" ColumnName="IdCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opzioni">
+            <EntityTypeMapping TypeName="PostaEvoModel.Opzioni">
+              <MappingFragment StoreEntitySet="Opzioni">
+                <ScalarProperty Name="TipoArchiviazione" ColumnName="TipoArchiviazione" />
+                <ScalarProperty Name="ModalitaPricing" ColumnName="ModalitaPricing" />
+                <ScalarProperty Name="Nazionale" ColumnName="Nazionale" />
+                <ScalarProperty Name="InErogazione" ColumnName="InErogazione" />
+                <ScalarProperty Name="TipoNomeProprio" ColumnName="TipoNomeProprio" />
+                <ScalarProperty Name="AnniArchiviazione" ColumnName="AnniArchiviazione" />
+                <ScalarProperty Name="SecondoTentativoRecapito" ColumnName="SecondoTentativoRecapito" />
+                <ScalarProperty Name="AttestazioneConsegna" ColumnName="AttestazioneConsegna" />
+                <ScalarProperty Name="ModalitaConsegna" ColumnName="ModalitaConsegna" />
+                <ScalarProperty Name="FronteRetro" ColumnName="FronteRetro" />
+                <ScalarProperty Name="TipoColore" ColumnName="TipoColore" />
+                <ScalarProperty Name="IdRichiesta" ColumnName="IdRichiesta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
