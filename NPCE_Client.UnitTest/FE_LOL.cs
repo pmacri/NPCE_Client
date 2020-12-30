@@ -14,7 +14,7 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_LOL : TestBase
     {
-        public FE_LOL() : base(Environment.Collaudo)
+        public FE_LOL() : base(Environment.Staging)
         {
 
         }
@@ -89,21 +89,76 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-
         public void Lol_Invio()
         {
             string idRichiesta = RecuperaIdRichiesta();
             Assert.IsNotNull(idRichiesta);
 
-            var invioLol = GetLolInvio(idRichiesta);
+            InvioResult result = InvioLOL(idRichiesta);
+
+            Assert.AreEqual(result.CEResult.Type, "I");
+        }
+
+
+        [TestMethod]
+        public void Lol_Invio_Check_Parametri_Prezzatura_Archiviazione()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+
+            Assert.IsNotNull(idRichiesta);
+
+            InvioResult result = InvioLOL(idRichiesta, "STORICA", 3, "Docx_5_Pagine.docx");
+
+            Assert.AreEqual(result.CEResult.Type, "I");
+
+            int numeroFogli = 0;
+            int mesiArchiviazione = 0;
+            Thread.Sleep(20000);
+
+
+            Helper.GetParametriPrezzatura("LOL", out numeroFogli, out mesiArchiviazione, ambiente.PathLoggingFile);
+            Assert.AreEqual(6, numeroFogli);
+
+            Assert.AreEqual(mesiArchiviazione, 36);
+        }
+
+        private InvioResult InvioLOL(string idRichiesta, string tipoArchiviazione = "NESSUNA", int anniArchiviazione =0, string docName = "Docx_1_Pagina", string tipoDocumento ="docx")
+        {
+            var invioLol = GetLolInvio(idRichiesta, tipoDocumento, docName);
+            invioLol.Opzioni.ArchiviazioneDocumenti = tipoArchiviazione;
+            invioLol.Opzioni.AnniArchiviazione = anniArchiviazione;
+            invioLol.Opzioni.AnniArchiviazioneSpecified = true;
+
+            
             var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
             var fake = new OperationContextScope((IContextChannel)proxy);
             HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
 
             var result = proxy.Invio(idRichiesta, "CLIENTE", invioLol);
+            return result;
+        }
 
+        [TestMethod]
+        public void Invio_PreConferma_Con_AutoConferma()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+            Assert.IsNotNull(idRichiesta);
+            InvioResult result = InvioLOL(idRichiesta);
+            var guidUtente = result.GuidUtente;
             Assert.AreEqual(result.CEResult.Type, "I");
+
+            Thread.Sleep(20000);
+
+            var listRichieste = new List<Richiesta>();
+            listRichieste.Add(new Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });
+            PreConfermaRequest request = new PreConfermaRequest { Richieste = listRichieste.ToArray(), autoConferma = true };
+            var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            var headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+            var preConfermaResult = proxy.PreConferma(request);
+            Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
         }
 
         private string RecuperaIdRichiesta()

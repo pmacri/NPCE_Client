@@ -197,6 +197,105 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaNomiNazioniUPU", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaNomiNazioniUPUResp" +
             "onse")]
         System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE_Client.UnitTest.ServiceReference.LOL.CountryLanguage lingua);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RecuperaServizioRequest) of message RecuperaServizioRequest does not match the default value (RecuperaServizio)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaServizio", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaServizioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse RecuperaServizio(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaServizio", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaServizioResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse> RecuperaServizioAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperoSingolaArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperoSingolaArchiviazio" +
+            "neResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoSingolaArchiviazioneResult RecuperoSingolaArchiviazione(string numeroLettera);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperoSingolaArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperoSingolaArchiviazio" +
+            "neResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoSingolaArchiviazioneResult> RecuperoSingolaArchiviazioneAsync(string numeroLettera);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RecuperoMassivoArchiviazioneRequest) of message RecuperoMassivoArchiviazioneRequest does not match the default value (RecuperoMassivoArchiviazione)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperoMassivoArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperoMassivoArchiviazio" +
+            "neResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse RecuperoMassivoArchiviazione(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperoMassivoArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperoMassivoArchiviazio" +
+            "neResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse> RecuperoMassivoArchiviazioneAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/DownloadMassivoArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/DownloadMassivoArchiviazio" +
+            "neResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.DownloadMassivoArchiviazioneResult DownloadMassivoArchiviazione(string ticketId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/DownloadMassivoArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/DownloadMassivoArchiviazio" +
+            "neResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.DownloadMassivoArchiviazioneResult> DownloadMassivoArchiviazioneAsync(string ticketId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/CancellaArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/CancellaArchiviazioneRespo" +
+            "nse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.CancellaArchiviazioneResult CancellaArchiviazione(string[] arrayNumeroLettera);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/CancellaArchiviazione", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/CancellaArchiviazioneRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.CancellaArchiviazioneResult> CancellaArchiviazioneAsync(string[] arrayNumeroLettera);
+        
+        // CODEGEN: Generating message contract since the wrapper name (CreaCoverRequest) of message CreaCoverRequest does not match the default value (CreaCover)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/CreaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/CreaCoverResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse CreaCover(NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/CreaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/CreaCoverResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse> CreaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (ConfermaCoverRequest) of message ConfermaCoverRequest does not match the default value (ConfermaCover)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ConfermaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ConfermaCoverResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse ConfermaCover(NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/ConfermaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/ConfermaCoverResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse> ConfermaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (AnnullaCoverRequest) of message AnnullaCoverRequest does not match the default value (AnnullaCover)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/AnnullaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaCoverResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse AnnullaCover(NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/AnnullaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/AnnullaCoverResponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse> AnnullaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RecuperaAnteprimaCoverRequest) of message RecuperaAnteprimaCoverRequest does not match the default value (RecuperaAnteprimaCover)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaAnteprimaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaAnteprimaCoverResp" +
+            "onse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse RecuperaAnteprimaCover(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaAnteprimaCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaAnteprimaCoverResp" +
+            "onse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse> RecuperaAnteprimaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RecuperaStatiCoverRequest) of message RecuperaStatiCoverRequest does not match the default value (RecuperaStatiCover)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatiCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatiCoverResponse" +
+            "")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse RecuperaStatiCover(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaStatiCover", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaStatiCoverResponse" +
+            "")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse> RecuperaStatiCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (RecuperaDocumentoFinaleRequest) of message RecuperaDocumentoFinaleRequest does not match the default value (RecuperaDocumentoFinale)
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDocumentoFinale", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDocumentoFinaleRes" +
+            "ponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse RecuperaDocumentoFinale(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ComunicazioniElettroniche.LOL.WS/RecuperaDocumentoFinale", ReplyAction="http://ComunicazioniElettroniche.LOL.WS/LOLServiceSoap/RecuperaDocumentoFinaleRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse> RecuperaDocumentoFinaleAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest request);
     }
     
     /// <remarks/>
@@ -292,6 +391,2781 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
             set {
                 this.descriptionField = value;
                 this.RaisePropertyChanged("Description");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperaDocumentoFinaleResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DocumentoCover documentoField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public DocumentoCover Documento {
+            get {
+                return this.documentoField;
+            }
+            set {
+                this.documentoField = value;
+                this.RaisePropertyChanged("Documento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class DocumentoCover : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] contenutoField;
+        
+        private string mD5Field;
+        
+        private string estensioneField;
+        
+        private string percorsoDocumentoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=0)]
+        public byte[] Contenuto {
+            get {
+                return this.contenutoField;
+            }
+            set {
+                this.contenutoField = value;
+                this.RaisePropertyChanged("Contenuto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string MD5 {
+            get {
+                return this.mD5Field;
+            }
+            set {
+                this.mD5Field = value;
+                this.RaisePropertyChanged("MD5");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Estensione {
+            get {
+                return this.estensioneField;
+            }
+            set {
+                this.estensioneField = value;
+                this.RaisePropertyChanged("Estensione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string PercorsoDocumento {
+            get {
+                return this.percorsoDocumentoField;
+            }
+            set {
+                this.percorsoDocumentoField = value;
+                this.RaisePropertyChanged("PercorsoDocumento");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class StatiCover : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idCoverField;
+        
+        private string denominazioneField;
+        
+        private string statoField;
+        
+        private System.DateTime dataStatoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string IdCover {
+            get {
+                return this.idCoverField;
+            }
+            set {
+                this.idCoverField = value;
+                this.RaisePropertyChanged("IdCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Denominazione {
+            get {
+                return this.denominazioneField;
+            }
+            set {
+                this.denominazioneField = value;
+                this.RaisePropertyChanged("Denominazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Stato {
+            get {
+                return this.statoField;
+            }
+            set {
+                this.statoField = value;
+                this.RaisePropertyChanged("Stato");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public System.DateTime DataStato {
+            get {
+                return this.dataStatoField;
+            }
+            set {
+                this.dataStatoField = value;
+                this.RaisePropertyChanged("DataStato");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperaStatiCoverResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private StatiCover[] statiCoverField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("StatiCover", Order=0)]
+        public StatiCover[] StatiCover {
+            get {
+                return this.statiCoverField;
+            }
+            set {
+                this.statiCoverField = value;
+                this.RaisePropertyChanged("StatiCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperaAnteprimaCoverResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private DocumentoCover documentoField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public DocumentoCover Documento {
+            get {
+                return this.documentoField;
+            }
+            set {
+                this.documentoField = value;
+                this.RaisePropertyChanged("Documento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class AnnullaCoverResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class ConfermaCoverResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CreaCoverResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idCoverField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string IdCover {
+            get {
+                return this.idCoverField;
+            }
+            set {
+                this.idCoverField = value;
+                this.RaisePropertyChanged("IdCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CancellaArchiviazioneResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string[] arrayCancellazioniField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public string[] ArrayCancellazioni {
+            get {
+                return this.arrayCancellazioniField;
+            }
+            set {
+                this.arrayCancellazioniField = value;
+                this.RaisePropertyChanged("ArrayCancellazioni");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class DownloadMassivoArchiviazioneResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] fileStreamField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public byte[] FileStream {
+            get {
+                return this.fileStreamField;
+            }
+            set {
+                this.fileStreamField = value;
+                this.RaisePropertyChanged("FileStream");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class DocumentoArchiviato : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idRichiestaField;
+        
+        private System.Nullable<System.DateTime> dataAccettazioneField;
+        
+        private string numeroLettareField;
+        
+        private string nomeDestinatarioField;
+        
+        private string cognomeDestinatarioField;
+        
+        private string ragioneSocialeDestinatarioField;
+        
+        private string statoArchiviazioneField;
+        
+        private System.Nullable<System.DateTime> dataStatoArchiviazioneField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string IdRichiesta {
+            get {
+                return this.idRichiestaField;
+            }
+            set {
+                this.idRichiestaField = value;
+                this.RaisePropertyChanged("IdRichiesta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<System.DateTime> DataAccettazione {
+            get {
+                return this.dataAccettazioneField;
+            }
+            set {
+                this.dataAccettazioneField = value;
+                this.RaisePropertyChanged("DataAccettazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string NumeroLettare {
+            get {
+                return this.numeroLettareField;
+            }
+            set {
+                this.numeroLettareField = value;
+                this.RaisePropertyChanged("NumeroLettare");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string NomeDestinatario {
+            get {
+                return this.nomeDestinatarioField;
+            }
+            set {
+                this.nomeDestinatarioField = value;
+                this.RaisePropertyChanged("NomeDestinatario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string CognomeDestinatario {
+            get {
+                return this.cognomeDestinatarioField;
+            }
+            set {
+                this.cognomeDestinatarioField = value;
+                this.RaisePropertyChanged("CognomeDestinatario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string RagioneSocialeDestinatario {
+            get {
+                return this.ragioneSocialeDestinatarioField;
+            }
+            set {
+                this.ragioneSocialeDestinatarioField = value;
+                this.RaisePropertyChanged("RagioneSocialeDestinatario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string StatoArchiviazione {
+            get {
+                return this.statoArchiviazioneField;
+            }
+            set {
+                this.statoArchiviazioneField = value;
+                this.RaisePropertyChanged("StatoArchiviazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public System.Nullable<System.DateTime> DataStatoArchiviazione {
+            get {
+                return this.dataStatoArchiviazioneField;
+            }
+            set {
+                this.dataStatoArchiviazioneField = value;
+                this.RaisePropertyChanged("DataStatoArchiviazione");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperoMassivoArchiviazioneResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string ticketIdField;
+        
+        private DocumentoArchiviato[] documentiArchiviatiField;
+        
+        private System.Nullable<int> numeroTotaleElementiField;
+        
+        private System.Nullable<int> numeroTotalePagineField;
+        
+        private System.Nullable<int> numeroPaginaCorrenteField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string TicketId {
+            get {
+                return this.ticketIdField;
+            }
+            set {
+                this.ticketIdField = value;
+                this.RaisePropertyChanged("TicketId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public DocumentoArchiviato[] DocumentiArchiviati {
+            get {
+                return this.documentiArchiviatiField;
+            }
+            set {
+                this.documentiArchiviatiField = value;
+                this.RaisePropertyChanged("DocumentiArchiviati");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public System.Nullable<int> NumeroTotaleElementi {
+            get {
+                return this.numeroTotaleElementiField;
+            }
+            set {
+                this.numeroTotaleElementiField = value;
+                this.RaisePropertyChanged("NumeroTotaleElementi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<int> NumeroTotalePagine {
+            get {
+                return this.numeroTotalePagineField;
+            }
+            set {
+                this.numeroTotalePagineField = value;
+                this.RaisePropertyChanged("NumeroTotalePagine");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public System.Nullable<int> NumeroPaginaCorrente {
+            get {
+                return this.numeroPaginaCorrenteField;
+            }
+            set {
+                this.numeroPaginaCorrenteField = value;
+                this.RaisePropertyChanged("NumeroPaginaCorrente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperoSingolaArchiviazioneResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Documento documentoField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Documento Documento {
+            get {
+                return this.documentoField;
+            }
+            set {
+                this.documentoField = value;
+                this.RaisePropertyChanged("Documento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Documento : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] immagineField;
+        
+        private string mD5Field;
+        
+        private string[] firmatariField;
+        
+        private string tipoDocumentoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=0)]
+        public byte[] Immagine {
+            get {
+                return this.immagineField;
+            }
+            set {
+                this.immagineField = value;
+                this.RaisePropertyChanged("Immagine");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string MD5 {
+            get {
+                return this.mD5Field;
+            }
+            set {
+                this.mD5Field = value;
+                this.RaisePropertyChanged("MD5");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Firma", IsNullable=false)]
+        public string[] Firmatari {
+            get {
+                return this.firmatariField;
+            }
+            set {
+                this.firmatariField = value;
+                this.RaisePropertyChanged("Firmatari");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string TipoDocumento {
+            get {
+                return this.tipoDocumentoField;
+            }
+            set {
+                this.tipoDocumentoField = value;
+                this.RaisePropertyChanged("TipoDocumento");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class Servizio : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idRichiestaField;
+        
+        private System.DateTime dataAccettazioneField;
+        
+        private LOLServizio lOLServizioField;
+        
+        private string statoLavorazioneField;
+        
+        private Valorizzazione valorizzazioneField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string IdRichiesta {
+            get {
+                return this.idRichiestaField;
+            }
+            set {
+                this.idRichiestaField = value;
+                this.RaisePropertyChanged("IdRichiesta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime DataAccettazione {
+            get {
+                return this.dataAccettazioneField;
+            }
+            set {
+                this.dataAccettazioneField = value;
+                this.RaisePropertyChanged("DataAccettazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public LOLServizio LOLServizio {
+            get {
+                return this.lOLServizioField;
+            }
+            set {
+                this.lOLServizioField = value;
+                this.RaisePropertyChanged("LOLServizio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string StatoLavorazione {
+            get {
+                return this.statoLavorazioneField;
+            }
+            set {
+                this.statoLavorazioneField = value;
+                this.RaisePropertyChanged("StatoLavorazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public Valorizzazione Valorizzazione {
+            get {
+                return this.valorizzazioneField;
+            }
+            set {
+                this.valorizzazioneField = value;
+                this.RaisePropertyChanged("Valorizzazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class LOLServizio : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Mittente mittenteField;
+        
+        private DestinatarioServizio[] destinatariField;
+        
+        private int numeroDestinatariField;
+        
+        private LOLServizioOpzioni opzioniField;
+        
+        private ServizioAggiuntivo[] serviziAggiuntiviField;
+        
+        private string tipoCoverField;
+        
+        private string idCoverField;
+        
+        private System.DateTime dataLetteraField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Mittente Mittente {
+            get {
+                return this.mittenteField;
+            }
+            set {
+                this.mittenteField = value;
+                this.RaisePropertyChanged("Mittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Destinatario")]
+        public DestinatarioServizio[] Destinatari {
+            get {
+                return this.destinatariField;
+            }
+            set {
+                this.destinatariField = value;
+                this.RaisePropertyChanged("Destinatari");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int NumeroDestinatari {
+            get {
+                return this.numeroDestinatariField;
+            }
+            set {
+                this.numeroDestinatariField = value;
+                this.RaisePropertyChanged("NumeroDestinatari");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public LOLServizioOpzioni Opzioni {
+            get {
+                return this.opzioniField;
+            }
+            set {
+                this.opzioniField = value;
+                this.RaisePropertyChanged("Opzioni");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=4)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfServizioAggiuntivo", Namespace="http://ComunicazioniElettroniche.XOL", IsNullable=false)]
+        public ServizioAggiuntivo[] ServiziAggiuntivi {
+            get {
+                return this.serviziAggiuntiviField;
+            }
+            set {
+                this.serviziAggiuntiviField = value;
+                this.RaisePropertyChanged("ServiziAggiuntivi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string TipoCover {
+            get {
+                return this.tipoCoverField;
+            }
+            set {
+                this.tipoCoverField = value;
+                this.RaisePropertyChanged("TipoCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string IdCover {
+            get {
+                return this.idCoverField;
+            }
+            set {
+                this.idCoverField = value;
+                this.RaisePropertyChanged("IdCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public System.DateTime DataLettera {
+            get {
+                return this.dataLetteraField;
+            }
+            set {
+                this.dataLetteraField = value;
+                this.RaisePropertyChanged("DataLettera");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Mittente : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Nominativo nominativoField;
+        
+        private bool inviaStampaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Nominativo Nominativo {
+            get {
+                return this.nominativoField;
+            }
+            set {
+                this.nominativoField = value;
+                this.RaisePropertyChanged("Nominativo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool InviaStampa {
+            get {
+                return this.inviaStampaField;
+            }
+            set {
+                this.inviaStampaField = value;
+                this.RaisePropertyChanged("InviaStampa");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Nominativo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Indirizzo indirizzoField;
+        
+        private string telefonoField;
+        
+        private string zonaField;
+        
+        private string statoField;
+        
+        private string cittaField;
+        
+        private string provinciaField;
+        
+        private bool forzaDestinazioneField;
+        
+        private string ufficioPostaleField;
+        
+        private NominativoTipoIndirizzo tipoIndirizzoField;
+        
+        private string casellaPostaleField;
+        
+        private string cognomeField;
+        
+        private string nomeField;
+        
+        private bool inesitateDigitaliField;
+        
+        private string codiceFiscaleField;
+        
+        private int codiceFiscaleResultField;
+        
+        private string cAPField;
+        
+        private string frazioneField;
+        
+        private string complementoIndirizzoField;
+        
+        private string complementoNominativoField;
+        
+        private string ragioneSocialeField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Indirizzo Indirizzo {
+            get {
+                return this.indirizzoField;
+            }
+            set {
+                this.indirizzoField = value;
+                this.RaisePropertyChanged("Indirizzo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("Telefono");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Zona {
+            get {
+                return this.zonaField;
+            }
+            set {
+                this.zonaField = value;
+                this.RaisePropertyChanged("Zona");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Stato {
+            get {
+                return this.statoField;
+            }
+            set {
+                this.statoField = value;
+                this.RaisePropertyChanged("Stato");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Citta {
+            get {
+                return this.cittaField;
+            }
+            set {
+                this.cittaField = value;
+                this.RaisePropertyChanged("Citta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Provincia {
+            get {
+                return this.provinciaField;
+            }
+            set {
+                this.provinciaField = value;
+                this.RaisePropertyChanged("Provincia");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool ForzaDestinazione {
+            get {
+                return this.forzaDestinazioneField;
+            }
+            set {
+                this.forzaDestinazioneField = value;
+                this.RaisePropertyChanged("ForzaDestinazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string UfficioPostale {
+            get {
+                return this.ufficioPostaleField;
+            }
+            set {
+                this.ufficioPostaleField = value;
+                this.RaisePropertyChanged("UfficioPostale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public NominativoTipoIndirizzo TipoIndirizzo {
+            get {
+                return this.tipoIndirizzoField;
+            }
+            set {
+                this.tipoIndirizzoField = value;
+                this.RaisePropertyChanged("TipoIndirizzo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string CasellaPostale {
+            get {
+                return this.casellaPostaleField;
+            }
+            set {
+                this.casellaPostaleField = value;
+                this.RaisePropertyChanged("CasellaPostale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Cognome {
+            get {
+                return this.cognomeField;
+            }
+            set {
+                this.cognomeField = value;
+                this.RaisePropertyChanged("Cognome");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+                this.RaisePropertyChanged("Nome");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool InesitateDigitali {
+            get {
+                return this.inesitateDigitaliField;
+            }
+            set {
+                this.inesitateDigitaliField = value;
+                this.RaisePropertyChanged("InesitateDigitali");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string CodiceFiscale {
+            get {
+                return this.codiceFiscaleField;
+            }
+            set {
+                this.codiceFiscaleField = value;
+                this.RaisePropertyChanged("CodiceFiscale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int CodiceFiscaleResult {
+            get {
+                return this.codiceFiscaleResultField;
+            }
+            set {
+                this.codiceFiscaleResultField = value;
+                this.RaisePropertyChanged("CodiceFiscaleResult");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string CAP {
+            get {
+                return this.cAPField;
+            }
+            set {
+                this.cAPField = value;
+                this.RaisePropertyChanged("CAP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Frazione {
+            get {
+                return this.frazioneField;
+            }
+            set {
+                this.frazioneField = value;
+                this.RaisePropertyChanged("Frazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ComplementoIndirizzo {
+            get {
+                return this.complementoIndirizzoField;
+            }
+            set {
+                this.complementoIndirizzoField = value;
+                this.RaisePropertyChanged("ComplementoIndirizzo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ComplementoNominativo {
+            get {
+                return this.complementoNominativoField;
+            }
+            set {
+                this.complementoNominativoField = value;
+                this.RaisePropertyChanged("ComplementoNominativo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string RagioneSociale {
+            get {
+                return this.ragioneSocialeField;
+            }
+            set {
+                this.ragioneSocialeField = value;
+                this.RaisePropertyChanged("RagioneSociale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+                this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Indirizzo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dUGField;
+        
+        private string toponimoField;
+        
+        private string numeroCivicoField;
+        
+        private string esponenteField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string DUG {
+            get {
+                return this.dUGField;
+            }
+            set {
+                this.dUGField = value;
+                this.RaisePropertyChanged("DUG");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Toponimo {
+            get {
+                return this.toponimoField;
+            }
+            set {
+                this.toponimoField = value;
+                this.RaisePropertyChanged("Toponimo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string NumeroCivico {
+            get {
+                return this.numeroCivicoField;
+            }
+            set {
+                this.numeroCivicoField = value;
+                this.RaisePropertyChanged("NumeroCivico");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Esponente {
+            get {
+                return this.esponenteField;
+            }
+            set {
+                this.esponenteField = value;
+                this.RaisePropertyChanged("Esponente");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.XOL")]
+    public enum NominativoTipoIndirizzo {
+        
+        /// <remarks/>
+        NORMALE,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("CASELLA POSTALE")]
+        CASELLAPOSTALE,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class DestinatarioServizio : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Nominativo nominativoField;
+        
+        private DattaglioCover dettaglioCoverField;
+        
+        private System.Xml.XmlElement anyField;
+        
+        private string idRicevutaField;
+        
+        private string numeroRaccomandataField;
+        
+        private string idDestinatarioField;
+        
+        private string numeroLetteraField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Nominativo Nominativo {
+            get {
+                return this.nominativoField;
+            }
+            set {
+                this.nominativoField = value;
+                this.RaisePropertyChanged("Nominativo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public DattaglioCover DettaglioCover {
+            get {
+                return this.dettaglioCoverField;
+            }
+            set {
+                this.dettaglioCoverField = value;
+                this.RaisePropertyChanged("DettaglioCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyElementAttribute(Order=2)]
+        public System.Xml.XmlElement Any {
+            get {
+                return this.anyField;
+            }
+            set {
+                this.anyField = value;
+                this.RaisePropertyChanged("Any");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string IdRicevuta {
+            get {
+                return this.idRicevutaField;
+            }
+            set {
+                this.idRicevutaField = value;
+                this.RaisePropertyChanged("IdRicevuta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string NumeroRaccomandata {
+            get {
+                return this.numeroRaccomandataField;
+            }
+            set {
+                this.numeroRaccomandataField = value;
+                this.RaisePropertyChanged("NumeroRaccomandata");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string IdDestinatario {
+            get {
+                return this.idDestinatarioField;
+            }
+            set {
+                this.idDestinatarioField = value;
+                this.RaisePropertyChanged("IdDestinatario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string NumeroLettera {
+            get {
+                return this.numeroLetteraField;
+            }
+            set {
+                this.numeroLetteraField = value;
+                this.RaisePropertyChanged("NumeroLettera");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class DattaglioCover : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string protocolloMittenteField;
+        
+        private string[] testoLiberoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string ProtocolloMittente {
+            get {
+                return this.protocolloMittenteField;
+            }
+            set {
+                this.protocolloMittenteField = value;
+                this.RaisePropertyChanged("ProtocolloMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("TestoTL", IsNullable=false)]
+        public string[] TestoLibero {
+            get {
+                return this.testoLiberoField;
+            }
+            set {
+                this.testoLiberoField = value;
+                this.RaisePropertyChanged("TestoLibero");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class LOLServizioOpzioni : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private LOLServizioOpzioniInserti insertiField;
+        
+        private OpzionidiStampa opzionidiStampaField;
+        
+        private ServizioAggiuntivo[] opzioniAggiuntiveField;
+        
+        private bool securPaperField;
+        
+        private bool dPMField;
+        
+        private System.DateTime dataStampaField;
+        
+        private bool inserisciMittenteField;
+        
+        private bool anniArchiviazioneSpecified1Field;
+        
+        private bool archiviazioneField;
+        
+        private bool firmaElettronicaField;
+        
+        private int anniArchiviazioneField;
+        
+        private bool anniArchiviazioneFieldSpecified;
+        
+        private string archiviazioneDocumentiField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public LOLServizioOpzioniInserti Inserti {
+            get {
+                return this.insertiField;
+            }
+            set {
+                this.insertiField = value;
+                this.RaisePropertyChanged("Inserti");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public OpzionidiStampa OpzionidiStampa {
+            get {
+                return this.opzionidiStampaField;
+            }
+            set {
+                this.opzionidiStampaField = value;
+                this.RaisePropertyChanged("OpzionidiStampa");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfServizioAggiuntivo", Namespace="http://ComunicazioniElettroniche.XOL", IsNullable=false)]
+        public ServizioAggiuntivo[] OpzioniAggiuntive {
+            get {
+                return this.opzioniAggiuntiveField;
+            }
+            set {
+                this.opzioniAggiuntiveField = value;
+                this.RaisePropertyChanged("OpzioniAggiuntive");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool SecurPaper {
+            get {
+                return this.securPaperField;
+            }
+            set {
+                this.securPaperField = value;
+                this.RaisePropertyChanged("SecurPaper");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool DPM {
+            get {
+                return this.dPMField;
+            }
+            set {
+                this.dPMField = value;
+                this.RaisePropertyChanged("DPM");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public System.DateTime DataStampa {
+            get {
+                return this.dataStampaField;
+            }
+            set {
+                this.dataStampaField = value;
+                this.RaisePropertyChanged("DataStampa");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool InserisciMittente {
+            get {
+                return this.inserisciMittenteField;
+            }
+            set {
+                this.inserisciMittenteField = value;
+                this.RaisePropertyChanged("InserisciMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute("AnniArchiviazioneSpecified")]
+        public bool AnniArchiviazioneSpecified1 {
+            get {
+                return this.anniArchiviazioneSpecified1Field;
+            }
+            set {
+                this.anniArchiviazioneSpecified1Field = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool Archiviazione {
+            get {
+                return this.archiviazioneField;
+            }
+            set {
+                this.archiviazioneField = value;
+                this.RaisePropertyChanged("Archiviazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool FirmaElettronica {
+            get {
+                return this.firmaElettronicaField;
+            }
+            set {
+                this.firmaElettronicaField = value;
+                this.RaisePropertyChanged("FirmaElettronica");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int AnniArchiviazione {
+            get {
+                return this.anniArchiviazioneField;
+            }
+            set {
+                this.anniArchiviazioneField = value;
+                this.RaisePropertyChanged("AnniArchiviazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AnniArchiviazioneSpecified {
+            get {
+                return this.anniArchiviazioneFieldSpecified;
+            }
+            set {
+                this.anniArchiviazioneFieldSpecified = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ArchiviazioneDocumenti {
+            get {
+                return this.archiviazioneDocumentiField;
+            }
+            set {
+                this.archiviazioneDocumentiField = value;
+                this.RaisePropertyChanged("ArchiviazioneDocumenti");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class LOLServizioOpzioniInserti : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool inserisciMittenteField;
+        
+        private string insertoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool InserisciMittente {
+            get {
+                return this.inserisciMittenteField;
+            }
+            set {
+                this.inserisciMittenteField = value;
+                this.RaisePropertyChanged("InserisciMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Inserto {
+            get {
+                return this.insertoField;
+            }
+            set {
+                this.insertoField = value;
+                this.RaisePropertyChanged("Inserto");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class OpzionidiStampa : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ServizioAggiuntivo[] opzioniAggiuntiveStampaField;
+        
+        private string resolutionYField;
+        
+        private OpzionidiStampaPageSize pageSizeField;
+        
+        private string resolutionXField;
+        
+        private string bwField;
+        
+        private string fronteRetroField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfServizioAggiuntivo", IsNullable=false)]
+        public ServizioAggiuntivo[] OpzioniAggiuntiveStampa {
+            get {
+                return this.opzioniAggiuntiveStampaField;
+            }
+            set {
+                this.opzioniAggiuntiveStampaField = value;
+                this.RaisePropertyChanged("OpzioniAggiuntiveStampa");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ResolutionY {
+            get {
+                return this.resolutionYField;
+            }
+            set {
+                this.resolutionYField = value;
+                this.RaisePropertyChanged("ResolutionY");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public OpzionidiStampaPageSize PageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                this.pageSizeField = value;
+                this.RaisePropertyChanged("PageSize");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ResolutionX {
+            get {
+                return this.resolutionXField;
+            }
+            set {
+                this.resolutionXField = value;
+                this.RaisePropertyChanged("ResolutionX");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string BW {
+            get {
+                return this.bwField;
+            }
+            set {
+                this.bwField = value;
+                this.RaisePropertyChanged("BW");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string FronteRetro {
+            get {
+                return this.fronteRetroField;
+            }
+            set {
+                this.fronteRetroField = value;
+                this.RaisePropertyChanged("FronteRetro");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class ServizioAggiuntivo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idField;
+        
+        private string descrizioneField;
+        
+        private string valoreField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("ID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Descrizione {
+            get {
+                return this.descrizioneField;
+            }
+            set {
+                this.descrizioneField = value;
+                this.RaisePropertyChanged("Descrizione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Valore {
+            get {
+                return this.valoreField;
+            }
+            set {
+                this.valoreField = value;
+                this.RaisePropertyChanged("Valore");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.XOL")]
+    public enum OpzionidiStampaPageSize {
+        
+        /// <remarks/>
+        A0,
+        
+        /// <remarks/>
+        A1,
+        
+        /// <remarks/>
+        A2,
+        
+        /// <remarks/>
+        A3,
+        
+        /// <remarks/>
+        A4,
+        
+        /// <remarks/>
+        A5,
+        
+        /// <remarks/>
+        A6,
+        
+        /// <remarks/>
+        A7,
+        
+        /// <remarks/>
+        A8,
+        
+        /// <remarks/>
+        A9,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Valorizzazione : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ValorizzazioneServizio[] valorizzazioneServizioField;
+        
+        private OpzionePagamento[] opzionePagamentoField;
+        
+        private Totale totaleField;
+        
+        private double impostaDiBolloField;
+        
+        private double importoTotaleConIdBField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ValorizzazioneServizio", Order=0)]
+        public ValorizzazioneServizio[] ValorizzazioneServizio {
+            get {
+                return this.valorizzazioneServizioField;
+            }
+            set {
+                this.valorizzazioneServizioField = value;
+                this.RaisePropertyChanged("ValorizzazioneServizio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("OpzionePagamento", Order=1)]
+        public OpzionePagamento[] OpzionePagamento {
+            get {
+                return this.opzionePagamentoField;
+            }
+            set {
+                this.opzionePagamentoField = value;
+                this.RaisePropertyChanged("OpzionePagamento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Totale Totale {
+            get {
+                return this.totaleField;
+            }
+            set {
+                this.totaleField = value;
+                this.RaisePropertyChanged("Totale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public double ImpostaDiBollo {
+            get {
+                return this.impostaDiBolloField;
+            }
+            set {
+                this.impostaDiBolloField = value;
+                this.RaisePropertyChanged("ImpostaDiBollo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public double ImportoTotaleConIdB {
+            get {
+                return this.importoTotaleConIdBField;
+            }
+            set {
+                this.importoTotaleConIdBField = value;
+                this.RaisePropertyChanged("ImportoTotaleConIdB");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class ValorizzazioneServizio : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Richiesta richiestaField;
+        
+        private string iDServizioField;
+        
+        private int numeroPagineField;
+        
+        private OggettoValorizzazione[] oggettoValorizzazioneField;
+        
+        private Totale totaleField;
+        
+        private double impostaDiBolloField;
+        
+        private double importoTotaleConIdBField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Richiesta Richiesta {
+            get {
+                return this.richiestaField;
+            }
+            set {
+                this.richiestaField = value;
+                this.RaisePropertyChanged("Richiesta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string IDServizio {
+            get {
+                return this.iDServizioField;
+            }
+            set {
+                this.iDServizioField = value;
+                this.RaisePropertyChanged("IDServizio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int NumeroPagine {
+            get {
+                return this.numeroPagineField;
+            }
+            set {
+                this.numeroPagineField = value;
+                this.RaisePropertyChanged("NumeroPagine");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("OggettoValorizzazione", Order=3)]
+        public OggettoValorizzazione[] OggettoValorizzazione {
+            get {
+                return this.oggettoValorizzazioneField;
+            }
+            set {
+                this.oggettoValorizzazioneField = value;
+                this.RaisePropertyChanged("OggettoValorizzazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public Totale Totale {
+            get {
+                return this.totaleField;
+            }
+            set {
+                this.totaleField = value;
+                this.RaisePropertyChanged("Totale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public double ImpostaDiBollo {
+            get {
+                return this.impostaDiBolloField;
+            }
+            set {
+                this.impostaDiBolloField = value;
+                this.RaisePropertyChanged("ImpostaDiBollo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public double ImportoTotaleConIdB {
+            get {
+                return this.importoTotaleConIdBField;
+            }
+            set {
+                this.importoTotaleConIdBField = value;
+                this.RaisePropertyChanged("ImportoTotaleConIdB");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Richiesta : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string iDRichiestaField;
+        
+        private string guidUtenteField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string IDRichiesta {
+            get {
+                return this.iDRichiestaField;
+            }
+            set {
+                this.iDRichiestaField = value;
+                this.RaisePropertyChanged("IDRichiesta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string GuidUtente {
+            get {
+                return this.guidUtenteField;
+            }
+            set {
+                this.guidUtenteField = value;
+                this.RaisePropertyChanged("GuidUtente");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class OggettoValorizzazione : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Totale totaleField;
+        
+        private string codiceMaterialeField;
+        
+        private string descrizioneCodiceMaterialeField;
+        
+        private double percentualeIvaField;
+        
+        private string codiceIvaField;
+        
+        private int quantitaField;
+        
+        private double importoUnitarioTotaleField;
+        
+        private double importoUnitarioNettoField;
+        
+        private double importoUnitarioIvaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public Totale Totale {
+            get {
+                return this.totaleField;
+            }
+            set {
+                this.totaleField = value;
+                this.RaisePropertyChanged("Totale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string CodiceMateriale {
+            get {
+                return this.codiceMaterialeField;
+            }
+            set {
+                this.codiceMaterialeField = value;
+                this.RaisePropertyChanged("CodiceMateriale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string DescrizioneCodiceMateriale {
+            get {
+                return this.descrizioneCodiceMaterialeField;
+            }
+            set {
+                this.descrizioneCodiceMaterialeField = value;
+                this.RaisePropertyChanged("DescrizioneCodiceMateriale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public double PercentualeIva {
+            get {
+                return this.percentualeIvaField;
+            }
+            set {
+                this.percentualeIvaField = value;
+                this.RaisePropertyChanged("PercentualeIva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string CodiceIva {
+            get {
+                return this.codiceIvaField;
+            }
+            set {
+                this.codiceIvaField = value;
+                this.RaisePropertyChanged("CodiceIva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int Quantita {
+            get {
+                return this.quantitaField;
+            }
+            set {
+                this.quantitaField = value;
+                this.RaisePropertyChanged("Quantita");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public double ImportoUnitarioTotale {
+            get {
+                return this.importoUnitarioTotaleField;
+            }
+            set {
+                this.importoUnitarioTotaleField = value;
+                this.RaisePropertyChanged("ImportoUnitarioTotale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public double ImportoUnitarioNetto {
+            get {
+                return this.importoUnitarioNettoField;
+            }
+            set {
+                this.importoUnitarioNettoField = value;
+                this.RaisePropertyChanged("ImportoUnitarioNetto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public double ImportoUnitarioIva {
+            get {
+                return this.importoUnitarioIvaField;
+            }
+            set {
+                this.importoUnitarioIvaField = value;
+                this.RaisePropertyChanged("ImportoUnitarioIva");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class Totale : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string valutaField;
+        
+        private string descrizioneField;
+        
+        private double importoTotaleField;
+        
+        private double importoNettoField;
+        
+        private double importoIvaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Valuta {
+            get {
+                return this.valutaField;
+            }
+            set {
+                this.valutaField = value;
+                this.RaisePropertyChanged("Valuta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Descrizione {
+            get {
+                return this.descrizioneField;
+            }
+            set {
+                this.descrizioneField = value;
+                this.RaisePropertyChanged("Descrizione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public double ImportoTotale {
+            get {
+                return this.importoTotaleField;
+            }
+            set {
+                this.importoTotaleField = value;
+                this.RaisePropertyChanged("ImportoTotale");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public double ImportoNetto {
+            get {
+                return this.importoNettoField;
+            }
+            set {
+                this.importoNettoField = value;
+                this.RaisePropertyChanged("ImportoNetto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public double ImportoIva {
+            get {
+                return this.importoIvaField;
+            }
+            set {
+                this.importoIvaField = value;
+                this.RaisePropertyChanged("ImportoIva");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
+    public partial class OpzionePagamento : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool postFatturazioneField;
+        
+        private string descrizioneTipoPagamentoField;
+        
+        private string idTipoPagamentoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool PostFatturazione {
+            get {
+                return this.postFatturazioneField;
+            }
+            set {
+                this.postFatturazioneField = value;
+                this.RaisePropertyChanged("PostFatturazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string DescrizioneTipoPagamento {
+            get {
+                return this.descrizioneTipoPagamentoField;
+            }
+            set {
+                this.descrizioneTipoPagamentoField = value;
+                this.RaisePropertyChanged("DescrizioneTipoPagamento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string IdTipoPagamento {
+            get {
+                return this.idTipoPagamentoField;
+            }
+            set {
+                this.idTipoPagamentoField = value;
+                this.RaisePropertyChanged("IdTipoPagamento");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class RecuperaServizioResult : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private Servizio[] serviziField;
+        
+        private System.Nullable<int> numeroTotaleElementiField;
+        
+        private System.Nullable<int> numeroTotalePagineField;
+        
+        private System.Nullable<int> numeroPaginaCorrenteField;
+        
+        private CEResult cEResultField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public Servizio[] Servizi {
+            get {
+                return this.serviziField;
+            }
+            set {
+                this.serviziField = value;
+                this.RaisePropertyChanged("Servizi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public System.Nullable<int> NumeroTotaleElementi {
+            get {
+                return this.numeroTotaleElementiField;
+            }
+            set {
+                this.numeroTotaleElementiField = value;
+                this.RaisePropertyChanged("NumeroTotaleElementi");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public System.Nullable<int> NumeroTotalePagine {
+            get {
+                return this.numeroTotalePagineField;
+            }
+            set {
+                this.numeroTotalePagineField = value;
+                this.RaisePropertyChanged("NumeroTotalePagine");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<int> NumeroPaginaCorrente {
+            get {
+                return this.numeroPaginaCorrenteField;
+            }
+            set {
+                this.numeroPaginaCorrenteField = value;
+                this.RaisePropertyChanged("NumeroPaginaCorrente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public CEResult CEResult {
+            get {
+                return this.cEResultField;
+            }
+            set {
+                this.cEResultField = value;
+                this.RaisePropertyChanged("CEResult");
             }
         }
         
@@ -904,52 +3778,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Richiesta : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string iDRichiestaField;
-        
-        private string guidUtenteField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string IDRichiesta {
-            get {
-                return this.iDRichiestaField;
-            }
-            set {
-                this.iDRichiestaField = value;
-                this.RaisePropertyChanged("IDRichiesta");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string GuidUtente {
-            get {
-                return this.guidUtenteField;
-            }
-            set {
-                this.guidUtenteField = value;
-                this.RaisePropertyChanged("GuidUtente");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
     public partial class AnnullaResult : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1362,522 +4190,14 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Valorizzazione : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private ValorizzazioneServizio[] valorizzazioneServizioField;
-        
-        private OpzionePagamento[] opzionePagamentoField;
-        
-        private Totale totaleField;
-        
-        private double impostaDiBolloField;
-        
-        private double importoTotaleConIdBField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ValorizzazioneServizio", Order=0)]
-        public ValorizzazioneServizio[] ValorizzazioneServizio {
-            get {
-                return this.valorizzazioneServizioField;
-            }
-            set {
-                this.valorizzazioneServizioField = value;
-                this.RaisePropertyChanged("ValorizzazioneServizio");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("OpzionePagamento", Order=1)]
-        public OpzionePagamento[] OpzionePagamento {
-            get {
-                return this.opzionePagamentoField;
-            }
-            set {
-                this.opzionePagamentoField = value;
-                this.RaisePropertyChanged("OpzionePagamento");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Totale Totale {
-            get {
-                return this.totaleField;
-            }
-            set {
-                this.totaleField = value;
-                this.RaisePropertyChanged("Totale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public double ImpostaDiBollo {
-            get {
-                return this.impostaDiBolloField;
-            }
-            set {
-                this.impostaDiBolloField = value;
-                this.RaisePropertyChanged("ImpostaDiBollo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public double ImportoTotaleConIdB {
-            get {
-                return this.importoTotaleConIdBField;
-            }
-            set {
-                this.importoTotaleConIdBField = value;
-                this.RaisePropertyChanged("ImportoTotaleConIdB");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class ValorizzazioneServizio : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private Richiesta richiestaField;
-        
-        private string iDServizioField;
-        
-        private int numeroPagineField;
-        
-        private OggettoValorizzazione[] oggettoValorizzazioneField;
-        
-        private Totale totaleField;
-        
-        private double impostaDiBolloField;
-        
-        private double importoTotaleConIdBField;
-        
-        private CEResult cEResultField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public Richiesta Richiesta {
-            get {
-                return this.richiestaField;
-            }
-            set {
-                this.richiestaField = value;
-                this.RaisePropertyChanged("Richiesta");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string IDServizio {
-            get {
-                return this.iDServizioField;
-            }
-            set {
-                this.iDServizioField = value;
-                this.RaisePropertyChanged("IDServizio");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int NumeroPagine {
-            get {
-                return this.numeroPagineField;
-            }
-            set {
-                this.numeroPagineField = value;
-                this.RaisePropertyChanged("NumeroPagine");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("OggettoValorizzazione", Order=3)]
-        public OggettoValorizzazione[] OggettoValorizzazione {
-            get {
-                return this.oggettoValorizzazioneField;
-            }
-            set {
-                this.oggettoValorizzazioneField = value;
-                this.RaisePropertyChanged("OggettoValorizzazione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public Totale Totale {
-            get {
-                return this.totaleField;
-            }
-            set {
-                this.totaleField = value;
-                this.RaisePropertyChanged("Totale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public double ImpostaDiBollo {
-            get {
-                return this.impostaDiBolloField;
-            }
-            set {
-                this.impostaDiBolloField = value;
-                this.RaisePropertyChanged("ImpostaDiBollo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public double ImportoTotaleConIdB {
-            get {
-                return this.importoTotaleConIdBField;
-            }
-            set {
-                this.importoTotaleConIdBField = value;
-                this.RaisePropertyChanged("ImportoTotaleConIdB");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public CEResult CEResult {
-            get {
-                return this.cEResultField;
-            }
-            set {
-                this.cEResultField = value;
-                this.RaisePropertyChanged("CEResult");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class OggettoValorizzazione : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private Totale totaleField;
-        
-        private string codiceMaterialeField;
-        
-        private string descrizioneCodiceMaterialeField;
-        
-        private double percentualeIvaField;
-        
-        private string codiceIvaField;
-        
-        private int quantitaField;
-        
-        private double importoUnitarioTotaleField;
-        
-        private double importoUnitarioNettoField;
-        
-        private double importoUnitarioIvaField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public Totale Totale {
-            get {
-                return this.totaleField;
-            }
-            set {
-                this.totaleField = value;
-                this.RaisePropertyChanged("Totale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string CodiceMateriale {
-            get {
-                return this.codiceMaterialeField;
-            }
-            set {
-                this.codiceMaterialeField = value;
-                this.RaisePropertyChanged("CodiceMateriale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string DescrizioneCodiceMateriale {
-            get {
-                return this.descrizioneCodiceMaterialeField;
-            }
-            set {
-                this.descrizioneCodiceMaterialeField = value;
-                this.RaisePropertyChanged("DescrizioneCodiceMateriale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public double PercentualeIva {
-            get {
-                return this.percentualeIvaField;
-            }
-            set {
-                this.percentualeIvaField = value;
-                this.RaisePropertyChanged("PercentualeIva");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string CodiceIva {
-            get {
-                return this.codiceIvaField;
-            }
-            set {
-                this.codiceIvaField = value;
-                this.RaisePropertyChanged("CodiceIva");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public int Quantita {
-            get {
-                return this.quantitaField;
-            }
-            set {
-                this.quantitaField = value;
-                this.RaisePropertyChanged("Quantita");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public double ImportoUnitarioTotale {
-            get {
-                return this.importoUnitarioTotaleField;
-            }
-            set {
-                this.importoUnitarioTotaleField = value;
-                this.RaisePropertyChanged("ImportoUnitarioTotale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public double ImportoUnitarioNetto {
-            get {
-                return this.importoUnitarioNettoField;
-            }
-            set {
-                this.importoUnitarioNettoField = value;
-                this.RaisePropertyChanged("ImportoUnitarioNetto");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public double ImportoUnitarioIva {
-            get {
-                return this.importoUnitarioIvaField;
-            }
-            set {
-                this.importoUnitarioIvaField = value;
-                this.RaisePropertyChanged("ImportoUnitarioIva");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Totale : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string valutaField;
-        
-        private string descrizioneField;
-        
-        private double importoTotaleField;
-        
-        private double importoNettoField;
-        
-        private double importoIvaField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Valuta {
-            get {
-                return this.valutaField;
-            }
-            set {
-                this.valutaField = value;
-                this.RaisePropertyChanged("Valuta");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Descrizione {
-            get {
-                return this.descrizioneField;
-            }
-            set {
-                this.descrizioneField = value;
-                this.RaisePropertyChanged("Descrizione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public double ImportoTotale {
-            get {
-                return this.importoTotaleField;
-            }
-            set {
-                this.importoTotaleField = value;
-                this.RaisePropertyChanged("ImportoTotale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public double ImportoNetto {
-            get {
-                return this.importoNettoField;
-            }
-            set {
-                this.importoNettoField = value;
-                this.RaisePropertyChanged("ImportoNetto");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public double ImportoIva {
-            get {
-                return this.importoIvaField;
-            }
-            set {
-                this.importoIvaField = value;
-                this.RaisePropertyChanged("ImportoIva");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class OpzionePagamento : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool postFatturazioneField;
-        
-        private string descrizioneTipoPagamentoField;
-        
-        private string idTipoPagamentoField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool PostFatturazione {
-            get {
-                return this.postFatturazioneField;
-            }
-            set {
-                this.postFatturazioneField = value;
-                this.RaisePropertyChanged("PostFatturazione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string DescrizioneTipoPagamento {
-            get {
-                return this.descrizioneTipoPagamentoField;
-            }
-            set {
-                this.descrizioneTipoPagamentoField = value;
-                this.RaisePropertyChanged("DescrizioneTipoPagamento");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string IdTipoPagamento {
-            get {
-                return this.idTipoPagamentoField;
-            }
-            set {
-                this.idTipoPagamentoField = value;
-                this.RaisePropertyChanged("IdTipoPagamento");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
     public partial class ValorizzaSingleResult : object, System.ComponentModel.INotifyPropertyChanged {
         
         private ServizioEnquiryResponse servizioEnquiryResponseField;
         
         private LOLInfo lOLInfoField;
+        
+        private LOLServizio lOLServizioField;
         
         private Documento documentoField;
         
@@ -1906,7 +4226,19 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public LOLServizio LOLServizio {
+            get {
+                return this.lOLServizioField;
+            }
+            set {
+                this.lOLServizioField = value;
+                this.RaisePropertyChanged("LOLServizio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public Documento Documento {
             get {
                 return this.documentoField;
@@ -2198,452 +4530,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Mittente : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private Nominativo nominativoField;
-        
-        private bool inviaStampaField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public Nominativo Nominativo {
-            get {
-                return this.nominativoField;
-            }
-            set {
-                this.nominativoField = value;
-                this.RaisePropertyChanged("Nominativo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool InviaStampa {
-            get {
-                return this.inviaStampaField;
-            }
-            set {
-                this.inviaStampaField = value;
-                this.RaisePropertyChanged("InviaStampa");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Nominativo : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private Indirizzo indirizzoField;
-        
-        private string telefonoField;
-        
-        private string zonaField;
-        
-        private string statoField;
-        
-        private string cittaField;
-        
-        private string provinciaField;
-        
-        private bool forzaDestinazioneField;
-        
-        private string ufficioPostaleField;
-        
-        private NominativoTipoIndirizzo tipoIndirizzoField;
-        
-        private string casellaPostaleField;
-        
-        private string cognomeField;
-        
-        private string nomeField;
-        
-        private bool inesitateDigitaliField;
-        
-        private string codiceFiscaleField;
-        
-        private int codiceFiscaleResultField;
-        
-        private string cAPField;
-        
-        private string frazioneField;
-        
-        private string complementoIndirizzoField;
-        
-        private string complementoNominativoField;
-        
-        private string ragioneSocialeField;
-        
-        private System.Xml.XmlAttribute[] anyAttrField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public Indirizzo Indirizzo {
-            get {
-                return this.indirizzoField;
-            }
-            set {
-                this.indirizzoField = value;
-                this.RaisePropertyChanged("Indirizzo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                this.telefonoField = value;
-                this.RaisePropertyChanged("Telefono");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Zona {
-            get {
-                return this.zonaField;
-            }
-            set {
-                this.zonaField = value;
-                this.RaisePropertyChanged("Zona");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Stato {
-            get {
-                return this.statoField;
-            }
-            set {
-                this.statoField = value;
-                this.RaisePropertyChanged("Stato");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Citta {
-            get {
-                return this.cittaField;
-            }
-            set {
-                this.cittaField = value;
-                this.RaisePropertyChanged("Citta");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Provincia {
-            get {
-                return this.provinciaField;
-            }
-            set {
-                this.provinciaField = value;
-                this.RaisePropertyChanged("Provincia");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool ForzaDestinazione {
-            get {
-                return this.forzaDestinazioneField;
-            }
-            set {
-                this.forzaDestinazioneField = value;
-                this.RaisePropertyChanged("ForzaDestinazione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string UfficioPostale {
-            get {
-                return this.ufficioPostaleField;
-            }
-            set {
-                this.ufficioPostaleField = value;
-                this.RaisePropertyChanged("UfficioPostale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public NominativoTipoIndirizzo TipoIndirizzo {
-            get {
-                return this.tipoIndirizzoField;
-            }
-            set {
-                this.tipoIndirizzoField = value;
-                this.RaisePropertyChanged("TipoIndirizzo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string CasellaPostale {
-            get {
-                return this.casellaPostaleField;
-            }
-            set {
-                this.casellaPostaleField = value;
-                this.RaisePropertyChanged("CasellaPostale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Cognome {
-            get {
-                return this.cognomeField;
-            }
-            set {
-                this.cognomeField = value;
-                this.RaisePropertyChanged("Cognome");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Nome {
-            get {
-                return this.nomeField;
-            }
-            set {
-                this.nomeField = value;
-                this.RaisePropertyChanged("Nome");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool InesitateDigitali {
-            get {
-                return this.inesitateDigitaliField;
-            }
-            set {
-                this.inesitateDigitaliField = value;
-                this.RaisePropertyChanged("InesitateDigitali");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string CodiceFiscale {
-            get {
-                return this.codiceFiscaleField;
-            }
-            set {
-                this.codiceFiscaleField = value;
-                this.RaisePropertyChanged("CodiceFiscale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int CodiceFiscaleResult {
-            get {
-                return this.codiceFiscaleResultField;
-            }
-            set {
-                this.codiceFiscaleResultField = value;
-                this.RaisePropertyChanged("CodiceFiscaleResult");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string CAP {
-            get {
-                return this.cAPField;
-            }
-            set {
-                this.cAPField = value;
-                this.RaisePropertyChanged("CAP");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Frazione {
-            get {
-                return this.frazioneField;
-            }
-            set {
-                this.frazioneField = value;
-                this.RaisePropertyChanged("Frazione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ComplementoIndirizzo {
-            get {
-                return this.complementoIndirizzoField;
-            }
-            set {
-                this.complementoIndirizzoField = value;
-                this.RaisePropertyChanged("ComplementoIndirizzo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ComplementoNominativo {
-            get {
-                return this.complementoNominativoField;
-            }
-            set {
-                this.complementoNominativoField = value;
-                this.RaisePropertyChanged("ComplementoNominativo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string RagioneSociale {
-            get {
-                return this.ragioneSocialeField;
-            }
-            set {
-                this.ragioneSocialeField = value;
-                this.RaisePropertyChanged("RagioneSociale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr {
-            get {
-                return this.anyAttrField;
-            }
-            set {
-                this.anyAttrField = value;
-                this.RaisePropertyChanged("AnyAttr");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Indirizzo : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string dUGField;
-        
-        private string toponimoField;
-        
-        private string numeroCivicoField;
-        
-        private string esponenteField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string DUG {
-            get {
-                return this.dUGField;
-            }
-            set {
-                this.dUGField = value;
-                this.RaisePropertyChanged("DUG");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Toponimo {
-            get {
-                return this.toponimoField;
-            }
-            set {
-                this.toponimoField = value;
-                this.RaisePropertyChanged("Toponimo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string NumeroCivico {
-            get {
-                return this.numeroCivicoField;
-            }
-            set {
-                this.numeroCivicoField = value;
-                this.RaisePropertyChanged("NumeroCivico");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Esponente {
-            get {
-                return this.esponenteField;
-            }
-            set {
-                this.esponenteField = value;
-                this.RaisePropertyChanged("Esponente");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.XOL")]
-    public enum NominativoTipoIndirizzo {
-        
-        /// <remarks/>
-        NORMALE,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("CASELLA POSTALE")]
-        CASELLAPOSTALE,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
     public partial class Destinatario : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Nominativo nominativoField;
@@ -2731,53 +4617,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class DattaglioCover : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string protocolloMittenteField;
-        
-        private string[] testoLiberoField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string ProtocolloMittente {
-            get {
-                return this.protocolloMittenteField;
-            }
-            set {
-                this.protocolloMittenteField = value;
-                this.RaisePropertyChanged("ProtocolloMittente");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("TestoTL", IsNullable=false)]
-        public string[] TestoLibero {
-            get {
-                return this.testoLiberoField;
-            }
-            set {
-                this.testoLiberoField = value;
-                this.RaisePropertyChanged("TestoLibero");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.LOL.WS")]
     public partial class LOLInfoOpzioni : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2789,15 +4628,23 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         private bool securPaperField;
         
-        private bool inserisciMittenteField;
+        private bool dPMField;
         
         private System.DateTime dataStampaField;
         
-        private bool firmaElettronicaField;
+        private bool inserisciMittenteField;
+        
+        private bool anniArchiviazioneSpecified1Field;
         
         private bool archiviazioneField;
         
-        private bool dPMField;
+        private bool firmaElettronicaField;
+        
+        private int anniArchiviazioneField;
+        
+        private bool anniArchiviazioneFieldSpecified;
+        
+        private string archiviazioneDocumentiField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -2850,13 +4697,13 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool InserisciMittente {
+        public bool DPM {
             get {
-                return this.inserisciMittenteField;
+                return this.dPMField;
             }
             set {
-                this.inserisciMittenteField = value;
-                this.RaisePropertyChanged("InserisciMittente");
+                this.dPMField = value;
+                this.RaisePropertyChanged("DPM");
             }
         }
         
@@ -2874,13 +4721,25 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool FirmaElettronica {
+        public bool InserisciMittente {
             get {
-                return this.firmaElettronicaField;
+                return this.inserisciMittenteField;
             }
             set {
-                this.firmaElettronicaField = value;
-                this.RaisePropertyChanged("FirmaElettronica");
+                this.inserisciMittenteField = value;
+                this.RaisePropertyChanged("InserisciMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute("AnniArchiviazioneSpecified")]
+        public bool AnniArchiviazioneSpecified1 {
+            get {
+                return this.anniArchiviazioneSpecified1Field;
+            }
+            set {
+                this.anniArchiviazioneSpecified1Field = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified1");
             }
         }
         
@@ -2898,13 +4757,49 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool DPM {
+        public bool FirmaElettronica {
             get {
-                return this.dPMField;
+                return this.firmaElettronicaField;
             }
             set {
-                this.dPMField = value;
-                this.RaisePropertyChanged("DPM");
+                this.firmaElettronicaField = value;
+                this.RaisePropertyChanged("FirmaElettronica");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int AnniArchiviazione {
+            get {
+                return this.anniArchiviazioneField;
+            }
+            set {
+                this.anniArchiviazioneField = value;
+                this.RaisePropertyChanged("AnniArchiviazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AnniArchiviazioneSpecified {
+            get {
+                return this.anniArchiviazioneFieldSpecified;
+            }
+            set {
+                this.anniArchiviazioneFieldSpecified = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ArchiviazioneDocumenti {
+            get {
+                return this.archiviazioneDocumentiField;
+            }
+            set {
+                this.archiviazioneDocumentiField = value;
+                this.RaisePropertyChanged("ArchiviazioneDocumenti");
             }
         }
         
@@ -2951,281 +4846,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
             set {
                 this.insertoField = value;
                 this.RaisePropertyChanged("Inserto");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class OpzionidiStampa : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private ServizioAggiuntivo[] opzioniAggiuntiveStampaField;
-        
-        private string resolutionYField;
-        
-        private OpzionidiStampaPageSize pageSizeField;
-        
-        private string resolutionXField;
-        
-        private string bwField;
-        
-        private string fronteRetroField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("ArrayOfServizioAggiuntivo", IsNullable=false)]
-        public ServizioAggiuntivo[] OpzioniAggiuntiveStampa {
-            get {
-                return this.opzioniAggiuntiveStampaField;
-            }
-            set {
-                this.opzioniAggiuntiveStampaField = value;
-                this.RaisePropertyChanged("OpzioniAggiuntiveStampa");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ResolutionY {
-            get {
-                return this.resolutionYField;
-            }
-            set {
-                this.resolutionYField = value;
-                this.RaisePropertyChanged("ResolutionY");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public OpzionidiStampaPageSize PageSize {
-            get {
-                return this.pageSizeField;
-            }
-            set {
-                this.pageSizeField = value;
-                this.RaisePropertyChanged("PageSize");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ResolutionX {
-            get {
-                return this.resolutionXField;
-            }
-            set {
-                this.resolutionXField = value;
-                this.RaisePropertyChanged("ResolutionX");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string BW {
-            get {
-                return this.bwField;
-            }
-            set {
-                this.bwField = value;
-                this.RaisePropertyChanged("BW");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string FronteRetro {
-            get {
-                return this.fronteRetroField;
-            }
-            set {
-                this.fronteRetroField = value;
-                this.RaisePropertyChanged("FronteRetro");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class ServizioAggiuntivo : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string idField;
-        
-        private string descrizioneField;
-        
-        private string valoreField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("ID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Descrizione {
-            get {
-                return this.descrizioneField;
-            }
-            set {
-                this.descrizioneField = value;
-                this.RaisePropertyChanged("Descrizione");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Valore {
-            get {
-                return this.valoreField;
-            }
-            set {
-                this.valoreField = value;
-                this.RaisePropertyChanged("Valore");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://ComunicazioniElettroniche.XOL")]
-    public enum OpzionidiStampaPageSize {
-        
-        /// <remarks/>
-        A0,
-        
-        /// <remarks/>
-        A1,
-        
-        /// <remarks/>
-        A2,
-        
-        /// <remarks/>
-        A3,
-        
-        /// <remarks/>
-        A4,
-        
-        /// <remarks/>
-        A5,
-        
-        /// <remarks/>
-        A6,
-        
-        /// <remarks/>
-        A7,
-        
-        /// <remarks/>
-        A8,
-        
-        /// <remarks/>
-        A9,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.XOL")]
-    public partial class Documento : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private byte[] immagineField;
-        
-        private string mD5Field;
-        
-        private string[] firmatariField;
-        
-        private string tipoDocumentoField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=0)]
-        public byte[] Immagine {
-            get {
-                return this.immagineField;
-            }
-            set {
-                this.immagineField = value;
-                this.RaisePropertyChanged("Immagine");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string MD5 {
-            get {
-                return this.mD5Field;
-            }
-            set {
-                this.mD5Field = value;
-                this.RaisePropertyChanged("MD5");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Firma", IsNullable=false)]
-        public string[] Firmatari {
-            get {
-                return this.firmatariField;
-            }
-            set {
-                this.firmatariField = value;
-                this.RaisePropertyChanged("Firmatari");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string TipoDocumento {
-            get {
-                return this.tipoDocumentoField;
-            }
-            set {
-                this.tipoDocumentoField = value;
-                this.RaisePropertyChanged("TipoDocumento");
             }
         }
         
@@ -3436,6 +5056,10 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         private int numeroDestinatariField;
         
+        private string tipoCoverField;
+        
+        private string idCoverField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public ValidaDestinatariResults ValidaDestinatariResults {
@@ -3457,6 +5081,30 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
             set {
                 this.numeroDestinatariField = value;
                 this.RaisePropertyChanged("NumeroDestinatari");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string TipoCover {
+            get {
+                return this.tipoCoverField;
+            }
+            set {
+                this.tipoCoverField = value;
+                this.RaisePropertyChanged("TipoCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string IdCover {
+            get {
+                return this.idCoverField;
+            }
+            set {
+                this.idCoverField = value;
+                this.RaisePropertyChanged("IdCover");
             }
         }
         
@@ -3725,6 +5373,314 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
             set {
                 this.descrizioneField = value;
                 this.RaisePropertyChanged("Descrizione");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class Immagini : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] contentField;
+        
+        private string nomeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=0)]
+        public byte[] Content {
+            get {
+                return this.contentField;
+            }
+            set {
+                this.contentField = value;
+                this.RaisePropertyChanged("Content");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+                this.RaisePropertyChanged("Nome");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CoverBody))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CoverFooter))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CoverHeader))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CoverBasic : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private byte[] immagineField;
+        
+        private string xhtmlField;
+        
+        private string testoField;
+        
+        private Immagini[] immaginiField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", Order=0)]
+        public byte[] Immagine {
+            get {
+                return this.immagineField;
+            }
+            set {
+                this.immagineField = value;
+                this.RaisePropertyChanged("Immagine");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Xhtml {
+            get {
+                return this.xhtmlField;
+            }
+            set {
+                this.xhtmlField = value;
+                this.RaisePropertyChanged("Xhtml");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Testo {
+            get {
+                return this.testoField;
+            }
+            set {
+                this.testoField = value;
+                this.RaisePropertyChanged("Testo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Immagini", Order=3)]
+        public Immagini[] Immagini {
+            get {
+                return this.immaginiField;
+            }
+            set {
+                this.immaginiField = value;
+                this.RaisePropertyChanged("Immagini");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CoverBody : CoverBasic {
+        
+        private bool bodyStandardField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool BodyStandard {
+            get {
+                return this.bodyStandardField;
+            }
+            set {
+                this.bodyStandardField = value;
+                this.RaisePropertyChanged("BodyStandard");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CoverFooter : CoverBasic {
+        
+        private bool footerStandardField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool FooterStandard {
+            get {
+                return this.footerStandardField;
+            }
+            set {
+                this.footerStandardField = value;
+                this.RaisePropertyChanged("FooterStandard");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class CoverHeader : CoverBasic {
+        
+        private bool headerStandardField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool HeaderStandard {
+            get {
+                return this.headerStandardField;
+            }
+            set {
+                this.headerStandardField = value;
+                this.RaisePropertyChanged("HeaderStandard");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS")]
+    public partial class Cover : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string idCoverField;
+        
+        private CoverHeader headerField;
+        
+        private byte[] logoMittenteField;
+        
+        private CoverBasic campoLiberoHeaderField;
+        
+        private CoverBody bodyField;
+        
+        private CoverFooter footerField;
+        
+        private CoverBasic campoLiberoLetteraField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string IdCover {
+            get {
+                return this.idCoverField;
+            }
+            set {
+                this.idCoverField = value;
+                this.RaisePropertyChanged("IdCover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public CoverHeader Header {
+            get {
+                return this.headerField;
+            }
+            set {
+                this.headerField = value;
+                this.RaisePropertyChanged("Header");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary", IsNullable=true, Order=2)]
+        public byte[] LogoMittente {
+            get {
+                return this.logoMittenteField;
+            }
+            set {
+                this.logoMittenteField = value;
+                this.RaisePropertyChanged("LogoMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public CoverBasic CampoLiberoHeader {
+            get {
+                return this.campoLiberoHeaderField;
+            }
+            set {
+                this.campoLiberoHeaderField = value;
+                this.RaisePropertyChanged("CampoLiberoHeader");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=4)]
+        public CoverBody Body {
+            get {
+                return this.bodyField;
+            }
+            set {
+                this.bodyField = value;
+                this.RaisePropertyChanged("Body");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public CoverFooter Footer {
+            get {
+                return this.footerField;
+            }
+            set {
+                this.footerField = value;
+                this.RaisePropertyChanged("Footer");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=6)]
+        public CoverBasic CampoLiberoLettera {
+            get {
+                return this.campoLiberoLetteraField;
+            }
+            set {
+                this.campoLiberoLetteraField = value;
+                this.RaisePropertyChanged("CampoLiberoLettera");
             }
         }
         
@@ -4616,11 +6572,13 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         private AvvisoPagamentoPagoPA avvisoPagamentoPagoPAField;
         
+        private Cover coverField;
+        
+        private bool prezzaturaSincronaField;
+        
         private bool forzaInvioDestinazioniValideField;
         
         private string nazionaleField;
-        
-        private bool prezzaturaSincronaField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -4757,6 +6715,30 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public Cover Cover {
+            get {
+                return this.coverField;
+            }
+            set {
+                this.coverField = value;
+                this.RaisePropertyChanged("Cover");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool PrezzaturaSincrona {
+            get {
+                return this.prezzaturaSincronaField;
+            }
+            set {
+                this.prezzaturaSincronaField = value;
+                this.RaisePropertyChanged("PrezzaturaSincrona");
+            }
+        }
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public bool ForzaInvioDestinazioniValide {
             get {
@@ -4777,18 +6759,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
             set {
                 this.nazionaleField = value;
                 this.RaisePropertyChanged("Nazionale");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool PrezzaturaSincrona {
-            get {
-                return this.prezzaturaSincronaField;
-            }
-            set {
-                this.prezzaturaSincronaField = value;
-                this.RaisePropertyChanged("PrezzaturaSincrona");
             }
         }
         
@@ -4818,15 +6788,23 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         private bool securPaperField;
         
-        private bool inserisciMittenteField;
+        private bool dPMField;
         
         private System.DateTime dataStampaField;
         
-        private bool firmaElettronicaField;
+        private bool inserisciMittenteField;
+        
+        private bool anniArchiviazioneSpecified1Field;
         
         private bool archiviazioneField;
         
-        private bool dPMField;
+        private bool firmaElettronicaField;
+        
+        private int anniArchiviazioneField;
+        
+        private bool anniArchiviazioneFieldSpecified;
+        
+        private string archiviazioneDocumentiField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -4879,13 +6857,13 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool InserisciMittente {
+        public bool DPM {
             get {
-                return this.inserisciMittenteField;
+                return this.dPMField;
             }
             set {
-                this.inserisciMittenteField = value;
-                this.RaisePropertyChanged("InserisciMittente");
+                this.dPMField = value;
+                this.RaisePropertyChanged("DPM");
             }
         }
         
@@ -4903,13 +6881,25 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool FirmaElettronica {
+        public bool InserisciMittente {
             get {
-                return this.firmaElettronicaField;
+                return this.inserisciMittenteField;
             }
             set {
-                this.firmaElettronicaField = value;
-                this.RaisePropertyChanged("FirmaElettronica");
+                this.inserisciMittenteField = value;
+                this.RaisePropertyChanged("InserisciMittente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute("AnniArchiviazioneSpecified")]
+        public bool AnniArchiviazioneSpecified1 {
+            get {
+                return this.anniArchiviazioneSpecified1Field;
+            }
+            set {
+                this.anniArchiviazioneSpecified1Field = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified1");
             }
         }
         
@@ -4927,13 +6917,49 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool DPM {
+        public bool FirmaElettronica {
             get {
-                return this.dPMField;
+                return this.firmaElettronicaField;
             }
             set {
-                this.dPMField = value;
-                this.RaisePropertyChanged("DPM");
+                this.firmaElettronicaField = value;
+                this.RaisePropertyChanged("FirmaElettronica");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int AnniArchiviazione {
+            get {
+                return this.anniArchiviazioneField;
+            }
+            set {
+                this.anniArchiviazioneField = value;
+                this.RaisePropertyChanged("AnniArchiviazione");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AnniArchiviazioneSpecified {
+            get {
+                return this.anniArchiviazioneFieldSpecified;
+            }
+            set {
+                this.anniArchiviazioneFieldSpecified = value;
+                this.RaisePropertyChanged("AnniArchiviazioneSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ArchiviazioneDocumenti {
+            get {
+                return this.archiviazioneDocumentiField;
+            }
+            set {
+                this.archiviazioneDocumentiField = value;
+                this.RaisePropertyChanged("ArchiviazioneDocumenti");
             }
         }
         
@@ -6192,6 +8218,387 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaServizioRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaServizioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string DataInvioDa;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=1)]
+        public string DataInvioA;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=2)]
+        public string DataAccettazioneDa;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=3)]
+        public string DataAccettazioneA;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=4)]
+        public string[] NumeroLettera;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=5)]
+        public string[] IdRichiesta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=6)]
+        public string NomeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=7)]
+        public string CognomeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=8)]
+        public string RagioneSocialeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=9)]
+        public string StatoLavorazione;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NumeroElementiPerPagina;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NumeroPagina;
+        
+        public RecuperaServizioRequest() {
+        }
+        
+        public RecuperaServizioRequest(string DataInvioDa, string DataInvioA, string DataAccettazioneDa, string DataAccettazioneA, string[] NumeroLettera, string[] IdRichiesta, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string StatoLavorazione, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            this.DataInvioDa = DataInvioDa;
+            this.DataInvioA = DataInvioA;
+            this.DataAccettazioneDa = DataAccettazioneDa;
+            this.DataAccettazioneA = DataAccettazioneA;
+            this.NumeroLettera = NumeroLettera;
+            this.IdRichiesta = IdRichiesta;
+            this.NomeDestinatario = NomeDestinatario;
+            this.CognomeDestinatario = CognomeDestinatario;
+            this.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            this.StatoLavorazione = StatoLavorazione;
+            this.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            this.NumeroPagina = NumeroPagina;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaServizioResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaServizioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResult RecuperaServizioResult;
+        
+        public RecuperaServizioResponse() {
+        }
+        
+        public RecuperaServizioResponse(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResult RecuperaServizioResult) {
+            this.RecuperaServizioResult = RecuperaServizioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperoMassivoArchiviazioneRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperoMassivoArchiviazioneRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string DataAccettazioneDa;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=1)]
+        public string DataAccettazioneA;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=2)]
+        public string NomeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=3)]
+        public string CognomeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=4)]
+        public string RagioneSocialeDestinatario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=5)]
+        public string[] ArrayNumeroLettera;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=6)]
+        public string[] ArrayIdRichiesta;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NumeroElementiPerPagina;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NumeroPagina;
+        
+        public RecuperoMassivoArchiviazioneRequest() {
+        }
+        
+        public RecuperoMassivoArchiviazioneRequest(string DataAccettazioneDa, string DataAccettazioneA, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string[] ArrayNumeroLettera, string[] ArrayIdRichiesta, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            this.DataAccettazioneDa = DataAccettazioneDa;
+            this.DataAccettazioneA = DataAccettazioneA;
+            this.NomeDestinatario = NomeDestinatario;
+            this.CognomeDestinatario = CognomeDestinatario;
+            this.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            this.ArrayNumeroLettera = ArrayNumeroLettera;
+            this.ArrayIdRichiesta = ArrayIdRichiesta;
+            this.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            this.NumeroPagina = NumeroPagina;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperoMassivoArchiviazioneResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperoMassivoArchiviazioneResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResult RecuperoMassivoArchiviazioneResult;
+        
+        public RecuperoMassivoArchiviazioneResponse() {
+        }
+        
+        public RecuperoMassivoArchiviazioneResponse(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResult RecuperoMassivoArchiviazioneResult) {
+            this.RecuperoMassivoArchiviazioneResult = RecuperoMassivoArchiviazioneResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreaCoverRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class CreaCoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string IdCover;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=1)]
+        public string Denominazione;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=2)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CoverHeader Header;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] LogoMittente;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=4)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=5)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CoverBody Body;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=6)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CoverFooter Footer;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=7)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoLettera;
+        
+        public CreaCoverRequest() {
+        }
+        
+        public CreaCoverRequest(string IdCover, string Denominazione, NPCE_Client.UnitTest.ServiceReference.LOL.CoverHeader Header, byte[] LogoMittente, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoHeader, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBody Body, NPCE_Client.UnitTest.ServiceReference.LOL.CoverFooter Footer, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoLettera) {
+            this.IdCover = IdCover;
+            this.Denominazione = Denominazione;
+            this.Header = Header;
+            this.LogoMittente = LogoMittente;
+            this.CampoLiberoHeader = CampoLiberoHeader;
+            this.Body = Body;
+            this.Footer = Footer;
+            this.CampoLiberoLettera = CampoLiberoLettera;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreaCoverResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class CreaCoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResult CreaCoverResultResult;
+        
+        public CreaCoverResponse() {
+        }
+        
+        public CreaCoverResponse(NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResult CreaCoverResultResult) {
+            this.CreaCoverResultResult = CreaCoverResultResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConfermaCoverRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class ConfermaCoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string IdCover;
+        
+        public ConfermaCoverRequest() {
+        }
+        
+        public ConfermaCoverRequest(string IdCover) {
+            this.IdCover = IdCover;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConfermaCoverResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class ConfermaCoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResult ConfermaCoverResult;
+        
+        public ConfermaCoverResponse() {
+        }
+        
+        public ConfermaCoverResponse(NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResult ConfermaCoverResult) {
+            this.ConfermaCoverResult = ConfermaCoverResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AnnullaCoverRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class AnnullaCoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string IdCover;
+        
+        public AnnullaCoverRequest() {
+        }
+        
+        public AnnullaCoverRequest(string IdCover) {
+            this.IdCover = IdCover;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AnnullaCoverResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class AnnullaCoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResult AnnullaCoverResult;
+        
+        public AnnullaCoverResponse() {
+        }
+        
+        public AnnullaCoverResponse(NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResult AnnullaCoverResult) {
+            this.AnnullaCoverResult = AnnullaCoverResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaAnteprimaCoverRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaAnteprimaCoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string IdCover;
+        
+        public RecuperaAnteprimaCoverRequest() {
+        }
+        
+        public RecuperaAnteprimaCoverRequest(string IdCover) {
+            this.IdCover = IdCover;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaAnteprimaCoverResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaAnteprimaCoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResult RecuperaAnteprimaCoverResult;
+        
+        public RecuperaAnteprimaCoverResponse() {
+        }
+        
+        public RecuperaAnteprimaCoverResponse(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResult RecuperaAnteprimaCoverResult) {
+            this.RecuperaAnteprimaCoverResult = RecuperaAnteprimaCoverResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaStatiCoverRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaStatiCoverRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string[] IdCover;
+        
+        public RecuperaStatiCoverRequest() {
+        }
+        
+        public RecuperaStatiCoverRequest(string[] IdCover) {
+            this.IdCover = IdCover;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaStatiCoverResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaStatiCoverResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResult RecuperaStatiCoverResult;
+        
+        public RecuperaStatiCoverResponse() {
+        }
+        
+        public RecuperaStatiCoverResponse(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResult RecuperaStatiCoverResult) {
+            this.RecuperaStatiCoverResult = RecuperaStatiCoverResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaDocumentoFinaleRequest", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaDocumentoFinaleRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public string NumeroLettera;
+        
+        public RecuperaDocumentoFinaleRequest() {
+        }
+        
+        public RecuperaDocumentoFinaleRequest(string NumeroLettera) {
+            this.NumeroLettera = NumeroLettera;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RecuperaDocumentoFinaleResponse", WrapperNamespace="http://ComunicazioniElettroniche.LOL.WS", IsWrapped=true)]
+    public partial class RecuperaDocumentoFinaleResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://ComunicazioniElettroniche.LOL.WS", Order=0)]
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResult RecuperaDocumentoFinaleResult;
+        
+        public RecuperaDocumentoFinaleResponse() {
+        }
+        
+        public RecuperaDocumentoFinaleResponse(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResult RecuperaDocumentoFinaleResult) {
+            this.RecuperaDocumentoFinaleResult = RecuperaDocumentoFinaleResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface LOLServiceSoapChannel : NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -6463,6 +8870,266 @@ namespace NPCE_Client.UnitTest.ServiceReference.LOL {
         
         public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.NomiUPUCountries> RecuperaNomiNazioniUPUAsync(NPCE_Client.UnitTest.ServiceReference.LOL.CountryLanguage lingua) {
             return base.Channel.RecuperaNomiNazioniUPUAsync(lingua);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaServizio(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest request) {
+            return base.Channel.RecuperaServizio(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResult RecuperaServizio(string DataInvioDa, string DataInvioA, string DataAccettazioneDa, string DataAccettazioneA, string[] NumeroLettera, string[] IdRichiesta, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string StatoLavorazione, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest();
+            inValue.DataInvioDa = DataInvioDa;
+            inValue.DataInvioA = DataInvioA;
+            inValue.DataAccettazioneDa = DataAccettazioneDa;
+            inValue.DataAccettazioneA = DataAccettazioneA;
+            inValue.NumeroLettera = NumeroLettera;
+            inValue.IdRichiesta = IdRichiesta;
+            inValue.NomeDestinatario = NomeDestinatario;
+            inValue.CognomeDestinatario = CognomeDestinatario;
+            inValue.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            inValue.StatoLavorazione = StatoLavorazione;
+            inValue.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            inValue.NumeroPagina = NumeroPagina;
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaServizio(inValue);
+            return retVal.RecuperaServizioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaServizioAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest request) {
+            return base.Channel.RecuperaServizioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioResponse> RecuperaServizioAsync(string DataInvioDa, string DataInvioA, string DataAccettazioneDa, string DataAccettazioneA, string[] NumeroLettera, string[] IdRichiesta, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string StatoLavorazione, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaServizioRequest();
+            inValue.DataInvioDa = DataInvioDa;
+            inValue.DataInvioA = DataInvioA;
+            inValue.DataAccettazioneDa = DataAccettazioneDa;
+            inValue.DataAccettazioneA = DataAccettazioneA;
+            inValue.NumeroLettera = NumeroLettera;
+            inValue.IdRichiesta = IdRichiesta;
+            inValue.NomeDestinatario = NomeDestinatario;
+            inValue.CognomeDestinatario = CognomeDestinatario;
+            inValue.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            inValue.StatoLavorazione = StatoLavorazione;
+            inValue.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            inValue.NumeroPagina = NumeroPagina;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaServizioAsync(inValue);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoSingolaArchiviazioneResult RecuperoSingolaArchiviazione(string numeroLettera) {
+            return base.Channel.RecuperoSingolaArchiviazione(numeroLettera);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoSingolaArchiviazioneResult> RecuperoSingolaArchiviazioneAsync(string numeroLettera) {
+            return base.Channel.RecuperoSingolaArchiviazioneAsync(numeroLettera);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperoMassivoArchiviazione(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest request) {
+            return base.Channel.RecuperoMassivoArchiviazione(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResult RecuperoMassivoArchiviazione(string DataAccettazioneDa, string DataAccettazioneA, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string[] ArrayNumeroLettera, string[] ArrayIdRichiesta, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest();
+            inValue.DataAccettazioneDa = DataAccettazioneDa;
+            inValue.DataAccettazioneA = DataAccettazioneA;
+            inValue.NomeDestinatario = NomeDestinatario;
+            inValue.CognomeDestinatario = CognomeDestinatario;
+            inValue.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            inValue.ArrayNumeroLettera = ArrayNumeroLettera;
+            inValue.ArrayIdRichiesta = ArrayIdRichiesta;
+            inValue.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            inValue.NumeroPagina = NumeroPagina;
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperoMassivoArchiviazione(inValue);
+            return retVal.RecuperoMassivoArchiviazioneResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperoMassivoArchiviazioneAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest request) {
+            return base.Channel.RecuperoMassivoArchiviazioneAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneResponse> RecuperoMassivoArchiviazioneAsync(string DataAccettazioneDa, string DataAccettazioneA, string NomeDestinatario, string CognomeDestinatario, string RagioneSocialeDestinatario, string[] ArrayNumeroLettera, string[] ArrayIdRichiesta, System.Nullable<int> NumeroElementiPerPagina, System.Nullable<int> NumeroPagina) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperoMassivoArchiviazioneRequest();
+            inValue.DataAccettazioneDa = DataAccettazioneDa;
+            inValue.DataAccettazioneA = DataAccettazioneA;
+            inValue.NomeDestinatario = NomeDestinatario;
+            inValue.CognomeDestinatario = CognomeDestinatario;
+            inValue.RagioneSocialeDestinatario = RagioneSocialeDestinatario;
+            inValue.ArrayNumeroLettera = ArrayNumeroLettera;
+            inValue.ArrayIdRichiesta = ArrayIdRichiesta;
+            inValue.NumeroElementiPerPagina = NumeroElementiPerPagina;
+            inValue.NumeroPagina = NumeroPagina;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperoMassivoArchiviazioneAsync(inValue);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.DownloadMassivoArchiviazioneResult DownloadMassivoArchiviazione(string ticketId) {
+            return base.Channel.DownloadMassivoArchiviazione(ticketId);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.DownloadMassivoArchiviazioneResult> DownloadMassivoArchiviazioneAsync(string ticketId) {
+            return base.Channel.DownloadMassivoArchiviazioneAsync(ticketId);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CancellaArchiviazioneResult CancellaArchiviazione(string[] arrayNumeroLettera) {
+            return base.Channel.CancellaArchiviazione(arrayNumeroLettera);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.CancellaArchiviazioneResult> CancellaArchiviazioneAsync(string[] arrayNumeroLettera) {
+            return base.Channel.CancellaArchiviazioneAsync(arrayNumeroLettera);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.CreaCover(NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest request) {
+            return base.Channel.CreaCover(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResult CreaCover(string IdCover, string Denominazione, NPCE_Client.UnitTest.ServiceReference.LOL.CoverHeader Header, byte[] LogoMittente, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoHeader, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBody Body, NPCE_Client.UnitTest.ServiceReference.LOL.CoverFooter Footer, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoLettera) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest();
+            inValue.IdCover = IdCover;
+            inValue.Denominazione = Denominazione;
+            inValue.Header = Header;
+            inValue.LogoMittente = LogoMittente;
+            inValue.CampoLiberoHeader = CampoLiberoHeader;
+            inValue.Body = Body;
+            inValue.Footer = Footer;
+            inValue.CampoLiberoLettera = CampoLiberoLettera;
+            NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).CreaCover(inValue);
+            return retVal.CreaCoverResultResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.CreaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest request) {
+            return base.Channel.CreaCoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverResponse> CreaCoverAsync(string IdCover, string Denominazione, NPCE_Client.UnitTest.ServiceReference.LOL.CoverHeader Header, byte[] LogoMittente, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoHeader, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBody Body, NPCE_Client.UnitTest.ServiceReference.LOL.CoverFooter Footer, NPCE_Client.UnitTest.ServiceReference.LOL.CoverBasic CampoLiberoLettera) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.CreaCoverRequest();
+            inValue.IdCover = IdCover;
+            inValue.Denominazione = Denominazione;
+            inValue.Header = Header;
+            inValue.LogoMittente = LogoMittente;
+            inValue.CampoLiberoHeader = CampoLiberoHeader;
+            inValue.Body = Body;
+            inValue.Footer = Footer;
+            inValue.CampoLiberoLettera = CampoLiberoLettera;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).CreaCoverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.ConfermaCover(NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest request) {
+            return base.Channel.ConfermaCover(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResult ConfermaCover(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest();
+            inValue.IdCover = IdCover;
+            NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).ConfermaCover(inValue);
+            return retVal.ConfermaCoverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.ConfermaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest request) {
+            return base.Channel.ConfermaCoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverResponse> ConfermaCoverAsync(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.ConfermaCoverRequest();
+            inValue.IdCover = IdCover;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).ConfermaCoverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.AnnullaCover(NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest request) {
+            return base.Channel.AnnullaCover(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResult AnnullaCover(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest();
+            inValue.IdCover = IdCover;
+            NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).AnnullaCover(inValue);
+            return retVal.AnnullaCoverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.AnnullaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest request) {
+            return base.Channel.AnnullaCoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse> AnnullaCoverAsync(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverRequest();
+            inValue.IdCover = IdCover;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).AnnullaCoverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaAnteprimaCover(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest request) {
+            return base.Channel.RecuperaAnteprimaCover(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResult RecuperaAnteprimaCover(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest();
+            inValue.IdCover = IdCover;
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaAnteprimaCover(inValue);
+            return retVal.RecuperaAnteprimaCoverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaAnteprimaCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest request) {
+            return base.Channel.RecuperaAnteprimaCoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverResponse> RecuperaAnteprimaCoverAsync(string IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaAnteprimaCoverRequest();
+            inValue.IdCover = IdCover;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaAnteprimaCoverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaStatiCover(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest request) {
+            return base.Channel.RecuperaStatiCover(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResult RecuperaStatiCover(string[] IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest();
+            inValue.IdCover = IdCover;
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaStatiCover(inValue);
+            return retVal.RecuperaStatiCoverResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaStatiCoverAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest request) {
+            return base.Channel.RecuperaStatiCoverAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverResponse> RecuperaStatiCoverAsync(string[] IdCover) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaStatiCoverRequest();
+            inValue.IdCover = IdCover;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaStatiCoverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaDocumentoFinale(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest request) {
+            return base.Channel.RecuperaDocumentoFinale(request);
+        }
+        
+        public NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResult RecuperaDocumentoFinale(string NumeroLettera) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest();
+            inValue.NumeroLettera = NumeroLettera;
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse retVal = ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaDocumentoFinale(inValue);
+            return retVal.RecuperaDocumentoFinaleResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse> NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap.RecuperaDocumentoFinaleAsync(NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest request) {
+            return base.Channel.RecuperaDocumentoFinaleAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleResponse> RecuperaDocumentoFinaleAsync(string NumeroLettera) {
+            NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest inValue = new NPCE_Client.UnitTest.ServiceReference.LOL.RecuperaDocumentoFinaleRequest();
+            inValue.NumeroLettera = NumeroLettera;
+            return ((NPCE_Client.UnitTest.ServiceReference.LOL.LOLServiceSoap)(this)).RecuperaDocumentoFinaleAsync(inValue);
         }
     }
 }

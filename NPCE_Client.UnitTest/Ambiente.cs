@@ -45,6 +45,8 @@ namespace NPCE_Client.UnitTest
         public string HashMD5Document { get; internal set; }
         public string PathCov { get; internal set; }
         public string HashMD5Cov { get; internal set; }
+
+        public string PathLoggingFile { get; set; }
     }
 
 }

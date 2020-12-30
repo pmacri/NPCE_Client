@@ -7,9 +7,11 @@ using NPCE.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace NPCE_Client.Test
@@ -176,6 +178,50 @@ namespace NPCE_Client.Test
             }
             return result;
         }
+
+        public static void GetParametriPrezzatura(string servizio, out int numeroFogli, out int mesiArchiviazione, string pathLoggingFile)
+        {
+            string fileName = string.Empty;
+
+            if (servizio.ToLower()=="lol")
+            {
+                fileName = pathLoggingFile + @"\NPCELOL.log";
+            }
+            else
+            {
+                fileName = pathLoggingFile + @"\NPCEROL.log";
+            };
+
+
+            var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            var sr = new StreamReader(fs, Encoding.UTF8);
+            try
+            {
+                string line = String.Empty;
+                string lastLineFound = string.Empty;
+                while ((line = sr.ReadLine()) != null)
+                {
+
+                    if (Regex.IsMatch(line, $@"\bARCHIV\b"))
+                    {
+                        lastLineFound = line;
+                    }
+
+                    //<Parameter ParamName="ARCHIV" ParamValue="00020024" />
+                }
+                var paramValue = lastLineFound.Substring(lastLineFound.LastIndexOf("ParamValue") + 12, 8);
+                numeroFogli = int.Parse(paramValue.Substring(0, 4));
+                mesiArchiviazione = int.Parse(paramValue.Substring(4, 4));
+            }
+            catch (Exception)
+            {
+                sr.Dispose();
+                fs.Dispose();
+                throw;
+            }
+            
+        }
+
 
 
 

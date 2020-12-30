@@ -19,6 +19,8 @@ namespace NPCE_Client.UnitTest
             
         }
 
+       
+
         [TestMethod]
         public void Invio_MOL1_Autoconferma_True()
         {
