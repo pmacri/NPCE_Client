@@ -8,12 +8,12 @@ using System.Linq;
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class MOL_Pil : TestBase
+    public class PIL_MOL : TestBase
     {
 
 
 
-        public MOL_Pil(): base(Environment.Collaudo)
+        public PIL_MOL(): base(Environment.Staging)
         {
 
         }
@@ -22,7 +22,7 @@ namespace NPCE_Client.UnitTest
         public void MOL1_Base_AutoConfirmTrue_RitiroDigitale_CF_Errato()
         {
             var guid = System.Guid.NewGuid();
-            string xmlBase = Envelopes.PostaEvoBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 
@@ -49,7 +49,7 @@ namespace NPCE_Client.UnitTest
         {
             var guid = System.Guid.NewGuid();
 
-            string xmlBase = Envelopes.PostaEvoBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 
@@ -74,7 +74,7 @@ namespace NPCE_Client.UnitTest
         {
             var guid = System.Guid.NewGuid();
 
-            string xmlBase = Envelopes.PostaEvoBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 
@@ -100,7 +100,7 @@ namespace NPCE_Client.UnitTest
         {
             var guid = System.Guid.NewGuid();
 
-            string xmlBase = Envelopes.PostaEvoBase.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 

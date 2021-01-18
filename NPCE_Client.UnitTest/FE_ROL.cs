@@ -15,7 +15,7 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_ROL : TestBase
     {
-        public FE_ROL() : base(Environment.ProduzioneIAM)
+        public FE_ROL() : base(Environment.Collaudo)
         {
 
         }
@@ -105,6 +105,28 @@ namespace NPCE_Client.UnitTest
             var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
 
             Assert.AreEqual(result.CEResult.Type, "I");
+        }
+
+        [TestMethod]
+
+        public void Invio_PreConferma_PosteIt()
+        {
+            string idRichiesta = "B0DDB22A-E21B-4A06-961B-E945176D2617";
+            string guidUtente = "ROL202101000000720";
+            var userId = "salvatore.fratoni";
+            var canale = "WEB";
+
+            var listRichieste = new List<ServiceReference.ROL.Richiesta>();
+            listRichieste.Add(new ServiceReference.ROL.Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });
+            ServiceReference.ROL.PreConfermaRequest request = new ServiceReference.ROL.PreConfermaRequest { Richieste = listRichieste.ToArray(), autoConferma = true };
+            var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            var headers = GetHttpHeaders(ambiente);
+            headers.Headers["smuser"] = userId;
+            headers.Headers["sendersystem"] = canale;
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+            var preConfermaResult = proxy.PreConferma(request);
+            Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
         }
 
         private string RecuperaIdRichiesta()

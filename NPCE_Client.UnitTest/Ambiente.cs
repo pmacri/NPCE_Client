@@ -11,12 +11,14 @@ namespace NPCE_Client.UnitTest
         public int Id { get; set; }
 
         public string Description { get; set; }
-        public string customerid { get; set; }
+        public string customeridMOL { get; set; }
+        public string customeridCOL { get; set; }
         public string costcenter { get; set; }
         public string billingcenter { get; set; }
         public string idsender { get; set; }
         public string sendersystem { get; set; }
-        public string smuser { get; set; }
+        public string smuserMOL { get; set; }
+        public string smuserCOL { get; set; }
         public string contracttype { get; set; }
         public string usertype { get; set; }
         public string codicefiscale { get; set; }
@@ -38,6 +40,8 @@ namespace NPCE_Client.UnitTest
         public string PostaEvoConnectionString { get; set; }
 
         public string NomeProprioMol { get; set; }
+
+        public string NomeProprioCol { get; set; }
 
         public bool FromIAM { get; set; }
         public string UrlEntryPoint { get; internal set; }

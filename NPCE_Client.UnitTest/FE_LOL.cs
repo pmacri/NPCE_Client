@@ -14,7 +14,7 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_LOL : TestBase
     {
-        public FE_LOL() : base(Environment.Staging)
+        public FE_LOL() : base(Environment.Collaudo)
         {
 
         }
@@ -122,7 +122,7 @@ namespace NPCE_Client.UnitTest
             Assert.AreEqual(mesiArchiviazione, 36);
         }
 
-        private InvioResult InvioLOL(string idRichiesta, string tipoArchiviazione = "NESSUNA", int anniArchiviazione =0, string docName = "Docx_1_Pagina", string tipoDocumento ="docx")
+        private InvioResult InvioLOL(string idRichiesta, string tipoArchiviazione = "NESSUNA", int anniArchiviazione =0, string docName = "Docx_1_Pagina.docx", string tipoDocumento ="docx")
         {
             var invioLol = GetLolInvio(idRichiesta, tipoDocumento, docName);
             invioLol.Opzioni.ArchiviazioneDocumenti = tipoArchiviazione;
@@ -148,7 +148,7 @@ namespace NPCE_Client.UnitTest
             var guidUtente = result.GuidUtente;
             Assert.AreEqual(result.CEResult.Type, "I");
 
-            Thread.Sleep(20000);
+            Thread.Sleep(30000);
 
             var listRichieste = new List<Richiesta>();
             listRichieste.Add(new Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });

@@ -3,6 +3,7 @@ using NPCE.DataModel;
 using NPCE_Client.Test;
 using NPCE_Client.UnitTest.ServiceReference.LOL;
 using NPCE_Client.UnitTest.ServiceReference.Mol;
+using NPCE_Client.UnitTest.ServiceReference.Col;
 using NPCE_Client.UnitTest.ServiceReference.ROL;
 using System;
 using System.Diagnostics;
@@ -12,6 +13,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
+using System.Xml.Serialization;
 using Environment = NPCE_Client.Test.Environment;
 
 namespace NPCE_Client.UnitTest
@@ -42,13 +44,19 @@ namespace NPCE_Client.UnitTest
                     result = new Ambiente
                     {
                         MolUri = "http://10.60.19.13/RaccomandataMarket/MOLService.svc",
+                        ColUri = "http://10.60.19.13/PostaContest/COLService.svc",
                         LolUri = "http://10.60.19.13/LOLGC/LolService.svc",
                         RolUri = "http://10.60.19.13/ROLGC/RolService.svc",
-                        customerid = "3908983576",
-                        smuser = "HH800117",
-                        ContrattoMOL = "40000015982",
+                        customeridMOL = "3908983576",
+                        customeridCOL = "3908983583",
+                        smuserMOL = "HH800112",
+                        smuserCOL = "HH800133",
+                        sendersystem = "H2H",
+                        ContrattoMOL = "40000015977",
+                        ContrattoCOL = "00000000040000015998",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
+                        NomeProprioCol = "DITTA POSTAONLINE",
                         UrlEntryPoint = "http://10.60.19.37/NPCE_EntryPoint/WsCE.svc",
                         PathDocument = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68-879C931DE4FC8E1A48B284747C2B1C99.docx",
                         HashMD5Document = "879C931DE4FC8E1A48B284747C2B1C99",
@@ -61,8 +69,8 @@ namespace NPCE_Client.UnitTest
                     result = new Ambiente
                     {
                         MolUri = "http://10.60.24.36/RaccomandataMarket/MOLService.svc",
-                        customerid = "SNPCE002",
-                        smuser = "CEPROB01",
+                        customeridMOL = "SNPCE002",
+                        smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01"
@@ -72,15 +80,25 @@ namespace NPCE_Client.UnitTest
                     result = new Ambiente
                     {
                         MolUri = "http://10.60.17.155/RaccomandataMarket/MOLService.svc",
+                        ColUri = "http://10.60.17.155/PostaContest/COLService.svc",
                         LolUri = "http://10.60.17.155/LOLGC/LolService.svc",
                         RolUri = "http://10.60.17.155/ROLGC/RolService.svc",
+                        UrlEntryPoint = "http://10.60.17.154/NPCE_EntryPoint/WsCE.svc",
                         sendersystem = "H2H",
-                        customerid = "3909990431",
-                        smuser = "H2HSTG06",
+                        customeridMOL = "3909990431",
+                        customeridCOL= "3909991340",
+                        smuserMOL = "H2HSTG06",
+                        smuserCOL = "H2HSTG01",
                         ContrattoMOL = "00000000040000017267",
+                        ContrattoCOL= "40000020188",
                         PostaEvoConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
-                        PathLoggingFile = "\\\\10.60.17.151\\c$\\NPCE V6\\Logging"
+                        NomeProprioCol = "Posta Contest",
+                        PathLoggingFile = "\\\\10.60.17.151\\c$\\NPCE V6\\Logging",
+                        PathDocument = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68-879C931DE4FC8E1A48B284747C2B1C99.docx",
+                        HashMD5Document = "879C931DE4FC8E1A48B284747C2B1C99",
+                        PathCov = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68.cov",
+                        HashMD5Cov = "5FBA263B3420664720BB6A15F92ED247",
                     };
                     break;
                 case Environment.Bts2016:
@@ -92,8 +110,8 @@ namespace NPCE_Client.UnitTest
                         LolUri = "http://10.60.20.56/LOLGC/LolService.svc",
                         RolUri = "http://10.60.20.56/ROLGC/RolService.svc",
                         UrlEntryPoint = "http://10.60.20.132/NPCE_EntryPoint/WsCE.svc",
-                        customerid = "SNPCE002",
-                        smuser = "CEPROB01",
+                        customeridMOL = "SNPCE002",
+                        smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
@@ -107,8 +125,8 @@ namespace NPCE_Client.UnitTest
                         MolUri = "http://10.60.20.52/RaccomandataMarket/MOLService.svc",
                         LolUri = "https://cewebservices.posteitaliane.it/LOLGC/LolService.svc",
                         RolUri = "https://cewebservices.posteitaliane.it/ROLGC/RolService.svc",
-                        customerid = "SNPCE002",
-                        smuser = "CEPROB01",
+                        customeridMOL = "SNPCE002",
+                        smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
@@ -124,11 +142,11 @@ namespace NPCE_Client.UnitTest
             return result;
         }
 
-        protected InvioRequest GetMolInvio()
+        protected ServiceReference.Mol.InvioRequest GetMolFEInvio()
         {
 
             string codiceContratto = ambiente.ContrattoMOL;
-            var invio = new InvioRequest();
+            var invio = new ServiceReference.Mol.InvioRequest();
             invio.MarketOnline = new MarketOnline();
             invio.MarketOnline.AutoConferma = true;
 
@@ -146,7 +164,6 @@ namespace NPCE_Client.UnitTest
 
             invio.MarketOnline.Mittente.Nominativo = ambiente.NomeProprioMol;
 
-
             var destinatario = new UnitTest.ServiceReference.Mol.Destinatario
             {
                 Cap = "00144",
@@ -161,46 +178,215 @@ namespace NPCE_Client.UnitTest
 
             invio.MarketOnline.Destinatari = new UnitTest.ServiceReference.Mol.Destinatario[] { destinatario };
 
-            ServiceReference.Mol.Documento doc = GetMolDocumento("Docx_1_Pagina", "docx");
-
-
+            ServiceReference.Mol.Documento doc = GetMolDocumento("Docx_1_Pagina.docx", "docx");
 
             invio.MarketOnline.Documenti = new ServiceReference.Mol.Documento[] { doc };
 
             invio.MarketOnline.Opzioni = new ServiceReference.Mol.Opzioni();
 
-            invio.MarketOnline.Opzioni.Servizio = new OpzioniServizio
+            invio.MarketOnline.Opzioni.Servizio = new ServiceReference.Mol.OpzioniServizio
             {
-                ArchiviazioneDocumenti = ModalitaArchiviazione.NESSUNA,
+                ArchiviazioneDocumenti = ServiceReference.Mol.ModalitaArchiviazione.NESSUNA,
                 AnniArchiviazione = "0",
                 AttestazioneConsegna = false,
-                Consegna = ModalitaConsegna.S,
+                Consegna = ServiceReference.Mol.ModalitaConsegna.S,
                 SecondoTentativoRecapito = false
 
             };
 
-            invio.MarketOnline.Opzioni.Stampa = new OpzioniStampa
+            invio.MarketOnline.Opzioni.Stampa = new ServiceReference.Mol.OpzioniStampa
             {
                 FronteRetro = false,
-                TipoColore = TipoColore.BW
+                TipoColore = ServiceReference.Mol.TipoColore.BW
             };
 
-            invio.MarketOnline.Bollettini = new UnitTest.ServiceReference.Mol.PaginaBollettino[] { GetPaginaBollettino896() };
+            invio.MarketOnline.Bollettini = new UnitTest.ServiceReference.Mol.PaginaBollettino[] { GetPaginaBollettino896Mol() };
 
+            invio.MarketOnline.BollettinoPA = GetFEBollettinoPAMol();
 
-            invio.Intestazione = new Intestazione
+            invio.Intestazione = new ServiceReference.Mol.Intestazione
             {
                 CodiceContratto = codiceContratto,
-                Prodotto = ProdottoPostaEvo.MOL1
+                Prodotto = ServiceReference.Mol.ProdottoPostaEvo.MOL1
             };
 
             return invio;
         }
 
-        private ServiceReference.Mol.Documento GetMolDocumento(string docName, string estensioneSenzaPunto)
+
+        protected ServiceReference.Col.InvioRequest GetColFEInvio()
+        {
+
+            string codiceContratto = ambiente.ContrattoCOL;
+            var invio = new ServiceReference.Col.InvioRequest();
+            invio.PostaContest = new PostaContest();
+            invio.PostaContest.AutoConferma = true;
+
+            invio.PostaContest.Mittente = new ServiceReference.Col.Mittente
+            {
+                Cap = "00144",
+                ComplementoIndirizzo = "Complemento Indirizzo",
+                ComplementoNominativo = "ComplementoNominativo",
+                Comune = "ROMA",
+                Indirizzo = "Viale Europa",
+                Nazione = "ITALIA",
+                Nominativo = "DITTA POSTAONLINE",
+                Provincia = "RM"
+            };
+
+            invio.PostaContest.Mittente.Nominativo = ambiente.NomeProprioCol;
+
+            var destinatario = new UnitTest.ServiceReference.Col.Destinatario
+            {
+                Cap = "00144",
+                ComplementoIndirizzo = "Complemento Indirizzo",
+                ComplementoNominativo = "ComplementoNominativo",
+                Comune = "ROMA",
+                Indirizzo = "Viale Europa",
+                Nazione = "ITALIA",
+                Nominativo = "Nominativo",
+                Provincia = "RM"
+            };
+
+            invio.PostaContest.Destinatari = new UnitTest.ServiceReference.Col.Destinatario[] { destinatario };
+
+            ServiceReference.Col.Documento doc = GetColDocumento("Docx_1_Pagina.docx", "docx");
+
+            invio.PostaContest.Documenti = new ServiceReference.Col.Documento[] { doc };
+
+            invio.PostaContest.Opzioni = new ServiceReference.Col.Opzioni();
+
+            invio.PostaContest.Opzioni.Servizio = new ServiceReference.Col.OpzioniServizio
+            {
+                ArchiviazioneDocumenti = ServiceReference.Col.ModalitaArchiviazione.NESSUNA,
+                AnniArchiviazione = "0",
+                AttestazioneConsegna = false,
+                Consegna = ServiceReference.Col.ModalitaConsegna.S,
+                SecondoTentativoRecapito = false
+
+            };
+
+            invio.PostaContest.Opzioni.Stampa = new ServiceReference.Col.OpzioniStampa
+            {
+                FronteRetro = false,
+                TipoColore = ServiceReference.Col.TipoColore.BW
+            };
+
+            invio.PostaContest.Bollettini = new UnitTest.ServiceReference.Col.PaginaBollettino[] { GetPaginaBollettino896Col() };
+
+            invio.PostaContest.BollettinoPA = GetFEBollettinoPACol();
+
+            invio.Intestazione = new ServiceReference.Col.Intestazione
+            {
+                CodiceContratto = codiceContratto,
+                Prodotto = ServiceReference.Col.ProdottoPostaEvo.COL1
+            };
+
+            return invio;
+        }
+
+        private ServiceReference.Mol.AvvisoPagamentoPagoPA GetFEBollettinoPAMol()
+        {
+            var result = new ServiceReference.Mol.AvvisoPagamentoPagoPA();
+
+            result.Destinatario = new ServiceReference.Mol.AvvisoPagamentoPagoPADestinatario
+            {
+                CodiceFiscaleDestinatario = "0000045127750318",
+                IndirizzoDestinatario = "VIALE EUROPA 190 00144 ROMA SCALA F int1",
+                NomeCognomeDestinatario = "PIERMARIA FERDINANDO PASSALAQUAGLIA"
+            };
+
+            result.EnteCreditore = new ServiceReference.Mol.AvvisoPagamentoPagoPAEnteCreditore
+            {
+                AutorizzazioneStampaInProprio = "AUT. DB/xxxx/xxx xxxxx DEL xx/xx/xxxx",
+                DenominazioneEnte = "MINISTERO DELLE POLITICHE  AGRICOLE, ALIMENTARI PA",
+                CodiceFiscaleEnte = "90942650327",
+                InfoEnte = "INFOENTEABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJLMNOPQRST",
+                LogoEnte = Encoding.ASCII.GetBytes("UEsDBBQABgAIAAAAIQDEY+UY7wEAAL0K"),
+                SettoreEnte = "SETTOREENTEABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890123"
+
+            };
+
+            result.Pagamento = new ServiceReference.Mol.AvvisoPagamentoPagoPAPagamento
+            {
+                AllaRata = "alle rate e",
+                CBILL = "CBILLABCDE",
+                CodiceAvviso = "038209010594456876",
+                DelTuoEnte = "Del Tuo Ente Creditore",
+                DiPoste = "di Poste Italiane",
+                Importo = 600M,
+                IntestatarioCCPostale = "GANASSA GIULIANA",
+                NumeroCCPostale = "001000000420",
+                Oggetto = "OGGETTO DEL PAGAMENTO: PROVE DI COLLAUDO DEL BOLLETTINO PA 5",
+                PagamentoRateale = "Puoi pagare anche a rate",
+                RateTesto = "oppure in 5 rate",
+                Scadenza = new DateTime(2019, 01, 01),
+                Rate = new ServiceReference.Mol.AvvisoPagamentoPagoPAPagamentoRata[0]
+
+            };
+
+            return result;
+        }
+
+        private ServiceReference.Col.AvvisoPagamentoPagoPA GetFEBollettinoPACol()
+        {
+            var result = new ServiceReference.Col.AvvisoPagamentoPagoPA();
+
+            result.Destinatario = new ServiceReference.Col.AvvisoPagamentoPagoPADestinatario
+            {
+                CodiceFiscaleDestinatario = "0000045127750318",
+                IndirizzoDestinatario = "VIALE EUROPA 190 00144 ROMA SCALA F int1",
+                NomeCognomeDestinatario = "PIERMARIA FERDINANDO PASSALAQUAGLIA"
+            };
+
+            result.EnteCreditore = new ServiceReference.Col.AvvisoPagamentoPagoPAEnteCreditore
+            {
+                AutorizzazioneStampaInProprio = "AUT. DB/xxxx/xxx xxxxx DEL xx/xx/xxxx",
+                DenominazioneEnte = "MINISTERO DELLE POLITICHE  AGRICOLE, ALIMENTARI PA",
+                CodiceFiscaleEnte = "90942650327",
+                InfoEnte = "INFOENTEABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJLMNOPQRST",
+                LogoEnte = Encoding.ASCII.GetBytes("UEsDBBQABgAIAAAAIQDEY+UY7wEAAL0K"),
+                SettoreEnte = "SETTOREENTEABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890123"
+
+            };
+
+            result.Pagamento = new ServiceReference.Col.AvvisoPagamentoPagoPAPagamento
+            {
+                AllaRata = "alle rate e",
+                CBILL = "CBILLABCDE",
+                CodiceAvviso = "038209010594456876",
+                DelTuoEnte = "Del Tuo Ente Creditore",
+                DiPoste = "di Poste Italiane",
+                Importo = 600M,
+                IntestatarioCCPostale = "GANASSA GIULIANA",
+                NumeroCCPostale = "001000000420",
+                Oggetto = "OGGETTO DEL PAGAMENTO: PROVE DI COLLAUDO DEL BOLLETTINO PA 5",
+                PagamentoRateale = "Puoi pagare anche a rate",
+                RateTesto = "oppure in 5 rate",
+                Scadenza = new DateTime(2019, 01, 01),
+                Rate = new ServiceReference.Col.AvvisoPagamentoPagoPAPagamentoRata[0]
+
+            };
+
+            return result;
+        }
+
+        protected ServiceReference.Mol.Documento GetMolDocumento(string docName, string estensioneSenzaPunto)
         {
             var content = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "Documenti", docName));
             return new UnitTest.ServiceReference.Mol.Documento
+            {
+                Estensione = estensioneSenzaPunto,
+                PercorsoDocumentoLotto = null,
+                Contenuto = content,
+                MD5 = Crypto.GetMD5HashString(content)
+            };
+        }
+
+        protected ServiceReference.Col.Documento GetColDocumento(string docName, string estensioneSenzaPunto)
+        {
+            var content = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "Documenti", docName));
+            return new UnitTest.ServiceReference.Col.Documento
             {
                 Estensione = estensioneSenzaPunto,
                 PercorsoDocumentoLotto = null,
@@ -223,21 +409,18 @@ namespace NPCE_Client.UnitTest
 
         protected LOLSubmit GetLolInvio(string idRichiesta, string tipoDocumento, string docName = "Docx_1_Pagina.docx")
         {
-            string xmlInvioLol = Envelopes.LolBase;
+            string xmlInvioLol = Envelopes.LolFE;
             var invioLOL = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<LOLSubmit>(xmlInvioLol);
             invioLOL.Documento = null;
             invioLOL.Documento = new ServiceReference.LOL.Documento[] { GetLolDocumento(docName, tipoDocumento) };
             return invioLOL;
         }
-
-
         protected ROLSubmit GetRolInvio(string idRichiesta)
         {
-            string xmlInvioRol = Envelopes.RolBase;
+            string xmlInvioRol = Envelopes.RolFE;
             var invioROL = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<ROLSubmit>(xmlInvioRol);
             return invioROL;
         }
-
         protected T GetProxy<T>(string endpointAddress)
         {
 
@@ -271,8 +454,7 @@ namespace NPCE_Client.UnitTest
             T wcfClient = myChannelFactory.CreateChannel();
             return wcfClient;
         }
-
-        protected UnitTest.ServiceReference.Mol.PaginaBollettino GetPaginaBollettino896()
+        protected UnitTest.ServiceReference.Mol.PaginaBollettino GetPaginaBollettino896Mol()
         {
             return new UnitTest.ServiceReference.Mol.PaginaBollettino
             {
@@ -300,11 +482,42 @@ namespace NPCE_Client.UnitTest
             };
         }
 
-        protected HttpRequestMessageProperty GetHttpHeaders(Ambiente ambiente)
+        protected UnitTest.ServiceReference.Col.PaginaBollettino GetPaginaBollettino896Col()
+        {
+            return new UnitTest.ServiceReference.Col.PaginaBollettino
+            {
+                Bollettino = new UnitTest.ServiceReference.Col.Bollettino896
+                {
+                    AdditionalInfo = "AdditionalInfo",
+                    Causale = "Causale",
+                    EseguitoDa = new UnitTest.ServiceReference.Col.BollettinoEseguitoDa
+                    {
+                        CAP = "00168",
+                        Localita = "Roma",
+                        Nominativo = "Mario Rossi",
+                        Indirizzo = "Via Alberto Manzi 36"
+                    },
+                    FormatoStampa = UnitTest.ServiceReference.Col.FormatoStampaBollettino.BIS,
+                    IntestatoA = "GANASSA GIULIANA",
+                    Logo = Encoding.ASCII.GetBytes("UEsDBBQABgAIAAAAIQDEY+UY7wEAAL0K"),
+                    NumeroContoCorrente = "001000000420",
+                    Template = "896",
+                    Codice = "CodiceCliente",
+                    ImportoEuro = 20M,
+                    CodiceCliente = "CodiceCliente"
+
+                }
+            };
+        }
+        protected HttpRequestMessageProperty GetHttpHeaders(Ambiente ambiente, string prodotto ="MOL")
         {
             var property = new HttpRequestMessageProperty();
-            property.Headers.Add("customerid", ambiente.customerid);
-            property.Headers.Add("smuser", ambiente.smuser);
+            string customerId = prodotto.Equals("MOL") ?  ambiente.customeridMOL :  ambiente.customeridCOL;
+            string smUser = prodotto.Equals("MOL") ? ambiente.smuserMOL :  ambiente.smuserCOL;
+
+            property.Headers.Add("customerid", customerId);
+            property.Headers.Add("smuser", smUser);
+
             property.Headers.Add("costcenter", ambiente.costcenter);
             property.Headers.Add("billingcenter", ambiente.billingcenter);
             property.Headers.Add("idsender", ambiente.idsender);
@@ -315,7 +528,6 @@ namespace NPCE_Client.UnitTest
             property.Headers.Add("usertype", ambiente.usertype);
             return property;
         }
-
         protected bool CheckStatusPostaEvo(string idRichiesta, string status, TimeSpan timeout, TimeSpan retryInterval)
         {
             bool result = false;

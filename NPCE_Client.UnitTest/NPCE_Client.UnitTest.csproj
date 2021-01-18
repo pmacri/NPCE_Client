@@ -148,6 +148,11 @@
   <ItemGroup>
     <Compile Include="Ambiente.cs" />
     <Compile Include="Configs.cs" />
+    <Compile Include="Connected Services\ServiceReference.Col\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference.LOL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,7 +170,7 @@
     </Compile>
     <Compile Include="Envelopes.cs" />
     <Compile Include="EnvironmentEnum.cs" />
-    <Compile Include="FEBase.cs" />
+    <Compile Include="TestBase.cs" />
     <Compile Include="FE_LOL.cs" />
     <Compile Include="FE_MOL.cs" />
     <Compile Include="FE_ROL.cs" />
@@ -174,9 +179,98 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PIL_ROL.cs" />
     <Compile Include="Misc.cs" />
+    <Compile Include="FE_COL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.AnnullaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.AnnullaInvioLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.AnnullaInvioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.AnnullaStampaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.CancellaDocumentiArchiviatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.CaricamentoLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.ConfermaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.ConfermaInvioLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.ConfermaInvioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.CreaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.DownloadMassivoArchiviazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.InvioLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.InvioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaAnteprimaCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaDocumentiArchiviatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaDocumentoFinaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaDocumentoRepsonse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaEsitiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaInfoAmministrativeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaInviiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaServizioPerIdLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaServizioPerIdRichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaServizioPerNumeroLetteraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaServizioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaStatoCoverResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaStatoLottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperaStatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperoMassivoDocumentiArchiviatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\NPCE_Client.UnitTest.ServiceReference.Col.RecuperoSingolaArchiviazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference.Col\PostaContestService.wsdl" />
     <None Include="Connected Services\ServiceReference.LOL\LolService.wsdl" />
     <None Include="Connected Services\ServiceReference.LOL\NPCE_Client.UnitTest.ServiceReference.LOL.AnnullaCoverResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -607,6 +701,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReference.Col\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference.LOL\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference.Mol\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference.ROL\" />
@@ -643,6 +738,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference.ROL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.Col\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.Col\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference.Col\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
