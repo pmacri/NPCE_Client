@@ -61,9 +61,9 @@ namespace NPCE_Client.UnitTest
             colSubmit.PostaContest.Bollettini = null;
             colSubmit.PostaContest.BollettinoPA = null;
 
-            colSubmit.PostaContest.Opzioni = new Opzioni();
+            //colSubmit.PostaContest.Opzioni = new Opzioni();
 
-            colSubmit.PostaContest.Opzioni.Servizio = new OpzioniServizio { ArchiviazioneDocumenti = ModalitaArchiviazione.STORICA, AnniArchiviazione = "6" };
+            colSubmit.PostaContest.Opzioni.Servizio = new OpzioniServizio { TipoArchiviazioneDocumenti = "STORICA", AnniArchiviazione = "6" };
 
             var invioResult = _proxy.Invio(colSubmit);
 

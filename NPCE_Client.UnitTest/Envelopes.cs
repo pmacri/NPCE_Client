@@ -307,6 +307,37 @@ namespace NPCE_Client.Test
 </RaccomandataSubmit>";
             }
         }
+
+        public static string LolPil
+        {
+            get
+            {
+                return @"<LetteraSubmit IdRichiesta='%GUID%' NumeroDestinatari='1' ForzaInvioDestinazioniValide='false' PrezzaturaSincrona='false' Estero='false' DocStampabile='false' DocPrezzabile='false' HaBollettini='false' IdClienteRendicontazione='' Tipo='LOL' RichiestaTracciatura='false' xmlns='http://ComunicazioniElettroniche.LOL.Schema.InvioSubmitLOL'>
+  <Documenti xmlns=''>
+    <Documento IdPosizione='1' Uri='\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\20210126\cb8f90a5-ef7f-4155-bc61-1c5af8b9a00c.cov' FileHash='1D2670F0E7F183D52842CDD6EAF01F94' />
+    <Documento IdPosizione='2' Uri='\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\20210126\LOL_cb8f90a5-ef7f-4155-bc61-1c5af8b9a00c.doc' FileHash='AB8EF323B64C85C8DFCCCD4356E4FB9B' />
+  </Documenti>
+  <Mittente InviaStampa='false' xmlns=''>
+    <Nominativo Cognome='COGNOME_MITTENTE' Nome='NOME_MITTENTE' RagioneSociale='' CAP='00144' Frazione='' Citta='Roma' Provincia='RM' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
+      <Indirizzo DUG='Viale' Toponimo='Europa' NumeroCivico='1' Esponente='' />
+    </Nominativo>
+  </Mittente>
+  <LetteraDestinatario IdLettera='' NumeroDestinatarioCorrente='1' IdDestinatario='1' xmlns=''>
+    <Destinatario>
+      <Nominativo Cognome='CODEST1_20140929_144958' Nome='Destinatario_UNICO' ComplementoNominativo='' RagioneSociale='' ComplementoIndirizzo='' CAP='00199' Frazione='' Citta='roma' Provincia='rm' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
+        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='' Esponente='' />
+      </Nominativo>
+    </Destinatario>
+  </LetteraDestinatario>
+  <Opzioni Archiviazione='false' FirmaElettronica='false' DPM='false' SecurPaper='false' InserisciMittente='false' DataStampa='2014-09-29' NumeroPagine='0' FileSize='0' ArchiviazioneDocumenti='NESSUNA' xmlns=''>
+    <Inserti InserisciMittente='false' Inserto='' />
+    <OpzionidiStampa TipoStampa='BW' FronteRetro='false' PageSize='A4' />
+  </Opzioni>
+  <PagineBollettiniInfo NumeroBollettini='0' NumeroPubblicita='0' NumeroPagine='0' xmlns='' />
+</LetteraSubmit>";
+            }
+        }
+
         public static string PostaEvoPil { get
             {
 

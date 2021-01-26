@@ -1,380 +1,187 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using ComunicazioniElettroniche.Common.DataContracts;
+using ComunicazioniElettroniche.Common.SchemaDefinition;
+using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL;
+using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitResponse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NPCE.Library;
-using NPCE_Client.Api.Data;
-using NPCE_Client.Model;
+using NPCE_Client.Test;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
 
-namespace NPCE_Client.Test
+namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class PIL_LOL
+    public class PIL_LOL : TestBase
     {
 
-        // to have the same Configuration object as in Startup	      
-        private IConfigurationRoot _configuration;
-        // represents database's configuration	      
-        private DbContextOptions<AppDbContext> _options;
-
-        public PIL_LOL()
+        public PIL_LOL() : base(Test.Environment.Collaudo)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-            _configuration = builder.Build(); _options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
-                .Options;
-        }
-
-
-        [TestMethod]
-        public void Invio_1_Destinatario_OK()
-        {
-            var ctx = new AppDbContext(_options);
-
-            var ambiente = new Ambiente
-            {
-                Description = "COLLAUDO",
-                customerid = "nello.citta.npce",
-                costcenter = "UNF",
-                billingcenter = "IdCdF",
-                idsender = "999988",
-                sendersystem = "H2H",
-                smuser = "nello.citta.npce",
-                contracttype = "PosteWeb",
-                contractid="contracoId",
-                  codicefiscale="mcrpql64t08f537u",
-                   partitaiva="01234567890",
-                usertype = "B",
-                customer="customer",
-                LolUri = "http://10.60.20.132/NPCE_EntryPoint/WsCE.svc",
-                //LolUri = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc",
-                Username = "rete\\mic32nv",
-                Password = "Passw0rd"
-            };
-
-            Anagrafica destinatario;
-            Anagrafica mittente;
-
-
-            destinatario = ctx.Anagrafiche.First();
-            mittente = ctx.Anagrafiche.Skip(1).First();
-
-            var documento = ctx.Documenti.First();
-
-            var servizio = new Servizio();
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
-
-            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
-
-            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
-
-            LOLPil service = new LOLPil(servizio, ambiente);
-            try
-            {
-                var result = service.Invia();
-
-                Assert.IsTrue(result.Code == "I");
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
 
         }
 
         [TestMethod]
-        public  async Task InvioAsync_Confirm_1_Destinatario_OK()
+        public void Invio_Cover()
         {
-            var ctx = new AppDbContext(_options);
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var letteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
 
-            var ambiente = new Ambiente
-            {
-                Description = "COLLAUDO",
-                customerid = "nello.citta.npce",
-                costcenter = "UNF",
-                billingcenter = "IdCdF",
-                idsender = "999988",
-                sendersystem = "H2H",
-                smuser = "nello.citta.npce",
-                contracttype = "PosteWeb",
-                contractid = "contractId",
-                codicefiscale = "mcrpql64t08f537u",
-                partitaiva = "01234567890",
-                usertype = "B",
-                customer = "customer",
-                //LolUri = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc", // Collaudo
-                LolUri = "http://10.60.17.154/NPCE_EntryPoint/WsCE.svc", // Staging
-                Username = "rete\\mic32nv",
-                Password = "Passw0rd"
-            };
+            letteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            letteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
 
-            Anagrafica destinatario;
-            Anagrafica mittente;
+            letteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            letteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
 
 
-            destinatario = ctx.Anagrafiche.First();
-            mittente = ctx.Anagrafiche.Skip(1).First();
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(letteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
 
-            var documento = ctx.Documenti.First();
-
-            var servizio = new Servizio();
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
-
-            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
-
-            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
-
-            LOLPil service = new LOLPil(servizio, ambiente);
-            try
-            {
-                var result =await  service.InviaAsync();
-
-                string idRichiesta = result.IdRichiesta;
-
-                Assert.IsTrue(result.Code == "I");
-
-                service = new LOLPil(servizio, ambiente);
-
-                // Attesa prezzatura
-
-                System.Threading.Thread.Sleep(20000);
-
-                result = await service.ConfermaAsync(idRichiesta);
-
-                Assert.IsTrue(result.Code == "I");
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
-
-        }
-
-        [TestMethod]
-        public async Task InvioAsync_1_Destinatario_Archiviazione_Storica_1_Anno()
-        {
-            var ctx = new AppDbContext(_options);
-
-            var ambiente = new Ambiente
-            {
-                Description = "COLLAUDO",
-                customerid = "nello.citta.npce",
-                costcenter = "UNF",
-                billingcenter = "IdCdF",
-                idsender = "999988",
-                sendersystem = "H2H",
-                smuser = "nello.citta.npce",
-                contracttype = "PosteWeb",
-                contractid = "contractId",
-                codicefiscale = "mcrpql64t08f537u",
-                partitaiva = "01234567890",
-                usertype = "B",
-                customer = "customer",
-                //LolUri = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc", // Collaudo
-                LolUri = "http://10.60.20.132/NPCE_EntryPoint/WsCE.svc", // Produzione
-                //LolUri = "http://10.60.17.154/NPCE_EntryPoint/WsCE.svc", // Staging
-                Username = "rete\\mic32nv",
-                Password = "Passw0rd"
-            };
-
-            Anagrafica destinatario;
-            Anagrafica mittente;
-
-
-            destinatario = ctx.Anagrafiche.First();
-            mittente = ctx.Anagrafiche.Skip(1).First();
-
-            var documento = ctx.Documenti.First();
-
-            var servizio = new Servizio();
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
-
-            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
-
-            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
-
-            servizio.TipoArchiviazione = "STORICA";
-            servizio.AnniArchiviazione = 1;
-
-            LOLPil service = new LOLPil(servizio, ambiente);
-            try
-            {
-                var result = await service.InviaAsync();
-
-                string idRichiesta = result.IdRichiesta;
-
-                Assert.IsTrue(result.Code == "I");
-
-                service = new LOLPil(servizio, ambiente);
-
-                // Attesa prezzatura
-
-                System.Threading.Thread.Sleep(20000);
-
-                result = await service.ConfermaAsync(idRichiesta);
-
-                Assert.IsTrue(result.Code == "I");
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
 
         }
 
 
         [TestMethod]
-        public async Task InvioAsync_1_Destinatario_OK()
+        public void Invio_No_Cover()
         {
-            var ctx = new AppDbContext(_options);
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var LetteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
 
-            var ambiente = new Ambiente
-            {
-                Description = "COLLAUDO",
-                customerid = "nello.citta.npce",
-                costcenter = "UNF",
-                billingcenter = "IdCdF",
-                idsender = "999988",
-                sendersystem = "H2H",
-                smuser = "nello.citta.npce",
-                contracttype = "PosteWeb",
-                contractid = "contractId",
-                codicefiscale = "mcrpql64t08f537u",
-                partitaiva = "01234567890",
-                usertype = "B",
-                customer = "customer",
-                LolUri = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc",
-                Username = "rete\\mic32nv",
-                Password = "Passw0rd"
-            };
+            LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathDocument;
+            LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Document;
 
-            Anagrafica destinatario;
-            Anagrafica mittente;
+            LetteraSubmitRequest.Documenti[1] = null;
 
-
-            destinatario = ctx.Anagrafiche.First();
-            mittente = ctx.Anagrafiche.Skip(1).First();
-
-            var documento = ctx.Documenti.First();
-
-            var servizio = new Servizio();
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
-
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
-
-            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
-
-            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
-
-            LOLPil service = new LOLPil(servizio, ambiente);
-            try
-            {
-                var result = await service.InviaAsync();
-
-                Assert.IsTrue(result.Code == "I");
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
-
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(LetteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
         }
 
         [TestMethod]
-        public async Task InvioAsync_Confirm_1_Destinatario_OK_Certificazione()
+        public void Invio_Archiviazione_Check_Parametri_Prezzatura_Archiviazione()
         {
-            var ctx = new AppDbContext(_options);
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var LetteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
 
-            var ambiente = new Ambiente
-            {
-                Description = "CERTIFICAZIONE",
-                customerid = "nello.citta.npce",
-                costcenter = "UNF",
-                billingcenter = "IdCdF",
-                idsender = "999988",
-                sendersystem = "H2H",
-                smuser = "nello.citta.npce",
-                contracttype = "PosteWeb",
-                contractid = "contractId",
-                codicefiscale = "mcrpql64t08f537u",
-                partitaiva = "01234567890",
-                usertype = "B",
-                customer = "customer",
-                LolUri = "http://10.60.25.228/NPCE_EntryPoint/WsCE.svc",
-                Username = "rete\\mic32nv",
-                Password = "Passw0rd"
-            };
+            LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
 
-            Anagrafica destinatario;
-            Anagrafica mittente;
+            LetteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            LetteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
 
 
-            destinatario = ctx.Anagrafiche.First();
-            mittente = ctx.Anagrafiche.Skip(1).First();
 
-            var documento = ctx.Documenti.First();
+            LetteraSubmitRequest.Opzioni.ArchiviazioneDocumenti = "STORICA";
+            LetteraSubmitRequest.Opzioni.AnniArchiviazione = 3;
+            LetteraSubmitRequest.Opzioni.AnniArchiviazioneSpecified = true;
 
-            var servizio = new Servizio();
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(LetteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
 
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = destinatario, IsMittente = false });
+            int numeroFogli = 0;
+            int mesiArchiviazione = 0;
+            Thread.Sleep(20000);
 
-            servizio.ServizioAnagrafiche.Add(
-                new ServizioAnagrafica { Anagrafica = mittente, IsMittente = true });
 
-            servizio.ServizioDocumenti.Add(new ServizioDocumento { Documento = documento });
+            Helper.GetParametriPrezzatura("Lol", out numeroFogli, out mesiArchiviazione, ambiente.PathLoggingFile);
 
-            servizio.TipoServizioId = (int)TipoServizioId.POSTA4;
+            Assert.AreEqual(2, numeroFogli);
 
-            LOLPil service = new LOLPil(servizio, ambiente);
-            try
-            {
-                var result = await service.InviaAsync();
+            Assert.AreEqual(mesiArchiviazione, 36);
+        }
 
-                string idRichiesta = result.IdRichiesta;
+        [TestMethod]
+        public void Invio_Archiviazione_PosteIt_Check_Parametri_Prezzatura_Archiviazione()
+        {
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var LetteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
 
-                Assert.IsTrue(result.Code == "I");
+            LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
 
-                service = new LOLPil(servizio, ambiente);
+            LetteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            LetteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
 
-                // Attesa prezzatura
 
-                System.Threading.Thread.Sleep(20000);
 
-                result = await service.ConfermaAsync(idRichiesta);
+            LetteraSubmitRequest.Opzioni.ArchiviazioneDocumenti = "STORICA";
+            LetteraSubmitRequest.Opzioni.AnniArchiviazione = 3;
+            LetteraSubmitRequest.Opzioni.AnniArchiviazioneSpecified = true;
 
-                Assert.IsTrue(result.Code == "I");
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            LetteraSubmitRequest.DocStampabile = true;
+            LetteraSubmitRequest.DocPrezzabile = true;
 
+            LetteraSubmitRequest.Opzioni.NumeroPagine = 8;
+
+
+
+
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(LetteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+
+            int numeroFogli = 0;
+            int mesiArchiviazione = 0;
+            Thread.Sleep(20000);
+
+
+            Helper.GetParametriPrezzatura("Lol", out numeroFogli, out mesiArchiviazione, ambiente.PathLoggingFile);
+
+            Assert.AreEqual(9, numeroFogli);
+
+            Assert.AreEqual(mesiArchiviazione, 36);
+        }
+
+        [TestMethod]
+        public void Confirm_AbortOrPostalizza()
+        {
+            string guidMessage = "5447fb1c-77d5-4c92-8eb0-97e0bbb8db66";
+
+            string xmlConfirmMessage = @"<ns0:ConfirmService GUIDMessage='%GUID%' IdOrdine='171C371E-B00A-4737-9B38-0524DCD7777E' PaymentTypeId='6' xmlns:ns0='http://posteitaliane.it/ordermanagement/schemas' />";
+
+            xmlConfirmMessage = xmlConfirmMessage.Replace("%GUID%", guidMessage);
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ConfirmOrderResponse confirmResponse = null;
+            ConfirmOrder confirmRequest = null;
+            confirmRequest = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<ConfirmOrder>(xmlConfirmMessage);
+
+            var result = Helper.PublishToBizTalk<ConfirmOrder, ConfirmOrderResponse>(confirmRequest, ceHeader, ambiente.UrlEntryPoint, out confirmResponse);
+            Assert.AreEqual(TResultResType.I, result.ResType);
         }
     }
 }

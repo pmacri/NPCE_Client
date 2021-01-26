@@ -58,22 +58,32 @@ namespace NPCE_Client.UnitTest
                         NomeProprioMol = "DITTA MARKET",
                         NomeProprioCol = "DITTA POSTAONLINE",
                         UrlEntryPoint = "http://10.60.19.37/NPCE_EntryPoint/WsCE.svc",
-                        PathDocument = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68-879C931DE4FC8E1A48B284747C2B1C99.docx",
-                        HashMD5Document = "879C931DE4FC8E1A48B284747C2B1C99",
-                        PathCov = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\20201127\80ac0000-3d01-c952-0000-000000019a68.cov",
-                        HashMD5Cov = "5FBA263B3420664720BB6A15F92ED247",
+                        PathDocument = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\DocPil.doc",
+                        HashMD5Document = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
+                        PathCov = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\CovPil.cov",
+                        HashMD5Cov = "60125C6E43E0C596565B1D35B728F795",
                         PathLoggingFile = "\\\\10.60.19.20\\c$\\NPCE V6\\Logging"
                     };
                     break;
                 case Environment.Certificazione:
                     result = new Ambiente
                     {
+                        
                         MolUri = "http://10.60.24.36/RaccomandataMarket/MOLService.svc",
+                        ColUri = "http://10.60.24.36/PostaContest/COLService.svc",
+                        LolUri = "http://10.60.24.36/LOLGC/LolService.svc",
+                        RolUri = "http://10.60.24.36/ROLGC/RolService.svc",
                         customeridMOL = "SNPCE002",
+                        sendersystem = "H2H",
                         smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
-                        NomeProprioMol = "CLIENTE TEST PROB01"
+                        NomeProprioMol = "CLIENTE TEST PROB01",
+                        UrlEntryPoint = "http://10.60.25.228/NPCE_EntryPoint/WsCE.svc",
+                        PathDocument = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\DocPil.doc",
+                        HashMD5Document = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
+                        PathCov = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\CovPil.cov",
+                        HashMD5Cov = "60125C6E43E0C596565B1D35B728F795"
                     };
                     break;
                 case Environment.Staging:
@@ -116,7 +126,11 @@ namespace NPCE_Client.UnitTest
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
                         Username = "CEPROB01",
-                        Password = "Cewspr01"
+                        Password = "Cewspr01",
+                        PathDocument = @"\\FSPROD2-56ab.rete.poste\NPCE-ShareR\InputDocuments\DocPil.doc",
+                        HashMD5Document = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
+                        PathCov = @"\\FSPROD2-56ab.rete.poste\NPCE-ShareR\InputDocuments\CovPil.cov",
+                        HashMD5Cov = "60125C6E43E0C596565B1D35B728F795",
                     };
                     break;
                 case Environment.ProduzioneIAM:
@@ -258,7 +272,7 @@ namespace NPCE_Client.UnitTest
 
             invio.PostaContest.Opzioni.Servizio = new ServiceReference.Col.OpzioniServizio
             {
-                ArchiviazioneDocumenti = ServiceReference.Col.ModalitaArchiviazione.NESSUNA,
+                TipoArchiviazioneDocumenti = "NESSUNA",
                 AnniArchiviazione = "0",
                 AttestazioneConsegna = false,
                 Consegna = ServiceReference.Col.ModalitaConsegna.S,

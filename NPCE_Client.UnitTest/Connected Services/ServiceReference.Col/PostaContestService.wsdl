@@ -259,40 +259,15 @@
       <xs:complexType name="OpzioniServizio">
         <xs:sequence>
           <xs:element minOccurs="0" name="AnniArchiviazione" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ArchiviazioneDocumenti" type="tns:ModalitaArchiviazione" />
+          <xs:element minOccurs="0" name="ArchiviazioneDocumenti" type="xs:boolean" />
           <xs:element minOccurs="0" name="AttestazioneConsegna" type="xs:boolean" />
           <xs:element minOccurs="0" name="Consegna" type="tns:ModalitaConsegna" />
           <xs:element minOccurs="0" name="SecondoTentativoRecapito" type="xs:boolean" />
           <xs:element minOccurs="0" name="TipoArchiviazione" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TipoArchiviazioneDocumenti" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="OpzioniServizio" nillable="true" type="tns:OpzioniServizio" />
-      <xs:simpleType name="ModalitaArchiviazione">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="NESSUNA">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="SEMPLICE">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="STORICA">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="ModalitaArchiviazione" nillable="true" type="tns:ModalitaArchiviazione" />
       <xs:simpleType name="ModalitaConsegna">
         <xs:restriction base="xs:string">
           <xs:enumeration value="S" />
@@ -504,6 +479,32 @@
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="TipoDocumento" nillable="true" type="tns:TipoDocumento" />
+      <xs:simpleType name="ModalitaArchiviazione">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NESSUNA">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SEMPLICE">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="STORICA">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ModalitaArchiviazione" nillable="true" type="tns:ModalitaArchiviazione" />
       <xs:simpleType name="TipoCover">
         <xs:restriction base="xs:string">
           <xs:enumeration value="STANDARD" />
@@ -602,7 +603,7 @@
           <xs:element minOccurs="0" name="CodiceContratto" nillable="true" type="xs:string" />
           <xs:element xmlns:q1="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" minOccurs="0" name="DatiOpzionali" nillable="true" type="q1:DatiOpzionali" />
           <xs:element xmlns:q2="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" minOccurs="0" name="Destinatari" nillable="true" type="q2:ArrayOfDestinatarioLettera" />
-          <xs:element minOccurs="0" name="IdCover" type="xs:int" />
+          <xs:element minOccurs="0" name="IdCover" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdRichiesta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdentificativoInvioNelLotto" nillable="true" type="xs:int" />
           <xs:element xmlns:q3="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" minOccurs="0" name="Mittente" nillable="true" type="q3:Mittente" />
@@ -610,7 +611,6 @@
           <xs:element xmlns:q4="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" minOccurs="0" name="Opzioni" nillable="true" type="q4:Opzioni" />
           <xs:element xmlns:q5="http://ComunicazioniElettroniche.XOL" minOccurs="0" name="PagineBollettini" nillable="true" type="q5:ArrayOfPaginaBollettino" />
           <xs:element minOccurs="0" name="Prodotto" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="TipoCover" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="DatiServizioOfDestinatarioLetteraMDIy2m_SX" nillable="true" type="tns:DatiServizioOfDestinatarioLetteraMDIy2m_SX" />
@@ -699,6 +699,7 @@
       <xs:element name="InviaCoverRequest" nillable="true" type="tns:InviaCoverRequest" />
       <xs:complexType name="CoverBasic">
         <xs:sequence>
+          <xs:element minOccurs="0" name="CampoStandard" type="xs:boolean" />
           <xs:element minOccurs="0" name="Immagine" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="Immagini" nillable="true" type="tns:ArrayOfImmagini" />
           <xs:element minOccurs="0" name="Testo" nillable="true" type="xs:string" />
@@ -1295,7 +1296,11 @@
               <xs:element minOccurs="0" name="DataAccettazioneDa" nillable="true" type="xs:string" />
               <xs:element xmlns:q77="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdRichieste" nillable="true" type="q77:ArrayOfstring" />
               <xs:element minOccurs="0" name="NominativoDestinatario" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
               <xs:element xmlns:q78="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NumeriLettera" nillable="true" type="q78:ArrayOfstring" />
+              <xs:element minOccurs="0" name="NumeroElementiPerPagina" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroPagina" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -1306,6 +1311,9 @@
           <xs:extension xmlns:q79="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" base="q79:PostaEvoResponse">
             <xs:sequence>
               <xs:element minOccurs="0" name="DocumentiArchiviati" nillable="true" type="tns:ArrayOfDocumentoArchiviato" />
+              <xs:element minOccurs="0" name="NumeroPaginaCorrente" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroTotaleElementi" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroTotalePagine" type="xs:int" />
               <xs:element minOccurs="0" name="TicketId" nillable="true" type="xs:string" />
             </xs:sequence>
           </xs:extension>
@@ -2879,12 +2887,12 @@
   </wsdl:binding>
   <wsdl:service name="PostaContestService">
     <wsdl:port name="basicHttp" binding="tns:basicHttp">
-      <soap:address location="http://localhost/PostaContest/PostaContestService.svc" />
+      <soap:address location="http://localhost/PostaContest/COLService.svc" />
     </wsdl:port>
     <wsdl:port name="mexHttp" binding="tns:mexHttp">
-      <soap12:address location="http://localhost/PostaContest/PostaContestService.svc/mex" />
+      <soap12:address location="http://localhost/PostaContest/COLService.svc/mex" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost/PostaContest/PostaContestService.svc/mex</wsa10:Address>
+        <wsa10:Address>http://localhost/PostaContest/COLService.svc/mex</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

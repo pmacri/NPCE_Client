@@ -1,6 +1,7 @@
 ﻿using ComunicazioniElettroniche.Common.DataContracts;
 using ComunicazioniElettroniche.Common.Proxy;
 using ComunicazioniElettroniche.Common.Serialization;
+using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL;
 using ComunicazioniElettroniche.PostaEvo.Assembly.External.Serialization;
 using ComunicazioniElettroniche.ROL.Web.BusinessEntities.InvioSubmitROL;
 using NPCE.DataModel;
@@ -62,6 +63,15 @@ namespace NPCE_Client.Test
         public static RaccomandataSubmit GetRaccomandataSubmitFromXml(string xml)
         {
             var result = SerializationUtility.Deserialize<RaccomandataSubmit>(xml);
+
+            return result;
+
+        }
+
+
+        public static LetteraSubmit GetLetteraSubmitFromXml(string xml)
+        {
+            var result = SerializationUtility.Deserialize<LetteraSubmit>(xml);
 
             return result;
 

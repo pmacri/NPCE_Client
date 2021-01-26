@@ -3,6 +3,8 @@ using ComunicazioniElettroniche.PostaEvo.Assembly.External.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPCE.DataModel;
 using NPCE_Client.Test;
+using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace NPCE_Client.UnitTest
@@ -13,7 +15,7 @@ namespace NPCE_Client.UnitTest
 
 
 
-        public PIL_MOL(): base(Environment.Staging)
+        public PIL_MOL(): base(Test.Environment.Staging)
         {
 
         }
@@ -45,7 +47,7 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-        public void MOL1_Base_No_Autoconfirm()
+        public void MOL1_Base_No_Autoconfirm_Cover()
         {
             var guid = System.Guid.NewGuid();
 
@@ -53,6 +55,7 @@ namespace NPCE_Client.UnitTest
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 
+            postaEvoRequest.AutoConferma = false;
             postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
             postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
             postaEvoRequest.Opzioni.OpzioniServizio.SecondoTentativoRecapito = true;
@@ -63,10 +66,45 @@ namespace NPCE_Client.UnitTest
             postaEvoRequest.Documenti[0].HashMD5 = ambiente.HashMD5Document;
 
             postaEvoRequest.Documenti[1].URI = ambiente.PathCov;
+
+            
             postaEvoRequest.Documenti[1].HashMD5 = ambiente.HashMD5Cov;
 
             var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
+
+            Debug.WriteLine(postaEvoResponse.IdRichiesta);
+
+            string idRichiesta = postaEvoResponse.IdRichiesta;
+
+            Assert.IsTrue(CheckStatusPostaEvo(idRichiesta, "K", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10)));
+        }
+
+        [TestMethod]
+        public void MOL1_Base_No_Autoconfirm_No_Cover()
+        {
+            var guid = System.Guid.NewGuid();
+
+            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+
+            var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
+
+            postaEvoRequest.AutoConferma = false;
+            postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
+            postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
+            postaEvoRequest.Opzioni.OpzioniServizio.SecondoTentativoRecapito = true;
+
+            PostaEvoResponse postaEvoResponse;
+
+            postaEvoRequest.Documenti[0].URI = ambiente.PathDocument;
+            postaEvoRequest.Documenti[0].HashMD5 = ambiente.HashMD5Document;
+
+            postaEvoRequest.Documenti[1] = null;
+
+            var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+
+            Debug.WriteLine(postaEvoResponse.IdRichiesta);
         }
 
         [TestMethod]
@@ -93,6 +131,14 @@ namespace NPCE_Client.UnitTest
 
             var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
             Assert.AreEqual(TResultResType.I, result.ResType);
+
+            Debug.WriteLine(postaEvoResponse.IdRichiesta);
+
+            string idRichiesta = postaEvoResponse.IdRichiesta;
+
+            Assert.IsTrue(CheckStatusPostaEvo(idRichiesta, "L", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10)));
+
+
         }
 
         [TestMethod]

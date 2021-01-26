@@ -15,7 +15,7 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_ROL : TestBase
     {
-        public FE_ROL() : base(Environment.Collaudo)
+        public FE_ROL() : base(Environment.Certificazione)
         {
 
         }
@@ -97,6 +97,29 @@ namespace NPCE_Client.UnitTest
             Assert.IsNotNull(idRichiesta);
 
             var invioRol = GetRolInvio(idRichiesta);
+            var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+
+            var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
+
+            Assert.AreEqual(result.CEResult.Type, "I");
+        }
+
+        [TestMethod]
+
+        public void Rol_Invio_Archiviazione_Storica()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+            Assert.IsNotNull(idRichiesta);
+
+            var invioRol = GetRolInvio(idRichiesta);
+
+            invioRol.Opzioni.ArchiviazioneDocumenti = "STORICA";
+            invioRol.Opzioni.AnniArchiviazione = 3;
+            invioRol.Opzioni.AnniArchiviazioneSpecified = true;
+
             var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
             var fake = new OperationContextScope((IContextChannel)proxy);
             HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);

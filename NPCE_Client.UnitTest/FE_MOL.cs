@@ -15,7 +15,7 @@ namespace NPCE_Client.UnitTest
     public class FE_MOL : TestBase
     {
 
-        public FE_MOL(): base(Test.Environment.Staging)
+        public FE_MOL(): base(Test.Environment.Certificazione)
         {
             
         }
@@ -52,6 +52,10 @@ namespace NPCE_Client.UnitTest
             string idRichiesta = invioResult.IdRichiesta;
 
             Assert.IsNotNull(idRichiesta);
+
+            idRichiesta = invioResult.IdRichiesta;
+
+            Assert.IsTrue(CheckStatusPostaEvo(idRichiesta, "L", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10)));
 
         }
 
