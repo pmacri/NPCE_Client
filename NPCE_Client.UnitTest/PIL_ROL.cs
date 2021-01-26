@@ -33,6 +33,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
 
             raccomandataSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
             raccomandataSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
@@ -48,6 +49,61 @@ namespace NPCE_Client.UnitTest
 
         }
 
+        [TestMethod]
+        public void Invio_Cover_Archiviazione_Storica()
+        {
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.RolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var raccomandataSubmitRequest = Helper.GetRaccomandataSubmitFromXml(xml);
+            RaccomandataResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
+
+            raccomandataSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            raccomandataSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
+
+            raccomandataSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            raccomandataSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
+
+            raccomandataSubmitRequest.Opzioni.ArchiviazioneDocumenti = "STORICA";
+            raccomandataSubmitRequest.Opzioni.AnniArchiviazione = 6;
+            raccomandataSubmitRequest.Opzioni.AnniArchiviazioneSpecified = true;
+            var result = Helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
+        }
+
+        [TestMethod]
+        public void Invio_Cover_And_Confirm()
+        {
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.RolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var raccomandataSubmitRequest = Helper.GetRaccomandataSubmitFromXml(xml);
+            RaccomandataResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
+
+            raccomandataSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            raccomandataSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
+            raccomandataSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            raccomandataSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
+
+            var result = Helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
+            Thread.Sleep(20000);
+            ConfirmServicePIL(guid.ToString());
+        }
 
         [TestMethod]
         public void Invio_No_Cover()
@@ -168,21 +224,7 @@ namespace NPCE_Client.UnitTest
         {
             string guidMessage = "5447fb1c-77d5-4c92-8eb0-97e0bbb8db66";
 
-            string xmlConfirmMessage = @"<ns0:ConfirmService GUIDMessage='%GUID%' IdOrdine='171C371E-B00A-4737-9B38-0524DCD7777E' PaymentTypeId='6' xmlns:ns0='http://posteitaliane.it/ordermanagement/schemas' />";
-
-            xmlConfirmMessage = xmlConfirmMessage.Replace("%GUID%", guidMessage);
-            var ceHeader = Helper.GetCeHeader();
-            ceHeader.SenderSystem = "H2H";
-            ceHeader.IDSender = "999988";
-            ceHeader.IdCRM = string.Empty;
-            ceHeader.UserId = "nello.citta.npce";
-            ceHeader.ContractId = string.Empty;
-            ConfirmOrderResponse confirmResponse = null;
-            ConfirmOrder confirmRequest = null;
-            confirmRequest = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<ConfirmOrder>(xmlConfirmMessage);
-
-            var result = Helper.PublishToBizTalk<ConfirmOrder, ConfirmOrderResponse>(confirmRequest, ceHeader, ambiente.UrlEntryPoint, out confirmResponse);
-            Assert.AreEqual(TResultResType.I, result.ResType);
+            var confirmResponse =ConfirmServicePIL(guidMessage);
         }
     }
 }

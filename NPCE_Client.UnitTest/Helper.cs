@@ -6,7 +6,6 @@ using ComunicazioniElettroniche.PostaEvo.Assembly.External.Serialization;
 using ComunicazioniElettroniche.ROL.Web.BusinessEntities.InvioSubmitROL;
 using NPCE.DataModel;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -14,6 +13,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using OrderRequest = PosteItaliane.OrderManagement.Schema.SchemaDefinition.OrderRequest;
+
 
 namespace NPCE_Client.Test
 {
@@ -91,6 +92,13 @@ namespace NPCE_Client.Test
 
             var client = new WsCEClient(httpBinding, endpointAddress);
             string guidMessage = string.Empty;
+
+            if (ce.Body.OuterXml.StartsWith("<OrderRequest"))
+            {
+                OrderRequest orderRequest = SerializationUtility.Deserialize<OrderRequest>(ce.Body);
+                guidMessage = orderRequest.ServiceInstance[0].GUIDMessage;
+            }
+
             if (ce.Body.GetElementsByTagName("IdRichiesta").Count > 0)
             {
                 guidMessage = ce.Body.GetElementsByTagName("IdRichiesta")[0].InnerText;
@@ -99,10 +107,20 @@ namespace NPCE_Client.Test
             {
                 guidMessage = ce.Body.GetAttribute("IdRichiesta");
             }
+
+            if (ce.Body.GetElementsByTagName("GUIDMessage").Count > 0)
+            {
+                guidMessage = ce.Body.GetElementsByTagName("IdRichiesta")[0].InnerText;
+            }
+
+
+            guidMessage = ce.Header.GUIDMessage;
+
             if (string.IsNullOrEmpty(guidMessage))
             {
                 throw new ArgumentException("IdRichiesta not found in request to submit");
             }
+
             ce.Header.GUIDMessage = guidMessage;
 
             try

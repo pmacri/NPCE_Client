@@ -47,6 +47,71 @@ namespace NPCE_Client.UnitTest
 
         }
 
+        [TestMethod]
+        public void Invio_Cover_And_Confirm()
+        {
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var letteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
+
+            letteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            letteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
+
+            letteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            letteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
+
+
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(letteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
+
+            Thread.Sleep(20000);
+            ConfirmServicePIL(guid.ToString());
+
+        }
+
+        [TestMethod]
+        public void Invio_Cover_Archiviazione()
+        {
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var letteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
+
+            letteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            letteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
+
+            letteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            letteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
+            letteraSubmitRequest.Opzioni.ArchiviazioneDocumenti = "STORICA";
+            letteraSubmitRequest.Opzioni.AnniArchiviazione = 4;
+            letteraSubmitRequest.Opzioni.AnniArchiviazioneSpecified = true;
+
+
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(letteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
+
+            
+
+        }
 
         [TestMethod]
         public void Invio_No_Cover()

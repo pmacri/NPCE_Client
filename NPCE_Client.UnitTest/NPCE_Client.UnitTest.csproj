@@ -112,6 +112,10 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="PosteItaliane.OrderManagement.Schema.Code, Version=1.0.0.0, Culture=neutral, PublicKeyToken=39b043fe05412c92, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\NPCE_WinClient\PosteItaliane.OrderManagement.Schema.Code.dll</HintPath>
+    </Reference>
     <Reference Include="PosteItaliane.OrderManagement.Schema.Code.Basket">
       <HintPath>..\..\..\..\..\..\Pasquale\Repos\npce\Shared\PosteItaliane.OrderManagement.Schema.Code.Basket.dll</HintPath>
     </Reference>

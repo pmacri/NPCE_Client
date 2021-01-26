@@ -1,9 +1,11 @@
-﻿using ComunicazioniElettroniche.Common.Security.Cryptography;
+﻿using ComunicazioniElettroniche.Common.DataContracts;
+using ComunicazioniElettroniche.Common.Security.Cryptography;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPCE.DataModel;
 using NPCE_Client.Test;
+using NPCE_Client.UnitTest.ServiceReference.Col;
 using NPCE_Client.UnitTest.ServiceReference.LOL;
 using NPCE_Client.UnitTest.ServiceReference.Mol;
-using NPCE_Client.UnitTest.ServiceReference.Col;
 using NPCE_Client.UnitTest.ServiceReference.ROL;
 using System;
 using System.Diagnostics;
@@ -13,8 +15,14 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
-using System.Xml.Serialization;
+using ConfirmOrder = PosteItaliane.OrderManagement.Schema.SchemaDefinition.ConfirmOrder;
+using ConfirmOrderResponse = PosteItaliane.OrderManagement.Schema.SchemaDefinition.ConfirmOrderResponse;
+using OrderRequest = PosteItaliane.OrderManagement.Schema.SchemaDefinition.OrderRequest;
+using OrderRequestServiceInstance = PosteItaliane.OrderManagement.Schema.SchemaDefinition.OrderRequestServiceInstance;
+using OrderResponse = PosteItaliane.OrderManagement.Schema.SchemaDefinition.OrderResponse;
+
 using Environment = NPCE_Client.Test.Environment;
+using PosteItaliane.OrderManagement.Schema.SchemaDefinition;
 
 namespace NPCE_Client.UnitTest
 {
@@ -57,7 +65,7 @@ namespace NPCE_Client.UnitTest
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
                         NomeProprioCol = "DITTA POSTAONLINE",
-                        UrlEntryPoint = "http://10.60.19.37/NPCE_EntryPoint/WsCE.svc",
+                        UrlEntryPoint = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc",
                         PathDocument = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\DocPil.doc",
                         HashMD5Document = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
                         PathCov = @"\\FSSVIL-b451.rete.testposte\ShareFS\inputdocument\CovPil.cov",
@@ -568,6 +576,56 @@ namespace NPCE_Client.UnitTest
             }
             return result;
         }
+
+        protected ConfirmOrderResponse ConfirmServicePIL(string idRichiesta)
+        {
+            // Prima PreConferma e poi Conferma
+            OrderRequest preconfirmRequest = GetPreConfirmRequest(idRichiesta);
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = idRichiesta;
+            OrderResponse preConfirmResponse = null;
+            var preConfirmResult = Helper.PublishToBizTalk<OrderRequest, OrderResponse>(preconfirmRequest, ceHeader, ambiente.UrlEntryPoint, out preConfirmResponse);
+            Assert.AreEqual(TResultResType.I, preConfirmResult.ResType);
+            ConfirmOrder confirmRequest = GetConfirmRequest(preConfirmResponse.IdOrder, preConfirmResponse.PaymentTypes[0].TypeDescription);
+            ConfirmOrderResponse confirmResponse = null;
+            var result = Helper.PublishToBizTalk<ConfirmOrder, ConfirmOrderResponse>(confirmRequest, ceHeader, ambiente.UrlEntryPoint, out confirmResponse);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+            return confirmResponse;
+        }
+
+        protected virtual OrderRequest GetPreConfirmRequest(string idRichiesta)
+        {
+            OrderRequest orderRequest = new OrderRequest();
+            orderRequest.ServiceInstance = new OrderRequestServiceInstance[1];
+            orderRequest.ForceOrderCreation = true;
+
+            orderRequest.ServiceInstance[0] = new OrderRequestServiceInstance();
+            orderRequest.ServiceInstance[0].GUIDMessage = idRichiesta;
+
+            return orderRequest;
+
+        }
+
+        protected virtual ConfirmOrder GetConfirmRequest(string idOrdine, string typeDescription)
+        {
+            ConfirmOrder confirmOrder = new ConfirmOrder();
+            confirmOrder.IdOrder = idOrdine;
+            confirmOrder.PaymentType = new PaymentType
+            {
+                PostPayment = true,
+                PostPaymentSpecified = true,
+                TypeDescription = typeDescription,
+                TypeId = "6"
+            };
+
+            return confirmOrder;
+        }
+
 
     }
 }
