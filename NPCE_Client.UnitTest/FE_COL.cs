@@ -10,7 +10,7 @@ namespace NPCE_Client.UnitTest
     public class FE_COL: TestBase
     {
 
-        public FE_COL(): base(Test.Environment.Staging)
+        public FE_COL(): base(Test.Environment.Collaudo)
         {
 
         }

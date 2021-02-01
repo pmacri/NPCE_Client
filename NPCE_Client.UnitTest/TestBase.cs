@@ -63,6 +63,8 @@ namespace NPCE_Client.UnitTest
                         ContrattoMOL = "40000015977",
                         ContrattoCOL = "00000000040000015998",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
+                        RolConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=NPCEROL;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
+                        LolConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=NPCELOL;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
                         NomeProprioCol = "DITTA POSTAONLINE",
                         UrlEntryPoint = "http://10.60.19.36/NPCE_EntryPoint/WsCE.svc",
@@ -76,7 +78,7 @@ namespace NPCE_Client.UnitTest
                 case Environment.Certificazione:
                     result = new Ambiente
                     {
-                        
+
                         MolUri = "http://10.60.24.36/RaccomandataMarket/MOLService.svc",
                         ColUri = "http://10.60.24.36/PostaContest/COLService.svc",
                         LolUri = "http://10.60.24.36/LOLGC/LolService.svc",
@@ -85,13 +87,16 @@ namespace NPCE_Client.UnitTest
                         sendersystem = "H2H",
                         smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
-                        PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
+                        PostaEvoConnectionString = "data source=10.60.26.213\\CNPCESQLINST07;initial catalog=PostaEvo;persist security info=True;user id=tmp;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        RolConnectionString = "data source=10.60.26.213\\CNPCESQLINST07;initial catalog=NPCEROL;persist security info=True;user id=tmp;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        LolConnectionString = "data source=10.60.26.213\\CNPCESQLINST07;initial catalog=NPCELOL;persist security info=True;user id=tmp;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
                         UrlEntryPoint = "http://10.60.25.228/NPCE_EntryPoint/WsCE.svc",
                         PathDocument = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\DocPil.doc",
                         HashMD5Document = "AB8EF323B64C85C8DFCCCD4356E4FB9B",
                         PathCov = @"\\FSCERT4-a127.retecert.postecert\ShareFS\InputDocument\CovPil.cov",
-                        HashMD5Cov = "60125C6E43E0C596565B1D35B728F795"
+                        HashMD5Cov = "60125C6E43E0C596565B1D35B728F795",
+                        PathLoggingFile = "\\\\10.60.26.217\\c$\\NPCE V6\\Logging"
                     };
                     break;
                 case Environment.Staging:
@@ -104,11 +109,11 @@ namespace NPCE_Client.UnitTest
                         UrlEntryPoint = "http://10.60.17.154/NPCE_EntryPoint/WsCE.svc",
                         sendersystem = "H2H",
                         customeridMOL = "3909990431",
-                        customeridCOL= "3909991340",
+                        customeridCOL = "3909991340",
                         smuserMOL = "H2HSTG06",
                         smuserCOL = "H2HSTG01",
                         ContrattoMOL = "00000000040000017267",
-                        ContrattoCOL= "40000020188",
+                        ContrattoCOL = "40000020188",
                         PostaEvoConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
                         NomeProprioCol = "Posta Contest",
@@ -131,6 +136,7 @@ namespace NPCE_Client.UnitTest
                         customeridMOL = "SNPCE002",
                         smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
+                        sendersystem = "H2H",
                         PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
                         Username = "CEPROB01",
@@ -161,6 +167,25 @@ namespace NPCE_Client.UnitTest
                     break;
             }
 
+            return result;
+        }
+
+        protected CEHeader GetCeHeader()
+        {
+            CEHeader result = new CEHeader();
+            result.BillingCenter = "BillingCenter";
+            result.ContractId = "ContractId";
+            result.BillingCenter = "BillingCenter";
+            result.Customer = "Customer";
+            result.IdCRM = "IdCRM";
+            result.IDSender = "IDSender";
+            result.SenderSystem = "SenderSystem";
+            result.UserId = "UserId";
+            result.UserType = "UserType";
+            result.CodiceFiscale = "CodiceFiscale";
+            result.PartitaIva = "PartitaIva";
+            result.CostCenter = "CostCenter";
+            result.ContractType = "ContractType";
             return result;
         }
 
@@ -208,7 +233,6 @@ namespace NPCE_Client.UnitTest
 
             invio.MarketOnline.Opzioni.Servizio = new ServiceReference.Mol.OpzioniServizio
             {
-                ArchiviazioneDocumenti = ServiceReference.Mol.ModalitaArchiviazione.NESSUNA,
                 AnniArchiviazione = "0",
                 AttestazioneConsegna = false,
                 Consegna = ServiceReference.Mol.ModalitaConsegna.S,
@@ -531,11 +555,11 @@ namespace NPCE_Client.UnitTest
                 }
             };
         }
-        protected HttpRequestMessageProperty GetHttpHeaders(Ambiente ambiente, string prodotto ="MOL")
+        protected HttpRequestMessageProperty GetHttpHeaders(Ambiente ambiente, string prodotto = "MOL")
         {
             var property = new HttpRequestMessageProperty();
-            string customerId = prodotto.Equals("MOL") ?  ambiente.customeridMOL :  ambiente.customeridCOL;
-            string smUser = prodotto.Equals("MOL") ? ambiente.smuserMOL :  ambiente.smuserCOL;
+            string customerId = prodotto.Equals("MOL") ? ambiente.customeridMOL : ambiente.customeridCOL;
+            string smUser = prodotto.Equals("MOL") ? ambiente.smuserMOL : ambiente.smuserCOL;
 
             property.Headers.Add("customerid", customerId);
             property.Headers.Add("smuser", smUser);
@@ -566,6 +590,60 @@ namespace NPCE_Client.UnitTest
                     if (richiesta != null)
                     {
                         if (richiesta.StatoCorrente == status)
+                        {
+                            result = true;
+                            break;
+                        }
+                        else Thread.Sleep(retryInterval);
+                    }
+                }
+            }
+            return result;
+        }
+
+        protected bool CheckStatusRol(string idRichiesta, string status, TimeSpan timeout, TimeSpan retryInterval)
+        {
+            bool result = false;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            while (sw.Elapsed <= timeout)
+            {
+                using (var ctx = new NPCEROLEntities())
+                {
+                    ctx.Database.Connection.ConnectionString = ambiente.RolConnectionString;
+                    var richiesta = ctx.ROL.Where(r => r.IdRichiesta == new Guid(idRichiesta)).FirstOrDefault();
+
+                    if (richiesta != null)
+                    {
+                        if (richiesta.IdStatoLavorazione == status)
+                        {
+                            result = true;
+                            break;
+                        }
+                        else Thread.Sleep(retryInterval);
+                    }
+                }
+            }
+            return result;
+        }
+
+        protected bool CheckStatusLol(string idRichiesta, string status, TimeSpan timeout, TimeSpan retryInterval)
+        {
+            bool result = false;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            while (sw.Elapsed <= timeout)
+            {
+                using (var ctx = new NPCELOLEntities())
+                {
+                    ctx.Database.Connection.ConnectionString = ambiente.LolConnectionString;
+                    var richiesta = ctx.LOL.Where(r => r.IdRichiesta == new Guid(idRichiesta)).FirstOrDefault();
+
+                    if (richiesta != null)
+                    {
+                        if (richiesta.IdStatoLavorazione == status)
                         {
                             result = true;
                             break;
@@ -625,7 +703,6 @@ namespace NPCE_Client.UnitTest
 
             return confirmOrder;
         }
-
 
     }
 }

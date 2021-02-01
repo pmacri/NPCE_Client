@@ -38,6 +38,8 @@ namespace NPCE_Client.UnitTest
         public string ContrattoCOL { get; set; }
 
         public string PostaEvoConnectionString { get; set; }
+        public string RolConnectionString { get; set; }
+        public string LolConnectionString { get; set; }
 
         public string NomeProprioMol { get; set; }
 

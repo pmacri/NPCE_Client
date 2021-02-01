@@ -14,7 +14,7 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_LOL : TestBase
     {
-        public FE_LOL() : base(Environment.Collaudo)
+        public FE_LOL() : base(Environment.Certificazione)
         {
 
         }
@@ -97,9 +97,13 @@ namespace NPCE_Client.UnitTest
             InvioResult result = InvioLOL(idRichiesta);
 
             Assert.AreEqual(result.CEResult.Type, "I");
+
+            Debug.WriteLine(result.IDRichiesta);
+
+            CheckStatusLol(idRichiesta, "R", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
         }
 
-
+        [Ignore]
         [TestMethod]
         public void Lol_Invio_Check_Parametri_Prezzatura_Archiviazione()
         {
@@ -125,14 +129,15 @@ namespace NPCE_Client.UnitTest
         private InvioResult InvioLOL(string idRichiesta, string tipoArchiviazione = "NESSUNA", int anniArchiviazione =0, string docName = "Docx_1_Pagina.docx", string tipoDocumento ="docx")
         {
             var invioLol = GetLolInvio(idRichiesta, tipoDocumento, docName);
-            invioLol.Opzioni.ArchiviazioneDocumenti = tipoArchiviazione;
-            invioLol.Opzioni.AnniArchiviazione = anniArchiviazione;
-            invioLol.Opzioni.AnniArchiviazioneSpecified = true;
+            //invioLol.Opzioni.ArchiviazioneDocumenti = tipoArchiviazione;
+            //invioLol.Opzioni.AnniArchiviazione = anniArchiviazione;
+            //invioLol.Opzioni.AnniArchiviazioneSpecified = true;
 
             
             var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
             var fake = new OperationContextScope((IContextChannel)proxy);
             HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
+            
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
 
             var result = proxy.Invio(idRichiesta, "CLIENTE", invioLol);
@@ -159,6 +164,8 @@ namespace NPCE_Client.UnitTest
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
             var preConfermaResult = proxy.PreConferma(request);
             Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
+
+            CheckStatusLol(idRichiesta, "L", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
         }
 
         private string RecuperaIdRichiesta()

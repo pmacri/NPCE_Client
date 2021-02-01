@@ -15,7 +15,7 @@ namespace NPCE_Client.UnitTest
     public class FE_MOL : TestBase
     {
 
-        public FE_MOL(): base(Test.Environment.Certificazione)
+        public FE_MOL(): base(Test.Environment.Collaudo)
         {
             
         }

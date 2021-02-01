@@ -104,7 +104,7 @@ namespace NPCE_Client.Test
                 }
             };
 
-            invio.MarketOnline.Opzioni = new Opzioni();
+            invio.MarketOnline.Opzioni = new NPCE.LIbrary.ServiceReference.MOL.Opzioni();
 
             invio.MarketOnline.Opzioni.Servizio = new OpzioniServizio
             {

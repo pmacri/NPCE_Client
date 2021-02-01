@@ -185,7 +185,7 @@
     <Compile Include="FE_MOL.cs" />
     <Compile Include="FE_ROL.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="MOL_Pil.cs" />
+    <Compile Include="PIL_MOL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PIL_ROL.cs" />
     <Compile Include="Misc.cs" />

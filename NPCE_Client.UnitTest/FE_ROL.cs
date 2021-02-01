@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NPCE_Client.Test;
-using NPCE_Client.UnitTest.ServiceReference.LOL;
 using NPCE_Client.UnitTest.ServiceReference.ROL;
 using System;
 using System.Collections.Generic;
@@ -9,13 +7,15 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading;
 using Environment = NPCE_Client.Test.Environment;
+using Richiesta = NPCE_Client.UnitTest.ServiceReference.ROL.Richiesta;
+using PreConfermaRequest = NPCE_Client.UnitTest.ServiceReference.ROL.PreConfermaRequest;
 
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
     public class FE_ROL : TestBase
     {
-        public FE_ROL() : base(Environment.Certificazione)
+        public FE_ROL() : base(Environment.Collaudo)
         {
 
         }
@@ -104,8 +104,87 @@ namespace NPCE_Client.UnitTest
 
             var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
 
+            var guidUtente = result.GuidUtente;
+
             Assert.AreEqual(result.CEResult.Type, "I");
+
+           
         }
+
+        [TestMethod]
+
+        public void Rol_Invio_Preconferma_AutoConferma()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+            Assert.IsNotNull(idRichiesta);
+
+            var invioRol = GetRolInvio(idRichiesta);
+            var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+
+            var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
+
+            var guidUtente = result.GuidUtente;
+
+            Assert.AreEqual(result.CEResult.Type, "I");
+
+            Thread.Sleep(30000);
+
+            var listRichieste = new List<ServiceReference.ROL.Richiesta>();
+            listRichieste.Add(new Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });
+            PreConfermaRequest request = new PreConfermaRequest { Richieste = listRichieste.ToArray(), autoConferma = true };
+            proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            fake = new OperationContextScope((IContextChannel)proxy);
+            headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+            var preConfermaResult = proxy.PreConferma(request);
+            Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
+        }
+
+        [TestMethod]
+        public void Rol_Invio_2_Destinatari_Indirizzo_Minuscolo_Preconferma_AutoConferma()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+            Assert.IsNotNull(idRichiesta);
+
+            var invioRol = GetRolInvio(idRichiesta);
+            invioRol.Destinatari[0].Nominativo.ComplementoNominativo = "comp nonimativo";
+            invioRol.Destinatari[0].Nominativo.Nome = "nome";
+            invioRol.Destinatari[0].Nominativo.Cognome = "cognome";
+            invioRol.Destinatari[0].Nominativo.Indirizzo.DUG = "via";
+            invioRol.Destinatari[0].Nominativo.Indirizzo.Toponimo = "delle rose";
+            invioRol.Destinatari[0].Nominativo.Indirizzo.NumeroCivico = "74";
+            invioRol.Destinatari[0].Nominativo.Indirizzo.Esponente = "c";
+            invioRol.Destinatari[0].Nominativo.Provincia = "tr";
+            invioRol.Destinatari[0].Nominativo.Citta = "terni";
+            var proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            HttpRequestMessageProperty headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+
+            var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
+
+            var guidUtente = result.GuidUtente;
+
+            Assert.AreEqual(result.CEResult.Type, "I");
+
+            Thread.Sleep(30000);
+
+            var listRichieste = new List<ServiceReference.ROL.Richiesta>();
+            listRichieste.Add(new Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });
+            PreConfermaRequest request = new PreConfermaRequest { Richieste = listRichieste.ToArray(), autoConferma = true };
+            proxy = GetProxy<ROLServiceSoap>(ambiente.RolUri);
+            fake = new OperationContextScope((IContextChannel)proxy);
+            headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+            var preConfermaResult = proxy.PreConferma(request);
+            Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
+
+            CheckStatusRol(idRichiesta, "L", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
+        }
+
 
         [TestMethod]
 
@@ -128,6 +207,8 @@ namespace NPCE_Client.UnitTest
             var result = proxy.Invio(idRichiesta, "CLIENTE", invioRol);
 
             Assert.AreEqual(result.CEResult.Type, "I");
+
+            CheckStatusRol(idRichiesta, "R", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
         }
 
         [TestMethod]

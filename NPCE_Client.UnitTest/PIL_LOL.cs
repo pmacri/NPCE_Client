@@ -120,7 +120,7 @@ namespace NPCE_Client.UnitTest
             string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
             var LetteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
             LetteraResponse invioresult;
-            var ceHeader = Helper.GetCeHeader();
+            var ceHeader = GetCeHeader();
             ceHeader.SenderSystem = "H2H";
             ceHeader.IDSender = "999988";
             ceHeader.IdCRM = string.Empty;
