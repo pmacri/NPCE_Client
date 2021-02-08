@@ -23,6 +23,7 @@ using OrderResponse = PosteItaliane.OrderManagement.Schema.SchemaDefinition.Orde
 
 using Environment = NPCE_Client.Test.Environment;
 using PosteItaliane.OrderManagement.Schema.SchemaDefinition;
+using Newtonsoft.Json;
 
 namespace NPCE_Client.UnitTest
 {
@@ -115,6 +116,8 @@ namespace NPCE_Client.UnitTest
                         ContrattoMOL = "00000000040000017267",
                         ContrattoCOL = "40000020188",
                         PostaEvoConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        RolConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=NPCEROL;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        LolConnectionString = "data source=10.60.17.150\\STGNPCESQLINST02;initial catalog=NPCELOL;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "DITTA MARKET",
                         NomeProprioCol = "Posta Contest",
                         PathLoggingFile = "\\\\10.60.17.151\\c$\\NPCE V6\\Logging",
@@ -137,7 +140,9 @@ namespace NPCE_Client.UnitTest
                         smuserMOL = "CEPROB01",
                         ContrattoMOL = "00000000049999999999",
                         sendersystem = "H2H",
-                        PostaEvoConnectionString = "data source=10.60.19.22\\TPCESQLINST02;initial catalog=PostaEvo;persist security info=True;user id=pasquale;password=pasquale;MultipleActiveResultSets=True;App=EntityFramework;",
+                        PostaEvoConnectionString = "data source=10.60.21.148\\PNPCESQLINST07;initial catalog=PostaEvo;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        RolConnectionString = "data source=10.60.21.148\\PNPCESQLINST07;initial catalog=NPCEROL;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
+                        LolConnectionString = "data source=10.60.21.148\\PNPCESQLINST07;initial catalog=NPCELOL;persist security info=True;user id=pce_user;password=Qwerty12;MultipleActiveResultSets=True;App=EntityFramework;",
                         NomeProprioMol = "CLIENTE TEST PROB01",
                         Username = "CEPROB01",
                         Password = "Cewspr01",
@@ -233,11 +238,9 @@ namespace NPCE_Client.UnitTest
 
             invio.MarketOnline.Opzioni.Servizio = new ServiceReference.Mol.OpzioniServizio
             {
-                AnniArchiviazione = "0",
                 AttestazioneConsegna = false,
                 Consegna = ServiceReference.Mol.ModalitaConsegna.S,
                 SecondoTentativoRecapito = false
-
             };
 
             invio.MarketOnline.Opzioni.Stampa = new ServiceReference.Mol.OpzioniStampa
@@ -702,6 +705,12 @@ namespace NPCE_Client.UnitTest
             };
 
             return confirmOrder;
+        }
+
+        protected static T Clone<T>(T source)
+        {
+            var serialized = JsonConvert.SerializeObject(source);
+            return JsonConvert.DeserializeObject<T>(serialized);
         }
 
     }

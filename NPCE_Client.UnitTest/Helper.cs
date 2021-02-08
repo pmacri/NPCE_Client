@@ -91,7 +91,7 @@ namespace NPCE_Client.Test
 
 
             var client = new WsCEClient(httpBinding, endpointAddress);
-            string guidMessage = string.Empty;
+            string guidMessage = ceHeader.GUIDMessage;
 
             if (ce.Body.OuterXml.StartsWith("<OrderRequest"))
             {

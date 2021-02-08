@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading;
+using System.Threading.Tasks;
 using Environment = NPCE_Client.Test.Environment;
 
 namespace NPCE_Client.UnitTest
@@ -14,9 +15,47 @@ namespace NPCE_Client.UnitTest
     [TestClass]
     public class FE_LOL : TestBase
     {
-        public FE_LOL() : base(Environment.Certificazione)
+        public FE_LOL() : base(Environment.Collaudo)
         {
 
+        }
+
+        [TestMethod]
+        public void Multiple_Invio_Conferma()
+        {
+            int N = 30;
+
+            List<Task> TaskList = new List<Task>();
+            for (int i = 0; i < N; i++)
+            {
+                TaskList.Add(Task.Run(() => LolInvioConferma()));
+            }
+
+            Task t = Task.WhenAll(TaskList.ToArray());
+            t.Wait();
+        }
+
+        private void LolInvioConferma()
+        {
+            string idRichiesta = RecuperaIdRichiesta();
+            Assert.IsNotNull(idRichiesta);
+            InvioResult result = InvioLOL(idRichiesta);
+            var guidUtente = result.GuidUtente;
+            Assert.AreEqual(result.CEResult.Type, "I");
+
+            CheckStatusLol(idRichiesta, "R", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
+
+            var listRichieste = new List<Richiesta>();
+            listRichieste.Add(new Richiesta() { GuidUtente = guidUtente, IDRichiesta = idRichiesta });
+            PreConfermaRequest request = new PreConfermaRequest { Richieste = listRichieste.ToArray(), autoConferma = true };
+            var proxy = GetProxy<LOLServiceSoap>(ambiente.LolUri);
+            var fake = new OperationContextScope((IContextChannel)proxy);
+            var headers = GetHttpHeaders(ambiente);
+            OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = headers;
+            var preConfermaResult = proxy.PreConferma(request);
+            Assert.AreEqual(preConfermaResult.PreConfermaResult.CEResult.Type, "I");
+
+            CheckStatusLol(idRichiesta, "L", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(20));
         }
 
         [TestMethod]

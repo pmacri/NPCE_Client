@@ -181,8 +181,8 @@
     </xs:schema>
     <xs:schema xmlns:tns="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" elementFormDefault="qualified" targetNamespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://ComunicazioniElettroniche.XOL" />
-      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xs:import namespace="http://ComunicazioniElettroniche.XOL/BollettinoPA" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xs:complexType name="DatiOpzionali">
         <xs:sequence>
           <xs:element minOccurs="0" name="CentroCostoCliente" nillable="true" type="xs:string" />
@@ -205,7 +205,7 @@
           <xs:element minOccurs="0" name="DatiOpzionali" nillable="true" type="tns:DatiOpzionali" />
           <xs:element minOccurs="0" name="Destinatari" nillable="true" type="tns:ArrayOfDestinatarioRaccomandata" />
           <xs:element minOccurs="0" name="DestinatarioAR" nillable="true" type="tns:DestinatarioAR" />
-          <xs:element minOccurs="0" name="IdCover" type="xs:int" />
+          <xs:element minOccurs="0" name="IdCover" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdRichiesta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdentificativoInvioNelLotto" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Mittente" nillable="true" type="tns:Mittente" />
@@ -213,7 +213,6 @@
           <xs:element minOccurs="0" name="Opzioni" nillable="true" type="tns:Opzioni" />
           <xs:element xmlns:q1="http://ComunicazioniElettroniche.XOL" minOccurs="0" name="PagineBollettini" nillable="true" type="q1:ArrayOfPaginaBollettino" />
           <xs:element minOccurs="0" name="Prodotto" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="TipoCover" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="DatiServizioOfDestinatarioRaccomandataMDIy2m_SX" nillable="true" type="tns:DatiServizioOfDestinatarioRaccomandataMDIy2m_SX" />
@@ -300,40 +299,15 @@
       <xs:complexType name="OpzioniServizio">
         <xs:sequence>
           <xs:element minOccurs="0" name="AnniArchiviazione" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ArchiviazioneDocumenti" type="tns:ModalitaArchiviazione" />
+          <xs:element minOccurs="0" name="ArchiviazioneDocumenti" type="xs:boolean" />
           <xs:element minOccurs="0" name="AttestazioneConsegna" type="xs:boolean" />
           <xs:element minOccurs="0" name="Consegna" type="tns:ModalitaConsegna" />
           <xs:element minOccurs="0" name="SecondoTentativoRecapito" type="xs:boolean" />
           <xs:element minOccurs="0" name="TipoArchiviazione" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TipoArchiviazioneDocumenti" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="OpzioniServizio" nillable="true" type="tns:OpzioniServizio" />
-      <xs:simpleType name="ModalitaArchiviazione">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="NESSUNA">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="SEMPLICE">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="STORICA">
-            <xs:annotation>
-              <xs:appinfo>
-                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="ModalitaArchiviazione" nillable="true" type="tns:ModalitaArchiviazione" />
       <xs:simpleType name="ModalitaConsegna">
         <xs:restriction base="xs:string">
           <xs:enumeration value="S" />
@@ -558,7 +532,7 @@
           <xs:element minOccurs="0" name="DatiOpzionali" nillable="true" type="tns:DatiOpzionali" />
           <xs:element minOccurs="0" name="Destinatari" nillable="true" type="tns:ArrayOfDestinatarioLettera" />
           <xs:element minOccurs="0" name="DestinatarioAR" nillable="true" type="tns:DestinatarioAR" />
-          <xs:element minOccurs="0" name="IdCover" type="xs:int" />
+          <xs:element minOccurs="0" name="IdCover" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdRichiesta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdentificativoInvioNelLotto" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Mittente" nillable="true" type="tns:Mittente" />
@@ -566,7 +540,6 @@
           <xs:element minOccurs="0" name="Opzioni" nillable="true" type="tns:Opzioni" />
           <xs:element xmlns:q4="http://ComunicazioniElettroniche.XOL" minOccurs="0" name="PagineBollettini" nillable="true" type="q4:ArrayOfPaginaBollettino" />
           <xs:element minOccurs="0" name="Prodotto" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="TipoCover" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="DatiServizioOfDestinatarioLetteraMDIy2m_SX" nillable="true" type="tns:DatiServizioOfDestinatarioLetteraMDIy2m_SX" />
@@ -584,6 +557,32 @@
         </xs:restriction>
       </xs:simpleType>
       <xs:element name="TipoDocumento" nillable="true" type="tns:TipoDocumento" />
+      <xs:simpleType name="ModalitaArchiviazione">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NESSUNA">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SEMPLICE">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="STORICA">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ModalitaArchiviazione" nillable="true" type="tns:ModalitaArchiviazione" />
       <xs:simpleType name="TipoCover">
         <xs:restriction base="xs:string">
           <xs:enumeration value="STANDARD" />
@@ -625,32 +624,6 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfServizioDestinatarioRaccomandata" nillable="true" type="tns:ArrayOfServizioDestinatarioRaccomandata" />
-      <xs:complexType name="ArrayOfAddon">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Addon" nillable="true" type="tns:Addon" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ArrayOfAddon" nillable="true" type="tns:ArrayOfAddon" />
-      <xs:complexType name="Addon">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Campo" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Valore" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Addon" nillable="true" type="tns:Addon" />
-      <xs:complexType name="ArrayOfProdotto">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Prodotto" nillable="true" type="tns:Prodotto" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ArrayOfProdotto" nillable="true" type="tns:ArrayOfProdotto" />
-      <xs:complexType name="Prodotto">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="IdProdotto" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Prodotto" nillable="true" type="tns:Prodotto" />
     </xs:schema>
     <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://comunicazionielettroniche.posteitaliane.it/raccomandatamarket/data" elementFormDefault="qualified" targetNamespace="http://comunicazionielettroniche.posteitaliane.it/raccomandatamarket/data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" />
@@ -727,6 +700,7 @@
       <xs:element name="MarketOnline" nillable="true" type="tns:MarketOnline" />
       <xs:complexType name="CoverBasic">
         <xs:sequence>
+          <xs:element minOccurs="0" name="CampoStandard" type="xs:boolean" />
           <xs:element minOccurs="0" name="Immagine" nillable="true" type="xs:base64Binary" />
           <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RaccomandataMarket.Web.DataContract" minOccurs="0" name="Immagini" nillable="true" type="q11:ArrayOfImmagini" />
           <xs:element minOccurs="0" name="Testo" nillable="true" type="xs:string" />
@@ -1298,7 +1272,11 @@
               <xs:element minOccurs="0" name="DataAccettazioneDa" nillable="true" type="xs:string" />
               <xs:element xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IdRichieste" nillable="true" type="q68:ArrayOfstring" />
               <xs:element minOccurs="0" name="NominativoDestinatario" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
               <xs:element xmlns:q69="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NumeriRaccomandata" nillable="true" type="q69:ArrayOfstring" />
+              <xs:element minOccurs="0" name="NumeroElementiPerPagina" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroPagina" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -1309,6 +1287,9 @@
           <xs:extension xmlns:q70="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" base="q70:PostaEvoResponse">
             <xs:sequence>
               <xs:element minOccurs="0" name="DocumentiArchiviati" nillable="true" type="tns:ArrayOfDocumentoArchiviato" />
+              <xs:element minOccurs="0" name="NumeroPaginaCorrente" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroTotaleElementi" type="xs:int" />
+              <xs:element minOccurs="0" name="NumeroTotalePagine" type="xs:int" />
               <xs:element minOccurs="0" name="TicketId" nillable="true" type="xs:string" />
             </xs:sequence>
           </xs:extension>
@@ -2038,6 +2019,7 @@
     </xs:schema>
     <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RaccomandataMarket.Web.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RaccomandataMarket.Web.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/PosteItaliane.Evo.Web.DataContract" />
       <xs:complexType name="ArrayOfImmagini">
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Immagini" nillable="true" type="tns:Immagini" />
@@ -2065,8 +2047,7 @@
         <xs:complexContent mixed="false">
           <xs:extension xmlns:q2="http://comunicazionielettroniche.posteitaliane.it/postaevo/data" base="q2:PostaEvoResponse">
             <xs:sequence>
-              <xs:element minOccurs="0" name="Addons" nillable="true" type="q2:ArrayOfAddon" />
-              <xs:element minOccurs="0" name="Prodotti" nillable="true" type="q2:ArrayOfProdotto" />
+              <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PosteItaliane.Evo.Web.DataContract" minOccurs="0" name="Prodotti" nillable="true" type="q3:ArrayOfProdotto" />
             </xs:sequence>
           </xs:extension>
         </xs:complexContent>
@@ -2100,6 +2081,21 @@
       <xs:simpleType name="StreamBody">
         <xs:restriction base="xs:base64Binary" />
       </xs:simpleType>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PosteItaliane.Evo.Web.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PosteItaliane.Evo.Web.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfProdotto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Prodotto" nillable="true" type="tns:Prodotto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProdotto" nillable="true" type="tns:ArrayOfProdotto" />
+      <xs:complexType name="Prodotto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdProdotto" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Prodotto" nillable="true" type="tns:Prodotto" />
     </xs:schema>
     <xs:schema xmlns:tns="http://comunicazionielettroniche/posteitaliane.it/raccomandatamarket/data" elementFormDefault="qualified" targetNamespace="http://comunicazionielettroniche/posteitaliane.it/raccomandatamarket/data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />

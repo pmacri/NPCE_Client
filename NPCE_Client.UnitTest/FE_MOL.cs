@@ -15,7 +15,7 @@ namespace NPCE_Client.UnitTest
     public class FE_MOL : TestBase
     {
 
-        public FE_MOL(): base(Test.Environment.Collaudo)
+        public FE_MOL(): base(Test.Environment.Staging)
         {
             
         }
@@ -120,6 +120,9 @@ namespace NPCE_Client.UnitTest
         {
 
             InvioRequest molSubmit = GetMolFEInvio();
+
+            molSubmit.MarketOnline.Bollettini = null;
+            molSubmit.MarketOnline.BollettinoPA = null;
 
             molSubmit.MarketOnline.AutoConferma = false;
 

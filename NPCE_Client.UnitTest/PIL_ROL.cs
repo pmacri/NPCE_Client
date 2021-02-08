@@ -44,9 +44,8 @@ namespace NPCE_Client.UnitTest
 
             var result = Helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
             Assert.AreEqual(TResultResType.I, result.ResType);
-
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
-
+            CheckStatusLol(invioresult.IdRichiesta.ToString(), "R", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
@@ -76,6 +75,8 @@ namespace NPCE_Client.UnitTest
             var result = Helper.PublishToBizTalk<RaccomandataSubmit, RaccomandataResponse>(raccomandataSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
             Assert.AreEqual(TResultResType.I, result.ResType);
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
+
+            CheckStatusLol(invioresult.IdRichiesta.ToString(), "R", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
@@ -103,6 +104,8 @@ namespace NPCE_Client.UnitTest
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
             Thread.Sleep(20000);
             ConfirmServicePIL(guid.ToString());
+
+            CheckStatusLol(invioresult.IdRichiesta.ToString(), "L", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]

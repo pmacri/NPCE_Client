@@ -262,8 +262,8 @@ namespace NPCE_Client.Test
   </Mittente>
   <Destinatari xmlns='http://ComunicazioniElettroniche.LOL.WS'>
     <Destinatario IdDestinatario='1' IdRicevuta=''>
-      <Nominativo Stato='Italia' Citta='roma' Provincia='rm' ForzaDestinazione='false' UfficioPostale='' TipoIndirizzo='NORMALE' CasellaPostale='' Cognome='CODEST1_20140929_144958' Nome='Destinatario_UNICO' InesitateDigitali='false' CodiceFiscaleResult='0' CAP='00199' Frazione='' RagioneSociale='' xmlns='http://ComunicazioniElettroniche.XOL'>
-        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='' Esponente='' />
+      <Nominativo Stato='Italia' Citta='roma' Provincia='rm' ForzaDestinazione='false' UfficioPostale='' TipoIndirizzo='NORMALE' CasellaPostale='' Cognome='Eterni' Nome='Vincenzo' InesitateDigitali='false' CodiceFiscaleResult='0' CAP='00144' Frazione='' RagioneSociale='' xmlns='http://ComunicazioniElettroniche.XOL'>
+        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='190' Esponente='' />
       </Nominativo>
     </Destinatario>
   </Destinatari>
@@ -294,8 +294,8 @@ namespace NPCE_Client.Test
   </Mittente>
   <RaccomandataDestinatario IdRaccomandata='' NumeroDestinatarioCorrente='1' IdDestinatario='1' xmlns=''>
     <Destinatario>
-      <Nominativo InesitateDigitali='false' CodiceFiscale='1234567891234567' CodiceFiscaleResult='0' Cognome='COGNOME_DESTINATARIO' Nome='NOME_DESTINATARIO' ComplementoNominativo='ComplementoNominativo_dest' ComplementoIndirizzo='ComplementoIndirizzo_dest' CAP='00144' Citta='ROMA' Provincia='RM' Stato='ITALIA' TipoIndirizzo='NORMALE' ForzaDestinazione='false'>
-        <Indirizzo DUG='Viale' Toponimo='Europa' NumeroCivico='190' Esponente='' />
+      <Nominativo Cognome='Eterni' Nome='Vincenzo' ComplementoNominativo='Divisione Marketing PI' RagioneSociale='' ComplementoIndirizzo='Palazzina 1 Interno 6' CAP='00199' Frazione='' Citta='roma' Provincia='rm' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
+        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='190' Esponente='' />
       </Nominativo>
     </Destinatario>
   </RaccomandataDestinatario>
@@ -318,14 +318,14 @@ namespace NPCE_Client.Test
     <Documento IdPosizione='2' Uri='\\FSSVIL-b451.rete.testposte\ShareFS\InputDocument\20210126\LOL_cb8f90a5-ef7f-4155-bc61-1c5af8b9a00c.doc' FileHash='AB8EF323B64C85C8DFCCCD4356E4FB9B' />
   </Documenti>
   <Mittente InviaStampa='false' xmlns=''>
-    <Nominativo Cognome='COGNOME_MITTENTE' Nome='NOME_MITTENTE' RagioneSociale='' CAP='00144' Frazione='' Citta='Roma' Provincia='RM' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
+    <Nominativo Cognome='Rossi' Nome='Paolo' RagioneSociale='' CAP='00144' Frazione='' Citta='Roma' Provincia='RM' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
       <Indirizzo DUG='Viale' Toponimo='Europa' NumeroCivico='1' Esponente='' />
     </Nominativo>
   </Mittente>
   <LetteraDestinatario IdLettera='' NumeroDestinatarioCorrente='1' IdDestinatario='1' xmlns=''>
     <Destinatario>
-      <Nominativo Cognome='CODEST1_20140929_144958' Nome='Destinatario_UNICO' ComplementoNominativo='' RagioneSociale='' ComplementoIndirizzo='' CAP='00199' Frazione='' Citta='roma' Provincia='rm' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
-        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='' Esponente='' />
+      <Nominativo Cognome='Eterni' Nome='Vincenzo' ComplementoNominativo='Divisione Marketing PI' RagioneSociale='' ComplementoIndirizzo='Palazzina 1 Interno 6' CAP='00199' Frazione='' Citta='roma' Provincia='rm' Stato='Italia' TipoIndirizzo='NORMALE' CasellaPostale='' UfficioPostale='' ForzaDestinazione='false'>
+        <Indirizzo DUG='VIALE' Toponimo='EUROPA' NumeroCivico='190' Esponente='' />
       </Nominativo>
     </Destinatario>
   </LetteraDestinatario>
@@ -346,10 +346,10 @@ namespace NPCE_Client.Test
           <Destinatari xmlns=''>
             <Destinatario>
               <Nominativo>
-                <Nominativo>Rossi Paolo</Nominativo>
+                <Nominativo>Vincenzo Eterni</Nominativo>
               </Nominativo>
               <Indirizzo>
-                <Indirizzo>Via dei ciclamini 180 </Indirizzo>
+                <Indirizzo>Viale Europa 190</Indirizzo>
               </Indirizzo>
               <Destinazione>
                 <CAP>00144</CAP>

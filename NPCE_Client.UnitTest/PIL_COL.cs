@@ -11,67 +11,15 @@ using System.Linq;
 namespace NPCE_Client.UnitTest
 {
     [TestClass]
-    public class PIL_MOL : TestBase
+    public class PIL_COL: TestBase
     {
-        public PIL_MOL(): base(Test.Environment.Collaudo)
+        public PIL_COL() : base(Test.Environment.Collaudo)
         {
 
         }
 
         [TestMethod]
-        public void MOL1_AutoConfirmTrue_RitiroDigitale_CF_Errato()
-        {
-            var guid = System.Guid.NewGuid();
-            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
-
-            var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
-
-            PostaEvoResponse postaEvoResponse;
-
-            postaEvoRequest.AutoConferma = true;
-            postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
-            postaEvoRequest.Destinatari[0].RitiroDigitale = true;
-            postaEvoRequest.Destinatari[0].RitiroDigitaleSpecified = true;
-            postaEvoRequest.Destinatari[0].Nominativo.CodiceFiscale = "xxxxxxxxxxxxxxxx";
-
-            postaEvoRequest.Documenti[0].URI = ambiente.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = ambiente.HashMD5Document;
-
-            postaEvoRequest.Documenti[1].URI = ambiente.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = ambiente.HashMD5Cov;
-
-            var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
-            Assert.AreEqual(TResultResType.I, result.ResType);
-        }
-
-        [TestMethod]
-        public void MOL1_AutoConfirmTrue_RitiroDigitale_False_CF_Errato()
-        {
-            var guid = System.Guid.NewGuid();
-            string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
-
-            var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
-
-            PostaEvoResponse postaEvoResponse;
-
-            postaEvoRequest.AutoConferma = true;
-            postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
-            postaEvoRequest.Destinatari[0].RitiroDigitale = false;
-            postaEvoRequest.Destinatari[0].RitiroDigitaleSpecified = true;
-            postaEvoRequest.Destinatari[0].Nominativo.CodiceFiscale = "xxxxxxxxxxxxxxxx";
-
-            postaEvoRequest.Documenti[0].URI = ambiente.PathDocument;
-            postaEvoRequest.Documenti[0].HashMD5 = ambiente.HashMD5Document;
-
-            postaEvoRequest.Documenti[1].URI = ambiente.PathCov;
-            postaEvoRequest.Documenti[1].HashMD5 = ambiente.HashMD5Cov;
-
-            var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
-            Assert.AreEqual(TResultResType.I, result.ResType);
-        }
-
-        [TestMethod]
-        public void MOL1_Cover()
+        public void COL1_Cover()
         {
             var guid = System.Guid.NewGuid();
 
@@ -79,6 +27,8 @@ namespace NPCE_Client.UnitTest
 
             var postaEvoRequest = SerializationUtility.Deserialize<PostaEvoSubmit>(xmlBase); ;
 
+
+            postaEvoRequest.TipoProdotto = "COL1";
             postaEvoRequest.AutoConferma = false;
             postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
             postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
@@ -91,7 +41,7 @@ namespace NPCE_Client.UnitTest
 
             postaEvoRequest.Documenti[1].URI = ambiente.PathCov;
 
-            
+
             postaEvoRequest.Documenti[1].HashMD5 = ambiente.HashMD5Cov;
 
             var result = Helper.PublishToBizTalk<PostaEvoSubmit, PostaEvoResponse>(postaEvoRequest, ambiente.UrlEntryPoint, out postaEvoResponse);
@@ -105,14 +55,14 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-        public void MOL1_Cover_Archiviazione_Storica_3_Anni()
+        public void COL1_Cover_Archiviazione_Storica_3_Anni()
         {
             var guid = System.Guid.NewGuid();
 
             string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = SerializationUtility.Deserialize<PostaEvoSubmit>(xmlBase); ;
-
+            postaEvoRequest.TipoProdotto = "COL1";
             postaEvoRequest.AutoConferma = false;
             postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
             postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
@@ -140,7 +90,7 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-        public void MOL1_No_Cover()
+        public void COL1_No_Cover()
         {
             var guid = System.Guid.NewGuid();
 
@@ -149,6 +99,7 @@ namespace NPCE_Client.UnitTest
             var postaEvoRequest = SerializationUtility.Deserialize<PostaEvoSubmit>(xmlBase); ;
 
             postaEvoRequest.AutoConferma = false;
+            postaEvoRequest.TipoProdotto = "COL1";
             postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
             postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
             postaEvoRequest.Opzioni.OpzioniServizio.SecondoTentativoRecapito = true;
@@ -167,13 +118,15 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-        public void MOL1_Autoconfirm()
+        public void COL1_Autoconfirm()
         {
             var guid = System.Guid.NewGuid();
 
             string xmlBase = Envelopes.PostaEvoPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
+
+            postaEvoRequest.TipoProdotto = "COL1";
 
             postaEvoRequest.AutoConferma = true;
 
@@ -185,7 +138,7 @@ namespace NPCE_Client.UnitTest
             postaEvoRequest.Documenti[1].URI = ambiente.PathDocument;
             postaEvoRequest.Documenti[1].HashMD5 = ambiente.HashMD5Document;
             postaEvoRequest.Documenti[1].Estensione = "doc";
-            
+
             postaEvoRequest.Documenti[0].URI = ambiente.PathCov;
             postaEvoRequest.Documenti[0].HashMD5 = ambiente.HashMD5Cov;
             postaEvoRequest.Documenti[0].Estensione = "cov";
@@ -203,7 +156,7 @@ namespace NPCE_Client.UnitTest
         }
 
         [TestMethod]
-        public void MOL1_Autoconfirm_Archiviazione_Storica_3_Anni()
+        public void COL1_Autoconfirm_Archiviazione_Storica_3_Anni()
         {
             var guid = System.Guid.NewGuid();
 
@@ -211,13 +164,15 @@ namespace NPCE_Client.UnitTest
 
             var postaEvoRequest = Helper.GetPostaEvoSubmitFromXml(xmlBase);
 
+            postaEvoRequest.TipoProdotto = "COL1";
+
             postaEvoRequest.AutoConferma = true;
 
             postaEvoRequest.Opzioni.OpzioniServizio.ModalitaPricing = "ZONA";
             postaEvoRequest.Opzioni.OpzioniServizio.AttestazioneConsegna = true;
 
             postaEvoRequest.Opzioni.OpzioniServizio.ArchiviazioneDocumenti = "STORICA";
-            postaEvoRequest.Opzioni.OpzioniServizio.AnniArchiviazione =3;
+            postaEvoRequest.Opzioni.OpzioniServizio.AnniArchiviazione = 3;
             postaEvoRequest.Opzioni.OpzioniServizio.AnniArchiviazioneSpecified = true;
 
 
@@ -244,8 +199,7 @@ namespace NPCE_Client.UnitTest
                     Assert.AreEqual(opzione.AnniArchiviazione, 3);
                 }
             }
-                
-            }
-    }
 
+        }
+    }
 }

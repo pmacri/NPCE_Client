@@ -5,8 +5,10 @@ using ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitResponse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NPCE_Client.Test;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using LetteraDestinatario = ComunicazioniElettroniche.LOL.Web.BusinessEntities.InvioSubmitLOL.LetteraDestinatario;
 
 namespace NPCE_Client.UnitTest
 {
@@ -32,6 +34,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
 
             letteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
             letteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
@@ -45,6 +48,7 @@ namespace NPCE_Client.UnitTest
 
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
 
+            CheckStatusLol(guid.ToString(), "R", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
@@ -77,6 +81,56 @@ namespace NPCE_Client.UnitTest
             Thread.Sleep(20000);
             ConfirmServicePIL(guid.ToString());
 
+            CheckStatusLol(invioresult.IdRichiesta.ToString(), "L", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
+
+        }
+
+        [TestMethod]
+        public void Invio_N_Destinatari_Cover_And_Confirm()
+        {
+            int N = 50;
+            var guid = Guid.NewGuid();
+            string xml = Envelopes.LolPil.Replace("%GUID%", string.Concat("", guid.ToString(), ""));
+            var letteraSubmitRequest = Helper.GetLetteraSubmitFromXml(xml);
+            LetteraResponse invioresult;
+            var ceHeader = Helper.GetCeHeader();
+            ceHeader.SenderSystem = "H2H";
+            ceHeader.IDSender = "999988";
+            ceHeader.IdCRM = string.Empty;
+            ceHeader.UserId = "nello.citta.npce";
+            ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
+
+            letteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
+            letteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
+
+            letteraSubmitRequest.Documenti[1].Uri = ambiente.PathDocument;
+            letteraSubmitRequest.Documenti[1].FileHash = ambiente.HashMD5Document;
+
+            var destinatario = letteraSubmitRequest.LetteraDestinatario[0];
+
+            letteraSubmitRequest.LetteraDestinatario = null;
+            var listDestinatari = new List<LetteraDestinatario>();
+            LetteraDestinatario newDestinatario;
+
+            for (int i = 0; i < N-1; i++)
+            {
+                newDestinatario = Clone(destinatario);
+                newDestinatario.NumeroDestinatarioCorrente = i + 1;
+                newDestinatario.IdDestinatario = (i + 1).ToString();
+                listDestinatari.Add(newDestinatario);
+            }
+            letteraSubmitRequest.LetteraDestinatario = listDestinatari.ToArray();
+            letteraSubmitRequest.NumeroDestinatari = 50;
+            var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(letteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
+            Assert.AreEqual(TResultResType.I, result.ResType);
+            Debug.WriteLine(invioresult.IdRichiesta.ToString());
+
+            Thread.Sleep(20000);
+            ConfirmServicePIL(guid.ToString());
+
+            CheckStatusLol(invioresult.IdRichiesta.ToString(), "L", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
+
         }
 
         [TestMethod]
@@ -106,11 +160,8 @@ namespace NPCE_Client.UnitTest
 
             var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(letteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
             Assert.AreEqual(TResultResType.I, result.ResType);
-
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
-
-            
-
+            CheckStatusLol(guid.ToString(), "R", TimeSpan.FromMinutes(3), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
@@ -126,6 +177,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
 
             LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathDocument;
             LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Document;
@@ -135,6 +187,10 @@ namespace NPCE_Client.UnitTest
             var result = Helper.PublishToBizTalk<LetteraSubmit, LetteraResponse>(LetteraSubmitRequest, ceHeader, ambiente.UrlEntryPoint, out invioresult);
             Assert.AreEqual(TResultResType.I, result.ResType);
             Debug.WriteLine(invioresult.IdRichiesta.ToString());
+
+            Thread.Sleep(30000);
+
+            CheckStatusLol(invioresult.IdRichiesta.ToString(),"R", TimeSpan.FromMinutes(2), TimeSpan.FromSeconds(10));
         }
 
         [TestMethod]
@@ -150,6 +206,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
 
             LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
             LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
@@ -191,6 +248,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guid.ToString();
 
             LetteraSubmitRequest.Documenti[0].Uri = ambiente.PathCov;
             LetteraSubmitRequest.Documenti[0].FileHash = ambiente.HashMD5Cov;
@@ -241,6 +299,7 @@ namespace NPCE_Client.UnitTest
             ceHeader.IdCRM = string.Empty;
             ceHeader.UserId = "nello.citta.npce";
             ceHeader.ContractId = string.Empty;
+            ceHeader.GUIDMessage = guidMessage;
             ConfirmOrderResponse confirmResponse = null;
             ConfirmOrder confirmRequest = null;
             confirmRequest = ComunicazioniElettroniche.Common.Serialization.SerializationUtility.Deserialize<ConfirmOrder>(xmlConfirmMessage);

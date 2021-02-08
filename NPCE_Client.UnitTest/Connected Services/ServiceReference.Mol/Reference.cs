@@ -1485,7 +1485,19 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private string NominativoDestinatarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NoteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] NumeriRaccomandataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> NumeroElementiPerPaginaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> NumeroPaginaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OggettoField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string CodiceContratto {
@@ -1553,6 +1565,19 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Note {
+            get {
+                return this.NoteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NoteField, value) != true)) {
+                    this.NoteField = value;
+                    this.RaisePropertyChanged("Note");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string[] NumeriRaccomandata {
             get {
                 return this.NumeriRaccomandataField;
@@ -1561,6 +1586,45 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((object.ReferenceEquals(this.NumeriRaccomandataField, value) != true)) {
                     this.NumeriRaccomandataField = value;
                     this.RaisePropertyChanged("NumeriRaccomandata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> NumeroElementiPerPagina {
+            get {
+                return this.NumeroElementiPerPaginaField;
+            }
+            set {
+                if ((this.NumeroElementiPerPaginaField.Equals(value) != true)) {
+                    this.NumeroElementiPerPaginaField = value;
+                    this.RaisePropertyChanged("NumeroElementiPerPagina");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> NumeroPagina {
+            get {
+                return this.NumeroPaginaField;
+            }
+            set {
+                if ((this.NumeroPaginaField.Equals(value) != true)) {
+                    this.NumeroPaginaField = value;
+                    this.RaisePropertyChanged("NumeroPagina");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Oggetto {
+            get {
+                return this.OggettoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OggettoField, value) != true)) {
+                    this.OggettoField = value;
+                    this.RaisePropertyChanged("Oggetto");
                 }
             }
         }
@@ -2542,6 +2606,9 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CampoStandardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] ImmagineField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2560,6 +2627,19 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CampoStandard {
+            get {
+                return this.CampoStandardField;
+            }
+            set {
+                if ((this.CampoStandardField.Equals(value) != true)) {
+                    this.CampoStandardField = value;
+                    this.RaisePropertyChanged("CampoStandard");
+                }
             }
         }
         
@@ -4890,7 +4970,7 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private string AnniArchiviazioneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private NPCE_Client.UnitTest.ServiceReference.Mol.ModalitaArchiviazione ArchiviazioneDocumentiField;
+        private bool ArchiviazioneDocumentiField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool AttestazioneConsegnaField;
@@ -4903,6 +4983,9 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TipoArchiviazioneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoArchiviazioneDocumentiField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -4928,7 +5011,7 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public NPCE_Client.UnitTest.ServiceReference.Mol.ModalitaArchiviazione ArchiviazioneDocumenti {
+        public bool ArchiviazioneDocumenti {
             get {
                 return this.ArchiviazioneDocumentiField;
             }
@@ -4988,6 +5071,19 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((this.TipoArchiviazioneField.Equals(value) != true)) {
                     this.TipoArchiviazioneField = value;
                     this.RaisePropertyChanged("TipoArchiviazione");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TipoArchiviazioneDocumenti {
+            get {
+                return this.TipoArchiviazioneDocumentiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoArchiviazioneDocumentiField, value) != true)) {
+                    this.TipoArchiviazioneDocumentiField = value;
+                    this.RaisePropertyChanged("TipoArchiviazioneDocumenti");
                 }
             }
         }
@@ -5061,20 +5157,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModalitaArchiviazione", Namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data")]
-    public enum ModalitaArchiviazione : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NESSUNA = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SEMPLICE = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        STORICA = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -6085,6 +6167,15 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private NPCE_Client.UnitTest.ServiceReference.Mol.DocumentoArchiviato[] DocumentiArchiviatiField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumeroPaginaCorrenteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumeroTotaleElementiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumeroTotalePagineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TicketIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
@@ -6096,6 +6187,45 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((object.ReferenceEquals(this.DocumentiArchiviatiField, value) != true)) {
                     this.DocumentiArchiviatiField = value;
                     this.RaisePropertyChanged("DocumentiArchiviati");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumeroPaginaCorrente {
+            get {
+                return this.NumeroPaginaCorrenteField;
+            }
+            set {
+                if ((this.NumeroPaginaCorrenteField.Equals(value) != true)) {
+                    this.NumeroPaginaCorrenteField = value;
+                    this.RaisePropertyChanged("NumeroPaginaCorrente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumeroTotaleElementi {
+            get {
+                return this.NumeroTotaleElementiField;
+            }
+            set {
+                if ((this.NumeroTotaleElementiField.Equals(value) != true)) {
+                    this.NumeroTotaleElementiField = value;
+                    this.RaisePropertyChanged("NumeroTotaleElementi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumeroTotalePagine {
+            get {
+                return this.NumeroTotalePagineField;
+            }
+            set {
+                if ((this.NumeroTotalePagineField.Equals(value) != true)) {
+                    this.NumeroTotalePagineField = value;
+                    this.RaisePropertyChanged("NumeroTotalePagine");
                 }
             }
         }
@@ -6273,23 +6403,7 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
     public partial class RecuperaInfoAmministrativeResponse : NPCE_Client.UnitTest.ServiceReference.Mol.PostaEvoResponse {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private NPCE_Client.UnitTest.ServiceReference.Mol.Addon[] AddonsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto[] ProdottiField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public NPCE_Client.UnitTest.ServiceReference.Mol.Addon[] Addons {
-            get {
-                return this.AddonsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddonsField, value) != true)) {
-                    this.AddonsField = value;
-                    this.RaisePropertyChanged("Addons");
-                }
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto[] Prodotti {
@@ -6531,7 +6645,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Mittente))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Opzioni))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.OpzioniServizio))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.ModalitaArchiviazione))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.ModalitaConsegna))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.OpzioniStampa))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.TipoColore))]
@@ -6558,16 +6671,13 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.DatiServizioOfDestinatarioLetteraMDIy2m_SX))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.DestinatarioLettera[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.TipoDocumento))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.ModalitaArchiviazione))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.TipoCover))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Destinatario[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Documento[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.StatoInvio[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.StatoInvio))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.ServizioDestinatarioRaccomandata[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Addon[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Addon))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.EsitoConsegna))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.RisultatoRicerca))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.InvioRequest))]
@@ -6653,6 +6763,8 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.DettaglioCover[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.DettaglioCover))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.Prodotto))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(NPCE_Client.UnitTest.ServiceReference.Mol.RecuperaEsitiRequest))]
     public partial class ErrorePostaEvo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -6747,7 +6859,7 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private NPCE_Client.UnitTest.ServiceReference.Mol.DestinatarioAR DestinatarioARField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdCoverField;
+        private string IdCoverField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IdRichiestaField;
@@ -6769,9 +6881,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProdottoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TipoCoverField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -6849,12 +6958,12 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdCover {
+        public string IdCover {
             get {
                 return this.IdCoverField;
             }
             set {
-                if ((this.IdCoverField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.IdCoverField, value) != true)) {
                     this.IdCoverField = value;
                     this.RaisePropertyChanged("IdCover");
                 }
@@ -6948,19 +7057,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((object.ReferenceEquals(this.ProdottoField, value) != true)) {
                     this.ProdottoField = value;
                     this.RaisePropertyChanged("Prodotto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TipoCover {
-            get {
-                return this.TipoCoverField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TipoCoverField, value) != true)) {
-                    this.TipoCoverField = value;
-                    this.RaisePropertyChanged("TipoCover");
                 }
             }
         }
@@ -7976,7 +8072,7 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         private NPCE_Client.UnitTest.ServiceReference.Mol.DestinatarioAR DestinatarioARField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdCoverField;
+        private string IdCoverField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IdRichiestaField;
@@ -7998,9 +8094,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProdottoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TipoCoverField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -8078,12 +8171,12 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdCover {
+        public string IdCover {
             get {
                 return this.IdCoverField;
             }
             set {
-                if ((this.IdCoverField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.IdCoverField, value) != true)) {
                     this.IdCoverField = value;
                     this.RaisePropertyChanged("IdCover");
                 }
@@ -8181,19 +8274,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TipoCover {
-            get {
-                return this.TipoCoverField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TipoCoverField, value) != true)) {
-                    this.TipoCoverField = value;
-                    this.RaisePropertyChanged("TipoCover");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -8202,6 +8282,20 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ModalitaArchiviazione", Namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data")]
+    public enum ModalitaArchiviazione : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NESSUNA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SEMPLICE = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        STORICA = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -8310,128 +8404,6 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((this.IdentificativoInvioNelLottoField.Equals(value) != true)) {
                     this.IdentificativoInvioNelLottoField = value;
                     this.RaisePropertyChanged("IdentificativoInvioNelLotto");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Addon", Namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data")]
-    [System.SerializableAttribute()]
-    public partial class Addon : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CampoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ValoreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Campo {
-            get {
-                return this.CampoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CampoField, value) != true)) {
-                    this.CampoField = value;
-                    this.RaisePropertyChanged("Campo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Valore {
-            get {
-                return this.ValoreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ValoreField, value) != true)) {
-                    this.ValoreField = value;
-                    this.RaisePropertyChanged("Valore");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Prodotto", Namespace="http://comunicazionielettroniche.posteitaliane.it/postaevo/data")]
-    [System.SerializableAttribute()]
-    public partial class Prodotto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescrizioneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdProdottoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Descrizione {
-            get {
-                return this.DescrizioneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescrizioneField, value) != true)) {
-                    this.DescrizioneField = value;
-                    this.RaisePropertyChanged("Descrizione");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdProdotto {
-            get {
-                return this.IdProdottoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdProdottoField, value) != true)) {
-                    this.IdProdottoField = value;
-                    this.RaisePropertyChanged("IdProdotto");
                 }
             }
         }
@@ -9204,6 +9176,67 @@ namespace NPCE_Client.UnitTest.ServiceReference.Mol {
                 if ((object.ReferenceEquals(this.StatoField, value) != true)) {
                     this.StatoField = value;
                     this.RaisePropertyChanged("Stato");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Prodotto", Namespace="http://schemas.datacontract.org/2004/07/PosteItaliane.Evo.Web.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class Prodotto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescrizioneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdProdottoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descrizione {
+            get {
+                return this.DescrizioneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescrizioneField, value) != true)) {
+                    this.DescrizioneField = value;
+                    this.RaisePropertyChanged("Descrizione");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdProdotto {
+            get {
+                return this.IdProdottoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdProdottoField, value) != true)) {
+                    this.IdProdottoField = value;
+                    this.RaisePropertyChanged("IdProdotto");
                 }
             }
         }
